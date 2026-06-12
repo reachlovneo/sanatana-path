@@ -1,0 +1,61 @@
+---
+import { ATLAS_JOURNEY } from "../../data/atlas";
+
+interface Props {
+  slugs: string[];
+}
+
+const { slugs } = Astro.props;
+const topics = slugs
+  .map((slug) => ATLAS_JOURNEY.find((topic) => topic.slug === slug))
+  .filter((topic) => topic !== undefined);
+---
+
+{
+  topics.length > 0 && (
+    <section class="related-topics" aria-labelledby="related-topics-heading">
+      <p class="eyebrow">Continue exploring</p>
+      <h2 id="related-topics-heading">Related topics</h2>
+      <div>
+        {topics.map((topic) => <a href={`/atlas/${topic.slug}`}>{topic.title} <span aria-hidden="true">-&gt;</span></a>)}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .related-topics {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+  }
+
+  h2 {
+    margin: 0.1rem 0 1rem;
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  a {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem;
+    color: var(--ink-muted);
+    font-size: 0.82rem;
+    font-weight: 800;
+    transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+
+  a:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+</style>

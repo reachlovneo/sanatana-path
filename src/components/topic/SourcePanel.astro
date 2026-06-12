@@ -1,0 +1,117 @@
+---
+interface Source {
+  title: string;
+  type: "primary" | "commentary" | "public-domain-translation" | "modern-reference";
+  note?: string;
+  url?: string;
+}
+
+interface Props {
+  sources: Source[];
+  sourceNote: string;
+  traditionNote: string;
+  reviewedBy: string[];
+  lastReviewed: string;
+  contentVersion: string;
+}
+
+const { sources, sourceNote, traditionNote, reviewedBy, lastReviewed, contentVersion } = Astro.props;
+---
+
+<aside class="source-panel" aria-label="Sources and editorial details">
+  <section class="surface note">
+    <p class="eyebrow">Sources</p>
+    {
+      sources.length > 0 ? (
+        <ul>
+          {sources.map((source) => (
+            <li>
+              {source.url ? <a href={source.url} rel="noreferrer">{source.title}</a> : <strong>{source.title}</strong>}
+              <span>{source.type.replaceAll("-", " ")}</span>
+              {source.note && <small>{source.note}</small>}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No source references have been approved yet.</p>
+      )
+    }
+    <p>{sourceNote}</p>
+  </section>
+
+  <section class="surface note">
+    <p class="eyebrow">Tradition note</p>
+    <p>{traditionNote}</p>
+  </section>
+
+  <section class="surface note metadata">
+    <p><strong>Reviewed by:</strong> {reviewedBy.length > 0 ? reviewedBy.join(", ") : "Pending"}</p>
+    <p><strong>Last reviewed:</strong> {lastReviewed}</p>
+    <p><strong>Version:</strong> {contentVersion}</p>
+  </section>
+</aside>
+
+<style>
+  .source-panel {
+    display: grid;
+    align-content: start;
+    gap: 0.8rem;
+  }
+
+  .note {
+    padding: 1.1rem;
+    box-shadow: none;
+  }
+
+  .note p {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 0.88rem;
+  }
+
+  .note p + p {
+    margin-top: 0.75rem;
+  }
+
+  .note .eyebrow {
+    margin-bottom: 0.5rem;
+    color: var(--copper);
+  }
+
+  ul {
+    display: grid;
+    gap: 0.7rem;
+    margin: 0 0 0.85rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  li,
+  li span,
+  li small {
+    display: block;
+  }
+
+  li {
+    border-left: 2px solid var(--gold);
+    padding-left: 0.7rem;
+  }
+
+  li strong,
+  li a,
+  .metadata strong {
+    color: var(--ink);
+  }
+
+  li span {
+    color: var(--copper);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  li small {
+    color: var(--ink-muted);
+  }
+</style>

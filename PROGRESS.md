@@ -23,12 +23,15 @@ Milestone 1: Design Foundation
 - Added GitHub Actions CI and repository architecture documentation.
 - Organized original planning material under `docs/references`.
 - Added centralized SEO metadata, JSON-LD, and a default social-sharing image.
+- Added explicit source, reviewer, related-topic, and editorial-status fields.
+- Added draft-page review notices, `noindex`, and sitemap exclusion safeguards.
+- Documented the editorial review and publication workflow.
 
 ## In Progress
 
 - Verify the static build and visually review the first implementation.
 - Visually review the first implementation when the local in-app browser is available.
-- Resolve Cloudflare deployment tooling on a supported environment.
+- Prepare the first topic for qualified source and content review.
 
 ## Next
 
@@ -50,9 +53,8 @@ Milestone 1: Design Foundation
 
 ## Environment Notes
 
-- Git initialization is currently blocked because this workspace exposes `.git`
-  as read-only. Project files are ready, but repository initialization must be
-  retried in an environment where `.git` is writable.
+- GitHub repository and automated CI are active and synchronized with local
+  `main`.
 - Cloudflare's local `workerd` dependency does not currently support this
   Windows ARM64 environment. Production remains targeted at Cloudflare Workers;
   deploy tooling should be completed on a supported CI or development host.

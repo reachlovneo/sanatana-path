@@ -11,12 +11,22 @@ const atlas = defineCollection({
     summary: z.string(),
     whereItFits: z.array(z.string()),
     quickFacts: z.array(z.object({ label: z.string(), value: z.string() })),
+    sources: z.array(
+      z.object({
+        title: z.string(),
+        type: z.enum(["primary", "commentary", "public-domain-translation", "modern-reference"]),
+        note: z.string().optional(),
+        url: z.url().optional(),
+      }),
+    ),
     sourceNote: z.string(),
     traditionNote: z.string(),
     presentLife: z.string(),
+    relatedTopics: z.array(z.string()),
     lastReviewed: z.string(),
     contentVersion: z.string(),
     reviewStatus: z.enum(["draft", "expert-review-needed", "reviewed", "published"]),
+    reviewedBy: z.array(z.string()),
   }),
 });
 

@@ -10,8 +10,9 @@ interface Props {
   description: string;
   image?: string;
   type?: "website" | "article";
+  noindex?: boolean;
 }
-const { title, description, image = "/images/og/default.svg", type = "website" } = Astro.props;
+const { title, description, image = "/images/og/default.svg", type = "website", noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const imageUrl = new URL(image, Astro.site);
 const websiteJsonLd = {
@@ -28,6 +29,7 @@ const websiteJsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content={SITE.themeColor} />
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE.name} />

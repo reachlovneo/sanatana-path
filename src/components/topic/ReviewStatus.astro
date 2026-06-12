@@ -1,0 +1,63 @@
+---
+interface Props {
+  status: "draft" | "expert-review-needed" | "reviewed" | "published";
+  reviewedBy: string[];
+}
+
+const { status, reviewedBy } = Astro.props;
+const labels = {
+  draft: "Draft",
+  "expert-review-needed": "Expert review needed",
+  reviewed: "Reviewed",
+  published: "Published",
+};
+---
+
+<section class:list={["review-status", status]} aria-label="Editorial review status">
+  <strong>{labels[status]}</strong>
+  {
+    status === "published" || status === "reviewed" ? (
+      <span>{reviewedBy.length > 0 ? `Reviewed by ${reviewedBy.join(", ")}` : "Reviewer details pending"}</span>
+    ) : (
+      <span>This learning draft is not yet approved as final reference content.</span>
+    )
+  }
+</section>
+
+<style>
+  .review-status {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 0.75rem 0.9rem;
+    background: var(--surface-muted);
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+  }
+
+  strong {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    padding: 0.2rem 0.5rem;
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .published,
+  .reviewed {
+    border-color: color-mix(in srgb, var(--forest-soft) 55%, var(--border));
+  }
+
+  @media (max-width: 600px) {
+    .review-status {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

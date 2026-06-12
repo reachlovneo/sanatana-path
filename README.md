@@ -107,6 +107,9 @@ When documents disagree, use this priority:
 See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for module ownership and
 development rules.
 
+See [`docs/EDITORIAL_WORKFLOW.md`](docs/EDITORIAL_WORKFLOW.md) for content
+review states and publication safeguards.
+
 ```text
 src/config/       Site-wide configuration
 src/data/         Reusable domain relationships

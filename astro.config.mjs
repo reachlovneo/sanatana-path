@@ -6,5 +6,10 @@ import { SITE } from "./src/config/site";
 export default defineConfig({
   site: SITE.url,
   output: "static",
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !/\/atlas\/(cosmic-time|kalpa|manvantara|maha-yuga|four-yugas|kali-yuga)\/?$/.test(page),
+    }),
+  ],
 });

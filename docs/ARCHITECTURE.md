@@ -1,7 +1,8 @@
 # Architecture
 
 This document explains where new code belongs. Product requirements remain in
-`PROJECT_BLUEPRINT.md`.
+`PROJECT_BLUEPRINT.md`. Editorial review and publication rules live in
+`EDITORIAL_WORKFLOW.md`.
 
 ## Ownership Boundaries
 
