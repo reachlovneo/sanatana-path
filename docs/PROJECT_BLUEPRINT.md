@@ -30,6 +30,7 @@ Version 1 succeeds when a first-time visitor can:
 ### Required
 
 - Overview first; depth is optional.
+- Answer first, organize second, inspire third, and offer deep detail afterward.
 - Every page answers: what is this, where does it fit, why does it matter, what
   are its sources, and where should I go next?
 - Simple language comes before Sanskrit terminology.
@@ -85,17 +86,18 @@ Cosmic Time -> Kalpa -> Manvantara -> Maha Yuga -> Four Yugas -> Kali Yuga
 Every topic page must include:
 
 1. Topic title and one-line meaning
-2. Review/source badges
-3. `Where It Fits` path
-4. Quick facts
-5. Beginner-friendly explanation
-6. Accessible visual overview
-7. Key ideas and deeper explanation
-8. Source and tradition notes
-9. Present-life relevance
-10. Related and next topics
-11. Last reviewed date and content version
-12. Private feedback option
+2. Direct simple answer
+3. Why the topic matters
+4. `Where It Fits` path
+5. Numbers or quick facts at a glance
+6. Accessible instructional visual
+7. Common questions and confusion
+8. Beginner-friendly deeper explanation
+9. Clearly labeled reflection or present-life relevance
+10. Source and tradition notes
+11. Related and descriptive next-topic links
+12. Last reviewed date and content version
+13. Private feedback option
 
 ### Required Content Metadata
 

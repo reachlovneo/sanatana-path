@@ -29,6 +29,9 @@ Milestone 1: Design Foundation
 - Developed Cosmic Time as the first meaningful flagship-topic draft.
 - Added a reusable nested-time visual and clearly labeled reflection panel.
 - Added initial Cosmic Time research references while retaining expert-review safeguards.
+- Reordered Cosmic Time into an answer-first, scan-friendly learning experience.
+- Added reusable quick-orientation and common-question components.
+- Improved public draft wording and descriptive next-topic information scent.
 
 ## In Progress
 

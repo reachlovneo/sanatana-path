@@ -7,7 +7,7 @@ interface Props {
 const { status, reviewedBy } = Astro.props;
 const labels = {
   draft: "Draft",
-  "expert-review-needed": "Expert review needed",
+  "expert-review-needed": "Source-aware draft",
   reviewed: "Reviewed",
   published: "Published",
 };
@@ -19,7 +19,7 @@ const labels = {
     status === "published" || status === "reviewed" ? (
       <span>{reviewedBy.length > 0 ? `Reviewed by ${reviewedBy.join(", ")}` : "Reviewer details pending"}</span>
     ) : (
-      <span>This learning draft is not yet approved as final reference content.</span>
+      <span>Based on identified references and clearly separated reflection. Final qualified review is pending.</span>
     )
   }
 </section>

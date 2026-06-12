@@ -5,6 +5,7 @@ import JsonLd from "../../components/seo/JsonLd.astro";
 import JourneyPath from "../../components/topic/JourneyPath.astro";
 import RelatedTopics from "../../components/topic/RelatedTopics.astro";
 import ReviewStatus from "../../components/topic/ReviewStatus.astro";
+import QuickOrientation from "../../components/topic/QuickOrientation.astro";
 import SourcePanel from "../../components/topic/SourcePanel.astro";
 import TopicNavigation from "../../components/topic/TopicNavigation.astro";
 import { getAdjacentAtlasTopics } from "../../data/atlas";
@@ -47,6 +48,7 @@ const breadcrumbJsonLd = {
     <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/atlas", label: "Cosmic Atlas" }, { label: topic.data.title }]} />
     <ReviewStatus status={topic.data.reviewStatus} reviewedBy={topic.data.reviewedBy} />
     <header class="topic-header reveal"><p class="eyebrow">Cosmic Atlas</p><h1 class="display">{topic.data.title}</h1><p class="meaning">{topic.data.oneLineMeaning}</p></header>
+    {topic.data.quickAnswer && topic.data.whyItMatters && <QuickOrientation quickAnswer={topic.data.quickAnswer} whyItMatters={topic.data.whyItMatters} />}
     <div class="reveal reveal-delay-1"><JourneyPath steps={topic.data.whereItFits} active={topic.data.title} /></div>
     <section class="quick-facts reveal reveal-delay-2" aria-label="Quick facts">{topic.data.quickFacts.map((fact) => <div class="surface"><span>{fact.label}</span><strong>{fact.value}</strong></div>)}</section>
     <div class="content-layout">

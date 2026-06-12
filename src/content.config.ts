@@ -9,6 +9,8 @@ const atlas = defineCollection({
     title: z.string(),
     oneLineMeaning: z.string(),
     summary: z.string(),
+    quickAnswer: z.string().optional(),
+    whyItMatters: z.string().optional(),
     whereItFits: z.array(z.string()),
     quickFacts: z.array(z.object({ label: z.string(), value: z.string() })),
     sources: z.array(

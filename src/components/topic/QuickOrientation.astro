@@ -1,0 +1,68 @@
+---
+interface Props {
+  quickAnswer: string;
+  whyItMatters: string;
+}
+
+const { quickAnswer, whyItMatters } = Astro.props;
+---
+
+<section class="quick-orientation" aria-labelledby="quick-answer-heading">
+  <div class="answer">
+    <p class="eyebrow">Simple answer</p>
+    <h2 id="quick-answer-heading">{quickAnswer}</h2>
+  </div>
+  <div class="reason">
+    <p class="eyebrow">Why start here?</p>
+    <p>{whyItMatters}</p>
+  </div>
+</section>
+
+<style>
+  .quick-orientation {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .answer,
+  .reason {
+    border: 1px solid var(--border);
+    border-radius: 1.2rem;
+    padding: clamp(1rem, 3vw, 1.4rem);
+    background: var(--surface);
+  }
+
+  .answer {
+    border-color: color-mix(in srgb, var(--gold) 65%, var(--border));
+    background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--gold) 10%, var(--surface)));
+  }
+
+  .eyebrow {
+    margin: 0 0 0.45rem;
+    color: var(--copper);
+  }
+
+  h2 {
+    max-width: 30ch;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 3vw, 1.8rem);
+    font-weight: 550;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .reason p:last-child {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 720px) {
+    .quick-orientation {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
