@@ -1,0 +1,46 @@
+---
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/atlas", label: "Atlas" },
+  { href: "/sources", label: "Sources" },
+  { href: "/feedback", label: "Feedback" },
+  { href: "/donate", label: "Donate" },
+];
+const currentPath = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Sanatana Path home">
+      <span aria-hidden="true" class="brand-mark">SP</span>
+      <span><strong>Sanatana Path</strong><small>Timeless wisdom, clearly connected</small></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      {links.map((link) => <a href={link.href} aria-current={currentPath === link.href ? "page" : undefined}>{link.label}</a>)}
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">Light / Dark</button>
+  </div>
+</header>
+<script is:inline>
+  const root = document.documentElement;
+  const storedTheme = localStorage.getItem("theme");
+  root.dataset.theme = storedTheme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+  });
+</script>
+<style>
+  .site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent); background: color-mix(in srgb, var(--canvas) 88%, transparent); backdrop-filter: blur(18px); }
+  .header-inner { display: flex; min-height: 76px; align-items: center; gap: 1.5rem; }
+  .brand { display: inline-flex; align-items: center; gap: 0.75rem; margin-right: auto; }
+  .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: var(--copper); font-family: var(--serif); font-weight: 800; }
+  .brand strong, .brand small { display: block; }
+  .brand strong { font-family: var(--serif); font-size: 1.2rem; }
+  .brand small { color: var(--ink-muted); font-size: 0.66rem; }
+  nav { display: flex; gap: 0.25rem; }
+  nav a, .theme-toggle { min-height: 44px; border: 0; border-radius: 999px; padding: 0.65rem 0.85rem; background: transparent; color: var(--ink-muted); font: inherit; font-size: 0.86rem; font-weight: 700; cursor: pointer; transition: background-color 180ms ease, color 180ms ease, transform 180ms ease; }
+  nav a:hover, nav a[aria-current="page"], .theme-toggle:hover { background: var(--surface-muted); color: var(--ink); transform: translateY(-1px); }
+  @media (max-width: 800px) { .header-inner { min-height: 68px; } .brand small, nav { display: none; } .theme-toggle { margin-left: auto; } }
+</style>
+

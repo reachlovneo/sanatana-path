@@ -1,0 +1,33 @@
+{
+  "name": "sanatana-path",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Sanatana Path is a calm, source-aware visual knowledge atlas designed to help beginners understand where important Sanatana Dharma concepts fit within the larger tradition.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "keywords": [
+    "sanatana-dharma",
+    "knowledge-atlas",
+    "astro"
+  ],
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.6",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
+  }
+}

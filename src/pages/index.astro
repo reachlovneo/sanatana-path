@@ -1,0 +1,39 @@
+---
+import JourneyPath from "../components/topic/JourneyPath.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const journey = ["Cosmic Time", "Kalpa", "Manvantara", "Maha Yuga", "Four Yugas", "Kali Yuga"];
+---
+<BaseLayout title="Sanatana Path | A Clear Journey Through Cosmic Time" description="Explore Sanatana Dharma through a calm, source-aware visual knowledge atlas.">
+  <section class="hero container">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">A source-aware visual knowledge atlas</p>
+      <h1 class="display">Ancient wisdom, clearly connected.</h1>
+      <p class="hero-lead muted">Begin with the big picture, understand where each idea fits, and explore deeper only when you are ready.</p>
+      <div class="actions"><a class="button" href="/atlas">Begin the Cosmic Atlas <span aria-hidden="true">-&gt;</span></a><a class="button secondary" href="/methodology">How we explain sources</a></div>
+    </div>
+    <div class="hero-atlas surface reveal reveal-delay-1" aria-label="Cosmic Atlas overview">
+      <div class="atlas-center"><span aria-hidden="true">ॐ</span><strong>Cosmic Atlas</strong><small>Six connected ideas</small></div>
+      <ol>{journey.map((step, index) => <li style={`--index:${index}`}>{index + 1}. {step}</li>)}</ol>
+    </div>
+  </section>
+  <section class="container path-section reveal reveal-delay-2"><JourneyPath steps={journey} active="Cosmic Time" /></section>
+  <section class="container intro-grid">
+    <article><p class="eyebrow">The first journey</p><h2 class="section-title">Where does Kali Yuga fit?</h2></article>
+    <div class="intro-copy muted"><p>Instead of beginning with isolated facts, Sanatana Path starts with relationships. Follow six ideas from the broad structure of cosmic time to the current age.</p><a href="/atlas">Explore the ordered journey <span aria-hidden="true">-&gt;</span></a></div>
+  </section>
+</BaseLayout>
+<style>
+  .hero { display: grid; min-height: calc(100svh - 76px); grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: clamp(2rem, 7vw, 6rem); padding-block: 5rem; }
+  .hero-lead { max-width: 58ch; margin: 1.4rem 0 0; font-size: clamp(1.05rem, 2vw, 1.22rem); }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .hero-atlas { position: relative; display: grid; min-height: 500px; place-items: center; overflow: hidden; padding: 2rem; }
+  .hero-atlas::before, .hero-atlas::after { position: absolute; width: 62%; aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent); border-radius: 50%; content: ""; }
+  .hero-atlas::after { width: 82%; border-style: dashed; }
+  .atlas-center { position: relative; z-index: 2; display: grid; width: 12rem; aspect-ratio: 1; place-items: center; align-content: center; border: 1px solid var(--gold); border-radius: 50%; background: var(--forest); color: var(--canvas); box-shadow: 0 0 0 14px color-mix(in srgb, var(--gold) 10%, transparent); text-align: center; }
+  .atlas-center span { color: var(--gold); font-size: 3rem; line-height: 1; } .atlas-center strong { margin-top: 0.4rem; font-family: var(--serif); font-size: 1.3rem; } .atlas-center small { opacity: 0.75; }
+  ol { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+  li { position: absolute; z-index: 3; top: calc(50% + sin(calc(var(--index) * 60deg - 90deg)) * 42%); left: calc(50% + cos(calc(var(--index) * 60deg - 90deg)) * 42%); width: max-content; max-width: 9rem; transform: translate(-50%, -50%); border: 1px solid var(--border); border-radius: 999px; padding: 0.48rem 0.7rem; background: var(--surface); color: var(--ink); font-size: 0.73rem; font-weight: 800; box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 8%, transparent); }
+  .path-section { margin-top: -2rem; } .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding-block: 8rem 3rem; } .intro-copy { max-width: 56ch; font-size: 1.08rem; } .intro-copy a { color: var(--forest); font-weight: 800; }
+  @media (max-width: 800px) { .hero { min-height: auto; grid-template-columns: 1fr; padding-block: 4rem 2rem; } .hero-atlas { min-height: 390px; } .atlas-center { width: 9rem; } li { max-width: 7.3rem; font-size: 0.64rem; } .path-section { margin-top: 1rem; } .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-block: 5rem 1rem; } }
+</style>
+

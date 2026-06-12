@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from "astro:content";
+import JourneyPath from "../../components/topic/JourneyPath.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+export async function getStaticPaths() {
+  const topics = await getCollection("atlas");
+  return topics.map((topic) => ({ params: { slug: topic.id }, props: { topic } }));
+}
+const { topic } = Astro.props;
+const { Content } = await render(topic);
+---
+<BaseLayout title={`${topic.data.title} | Cosmic Atlas | Sanatana Path`} description={topic.data.summary}>
+  <article class="container topic">
+    <header class="topic-header reveal"><p class="eyebrow">Cosmic Atlas / {topic.data.reviewStatus.replaceAll("-", " ")}</p><h1 class="display">{topic.data.title}</h1><p class="meaning">{topic.data.oneLineMeaning}</p></header>
+    <div class="reveal reveal-delay-1"><JourneyPath steps={topic.data.whereItFits} active={topic.data.title} /></div>
+    <section class="quick-facts reveal reveal-delay-2" aria-label="Quick facts">{topic.data.quickFacts.map((fact) => <div class="surface"><span>{fact.label}</span><strong>{fact.value}</strong></div>)}</section>
+    <div class="content-layout">
+      <section class="prose"><Content /><h2>Present-life meaning</h2><p>{topic.data.presentLife}</p></section>
+      <aside><section class="surface note"><p class="eyebrow">Source note</p><p>{topic.data.sourceNote}</p></section><section class="surface note"><p class="eyebrow">Tradition note</p><p>{topic.data.traditionNote}</p></section><section class="surface note metadata"><p><strong>Last reviewed:</strong> {topic.data.lastReviewed}</p><p><strong>Version:</strong> {topic.data.contentVersion}</p></section></aside>
+    </div>
+  </article>
+</BaseLayout>
+<style>
+  .topic { max-width: 1080px; padding-top: 7rem; } .topic-header { max-width: 780px; margin-bottom: 2.5rem; } .meaning { max-width: 58ch; margin: 1.25rem 0 0; color: var(--ink-muted); font-size: clamp(1.1rem, 2vw, 1.3rem); }
+  .quick-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-block: 1.2rem 4rem; } .quick-facts div { padding: 1.1rem; box-shadow: none; } .quick-facts span, .quick-facts strong { display: block; } .quick-facts span { color: var(--ink-muted); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; } .quick-facts strong { margin-top: 0.25rem; font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
+  .content-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(2rem, 7vw, 6rem); } .prose { max-width: 68ch; font-size: 1.05rem; } .prose :global(h2) { margin: 3rem 0 0.75rem; font-family: var(--serif); font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 500; letter-spacing: -0.025em; } .prose :global(p), .prose :global(li) { color: var(--ink-muted); }
+  aside { display: grid; align-content: start; gap: 0.8rem; } .note { padding: 1.1rem; box-shadow: none; } .note p { margin: 0; color: var(--ink-muted); font-size: 0.88rem; } .note .eyebrow { margin-bottom: 0.5rem; color: var(--copper); } .metadata strong { color: var(--ink); }
+  @media (max-width: 800px) { .topic { padding-top: 4rem; } .quick-facts, .content-layout { grid-template-columns: 1fr; } .quick-facts { margin-bottom: 3rem; } }
+</style>
+

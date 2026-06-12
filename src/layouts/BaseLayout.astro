@@ -1,0 +1,25 @@
+---
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import SiteHeader from "../components/layout/SiteHeader.astro";
+import "../styles/global.css";
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} /><link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#123f35" /><title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a><SiteHeader />
+    <main id="main-content"><slot /></main><SiteFooter />
+  </body>
+</html>
+<style>
+  .skip-link { position: fixed; z-index: 100; top: 0.75rem; left: 0.75rem; transform: translateY(-180%); border-radius: 999px; padding: 0.7rem 1rem; background: var(--forest); color: var(--canvas); font-weight: 800; }
+  .skip-link:focus { transform: translateY(0); }
+</style>
+

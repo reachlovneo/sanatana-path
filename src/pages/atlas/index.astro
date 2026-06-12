@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const topics = (await getCollection("atlas")).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Cosmic Atlas | Sanatana Path" description="Follow the ordered journey from Cosmic Time to Kali Yuga.">
+  <section class="container atlas-header reveal"><p class="eyebrow">The first connected journey</p><h1 class="display">Cosmic Atlas</h1><p class="muted">Six ideas, placed in order. Begin with the largest frame and move toward the age described as our present context.</p></section>
+  <section class="container journey" aria-label="Cosmic Atlas topics">
+    {topics.map((topic, index) => <article class="surface journey-card reveal" style={`animation-delay:${Math.min(index * 70, 350)}ms`}><span class="step">{String(index + 1).padStart(2, "0")}</span><div><p class="eyebrow">{topic.data.reviewStatus.replaceAll("-", " ")}</p><h2>{topic.data.title}</h2><p class="muted">{topic.data.oneLineMeaning}</p></div><a href={`/atlas/${topic.id}`}>Explore <span aria-hidden="true">-&gt;</span></a></article>)}
+  </section>
+</BaseLayout>
+<style>
+  .atlas-header { max-width: 760px; padding-block: 7rem 4rem; text-align: center; } .atlas-header .display { max-width: none; } .atlas-header p:last-child { max-width: 58ch; margin: 1rem auto 0; font-size: 1.08rem; }
+  .journey { position: relative; display: grid; max-width: 880px; gap: 1rem; } .journey::before { position: absolute; z-index: -1; top: 2rem; bottom: 2rem; left: 3rem; width: 1px; background: var(--border); content: ""; }
+  .journey-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.4rem; padding: 1.3rem; transition: transform 220ms ease, border-color 220ms ease; } .journey-card:hover { transform: translateX(5px); border-color: var(--gold); }
+  .step { display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border: 1px solid var(--gold); border-radius: 50%; background: var(--forest); color: var(--canvas); font-family: var(--serif); font-size: 1.15rem; }
+  h2 { margin: 0.1rem 0; font-family: var(--serif); font-size: clamp(1.45rem, 4vw, 2rem); font-weight: 500; } p { margin: 0; } article > a { color: var(--forest); font-weight: 800; }
+  @media (max-width: 600px) { .atlas-header { padding-block: 4rem 2.5rem; text-align: left; } .journey::before { left: 2.45rem; } .journey-card { grid-template-columns: auto 1fr; align-items: start; gap: 1rem; } .journey-card > a { grid-column: 2; } .step { width: 2.8rem; height: 2.8rem; } }
+</style>
+
