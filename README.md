@@ -46,7 +46,7 @@ Primary routes:
 
 - Astro
 - TypeScript
-- Tailwind CSS
+- Authored CSS with governed design tokens
 - MDX content collections
 - Cloudflare Workers Static Assets
 - Cloudflare D1 for private feedback only
@@ -80,10 +80,10 @@ Primary routes:
 
 These files contain useful early thinking but may include outdated decisions:
 
-- `README(1).md`
-- `Sanatana_Knowledge_Platform_Codex_Development_Master_Guide.md`
-- `Sanatana_Knowledge_Platform_Codex_Development_Master_Guide.docx`
-- The light and dark Cosmic Atlas mockup images
+- `docs/references/original-readme.md`
+- `docs/references/original-development-guide.md`
+- `docs/references/original-development-guide.docx`
+- `docs/references/mockups/`
 
 When documents disagree, use this priority:
 
@@ -102,6 +102,23 @@ When documents disagree, use this priority:
 6. Add methodology, sources, donation, and private feedback.
 7. Complete SEO, security, performance, and accessibility audits.
 
+## Repository Structure
+
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for module ownership and
+development rules.
+
+```text
+src/config/       Site-wide configuration
+src/data/         Reusable domain relationships
+src/content/      Reviewed knowledge content
+src/components/   Reusable UI and SEO components
+src/layouts/      Shared page shells
+src/pages/        Routes and composition
+src/styles/       Global design system
+src/utils/        Framework-independent helpers
+docs/references/  Original planning documents and mockups
+```
+
 ## Quality Gates
 
 Before any release:
@@ -119,4 +136,3 @@ Before any release:
 [ ] No secrets are committed
 [ ] Mobile Lighthouse targets are met
 ```
-

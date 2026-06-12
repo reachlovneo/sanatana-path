@@ -1,25 +1,55 @@
 ---
 import SiteFooter from "../components/layout/SiteFooter.astro";
 import SiteHeader from "../components/layout/SiteHeader.astro";
+import MobileNavigation from "../components/layout/MobileNavigation.astro";
+import JsonLd from "../components/seo/JsonLd.astro";
+import { SITE } from "../config/site";
 import "../styles/global.css";
-interface Props { title: string; description: string; }
-const { title, description } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+}
+const { title, description, image = "/images/og/default.svg", type = "website" } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  description: SITE.description,
+  url: SITE.url,
+};
 ---
 <!doctype html>
-<html lang="en">
+<html lang={SITE.locale}>
   <head>
-    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} /><link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#123f35" /><title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={SITE.themeColor} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <JsonLd data={websiteJsonLd} />
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a><SiteHeader />
-    <main id="main-content"><slot /></main><SiteFooter />
+    <main id="main-content"><slot /></main><SiteFooter /><MobileNavigation />
   </body>
 </html>
 <style>
   .skip-link { position: fixed; z-index: 100; top: 0.75rem; left: 0.75rem; transform: translateY(-180%); border-radius: 999px; padding: 0.7rem 1rem; background: var(--forest); color: var(--canvas); font-weight: 800; }
   .skip-link:focus { transform: translateY(0); }
 </style>
-

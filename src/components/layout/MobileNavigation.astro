@@ -1,0 +1,77 @@
+---
+import { PRIMARY_NAVIGATION } from "../../config/site";
+import { isRouteActive } from "../../utils/routes";
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="mobile-navigation" aria-label="Mobile navigation">
+  {
+    PRIMARY_NAVIGATION.map((link) => (
+      <a href={link.href} aria-current={isRouteActive(currentPath, link.href) ? "page" : undefined}>
+        <span aria-hidden="true">{link.label.slice(0, 1)}</span>
+        {link.label}
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .mobile-navigation {
+    position: fixed;
+    z-index: 30;
+    right: 0.75rem;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: 0.75rem;
+    display: none;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+    border-radius: 1.1rem;
+    padding: 0.35rem;
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.16);
+    backdrop-filter: blur(18px);
+  }
+
+  a {
+    display: grid;
+    min-height: 50px;
+    place-items: center;
+    align-content: center;
+    gap: 0.1rem;
+    border-radius: 0.8rem;
+    color: var(--ink-muted);
+    font-size: 0.64rem;
+    font-weight: 750;
+    transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+
+  a span {
+    display: grid;
+    width: 1.35rem;
+    height: 1.35rem;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: var(--serif);
+    font-size: 0.72rem;
+  }
+
+  a[aria-current="page"] {
+    background: var(--surface-muted);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  a[aria-current="page"] span {
+    border-color: var(--gold);
+    background: var(--forest);
+    color: var(--canvas);
+  }
+
+  @media (max-width: 800px) {
+    .mobile-navigation {
+      display: grid;
+    }
+  }
+</style>

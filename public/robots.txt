@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap-index.xml
-
+Sitemap: https://sanatana-path.pages.dev/sitemap-index.xml

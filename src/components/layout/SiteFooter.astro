@@ -1,7 +1,10 @@
+---
+import { FOOTER_NAVIGATION, SITE } from "../../config/site";
+---
 <footer>
   <div class="container footer-inner">
-    <div><strong>Sanatana Path</strong><p>A calm, source-aware knowledge atlas.</p></div>
-    <nav aria-label="Footer navigation"><a href="/methodology">Methodology</a><a href="/sources">Sources</a><a href="/feedback">Feedback</a></nav>
+    <div><strong>{SITE.name}</strong><p>{SITE.description}</p></div>
+    <nav aria-label="Footer navigation">{FOOTER_NAVIGATION.map((link) => <a href={link.href}>{link.label}</a>)}</nav>
   </div>
 </footer>
 <style>
@@ -10,4 +13,3 @@
   strong { color: var(--ink); font-family: var(--serif); font-size: 1.2rem; } p { margin: 0.2rem 0 0; } nav { display: flex; flex-wrap: wrap; gap: 1rem; } a:hover { color: var(--ink); }
   @media (max-width: 640px) { .footer-inner { align-items: flex-start; flex-direction: column; } }
 </style>
-

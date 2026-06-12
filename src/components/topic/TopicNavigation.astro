@@ -1,0 +1,94 @@
+---
+interface TopicLink {
+  slug: string;
+  title: string;
+}
+
+interface Props {
+  previous?: TopicLink;
+  next?: TopicLink;
+}
+
+const { previous, next } = Astro.props;
+---
+
+<nav class="topic-navigation" aria-label="Continue the Cosmic Atlas journey">
+  {
+    previous ? (
+      <a class="previous" href={`/atlas/${previous.slug}`}>
+        <span>Previous topic</span>
+        <strong>&lt;- {previous.title}</strong>
+      </a>
+    ) : (
+      <span />
+    )
+  }
+  {
+    next ? (
+      <a class="next" href={`/atlas/${next.slug}`}>
+        <span>Next topic</span>
+        <strong>{next.title} -&gt;</strong>
+      </a>
+    ) : (
+      <a class="next" href="/atlas">
+        <span>Journey complete</span>
+        <strong>Return to Atlas -&gt;</strong>
+      </a>
+    )
+  }
+</nav>
+
+<style>
+  .topic-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 4rem;
+  }
+
+  a {
+    display: grid;
+    min-height: 100px;
+    align-content: center;
+    border: 1px solid var(--border);
+    border-radius: 1.2rem;
+    padding: 1rem;
+    background: var(--surface);
+    transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  a:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+
+  a.next {
+    text-align: right;
+  }
+
+  span {
+    color: var(--ink-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  strong {
+    margin-top: 0.3rem;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .topic-navigation {
+      grid-template-columns: 1fr;
+    }
+
+    .topic-navigation > span {
+      display: none;
+    }
+  }
+</style>

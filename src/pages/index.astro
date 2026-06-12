@@ -1,7 +1,8 @@
 ---
 import JourneyPath from "../components/topic/JourneyPath.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-const journey = ["Cosmic Time", "Kalpa", "Manvantara", "Maha Yuga", "Four Yugas", "Kali Yuga"];
+import { ATLAS_JOURNEY_TITLES } from "../data/atlas";
+const journey = ATLAS_JOURNEY_TITLES;
 ---
 <BaseLayout title="Sanatana Path | A Clear Journey Through Cosmic Time" description="Explore Sanatana Dharma through a calm, source-aware visual knowledge atlas.">
   <section class="hero container">
@@ -12,7 +13,7 @@ const journey = ["Cosmic Time", "Kalpa", "Manvantara", "Maha Yuga", "Four Yugas"
       <div class="actions"><a class="button" href="/atlas">Begin the Cosmic Atlas <span aria-hidden="true">-&gt;</span></a><a class="button secondary" href="/methodology">How we explain sources</a></div>
     </div>
     <div class="hero-atlas surface reveal reveal-delay-1" aria-label="Cosmic Atlas overview">
-      <div class="atlas-center"><span aria-hidden="true">ॐ</span><strong>Cosmic Atlas</strong><small>Six connected ideas</small></div>
+      <div class="atlas-center"><span aria-hidden="true">AUM</span><strong>Cosmic Atlas</strong><small>Six connected ideas</small></div>
       <ol>{journey.map((step, index) => <li style={`--index:${index}`}>{index + 1}. {step}</li>)}</ol>
     </div>
   </section>
@@ -36,4 +37,3 @@ const journey = ["Cosmic Time", "Kalpa", "Manvantara", "Maha Yuga", "Four Yugas"
   .path-section { margin-top: -2rem; } .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding-block: 8rem 3rem; } .intro-copy { max-width: 56ch; font-size: 1.08rem; } .intro-copy a { color: var(--forest); font-weight: 800; }
   @media (max-width: 800px) { .hero { min-height: auto; grid-template-columns: 1fr; padding-block: 4rem 2rem; } .hero-atlas { min-height: 390px; } .atlas-center { width: 9rem; } li { max-width: 7.3rem; font-size: 0.64rem; } .path-section { margin-top: 1rem; } .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-block: 5rem 1rem; } }
 </style>
-

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Sanatana Path</title>
+  <desc id="description">Ancient wisdom, clearly connected.</desc>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#1c594b"/>
+      <stop offset="1" stop-color="#071a1c"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="600" cy="250" r="122" fill="none" stroke="#d6ac5b" stroke-width="2"/>
+  <circle cx="600" cy="250" r="158" fill="none" stroke="#5a4930" stroke-dasharray="5 12"/>
+  <text x="600" y="275" fill="#d6ac5b" font-family="Georgia, serif" font-size="72" text-anchor="middle">SP</text>
+  <text x="600" y="445" fill="#f7ebd3" font-family="Georgia, serif" font-size="68" text-anchor="middle">Sanatana Path</text>
+  <text x="600" y="500" fill="#c9b99d" font-family="Arial, sans-serif" font-size="25" letter-spacing="4" text-anchor="middle">ANCIENT WISDOM, CLEARLY CONNECTED</text>
+</svg>

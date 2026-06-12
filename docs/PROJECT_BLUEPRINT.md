@@ -236,7 +236,7 @@ reading, block interaction, or compete with content.
 ```text
 Astro
 TypeScript in strict mode
-Tailwind CSS
+Authored CSS with governed design tokens
 Astro Content Collections / MDX
 Cloudflare Workers Static Assets
 Cloudflare D1 for private feedback only
@@ -407,6 +407,9 @@ Rules:
 - Scaffold Astro and Cloudflare Workers.
 - Configure formatting, type checking, and ignored secrets.
 
+Implementation architecture and module ownership are documented separately in
+`docs/ARCHITECTURE.md`.
+
 ### Milestone 1: Design Foundation
 
 - Add theme tokens and typography.
@@ -444,4 +447,3 @@ New ideas belong in a future-work list unless required for the current
 milestone. Any change that introduces accounts, public writes, dynamic public
 content, or large client-side dependencies requires an explicit architecture
 and security review before implementation.
-

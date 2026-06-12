@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from "astro:content";
+import JsonLd from "../../components/seo/JsonLd.astro";
 import JourneyPath from "../../components/topic/JourneyPath.astro";
+import TopicNavigation from "../../components/topic/TopicNavigation.astro";
+import { getAdjacentAtlasTopics } from "../../data/atlas";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 export async function getStaticPaths() {
   const topics = await getCollection("atlas");
@@ -8,14 +11,28 @@ export async function getStaticPaths() {
 }
 const { topic } = Astro.props;
 const { Content } = await render(topic);
+const adjacentTopics = getAdjacentAtlasTopics(topic.id);
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: topic.data.title,
+  description: topic.data.summary,
+  dateModified: topic.data.lastReviewed,
+  isPartOf: {
+    "@type": "CollectionPage",
+    name: "Cosmic Atlas",
+    url: new URL("/atlas", Astro.site),
+  },
+};
 ---
-<BaseLayout title={`${topic.data.title} | Cosmic Atlas | Sanatana Path`} description={topic.data.summary}>
+<BaseLayout title={`${topic.data.title} | Cosmic Atlas | Sanatana Path`} description={topic.data.summary} type="article">
+  <Fragment slot="head"><JsonLd data={articleJsonLd} /></Fragment>
   <article class="container topic">
     <header class="topic-header reveal"><p class="eyebrow">Cosmic Atlas / {topic.data.reviewStatus.replaceAll("-", " ")}</p><h1 class="display">{topic.data.title}</h1><p class="meaning">{topic.data.oneLineMeaning}</p></header>
     <div class="reveal reveal-delay-1"><JourneyPath steps={topic.data.whereItFits} active={topic.data.title} /></div>
     <section class="quick-facts reveal reveal-delay-2" aria-label="Quick facts">{topic.data.quickFacts.map((fact) => <div class="surface"><span>{fact.label}</span><strong>{fact.value}</strong></div>)}</section>
     <div class="content-layout">
-      <section class="prose"><Content /><h2>Present-life meaning</h2><p>{topic.data.presentLife}</p></section>
+      <section class="prose"><Content /><h2>Present-life meaning</h2><p>{topic.data.presentLife}</p><TopicNavigation previous={adjacentTopics.previous} next={adjacentTopics.next} /></section>
       <aside><section class="surface note"><p class="eyebrow">Source note</p><p>{topic.data.sourceNote}</p></section><section class="surface note"><p class="eyebrow">Tradition note</p><p>{topic.data.traditionNote}</p></section><section class="surface note metadata"><p><strong>Last reviewed:</strong> {topic.data.lastReviewed}</p><p><strong>Version:</strong> {topic.data.contentVersion}</p></section></aside>
     </div>
   </article>
@@ -27,4 +44,3 @@ const { Content } = await render(topic);
   aside { display: grid; align-content: start; gap: 0.8rem; } .note { padding: 1.1rem; box-shadow: none; } .note p { margin: 0; color: var(--ink-muted); font-size: 0.88rem; } .note .eyebrow { margin-bottom: 0.5rem; color: var(--copper); } .metadata strong { color: var(--ink); }
   @media (max-width: 800px) { .topic { padding-top: 4rem; } .quick-facts, .content-layout { grid-template-columns: 1fr; } .quick-facts { margin-bottom: 3rem; } }
 </style>
-

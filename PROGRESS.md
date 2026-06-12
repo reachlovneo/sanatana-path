@@ -4,7 +4,7 @@ Last updated: 2026-06-12
 
 ## Current Milestone
 
-Milestone 0: Authority And Setup
+Milestone 1: Design Foundation
 
 ## Completed
 
@@ -18,6 +18,11 @@ Milestone 0: Authority And Setup
 - Built the homepage, Atlas overview, reusable topic template, and six draft topic routes.
 - Added methodology, sources, feedback placeholder, and donation safety placeholder pages.
 - Verified a clean static build: 12 pages, zero type errors, warnings, or hints.
+- Refactored reusable site configuration, Atlas data, SEO, and route utilities.
+- Added professional mobile navigation and adjacent-topic journey navigation.
+- Added GitHub Actions CI and repository architecture documentation.
+- Organized original planning material under `docs/references`.
+- Added centralized SEO metadata, JSON-LD, and a default social-sharing image.
 
 ## In Progress
 
@@ -27,7 +32,7 @@ Milestone 0: Authority And Setup
 
 ## Next
 
-- Improve the mobile navigation and visually refine the first implementation.
+- Visually refine the first implementation after browser QA is available.
 - Complete expert-reviewed Kali Yuga content and source references.
 - Add the secure Turnstile and D1 feedback flow after the content experience is approved.
 
