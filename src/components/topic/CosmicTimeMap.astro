@@ -1,0 +1,164 @@
+---
+const layers = [
+  {
+    level: "01",
+    title: "Four Yugas",
+    description: "Satya, Treta, Dvapara, and Kali form one complete sequence.",
+    detail: "One Maha Yuga",
+  },
+  {
+    level: "02",
+    title: "Maha Yuga",
+    description: "A complete cycle of the four Yugas.",
+    detail: "Repeated within a Manvantara",
+  },
+  {
+    level: "03",
+    title: "Manvantara",
+    description: "A major period associated with a Manu.",
+    detail: "One of fourteen within a Kalpa",
+  },
+  {
+    level: "04",
+    title: "Kalpa",
+    description: "A day of Brahma: a vast period of active creation.",
+    detail: "Followed by a night of equal duration",
+  },
+  {
+    level: "05",
+    title: "Day and Night",
+    description: "Activity and rest, manifestation and dissolution.",
+    detail: "The rhythm continues",
+  },
+];
+---
+
+<figure class="cosmic-time-map" aria-labelledby="cosmic-time-map-title">
+  <figcaption>
+    <p class="eyebrow">Visual overview</p>
+    <h2 id="cosmic-time-map-title">Time nested within time</h2>
+    <p>Begin with the smallest layer in this journey and move outward.</p>
+  </figcaption>
+
+  <ol>
+    {
+      layers.map((layer, index) => (
+        <li style={`--layer:${index}`}>
+          <span>{layer.level}</span>
+          <div>
+            <strong>{layer.title}</strong>
+            <p>{layer.description}</p>
+          </div>
+          <small>{layer.detail}</small>
+        </li>
+      ))
+    }
+  </ol>
+</figure>
+
+<style>
+  .cosmic-time-map {
+    margin: 3rem 0;
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    padding: clamp(1.2rem, 4vw, 2rem);
+    background:
+      radial-gradient(circle at 85% 5%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 20rem),
+      var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  figcaption {
+    max-width: 58ch;
+    margin-bottom: 2rem;
+  }
+
+  figcaption h2 {
+    margin: 0.1rem 0 0.5rem;
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+
+  figcaption p {
+    margin: 0;
+    color: var(--ink-muted);
+  }
+
+  figcaption .eyebrow {
+    color: var(--copper);
+  }
+
+  ol {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: auto 1fr minmax(9rem, auto);
+    align-items: center;
+    gap: 1rem;
+    margin-right: calc(var(--layer) * 0.85rem);
+    border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+    border-radius: 1rem;
+    padding: 0.9rem;
+    background: color-mix(in srgb, var(--surface-muted) calc(20% + var(--layer) * 8%), var(--surface));
+    transition: border-color 220ms ease, transform 220ms ease;
+  }
+
+  li:hover {
+    border-color: var(--gold);
+    transform: translateX(4px);
+  }
+
+  li > span {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    place-items: center;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--copper);
+    font-family: var(--serif);
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  li p,
+  small {
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+  }
+
+  li p {
+    margin: 0.15rem 0 0;
+  }
+
+  small {
+    text-align: right;
+  }
+
+  @media (max-width: 680px) {
+    li {
+      grid-template-columns: auto 1fr;
+      margin-right: 0;
+    }
+
+    small {
+      grid-column: 2;
+      text-align: left;
+    }
+  }
+</style>

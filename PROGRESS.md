@@ -26,12 +26,15 @@ Milestone 1: Design Foundation
 - Added explicit source, reviewer, related-topic, and editorial-status fields.
 - Added draft-page review notices, `noindex`, and sitemap exclusion safeguards.
 - Documented the editorial review and publication workflow.
+- Developed Cosmic Time as the first meaningful flagship-topic draft.
+- Added a reusable nested-time visual and clearly labeled reflection panel.
+- Added initial Cosmic Time research references while retaining expert-review safeguards.
 
 ## In Progress
 
 - Verify the static build and visually review the first implementation.
 - Visually review the first implementation when the local in-app browser is available.
-- Prepare the first topic for qualified source and content review.
+- Prepare the Cosmic Time flagship draft for qualified source and content review.
 
 ## Next
 
@@ -69,3 +72,4 @@ Milestone 1: Design Foundation
 - Production D1 database
 - Named content reviewers and editorial review workflow
 - Final approved content for all six topics
+- Qualified review of Cosmic Time wording, references, and reflective framing
