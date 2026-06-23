@@ -7,12 +7,11 @@ const { steps, active } = Astro.props;
   <ol>{steps.map((step, index) => <li aria-current={step === active ? "step" : undefined}><span>{index + 1}</span>{step}</li>)}</ol>
 </nav>
 <style>
-  .journey-path { overflow: hidden; padding: 1.1rem; border: 1px solid var(--border); border-radius: 1.2rem; background: var(--surface); }
-  p { margin: 0 0 0.8rem; color: var(--copper); font-size: 0.74rem; font-weight: 850; letter-spacing: 0.14em; text-transform: uppercase; }
+  .journey-path { overflow: hidden; padding: 0.65rem 0.8rem; border: 1px solid var(--border); border-radius: 0.9rem; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+  p { margin: 0 0 0.4rem; color: var(--copper); font-size: 0.66rem; font-weight: 850; letter-spacing: 0.14em; text-transform: uppercase; }
   ol { display: flex; overflow-x: auto; align-items: center; margin: 0; padding: 0 0 0.35rem; list-style: none; scrollbar-width: thin; }
-  li { display: inline-flex; flex: 0 0 auto; align-items: center; color: var(--ink-muted); font-size: 0.83rem; font-weight: 700; }
+  li { display: inline-flex; flex: 0 0 auto; align-items: center; color: var(--ink-muted); font-size: 0.76rem; font-weight: 700; }
   li:not(:last-child)::after { width: 2.5rem; height: 1px; margin-inline: 0.65rem; background: var(--border); content: ""; }
-  span { display: grid; width: 1.65rem; height: 1.65rem; place-items: center; margin-right: 0.45rem; border: 1px solid var(--border); border-radius: 50%; font-size: 0.68rem; }
+  span { display: grid; width: 1.45rem; height: 1.45rem; place-items: center; margin-right: 0.4rem; border: 1px solid var(--border); border-radius: 50%; font-size: 0.62rem; }
   li[aria-current="step"] { color: var(--ink); } li[aria-current="step"] span { border-color: var(--gold); background: var(--forest); color: var(--canvas); box-shadow: 0 0 0 5px color-mix(in srgb, var(--gold) 16%, transparent); }
 </style>
-

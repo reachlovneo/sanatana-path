@@ -1,0 +1,154 @@
+---
+import SourcePanel from "./SourcePanel.astro";
+
+const { topic, next, compact = false } = Astro.props;
+
+const facts = [
+  ["Human scale", "Days, months, years"],
+  ["Civilization scale", "Centuries and millennia"],
+  ["Cosmic scale", "Ages, cycles, and cosmic days"],
+  ["Current position", "Kali Yuga within a larger structure"],
+];
+
+const scale = [
+  ["Human life", "About 100 years"],
+  ["Recorded history", "About 5,000 years"],
+  ["Kali Yuga", "432,000 years"],
+  ["Maha Yuga", "4.32 million years"],
+  ["Manvantara", "306.72 million years"],
+  ["Kalpa", "4.32 billion years"],
+];
+---
+
+<article class="cosmic-reading">
+  <header>
+    <p class="eyebrow">Selected layer - Cosmic Time</p>
+    <h1>The Eternal Atlas</h1>
+    <p class="lead">Cosmic Time is the largest frame of the atlas. It helps us understand where Kalpa, Manvantara, Maha Yuga, the Four Yugas, and Kali Yuga belong.</p>
+    <p>Before going into any single age or story, this layer answers the first question: what are we actually exploring?</p>
+  </header>
+
+  <dl class="facts">
+    {facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}
+  </dl>
+
+  <div class="reading-body">
+    <main>
+      <section>
+        <h2>What does Cosmic Time explain?</h2>
+        <p>Cosmic Time explains existence at a scale far beyond ordinary life, calendars, dynasties, or recorded history.</p>
+        <p>It gives the atlas its structure: vast cycles contain smaller cycles, and those smaller cycles contain the world we recognize today.</p>
+      </section>
+
+      <section>
+        <h2>How the layers fit</h2>
+        <p>The journey moves from the largest frame toward the present age: Cosmic Time, Kalpa, Manvantara, Maha Yuga, Four Yugas, and finally Kali Yuga.</p>
+        <p>Each step brings the reader closer to human history while still preserving the larger cosmic context.</p>
+      </section>
+    </main>
+  </div>
+
+  <details class="full-guide" open={!compact} data-compact={compact || undefined}>
+    <summary><span>Continue reading</span><b>Read full Cosmic Time guide down</b></summary>
+    <div class="reading-body">
+      <main>
+        <section>
+          <h2>A different view of time</h2>
+          <p>Many modern explanations treat time as a straight line moving from beginning to end. Traditional Hindu cosmology often presents time as cyclical.</p>
+          <p>Creation appears, life develops, worlds transform, dissolution comes, and renewal begins again. The universe is understood through recurring rhythms rather than a single flat timeline.</p>
+        </section>
+
+        <section>
+          <h2>The architecture of Cosmic Time</h2>
+          <p>The structure is nested, like zooming into a map. A Kalpa contains Manvantaras. A Manvantara contains Maha Yugas. A Maha Yuga contains the Four Yugas.</p>
+          <aside class="note">
+            <p class="eyebrow">Atlas sequence</p>
+            <p><strong>Cosmic Time</strong> -> <strong>Kalpa</strong> -> <strong>Manvantara</strong> -> <strong>Maha Yuga</strong> -> <strong>Four Yugas</strong> -> <strong>Kali Yuga</strong></p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>The scale of the journey</h2>
+          <div class="scale-list">{scale.map(([label, value]) => <div><span>{label}</span><strong>{value}</strong></div>)}</div>
+          <p>The difference between a human life and a Kalpa is almost impossible to visualize. Yet both are placed inside the same cosmic framework.</p>
+        </section>
+
+        <section>
+          <h2>Time is not empty</h2>
+          <p>In this atlas, time is not only a count of years. It is the stage where sages, Manus, avatars, scriptures, kingdoms, civilizations, and epics find their place.</p>
+          <p>Understanding Cosmic Time helps explain why the Ramayana, Mahabharata, Bhagavad Gita, Puranas, and Yuga teachings are not isolated topics. They belong within a connected map.</p>
+        </section>
+
+        <section>
+          <h2>Where are we now?</h2>
+          <p>According to the common Puranic framework used here, our current position is within the Shveta Varaha Kalpa, the Vaivasvata Manvantara, the 28th Maha Yuga, and Kali Yuga.</p>
+          <aside class="note">
+            <p class="eyebrow">Current position</p>
+            <p><strong>Cosmic Time</strong><br />Shveta Varaha Kalpa<br />Vaivasvata Manvantara<br />28th Maha Yuga<br />Kali Yuga</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>What Cosmic Time teaches</h2>
+          <p>Cosmic Time gives perspective. Human lives are brief, civilizations are temporary, and empires rise and disappear. Yet action still matters inside the larger journey.</p>
+          <p>The point is not to make life feel meaningless. It is to make life feel situated: small in scale, but still meaningful in responsibility.</p>
+        </section>
+      </main>
+
+      <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+    </div>
+  </details>
+
+  <a class="continue" href={`/atlas/${next?.slug ?? "kalpa"}`}>
+    <span><small>Ready to move deeper?</small><strong>Next: {next?.title ?? "Kalpa"}</strong><em>Enter the first major structure within Cosmic Time.</em></span>
+    <b>Explore next layer -></b>
+  </a>
+</article>
+
+<style>
+  .cosmic-reading { border:1px solid rgb(233 182 95/.2); border-radius:1.4rem; padding-bottom:1rem; background:linear-gradient(145deg,rgb(10 27 36/.72),rgb(3 13 20/.48)); box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22); color:#eee3cf; backdrop-filter:blur(20px) saturate(115%); }
+  header,.reading-body,.facts,.cosmic-reading :global(.source-panel),.continue,.full-guide > summary { width:min(100% - 2rem,72rem); margin-inline:auto; }
+  header { padding:clamp(3rem,7vw,7rem) 0 2.5rem; }
+  header p:not(.eyebrow) { max-width:62ch; color:#b3aca1; line-height:1.85; }
+  header strong,.reading-body strong { color:#e9b65f; font-weight:650; }
+  h1,h2 { font-family:var(--serif); font-weight:400; letter-spacing:-.025em; }
+  h1 { max-width:13ch; margin:.35rem 0 1rem; font-size:clamp(3.2rem,6vw,6rem); line-height:1; }
+  .lead { color:#d0c5b3 !important; font-size:clamp(1.08rem,1.5vw,1.3rem); }
+  .facts { display:grid; grid-template-columns:repeat(4,1fr); overflow:hidden; border:1px solid rgb(233 182 95/.18); border-radius:1rem; background:rgb(255 255 255/.025); box-shadow:inset 0 1px rgb(255 255 255/.025); backdrop-filter:blur(14px); }
+  .facts div { padding:1rem; }
+  .facts div + div { border-left:1px solid rgb(233 182 95/.14); }
+  dt { color:#99938a; font-size:.62rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+  dd { margin:.25rem 0 0; color:#e5dac8; font-family:var(--serif); font-size:1.05rem; }
+  .reading-body { padding-block:2rem; }
+  main { width:min(100%,46rem); }
+  section { border-bottom:1px solid rgb(233 182 95/.14); padding-block:2rem; }
+  h2 { margin:0 0 .8rem; font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.15; }
+  section p,section li { color:#aaa49a; line-height:1.85; }
+  section p { margin:.65rem 0 0; }
+  .note { margin:1.5rem 0 0; border:1px solid rgb(233 182 95/.17); border-left:2px solid #e9b65f; border-radius:.7rem; padding:.8rem 1rem; background:rgb(233 182 95/.035); backdrop-filter:blur(12px); }
+  .note p { margin:.25rem 0; color:#c2b9aa; }
+  .scale-list { margin-top:1.25rem; border-block:1px solid rgb(233 182 95/.14); }
+  .scale-list div { display:flex; justify-content:space-between; gap:1rem; padding:.65rem 0; border-bottom:1px solid rgb(233 182 95/.08); }
+  .scale-list span { color:#aaa49a; }
+  .scale-list strong { font-size:.9rem; }
+  .full-guide { border:0; }
+  .full-guide:not([data-compact]) > summary { display:none; }
+  .full-guide > summary { display:flex; width:fit-content; align-items:center; gap:.55rem; margin-top:.9rem; border:1px solid rgb(233 182 95/.24); border-radius:999px; padding:.55rem .8rem; background:rgb(233 182 95/.035); color:#e9b65f; cursor:pointer; list-style:none; box-shadow:inset 0 1px rgb(255 255 255/.025); backdrop-filter:blur(14px); }
+  .full-guide > summary::-webkit-details-marker { display:none; }
+  .full-guide > summary span { color:#99938a; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; }
+  .full-guide > summary b { font-size:.67rem; }
+  .full-guide[open] > summary b { font-size:0; }
+  .full-guide[open] > summary b::after { font-size:.67rem; content:"Hide full guide up"; }
+  .full-guide[open] > .reading-body { animation:guide-reveal 420ms ease both; }
+  .continue { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:2rem; border:1px solid rgb(233 182 95/.28); border-radius:1rem; padding:1.2rem 1.35rem; background:linear-gradient(100deg,rgb(233 182 95/.07),transparent); color:#e9b65f; box-shadow:inset 0 1px rgb(255 255 255/.025); backdrop-filter:blur(14px); }
+  .continue span > * { display:block; }
+  .continue small { color:#99938a; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; }
+  .continue strong { font-family:var(--serif); font-size:1.7rem; font-weight:400; }
+  .continue em { color:#aaa49a; font-size:.72rem; font-style:normal; }
+  .continue b { font-size:.68rem; text-transform:uppercase; }
+  @keyframes guide-reveal { from { opacity:0; transform:translateY(-8px) } to { opacity:1; transform:none } }
+  @media(max-width:800px){
+    .facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(233 182 95/.14)}
+    .continue{align-items:flex-end}
+  }
+</style>

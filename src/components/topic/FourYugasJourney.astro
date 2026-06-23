@@ -1,0 +1,128 @@
+---
+import SourcePanel from "./SourcePanel.astro";
+
+const { topic, next, compact = false } = Astro.props;
+const facts = [
+  ["Complete cycle", "4.32 million human years"],
+  ["First age", "Satya Yuga"],
+  ["Present age", "Kali Yuga"],
+  ["Forms", "One Maha Yuga"],
+];
+const ages = [
+  ["satya-yuga", "Satya Yuga", "The Age of Truth", "1.728 million years", "Harmony, wisdom, and spiritual realization."],
+  ["treta-yuga", "Treta Yuga", "The Age of Duty", "1.296 million years", "Kingdoms, sacred responsibilities, and righteous living."],
+  ["dvapara-yuga", "Dvapara Yuga", "The Age of Heroes", "864,000 years", "Powerful dynasties, great conflicts, and Krishna."],
+  ["kali-yuga", "Kali Yuga", "The Present Age", "432,000 years", "Challenge, transformation, and spiritual opportunity."],
+];
+---
+
+<article class="yugas-reading">
+  <header>
+    <p class="eyebrow">Selected layer · Four Yugas</p>
+    <h1>The Ages of Cosmic History</h1>
+    <p class="lead">The Four Yugas describe the recurring ages through which the world passes across vast spans of time.</p>
+    <p>Every Maha Yuga unfolds through Satya, Treta, Dvapara, and Kali Yuga. Together, these four distinct phases form one complete cycle and provide a framework for understanding how civilization, values, spiritual life, and human experience change.</p>
+  </header>
+
+  <dl class="facts">{facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+
+  <div class="reading-body"><main>
+    <section>
+      <h2>What do the Yugas explain?</h2>
+      <p>The Yugas provide a framework for understanding changing conditions across a complete Maha Yuga.</p>
+      <p>They describe differences in Dharma, civilization, knowledge, spiritual life, and human experience. Their importance is not only how long each age lasts, but what distinguishes one age from another.</p>
+    </section>
+
+    <section>
+      <h2>The four ages</h2>
+      <div class="age-directory">{ages.map(([slug, name, meaning, duration, description]) => <a href={`/atlas/${slug}`}><span>{duration}</span><strong>{name}</strong><em>{meaning}</em><small>{description}</small><b>Explore →</b></a>)}</div>
+    </section>
+  </main></div>
+
+  <details class="full-guide" open={!compact} data-compact={compact || undefined}>
+    <summary><span>Continue reading</span><b>Read full Four Yugas guide ↓</b></summary>
+    <div class="reading-body"><main>
+      <section>
+        <h2>The cycle of Dharma</h2>
+        <p>One of the most recognized symbols associated with the Yugas is the Bull of Dharma. Dharma represents cosmic order, truth, harmony, and righteousness.</p>
+        <p>Traditional texts describe Dharma as standing on four legs in Satya Yuga, three in Treta, two in Dvapara, and one in Kali Yuga. The image describes changing world conditions and the increasing effort required to maintain balance.</p>
+      </section>
+
+      <section>
+        <h2>The duration of the Yugas</h2>
+        <div class="duration-list">{ages.map(([, name, , duration], index) => <div><span>{name}</span><strong>{duration}</strong><small>{4 - index} Dharma {4 - index === 1 ? "leg" : "legs"}</small></div>)}</div>
+        <p>Together, the four durations equal 4.32 million human years: one complete Maha Yuga.</p>
+      </section>
+
+      <section>
+        <h2>More than time</h2>
+        <p>The Yugas are often misunderstood as giant calendars. They also provide a framework for understanding the rise and decline of civilizations, changes in human behavior, preservation of wisdom, spiritual practices, and the recurring nature of history.</p>
+        <p>The Yugas are as much about the quality of an age as they are about its duration.</p>
+      </section>
+
+      <section>
+        <h2>Knowledge across the Yugas</h2>
+        <p>Traditional sources often describe earlier Yugas as periods of stronger memory, greater spiritual awareness, and a closer relationship with Dharma.</p>
+        <p>Knowledge was not necessarily absent in earlier ages. It was preserved and transmitted differently, often through oral traditions sustained by teachers and disciples.</p>
+      </section>
+
+      <section>
+        <h2>The preservation of knowledge</h2>
+        <p>Traditional accounts describe concern that humanity entering Kali Yuga would face shorter lifespans, reduced memory, greater distraction, and increased difficulty preserving knowledge.</p>
+        <p>Traditions therefore credit Vyasa with organizing and preserving vast bodies of sacred knowledge near the end of Dvapara Yuga.</p>
+      </section>
+
+      <section>
+        <h2>Stories, avatars, and the Yugas</h2>
+        <p>Many foundational narratives are placed within specific Yugas. Treta Yuga is associated with Rama, Sita, Hanuman, and the Ramayana. Dvapara Yuga is associated with Krishna, the Mahabharata, and the Bhagavad Gita. Kali Yuga is the current age and is traditionally connected with the future Kalki Avatar.</p>
+        <p>Across traditions, avatars such as Narasimha, Vamana, Parashurama, Rama, Krishna, and Kalki appear at crucial moments to restore balance and uphold Dharma.</p>
+      </section>
+
+      <section>
+        <h2>Lesser-known foundations</h2>
+        <ul>
+          <li>The Four Yugas repeat again and again across cosmic time.</li>
+          <li>A single Manvantara contains seventy-one Maha Yugas.</li>
+          <li>Our present age belongs to the 28th Maha Yuga of the 7th Manvantara.</li>
+          <li>Knowledge was preserved orally long before texts were compiled.</li>
+          <li>Every Yuga belongs within a much larger cosmic structure.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Where are we now?</h2>
+        <aside class="note"><p><strong>Shveta Varaha Kalpa</strong> · <strong>Vaivasvata Manvantara</strong> · <strong>28th Maha Yuga</strong> · <strong>Kali Yuga</strong></p></aside>
+        <p>This is humanity's current location within the common traditional model of the cosmic atlas.</p>
+      </section>
+
+      <section>
+        <h2>What the Yugas teach</h2>
+        <p>The Four Yugas remind us that no condition remains permanent. Golden ages change, kingdoms rise and fall, knowledge is preserved and forgotten, and periods of difficulty eventually give way to renewal.</p>
+        <p>The Yuga system invites us to see history not as a straight line, but as a living cycle of transformation.</p>
+      </section>
+    </main></div>
+    <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+  </details>
+
+  <a class="continue" href={`/atlas/${next?.slug ?? "satya-yuga"}`}>
+    <span><small>Begin the Yuga journey</small><strong>Next: {next?.title ?? "Satya Yuga"}</strong><em>Start with the first age, where Dharma is described as complete.</em></span>
+    <b>Explore next layer →</b>
+  </a>
+</article>
+
+<style>
+  .yugas-reading{--accent:#aeb1ff;color:#eee3cf}header,.reading-body,.facts,.yugas-reading :global(.source-panel),.continue,.full-guide>summary{width:min(100% - 2rem,72rem);margin-inline:auto}
+  header{padding:clamp(3rem,7vw,7rem) 0 2.5rem}header p:not(.eyebrow){max-width:62ch;color:#b3aca1;line-height:1.85}header strong,.reading-body strong{color:var(--accent);font-weight:650}
+  h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.025em}h1{max-width:15ch;margin:.35rem 0 1rem;font-size:clamp(3.2rem,6vw,6rem);line-height:1}.lead{color:#d0c5b3!important;font-size:clamp(1.08rem,1.5vw,1.3rem)}
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid rgb(140 145 255/.2)}.facts div{padding:1rem}.facts div+div{border-left:1px solid rgb(140 145 255/.14)}dt{color:#99938a;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}dd{margin:.25rem 0 0;color:#e5dac8;font-family:var(--serif);font-size:1.05rem}
+  .reading-body{padding-block:2rem}.reading-body main{width:min(100%,54rem)}section{border-bottom:1px solid rgb(140 145 255/.14);padding-block:2rem}h2{margin:0 0 .8rem;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}section p,section li{color:#aaa49a;line-height:1.85}section p{margin:.65rem 0 0}.note{margin:1.2rem 0;border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1rem}.note p{color:#c2b9aa}
+  .age-directory{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:1.2rem}.age-directory a{position:relative;display:grid;border:1px solid rgb(140 145 255/.16);border-radius:.8rem;padding:1rem;background:rgb(140 145 255/.02)}.age-directory span,.age-directory em,.age-directory small{color:#99938a;font-size:.68rem;font-style:normal}.age-directory strong{margin:.25rem 0 0;font-family:var(--serif);font-size:1.3rem;font-weight:500}.age-directory small{margin-top:.3rem;line-height:1.45}.age-directory b{margin-top:.7rem;color:var(--accent);font-size:.62rem;text-transform:uppercase}
+  .duration-list{margin-top:1.25rem;border-block:1px solid rgb(140 145 255/.14)}.duration-list div{display:grid;grid-template-columns:1fr 1fr auto;gap:1rem;padding:.65rem 0;border-bottom:1px solid rgb(140 145 255/.08)}.duration-list span,.duration-list small{color:#aaa49a}.duration-list strong{font-size:.9rem}.duration-list small{font-size:.65rem}ul{padding-left:1.15rem}
+  .full-guide{border:0}.full-guide:not([data-compact])>summary{display:none}.full-guide>summary{display:flex;width:fit-content;align-items:center;gap:.55rem;margin-top:.9rem;border:1px solid rgb(140 145 255/.25);border-radius:999px;padding:.55rem .8rem;background:rgb(140 145 255/.035);color:var(--accent);cursor:pointer;list-style:none}.full-guide>summary::-webkit-details-marker{display:none}.full-guide>summary span{color:#99938a;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.full-guide>summary b{font-size:.67rem}.full-guide[open]>summary b{font-size:0}.full-guide[open]>summary b::after{font-size:.67rem;content:"Hide full guide ↑"}.full-guide[open]>.reading-body{animation:guide-reveal 420ms ease both}
+  .continue{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:2rem;border:1px solid rgb(255 113 78/.23);border-radius:1rem;padding:1.2rem 1.35rem;background:linear-gradient(100deg,rgb(255 113 78/.055),transparent);color:#ff8768}.continue span>*{display:block}.continue small{color:#99938a;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.continue strong{font-family:var(--serif);font-size:1.7rem;font-weight:400}.continue em{color:#aaa49a;font-size:.72rem;font-style:normal}.continue b{font-size:.68rem;text-transform:uppercase}
+  .yugas-reading{border:1px solid rgb(140 145 255/.2);border-radius:1.4rem;padding-bottom:1rem;background:linear-gradient(145deg,rgb(18 23 43/.72),rgb(3 13 20/.48));box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22);backdrop-filter:blur(20px) saturate(115%)}
+  .facts{overflow:hidden;border:1px solid rgb(140 145 255/.2);border-radius:1rem;background:rgb(255 255 255/.025);box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
+  .note,.age-directory a,.continue,.full-guide>summary{box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
+  @keyframes guide-reveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+  @media(max-width:800px){.facts,.age-directory{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(140 145 255/.14)}.duration-list div{grid-template-columns:1fr}.continue{align-items:flex-end}}
+</style>

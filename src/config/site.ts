@@ -13,7 +13,6 @@ export const PRIMARY_NAVIGATION = Object.freeze([
   { href: "/atlas", label: "Atlas" },
   { href: "/sources", label: "Sources" },
   { href: "/feedback", label: "Feedback" },
-  { href: "/donate", label: "Donate" },
 ]);
 
 export const FOOTER_NAVIGATION = Object.freeze([

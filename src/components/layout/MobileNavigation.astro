@@ -24,7 +24,7 @@ const currentPath = Astro.url.pathname;
     bottom: max(0.75rem, env(safe-area-inset-bottom));
     left: 0.75rem;
     display: none;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
     border-radius: 1.1rem;
     padding: 0.35rem;
@@ -72,6 +72,14 @@ const currentPath = Astro.url.pathname;
   @media (max-width: 800px) {
     .mobile-navigation {
       display: grid;
+      background: color-mix(in srgb, var(--surface) 98%, transparent);
+      backdrop-filter: none;
+    }
+  }
+
+  @media (max-width: 420px) {
+    a {
+      font-size: 0.68rem;
     }
   }
 </style>

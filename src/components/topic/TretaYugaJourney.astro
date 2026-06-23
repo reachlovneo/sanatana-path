@@ -1,0 +1,715 @@
+﻿---
+import AtlasGlyph from "../ui/AtlasGlyph.astro";
+import SacredIcon from "../ui/SacredIcon.astro";
+import SourcePanel from "./SourcePanel.astro";
+
+const { topic } = Astro.props;
+
+const facts = [
+  ["Duration", "1.296 million human years", "clock"],
+  ["Position", "Second Yuga", "cycle"],
+  ["Dharma", "Three legs remain", "mandala"],
+  ["Defining epic", "Ramayana", "map"],
+] as const;
+
+const dharmaCards = [
+  ["Truth becomes duty", "In Satya Yuga, truth is natural. In Treta Yuga, truth must be chosen and protected through action.", "star"],
+  ["Power needs restraint", "Kings, kingdoms, vows, and responsibility become central. Leadership is tested by Dharma.", "compass"],
+  ["Sacrifice becomes visible", "Treta Yuga shows that right action often requires loss, patience, and surrender of personal comfort.", "flame"],
+] as const;
+
+const symbols = [
+  ["Rama", "Dharma in action", "The ideal ruler who chooses duty even when it costs him personally.", "sun"],
+  ["Sita", "Purity and strength", "The quiet force of endurance, dignity, and sacred feminine power.", "lotus"],
+  ["Hanuman", "Devotion and courage", "Faith made active through service, intelligence, and fearlessness.", "flame"],
+  ["Rama Setu", "Impossible made possible", "A bridge built through teamwork, devotion, and trust in a higher purpose.", "map"],
+] as const;
+
+const figures = [
+  ["Rama", "The prince of Ayodhya and avatar of Vishnu, remembered as Maryada Purushottama, the ideal person who lives within Dharma."],
+  ["Sita", "The daughter of Janaka, wife of Rama, and one of the deepest symbols of purity, courage, endurance, and sacred dignity."],
+  ["Lakshmana", "The devoted brother who follows Rama into exile and represents loyalty, service, and disciplined protection."],
+  ["Hanuman", "The great servant of Rama, whose strength is guided by humility, devotion, and unwavering faith."],
+  ["Ravana", "The learned king of Lanka whose brilliance is overcome by pride, desire, and misuse of power."],
+  ["Dasharatha", "The king whose promise changes the destiny of Ayodhya and reveals the cost of vows and royal duty."],
+];
+
+const ramayanaTimeline = [
+  "Birth of Rama",
+  "Life in Ayodhya",
+  "Fourteen years of exile",
+  "Sita abducted by Ravana",
+  "Hanuman finds Sita",
+  "Bridge to Lanka",
+  "The great war",
+  "Ravana defeated",
+  "Return to Ayodhya",
+  "Rama Rajya",
+];
+
+const innerRamayana = [
+  ["Rama", "The higher self that stays aligned with Dharma."],
+  ["Sita", "The soul, purity, and inner dignity."],
+  ["Lakshmana", "Discipline and loyal protection."],
+  ["Hanuman", "Devotion that becomes strength."],
+  ["Ravana", "Ego, pride, desire, and knowledge without humility."],
+  ["Lanka", "The glittering world of power when it is separated from Dharma."],
+];
+
+
+const hiddenWonders = [
+  {
+    name: "Vedavati",
+    title: "The curse before Sita",
+    icon: "flame",
+    summary: "Many traditions tell a story that begins long before the Ramayana. A devoted ascetic named Vedavati dedicated her life to Vishnu. When Ravana attempted to violate her sanctity, she cursed him and vowed to become the cause of his destruction. Later traditions identify Vedavati with Sita.",
+    lesson: "Ravana's downfall did not begin in Lanka. It began with his own actions years earlier. Consequences are often set in motion long before they become visible.",
+  },
+  {
+    name: "Trishanku",
+    title: "The king between heaven and earth",
+    icon: "compass",
+    summary: "King Trishanku wished to enter heaven with his physical body. The gods rejected the request. Sage Vishvamitra used immense spiritual power to send him upward, and Trishanku became suspended between heaven and earth: neither fully above nor fully below.",
+    lesson: "The phrase Trishanku Swarga is still remembered for someone trapped between two states. Not every desire should be pursued simply because power exists.",
+  },
+  {
+    name: "Vishvamitra",
+    title: "The king who became a sage",
+    icon: "star",
+    summary: "Vishvamitra was not born a sage. He was born a king. After encountering Sage Vashistha, he became determined to attain spiritual greatness through discipline, austerity, and self-mastery.",
+    lesson: "Most heroes begin great. Vishvamitra became great. His story teaches that transformation is possible.",
+  },
+  {
+    name: "Harishchandra",
+    title: "The king who never lied",
+    icon: "mandala",
+    summary: "Harishchandra is remembered as one of the greatest examples of truthfulness. Through divine tests he lost his kingdom, wealth, family, and status, yet he refused to abandon truth.",
+    lesson: "Integrity has value only when it becomes difficult.",
+  },
+  {
+    name: "Bhagiratha",
+    title: "The prince who brought Ganga to earth",
+    icon: "map",
+    summary: "King Bhagiratha wished to liberate his ancestors and performed severe penance so the celestial river Ganga could descend from heaven to earth. Shiva received the force of Ganga in his matted locks and gently released her.",
+    lesson: "Great blessings often arrive only after extraordinary perseverance.",
+  },
+  {
+    name: "Ahalya",
+    title: "A story of redemption",
+    icon: "lotus",
+    summary: "Many people know that Rama freed Ahalya from a curse. Fewer know that her son Shatananda later became the chief priest of King Janaka and personally welcomed Rama to Mithila.",
+    lesson: "Healing does not always happen instantly. Sometimes the effects of Dharma unfold across generations.",
+  },
+  {
+    name: "Rama and Parashurama",
+    title: "The meeting of two avatars",
+    icon: "cycle",
+    summary: "After Rama breaks Shiva's bow, Parashurama appears. For a brief moment, two incarnations of Vishnu stand face to face.",
+    lesson: "Parashurama represents the destruction of corruption. Rama represents the establishment of righteous order. One mission ends. Another begins.",
+  },
+  {
+    name: "Yoga Vasistha",
+    title: "The seeker before the hero",
+    icon: "sun",
+    summary: "Before becoming the hero of the Ramayana, Rama is presented in the Yoga Vasistha as a seeker who questions life, reality, suffering, purpose, and existence itself.",
+    lesson: "Before becoming a hero, Rama became a seeker. The greatest journeys often begin with a question.",
+  },
+  {
+    name: "Adbhuta Ramayana",
+    title: "When Sita reveals her cosmic form",
+    icon: "flame",
+    summary: "In the Adbhuta Ramayana, after Ravana's defeat, an even greater threat appears: Sahasra Ravana, the thousand-headed Ravana. Sita reveals a fierce cosmic form and destroys the enemy herself.",
+    lesson: "In this tradition, Sita is not merely rescued. She is revealed as divine cosmic power.",
+  },
+] as const;
+
+const hiddenPattern = [
+  ["Rama", "Duty"],
+  ["Sita", "Dignity"],
+  ["Hanuman", "Potential"],
+  ["Ravana", "Ego"],
+  ["Vedavati", "Consequences"],
+  ["Trishanku", "Desire"],
+  ["Vishvamitra", "Transformation"],
+  ["Harishchandra", "Truth"],
+  ["Bhagiratha", "Perseverance"],
+  ["Parashurama", "Justice"],
+  ["Ahalya", "Redemption"],
+] as const;
+
+const lessons = [
+  "Truth becomes meaningful when it is lived under pressure.",
+  "Power without humility can destroy even a brilliant person.",
+  "Duty is not always comfortable, but it gives life direction.",
+  "Devotion is not weakness. It can become courage, intelligence, and action.",
+  "The Ramayana remains powerful because every character reflects a human possibility.",
+];
+---
+
+<article class="treta-reading">
+  <header class="treta-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Four Yugas / Second Age</p>
+      <h1>Treta Yuga</h1>
+      <p class="meaning">The Age of Duty</p>
+      <p class="lead">After the luminous simplicity of Satya Yuga, the world becomes more complex. Truth has not disappeared, but it no longer moves effortlessly through every heart. Dharma must now be protected through vows, leadership, sacrifice, and right action.</p>
+      <p>Treta Yuga is remembered as the age where the Ramayana unfolds: the story of Rama, Sita, Lakshmana, Hanuman, and Ravana. It is not only an epic of kings and battles. It is a mirror for what happens when duty meets desire, power, love, exile, loyalty, and sacrifice.</p>
+      <div class="hero-actions">
+        <a href="#treta-story">Enter the Ramayana</a>
+        <a href="/atlas/four-yugas">Four Yugas map</a>
+      </div>
+    </div>
+    <aside class="hero-panel" aria-label="Treta Yuga summary">
+      <div class="hero-image" aria-hidden="true"><img src="/images/atlas/grand-structure.jpg" alt="" loading="lazy" /></div>
+      <span class="sigil"><AtlasGlyph name="four-yugas" size={44} /></span>
+      <p class="panel-label">Core question</p>
+      <strong>What should a person do when Dharma is no longer effortless?</strong>
+      <p>Treta Yuga answers through story: by showing choices, consequences, and the cost of righteousness.</p>
+    </aside>
+  </header>
+
+  <main class="article-shell">
+    <section class="fact-strip" aria-label="Treta Yuga quick facts">
+      {facts.map(([label, value, icon]) => <div><i><SacredIcon name={icon} size={18} /></i><span>{label}</span><strong>{value}</strong></div>)}
+    </section>
+
+    <div class="content-frame">
+      <article class="prose-flow">
+      <section class="opening-scene">
+        <p class="eyebrow">Opening vision</p>
+        <h2>A world where goodness must become action</h2>
+        <p>Treta Yuga does not feel like the effortless harmony of Satya Yuga. The world is still sacred, but society has become more structured. Kingdoms rise. Rules matter. Promises matter. Family, leadership, ritual, and public duty become powerful forces.</p>
+        <p>This age teaches that Dharma is not only something to understand. It must be carried into relationships, governance, conflict, grief, and responsibility.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">What is Treta Yuga?</p>
+        <h2>The second age of every Maha Yuga</h2>
+        <p>Treta Yuga is the second of the four Yugas. It follows Satya Yuga and comes before Dvapara Yuga. In the traditional model, it lasts <strong>1.296 million human years</strong>.</p>
+        <p>It is often remembered as an age of sacred responsibility. Dharma remains strong, but it is no longer complete. The Bull of Dharma, which stood on four legs in Satya Yuga, now stands on three.</p>
+        <p>This does not mean Treta Yuga is dark. It means the world has entered a stage where right action requires conscious effort.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Why the name matters</p>
+        <h2>Why is it called Treta?</h2>
+        <p>The word <strong>Treta</strong> is connected with the idea of three. This is why many traditions associate the age with Dharma standing on three legs.</p>
+        <p>The name itself gives the clue: one part of the original wholeness has been lost, but most of the sacred order remains. Life is still guided by Dharma, yet human beings must now choose it more deliberately.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">The world of Treta Yuga</p>
+        <h2>Kingdoms, vows, sacred order, and responsibility</h2>
+        <p>Treta Yuga is the age where civilization becomes more visible. Kingdoms, royal lineages, duties, sacrifices, rituals, and social responsibilities become central to the way Dharma is expressed.</p>
+        <p>People are still deeply connected to the sacred, but the world is no longer described as perfectly effortless. Desire, pride, ambition, and conflict begin to appear in stronger forms. Because of this, Dharma must be taught, defended, and embodied by great figures.</p>
+        <div class="dharma-grid">
+          {dharmaCards.map(([title, text, icon]) => <article><i><SacredIcon name={icon} size={18} /></i><strong>{title}</strong><p>{text}</p></article>)}
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">Rise of civilization</p>
+        <h2>When Dharma enters public life</h2>
+        <p>In Satya Yuga, the inner life dominates. In Treta Yuga, Dharma expands into the visible world of families, kingdoms, public decisions, and political responsibility.</p>
+        <p>This is why kingship becomes so important. A ruler is not merely someone with power. A ruler is expected to protect order, honor promises, serve the people, and place Dharma above personal desire.</p>
+        <p>The Ramayana becomes the great teaching text of this age because it shows how difficult that standard can be.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Dharma in action</p>
+        <h2>Treta Yuga asks for character under pressure</h2>
+        <p>The spiritual mood of Treta Yuga is not just meditation or silent purity. It is action guided by Dharma.</p>
+        <p>Rama accepts exile instead of fighting for a throne. Sita walks into hardship rather than abandoning love and duty. Lakshmana leaves royal comfort for service. Hanuman uses his strength only in devotion. Each figure shows Dharma in motion.</p>
+        <p>That is the heart of Treta Yuga: not perfect peace, but noble action when peace is disturbed.</p>
+      </section>
+
+      <section class="symbols-section">
+        <p class="eyebrow">Symbols of Treta Yuga</p>
+        <h2>The age becomes memorable through its living symbols</h2>
+        <p>Treta Yuga is easier to understand when we see the symbols that carry its emotional power. These are not decorations. They are memory anchors for the age.</p>
+        <div class="symbol-grid">
+          {symbols.map(([name, title, text, icon]) => (
+            <article>
+              <span><SacredIcon name={icon} size={20} /></span>
+              <strong>{name}</strong>
+              <small>{title}</small>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">Great figures</p>
+        <h2>The characters are not flat heroes and villains</h2>
+        <p>One reason the Ramayana remains alive is that its figures are memorable and psychologically powerful. They are not only names in a story. They represent patterns inside human life.</p>
+        <div class="figure-list">
+          {figures.map(([name, text]) => <article><strong>{name}</strong><p>{text}</p></article>)}
+        </div>
+      </section>
+
+      <section id="treta-story" class="ramayana-section">
+        <p class="eyebrow">The Ramayana in five minutes</p>
+        <h2>A simple overview of the great epic of Treta Yuga</h2>
+        <p>The Ramayana is the great epic of Treta Yuga. At its heart, it is the story of Prince Rama, his wife Sita, and the battle to restore Dharma when it is threatened by Ravana, the king of Lanka.</p>
+        <p>But more deeply, it is a story about duty, sacrifice, loyalty, and the triumph of righteousness over ego.</p>
+
+        <div class="story-block story-block-visual ayodhya-prince">
+          <h3>The prince of Ayodhya</h3>
+          <p>Rama is born in the kingdom of Ayodhya and is beloved by the people. As the eldest son of King Dasharatha, he is expected to become the next king.</p>
+          <p>However, due to a promise made by his father, Rama willingly gives up the throne and accepts fourteen years of exile in the forest. Rather than fighting for power, he chooses duty. This decision becomes one of the defining moments of the epic.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>The forest exile</h3>
+          <p>Rama leaves for the forest accompanied by Sita, his wife, and Lakshmana, his devoted brother.</p>
+          <p>During their years in the wilderness, they encounter sages, forests, kingdoms, and many challenges. These years become a test of character, patience, and commitment to Dharma.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>Ravana and the abduction of Sita</h3>
+          <p>The turning point of the Ramayana occurs when Ravana, the powerful king of Lanka, abducts Sita and takes her to his island kingdom.</p>
+          <p>Ravana is not an ordinary villain. He is a learned scholar, a mighty ruler, and a devotee of Shiva. Yet his pride and desire lead him to make a choice that changes everything. The abduction of Sita sets the stage for the central conflict of the epic.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>Hanuman's journey</h3>
+          <p>While searching for Sita, Rama forms an alliance with the Vanaras. Among them is Hanuman.</p>
+          <p>Hanuman becomes one of the most beloved heroes of the Ramayana. His devotion, courage, and unwavering faith help Rama locate Sita and prepare for the journey to Lanka. One of the most famous episodes tells of Hanuman leaping across the ocean to find Sita.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>The bridge to Lanka</h3>
+          <p>To reach Lanka, Rama's army builds a bridge across the sea. Known traditionally as Rama Setu, this becomes one of the most iconic moments in the epic.</p>
+          <p>The crossing symbolizes determination, teamwork, and faith in the face of seemingly impossible obstacles.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>The great war</h3>
+          <p>A massive war unfolds between the forces of Rama and Ravana. Many legendary warriors participate.</p>
+          <p>The conflict is not portrayed simply as a struggle for power. It is presented as a battle between Dharma and Adharma, between responsibility and selfish desire, between humility and pride.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>The fall of Ravana</h3>
+          <p>After a long and difficult battle, Rama defeats Ravana. The victory is not celebrated merely as the destruction of an enemy. It is seen as the restoration of cosmic order.</p>
+          <p>Ravana's fall serves as a reminder that even immense power cannot overcome the consequences of ego and attachment.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>The return to Ayodhya</h3>
+          <p>After completing his exile and rescuing Sita, Rama returns to Ayodhya. His return is celebrated throughout the kingdom.</p>
+          <p>This event is traditionally associated with the origins of Deepavali, or Diwali, in many traditions. Rama is crowned king, and a period of righteous rule begins.</p>
+        </div>
+
+        <div class="story-block">
+          <h3>Why the Ramayana matters</h3>
+          <p>The Ramayana is not remembered merely because a prince defeated a king. It endures because it explores timeless human questions.</p>
+          <ul>
+            <li>What should we do when duty conflicts with desire?</li>
+            <li>How should power be used?</li>
+            <li>What makes a good leader?</li>
+            <li>How do we remain faithful during hardship?</li>
+            <li>What happens when ego overcomes wisdom?</li>
+          </ul>
+          <p>These questions are as relevant today as they were thousands of years ago.</p>
+        </div>
+
+        <aside class="timeline-card" aria-label="Quick Ramayana story timeline">
+          <strong>Quick story timeline</strong>
+          <ol>{ramayanaTimeline.map((item) => <li>{item}</li>)}</ol>
+        </aside>
+      </section>
+
+      <details class="beyond-victory">
+        <summary><span>Beyond the victory</span><b>What happened after Ravana's defeat?</b></summary>
+        <div class="beyond-body">
+          <p class="intro">The defeat of Ravana was not the end of Rama's story. Some of the most emotional and thought-provoking parts of the Ramayana happen after Lanka.</p>
+
+          <section>
+            <h3>The return to Ayodhya</h3>
+            <p>After fourteen years of exile and the victory in Lanka, Rama returns to Ayodhya. The city celebrates his arrival. He is crowned king and begins a period traditionally remembered as <strong>Rama Rajya</strong>, the ideal kingdom.</p>
+            <p>For many traditions, Rama Rajya represents the ideal model of leadership: a society shaped by justice, prosperity, stability, Dharma, and responsible governance.</p>
+          </section>
+
+          <section>
+            <h3>Sita's trial by fire</h3>
+            <p>One of the most discussed episodes of the Ramayana is the Agni Pariksha. After Sita is rescued from Lanka, questions arise regarding her purity because she had lived in Ravana's kingdom.</p>
+            <p>To demonstrate her innocence, Sita undergoes the Agni Pariksha. According to traditional accounts, Agni, the fire deity, bears witness to her purity and she emerges unharmed.</p>
+            <p>Different traditions interpret this event differently. Some view it literally. Others symbolically. Others see it as one of the most difficult and debated moments in the epic. Because of this, it continues to be discussed and reinterpreted across generations.</p>
+          </section>
+
+          <section>
+            <h3>Lava and Kusha</h3>
+            <p>One of the least-known parts of the Ramayana for modern audiences is the story of Rama and Sita's twin sons, Lava and Kusha.</p>
+            <p>They are raised in the ashram of Sage Valmiki. There they learn Dharma, sacred knowledge, and the story of Rama himself. Ironically, the children grow up hearing the Ramayana before realizing they are part of it.</p>
+          </section>
+
+          <section>
+            <h3>The Ramayana recited to Rama</h3>
+            <p>One of the most beautiful moments in the tradition occurs when Lava and Kusha eventually recite the Ramayana in Rama's court.</p>
+            <p>Rama listens to the story of his own life. Only later does the truth of their identity become fully known. This creates one of the most moving scenes in the entire epic.</p>
+          </section>
+
+          <section>
+            <h3>Sita's final return</h3>
+            <p>Eventually Sita is called upon once again to affirm her purity. At this moment she turns to Bhumi Devi, Mother Earth.</p>
+            <p>According to the traditional account, the Earth opens and receives her. Sita returns to the Earth from which she originally emerged. This becomes one of the most emotional endings in Hindu literature.</p>
+            <p>For many traditions it symbolizes purity, completion, return to the Divine, and the end of earthly suffering.</p>
+          </section>
+
+          <section>
+            <h3>Rama's final departure</h3>
+            <p>Many people do not know how Rama's story ends. After completing his earthly mission, Rama eventually departs from the world.</p>
+            <p>Traditional accounts describe him entering the sacred river Sarayu. His earthly incarnation concludes, and he returns to his divine form as Vishnu. This event is sometimes called Rama's Mahaprasthana, the Great Departure.</p>
+          </section>
+
+          <section>
+            <h3>The deeper lesson</h3>
+            <p>The Ramayana does not end with a simple happily-ever-after. It teaches something deeper.</p>
+            <p>Even the greatest king, the greatest queen, and divine incarnations must eventually face duty, separation, sacrifice, change, and impermanence.</p>
+            <p>The story begins with Dharma. It ends with Dharma. That is why the Ramayana remains timeless.</p>
+          </section>
+        </div>
+      </details>
+
+      <section>
+        <p class="eyebrow">Knowledge and sages</p>
+        <h2>The age is guided by teachers, rituals, and sacred memory</h2>
+        <p>Treta Yuga is also the age of great sages and sacred learning. The world requires guidance because human life has become more complex.</p>
+        <p>Sages preserve knowledge, advise rulers, teach discipline, and remind society that Dharma must be rooted in wisdom, not only law or power.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Hidden insights</p>
+        <h2>Treta Yuga is not only about ancient history</h2>
+        <p>The stories of Treta Yuga continue to matter because they describe patterns that still appear in human life.</p>
+        <p>A promise can shape a destiny. A ruler can fail when love and duty collide. A brilliant person can fall through pride. A humble servant can become the strongest force in the story.</p>
+        <p>This is why Treta Yuga is not just a cosmic period. It is a study of character.</p>
+      </section>
+
+      <section class="inner-section">
+        <p class="eyebrow">The inner Ramayana</p>
+        <h2>The epic also unfolds inside the human being</h2>
+        <p>Many readers approach the Ramayana as history, sacred narrative, or devotional scripture. It can also be read as an inner map.</p>
+        <p>In that reading, the characters become forces within the human heart. The battle is not only in Lanka. It is also within the mind, where Dharma must confront ego, attachment, and confusion.</p>
+        <div class="inner-grid">
+          {innerRamayana.map(([name, text]) => <article><strong>{name}</strong><p>{text}</p></article>)}
+        </div>
+      </section>
+
+
+
+      <section class="hidden-wonders-section">
+        <p class="eyebrow">Hidden wonders of Treta Yuga</p>
+        <h2>Beyond the Ramayana everyone knows</h2>
+        <p>Most people know Treta Yuga through Rama, Sita, Hanuman, and Ravana. But the age also contains many remarkable stories preserved across the Ramayana, Puranas, and broader Hindu tradition.</p>
+        <p>These stories are not side decorations. They reveal hidden dimensions of Treta Yuga: consequences before they become visible, desire trapped between worlds, kings becoming sages, truth tested through loss, and Sita revealed as cosmic power.</p>
+
+        <div class="wonder-grid">
+          {hiddenWonders.map((wonder) => (
+            <details class="wonder-card">
+              <summary>
+                <span><SacredIcon name={wonder.icon} size={18} /></span>
+                <small>{wonder.name}</small>
+                <strong>{wonder.title}</strong>
+              </summary>
+              <div>
+                <p>{wonder.summary}</p>
+                <p><b>Hidden lesson:</b> {wonder.lesson}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <div class="pattern-panel">
+          <div>
+            <p class="eyebrow">The deeper pattern</p>
+            <h3>Every story tests character differently</h3>
+            <p>Treta Yuga is not remembered only because of wars, kingdoms, or weapons. It is remembered because of character. Again and again, its stories ask one question: what should a person do when life tests their values?</p>
+          </div>
+          <div class="pattern-grid">
+            {hiddenPattern.map(([name, meaning]) => <article><span>{name}</span><strong>{meaning}</strong></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">How Treta ends</p>
+        <h2>The transition toward Dvapara Yuga</h2>
+        <p>Treta Yuga does not end by erasing Dharma. It ends by moving the world into another stage of complexity.</p>
+        <p>As the cycle continues, memory weakens further, conflict becomes more visible, and the balance of Dharma becomes harder to maintain. This prepares the movement into Dvapara Yuga, where Dharma stands on two legs.</p>
+      </section>
+
+      <section class="closing-scene">
+        <p class="eyebrow">What Treta Yuga teaches</p>
+        <h2>The age of duty asks what kind of person we become when life becomes difficult</h2>
+        <ul class="lesson-list">
+          {lessons.map((lesson) => <li>{lesson}</li>)}
+        </ul>
+        <p>Treta Yuga remains powerful because it does not pretend that Dharma is easy. It shows that Dharma becomes most meaningful when it is chosen in exile, grief, responsibility, leadership, and love.</p>
+      </section>
+
+      <details class="sources-drawer">
+        <summary><span>Sources and editorial notes</span><b>Open references</b></summary>
+        <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+      </details>
+
+      <a class="continue" href="/atlas/four-yugas">
+        <span><small>Continue the Yuga journey</small><strong>Return to Four Yugas</strong><em>Dvapara Yuga is the next age after Treta in the traditional sequence.</em></span>
+        <b>Open Yuga map -></b>
+      </a>
+    </article>
+
+    <aside class="treta-rail" aria-label="Treta Yuga visual context">
+      <div class="rail-scene">
+        <img src="/images/atlas/grand-structure.jpg" alt="Temple-like cosmic structure representing sacred order" loading="lazy" />
+        <span><SacredIcon name="sun" size={22} /></span>
+      </div>
+      <article class="rail-card">
+        <p class="eyebrow">Remember the age</p>
+        <strong>Duty becomes visible</strong>
+        <p>Treta Yuga is where Dharma moves from inner harmony into vows, family, kingship, exile, and public responsibility.</p>
+      </article>
+      <article class="rail-card compact">
+        <span><SacredIcon name="map" size={20} /></span>
+        <div><strong>Ramayana lens</strong><p>Story first, meaning deeper.</p></div>
+      </article>
+      <article class="rail-card compact">
+        <span><SacredIcon name="flame" size={20} /></span>
+        <div><strong>Dharma test</strong><p>Right action under pressure.</p></div>
+      </article>
+    </aside>
+  </div>
+  </main>
+</article>
+
+<style>
+  .treta-reading {
+    --accent: #f0b45f;
+    --fire: #ff7a4f;
+    --warm: #f4e6cf;
+    color: var(--warm);
+    overflow: hidden;
+    border: 1px solid rgb(240 180 95 / .16);
+    border-radius: 1rem;
+    background: radial-gradient(circle at 16% 10%, rgb(240 180 95 / .08), transparent 32%), linear-gradient(145deg, rgb(20 13 11 / .72), rgb(3 13 20 / .56));
+  }
+
+  .treta-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: 1.2rem;
+    width: min(100% - 2rem, 70rem);
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4.2rem) 0 1.2rem;
+    border-bottom: 1px solid rgb(240 180 95 / .12);
+  }
+
+  .hero-copy { max-width: 52rem; }
+  .eyebrow { margin: 0; color: var(--accent); font-size: .62rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 450; letter-spacing: -.02em; }
+  h1 { margin: .35rem 0 0; font-size: clamp(3rem, 5vw, 5.2rem); line-height: .96; }
+  .meaning { margin: .45rem 0 0; color: var(--fire); font-family: var(--serif); font-size: clamp(1.2rem, 1.8vw, 1.55rem); }
+  .lead { max-width: 62ch; margin: .95rem 0 0; color: #d5c9b8; font-size: 1.06rem; line-height: 1.72; }
+  .hero-copy p:not(.eyebrow):not(.meaning):not(.lead) { max-width: 64ch; color: #aaa49a; line-height: 1.75; }
+
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+  .hero-actions a, .continue { text-decoration: none; }
+  .hero-actions a { border: 1px solid rgb(240 180 95 / .24); border-radius: 999px; padding: .58rem .85rem; color: #f4d19a; font-size: .68rem; font-weight: 850; text-transform: uppercase; }
+  .hero-actions a:first-child { background: rgb(240 180 95 / .1); }
+
+  .hero-panel { align-self: end; border: 1px solid rgb(255 122 79 / .18); border-radius: 1rem; padding: 1rem; background: radial-gradient(circle at top right, rgb(255 122 79 / .1), transparent 48%), rgb(255 255 255 / .018); box-shadow: inset 0 1px rgb(255 255 255 / .03); }
+  .sigil { display: grid; width: 4.6rem; height: 4.6rem; place-items: center; border: 1px solid rgb(240 180 95 / .36); border-radius: 50%; color: var(--accent); font-family: var(--serif); font-size: 2rem; box-shadow: 0 0 34px rgb(240 180 95 / .14); }
+  .panel-label { margin: 1rem 0 .25rem; color: #9f9688; font-size: .6rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+  .hero-panel strong { display: block; color: #f0e4d1; font-family: var(--serif); font-size: 1.22rem; font-weight: 450; line-height: 1.25; }
+  .hero-panel p:last-child { color: #aaa49a; line-height: 1.58; }
+
+  .article-shell { width: min(100% - 2rem, 70rem); margin: 0 auto; }
+  .fact-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; padding: 1rem 0 0; }
+  .fact-strip div { border: 1px solid rgb(240 180 95 / .15); border-radius: .85rem; padding: .75rem .85rem; background: rgb(255 255 255 / .018); }
+  .fact-strip span { display: block; color: #9f9688; font-size: .56rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+  .fact-strip strong { display: block; margin-top: .2rem; color: #f1e3cf; font-family: var(--serif); font-size: 1rem; font-weight: 500; }
+
+  .prose-flow { max-width: 50rem; padding: 1rem 0 1.5rem; }
+  .prose-flow section { padding-block: clamp(1.55rem, 3vw, 2.55rem); border-bottom: 1px solid rgb(240 180 95 / .1); }
+  .prose-flow h2 { max-width: 28ch; margin: .35rem 0 .78rem; font-size: clamp(1.7rem, 2.55vw, 2.45rem); line-height: 1.12; }
+  .prose-flow h3 { margin: 0 0 .45rem; color: #f0dcc2; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.2; }
+  .prose-flow p, .prose-flow li { color: #aaa49a; line-height: 1.75; }
+  .prose-flow strong { color: #f2e6d5; }
+
+  .opening-scene, .closing-scene, .ramayana-section { border: 1px solid rgb(240 180 95 / .13); border-radius: 1rem; padding: clamp(1.2rem, 3vw, 2rem) !important; background: radial-gradient(circle at top left, rgb(240 180 95 / .08), transparent 44%), rgb(255 255 255 / .014); }
+
+  .dharma-grid, .symbol-grid, .figure-list, .inner-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin-top: 1rem; }
+  .dharma-grid article, .symbol-grid article, .figure-list article, .inner-grid article, .timeline-card, .story-block { border: 1px solid rgb(240 180 95 / .14); border-radius: .9rem; padding: .9rem; background: rgb(255 255 255 / .018); box-shadow: inset 0 1px rgb(255 255 255 / .025); }
+  .dharma-grid p, .symbol-grid p, .figure-list p, .inner-grid p, .story-block p { margin: .35rem 0 0; font-size: .92rem; line-height: 1.62; }
+
+  .symbol-grid span { display: grid; width: 2.3rem; height: 2.3rem; place-items: center; border: 1px solid rgb(240 180 95 / .28); border-radius: 50%; color: var(--accent); font-family: var(--serif); }
+  .symbol-grid strong, .symbol-grid small { display: block; }
+  .symbol-grid strong { margin-top: .55rem; }
+  .symbol-grid small { margin-top: .15rem; color: var(--fire); font-size: .68rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+
+  .story-block { margin-top: .8rem; }
+  .story-block-visual { position: relative; overflow: hidden; isolation: isolate; background: rgb(3 13 20 / .22) !important; }
+  .story-block-visual::before { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: right center; opacity: .72; content: ""; transform: scale(1.02); }
+  .story-block-visual::after { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgb(7 14 18 / .97) 0%, rgb(7 14 18 / .88) 48%, rgb(7 14 18 / .42) 100%), radial-gradient(circle at 84% 18%, rgb(240 180 95 / .2), transparent 38%); content: ""; }
+  .ayodhya-prince::before { background-image: url("/images/atlas/story/treta-prince-ayodhya.png"); }
+  .story-block-visual > * { position: relative; z-index: 2; }
+  .story-block-visual h3 { color: #fff2da; text-shadow: 0 2px 18px rgb(0 0 0 / .45); }
+  .story-block-visual p { color: #d3c8b8; }
+  .story-block ul, .lesson-list { padding-left: 1.15rem; }
+  .timeline-card { margin-top: 1rem; }
+  .timeline-card strong { display: block; margin-bottom: .7rem; font-family: var(--serif); font-size: 1.15rem; font-weight: 500; }
+  .timeline-card ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem .85rem; margin: 0; padding-left: 1.2rem; }
+  .timeline-card li { font-size: .88rem; }
+
+  .beyond-victory { margin: 1.5rem 0; border: 1px solid rgb(255 122 79 / .18); border-radius: 1rem; background: linear-gradient(145deg, rgb(255 122 79 / .055), rgb(255 255 255 / .012)); overflow: hidden; }
+  .beyond-victory > summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; cursor: pointer; list-style: none; }
+  .beyond-victory > summary::-webkit-details-marker { display: none; }
+  .beyond-victory > summary span { color: var(--accent); font-size: .62rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+  .beyond-victory > summary b { color: #f2e6d5; font-family: var(--serif); font-size: 1.15rem; font-weight: 450; }
+  .beyond-body { padding: 0 1rem 1rem; animation: reveal-treta 360ms ease both; }
+  .beyond-body .intro { color: #d2c3b0; }
+  .beyond-body section { padding-block: 1rem; border-bottom: 1px solid rgb(255 122 79 / .09); }
+  .beyond-body section:last-child { border-bottom: 0; }
+
+
+  .hidden-wonders-section {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgb(240 180 95 / .15) !important;
+    border-radius: 1rem;
+    padding: clamp(1.2rem, 3vw, 2rem) !important;
+    background:
+      radial-gradient(circle at 82% 10%, rgb(255 122 79 / .11), transparent 35%),
+      radial-gradient(circle at 12% 18%, rgb(240 180 95 / .09), transparent 38%),
+      rgb(255 255 255 / .014);
+  }
+
+  .hidden-wonders-section::before {
+    position: absolute;
+    inset: auto -18% -28% auto;
+    width: 24rem;
+    height: 24rem;
+    border: 1px solid rgb(240 180 95 / .12);
+    border-radius: 50%;
+    box-shadow: 0 0 90px rgb(240 180 95 / .08);
+    content: "";
+  }
+
+  .wonder-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .7rem;
+    margin-top: 1rem;
+  }
+
+  .wonder-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgb(240 180 95 / .13);
+    border-radius: .9rem;
+    background: linear-gradient(145deg, rgb(255 255 255 / .034), rgb(255 255 255 / .01));
+    box-shadow: inset 0 1px rgb(255 255 255 / .025);
+  }
+
+  .wonder-card[open] {
+    border-color: rgb(240 180 95 / .27);
+    background: linear-gradient(145deg, rgb(240 180 95 / .06), rgb(255 255 255 / .012));
+  }
+
+  .wonder-card > summary {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: .2rem .7rem;
+    align-items: center;
+    padding: .85rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .wonder-card > summary::-webkit-details-marker { display: none; }
+  .wonder-card summary span { grid-row: 1 / 3; display: grid; width: 2.2rem; height: 2.2rem; place-items: center; border: 1px solid rgb(240 180 95 / .24); border-radius: 50%; color: var(--accent); background: rgb(240 180 95 / .045); }
+  .wonder-card summary small { color: var(--fire); font-size: .57rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+  .wonder-card summary strong { color: #f1e3cf; font-family: var(--serif); font-size: 1.08rem; font-weight: 450; line-height: 1.2; }
+  .wonder-card > div { padding: 0 .85rem .9rem 3.75rem; animation: reveal-treta 300ms ease both; }
+  .wonder-card p { margin: .35rem 0 0; font-size: .86rem; line-height: 1.62; }
+  .wonder-card b { color: #f4d19a; }
+
+  .pattern-panel {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    border: 1px solid rgb(255 122 79 / .16);
+    border-radius: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgb(255 122 79 / .055), rgb(3 13 20 / .22));
+  }
+
+  .pattern-panel h3 { margin: .35rem 0 .5rem; font-size: clamp(1.4rem, 2.1vw, 2rem); }
+  .pattern-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; }
+  .pattern-grid article { border-bottom: 1px solid rgb(240 180 95 / .1); padding: .45rem 0; }
+  .pattern-grid span, .pattern-grid strong { display: block; }
+  .pattern-grid span { color: #aaa49a; font-size: .72rem; }
+  .pattern-grid strong { color: #f0dcc2; font-size: .86rem; }
+
+  .sources-drawer { border: 0; margin-top: 1rem; }
+  .sources-drawer > summary { display: flex; align-items: center; justify-content: space-between; gap: .75rem; border: 1px solid rgb(240 180 95 / .16); border-radius: .85rem; padding: .8rem .95rem; background: rgb(240 180 95 / .035); color: var(--accent); cursor: pointer; list-style: none; }
+  .sources-drawer > summary::-webkit-details-marker { display: none; }
+  .sources-drawer span { color: #eee3cf; font-weight: 800; }
+  .sources-drawer b { color: #f4d19a; font-size: .66rem; text-transform: uppercase; }
+  .sources-drawer :global(.source-panel) { margin-top: .75rem; }
+
+  .continue { display: flex; justify-content: space-between; gap: 1rem; margin-block: 1rem 1.5rem; border: 1px solid rgb(240 180 95 / .22); border-radius: .95rem; padding: 1rem; color: #f4d19a; background: linear-gradient(100deg, rgb(240 180 95 / .055), transparent); }
+  .continue span > * { display: block; }
+  .continue small { color: #9f9688; font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; }
+  .continue strong { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; }
+  .continue em { color: #aaa49a; font-size: .75rem; font-style: normal; }
+  .continue b { align-self: center; font-size: .66rem; text-transform: uppercase; white-space: nowrap; }
+
+  .hero-panel { position: relative; overflow: hidden; min-height: 22rem; }
+  .hero-image { position: absolute; inset: 0; z-index: 0; }
+  .hero-image::after { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(3 13 20 / .16), rgb(3 13 20 / .82)); content: ""; }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; opacity: .38; filter: saturate(1.05) contrast(1.04); }
+  .hero-panel > :not(.hero-image) { position: relative; z-index: 1; }
+  .sigil { background: rgb(3 13 20 / .58); backdrop-filter: blur(14px); }
+
+  .content-frame { display: grid; grid-template-columns: minmax(0, 50rem) minmax(16rem, 20rem); gap: clamp(1.2rem, 4vw, 3.5rem); align-items: start; }
+  .treta-rail { position: sticky; top: 6rem; display: grid; gap: .75rem; padding-top: 1rem; }
+  .rail-scene { position: relative; min-height: 12.5rem; overflow: hidden; border: 1px solid rgb(240 180 95 / .16); border-radius: 1rem; background: rgb(255 255 255 / .018); }
+  .rail-scene::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent, rgb(3 13 20 / .78)); content: ""; }
+  .rail-scene img { width: 100%; height: 100%; min-height: 12.5rem; object-fit: cover; opacity: .62; filter: saturate(1.08); }
+  .rail-scene span { position: absolute; right: .8rem; bottom: .8rem; z-index: 1; display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border: 1px solid rgb(240 180 95 / .32); border-radius: 50%; color: var(--accent); background: rgb(3 13 20 / .62); box-shadow: 0 0 34px rgb(240 180 95 / .18); }
+  .rail-card { border: 1px solid rgb(240 180 95 / .14); border-radius: .95rem; padding: .9rem; background: linear-gradient(145deg, rgb(255 255 255 / .035), rgb(255 255 255 / .012)); box-shadow: inset 0 1px rgb(255 255 255 / .025); backdrop-filter: blur(12px); }
+  .rail-card strong { display: block; color: #f0e4d1; font-family: var(--serif); font-size: 1.1rem; font-weight: 450; }
+  .rail-card p { margin: .35rem 0 0; color: #aaa49a; font-size: .84rem; line-height: 1.55; }
+  .rail-card.compact { display: grid; grid-template-columns: 2.35rem 1fr; gap: .7rem; align-items: center; }
+  .rail-card.compact > span { display: grid; width: 2.35rem; height: 2.35rem; place-items: center; border: 1px solid rgb(240 180 95 / .24); border-radius: 50%; color: var(--accent); }
+
+  .fact-strip div { position: relative; padding-left: 3rem; }
+  .fact-strip i, .dharma-grid i { display: grid; place-items: center; color: var(--accent); }
+  .fact-strip i { position: absolute; left: .85rem; top: .86rem; width: 1.55rem; height: 1.55rem; border: 1px solid rgb(240 180 95 / .2); border-radius: 50%; background: rgb(240 180 95 / .045); }
+  .dharma-grid article { position: relative; padding-top: 2.7rem; }
+  .dharma-grid i { position: absolute; top: .75rem; left: .8rem; width: 1.65rem; height: 1.65rem; border: 1px solid rgb(240 180 95 / .2); border-radius: 50%; background: rgb(240 180 95 / .045); }
+
+  @keyframes reveal-treta { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 900px) {
+    .treta-hero { grid-template-columns: 1fr; }
+    .hero-panel { align-self: stretch; }
+    .fact-strip { grid-template-columns: repeat(2, 1fr); }
+    .timeline-card ol { grid-template-columns: 1fr; }
+    .content-frame { grid-template-columns: 1fr; }
+    .treta-rail { position: static; grid-template-columns: 1fr 1fr; }
+    .rail-scene { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 620px) {
+    .fact-strip, .dharma-grid, .symbol-grid, .figure-list, .inner-grid, .wonder-grid, .pattern-panel { grid-template-columns: 1fr; }
+    .continue { display: grid; }
+    .beyond-victory > summary { display: grid; }
+    .treta-rail { grid-template-columns: 1fr; }
+  }
+</style>
+

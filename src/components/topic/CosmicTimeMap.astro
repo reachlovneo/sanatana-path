@@ -1,89 +1,95 @@
 ---
-const layers = [
+import SacredIcon from "../ui/SacredIcon.astro";
+
+const stages = [
   {
-    level: "01",
     title: "Four Yugas",
-    description: "Satya, Treta, Dvapara, and Kali form one complete sequence.",
-    detail: "One Maha Yuga",
+    number: "4 ages",
+    relation: "form",
+    icon: "sun",
   },
   {
-    level: "02",
     title: "Maha Yuga",
-    description: "A complete cycle of the four Yugas.",
-    detail: "Repeated within a Manvantara",
+    number: "1 complete cycle",
+    relation: "repeated in",
+    icon: "cycle",
   },
   {
-    level: "03",
     title: "Manvantara",
-    description: "A major period associated with a Manu.",
-    detail: "One of fourteen within a Kalpa",
+    number: "71 Maha Yugas",
+    relation: "contained in",
+    icon: "people",
   },
   {
-    level: "04",
     title: "Kalpa",
-    description: "A day of Brahma: a vast period of active creation.",
-    detail: "Followed by a night of equal duration",
+    number: "1,000 Maha Yugas",
+    relation: "",
+    icon: "lotus",
   },
-  {
-    level: "05",
-    title: "Day and Night",
-    description: "Activity and rest, manifestation and dissolution.",
-    detail: "The rhythm continues",
-  },
-];
+] as const;
 ---
 
-<figure class="cosmic-time-map" aria-labelledby="cosmic-time-map-title">
+<figure id="cosmic-time-map" class="cosmic-time-map" aria-labelledby="cosmic-time-map-title">
   <figcaption>
-    <p class="eyebrow">Visual overview</p>
-    <h2 id="cosmic-time-map-title">Time nested within time</h2>
-    <p>Begin with the smallest layer in this journey and move outward.</p>
+    <div>
+      <p class="eyebrow">Visual overview</p>
+      <h2 id="cosmic-time-map-title">How the layers connect</h2>
+    </div>
+    <p>Read left to right. Each layer belongs inside a larger one.</p>
   </figcaption>
 
   <ol>
     {
-      layers.map((layer, index) => (
-        <li style={`--layer:${index}`}>
-          <span>{layer.level}</span>
-          <div>
-            <strong>{layer.title}</strong>
-            <p>{layer.description}</p>
-          </div>
-          <small>{layer.detail}</small>
+      stages.map((stage) => (
+        <li>
+          <article>
+            <span class="step"><SacredIcon name={stage.icon} size={18} /></span>
+            <strong>{stage.title}</strong>
+            <small>{stage.number}</small>
+          </article>
+
+          {stage.relation && (
+            <div class="connector" aria-label={stage.relation}>
+              <span>{stage.relation}</span>
+              <i aria-hidden="true"></i>
+            </div>
+          )}
         </li>
       ))
     }
   </ol>
+  <p class="key-idea"><SacredIcon name="key" size={17} /><span><strong>Key idea:</strong> Kali Yuga is one part of the Four Yugas, not the whole timeline.</span></p>
 </figure>
 
 <style>
   .cosmic-time-map {
-    margin: 3rem 0;
-    border: 1px solid var(--border);
-    border-radius: 1.5rem;
-    padding: clamp(1.2rem, 4vw, 2rem);
-    background:
-      radial-gradient(circle at 85% 5%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 20rem),
-      var(--surface);
-    box-shadow: var(--shadow);
+    margin: 1.25rem 0 3rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding-block: 1rem;
   }
 
   figcaption {
-    max-width: 58ch;
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: minmax(22rem, 1.2fr) minmax(18rem, 0.8fr);
+    align-items: center;
+    gap: clamp(1rem, 4vw, 3rem);
+    margin-bottom: 0.75rem;
   }
 
   figcaption h2 {
-    margin: 0.1rem 0 0.5rem;
+    margin: 0.1rem 0 0;
     font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-size: clamp(1.45rem, 2.5vw, 1.85rem);
     font-weight: 500;
     letter-spacing: -0.025em;
+    line-height: 1.08;
   }
 
   figcaption p {
     margin: 0;
     color: var(--ink-muted);
+    font-size: 0.82rem;
   }
 
   figcaption .eyebrow {
@@ -92,73 +98,192 @@ const layers = [
 
   ol {
     display: grid;
-    gap: 0.65rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+    align-items: stretch;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   li {
-    display: grid;
-    grid-template-columns: auto 1fr minmax(9rem, auto);
-    align-items: center;
-    gap: 1rem;
-    margin-right: calc(var(--layer) * 0.85rem);
-    border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
-    border-radius: 1rem;
-    padding: 0.9rem;
-    background: color-mix(in srgb, var(--surface-muted) calc(20% + var(--layer) * 8%), var(--surface));
-    transition: border-color 220ms ease, transform 220ms ease;
+    position: relative;
+    display: block;
+    min-width: 0;
   }
 
-  li:hover {
-    border-color: var(--gold);
-    transform: translateX(4px);
+  article {
+    position: relative;
+    display: flex;
+    height: 100%;
+    min-height: 7.25rem;
+    flex-direction: column;
+    border-left: 2px solid var(--gold);
+    padding: 0.45rem 0 0.45rem 0.75rem;
+    transition: transform 180ms ease;
   }
 
-  li > span {
+  article:hover {
+    transform: translateY(-3px);
+  }
+
+  .step {
     display: grid;
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 1.65rem;
+    height: 1.65rem;
     place-items: center;
     border: 1px solid var(--gold);
     border-radius: 50%;
     color: var(--copper);
     font-family: var(--serif);
-    font-size: 0.8rem;
+    font-size: 0.58rem;
     font-weight: 800;
   }
 
   strong {
     display: block;
+    margin-top: 0.7rem;
     font-family: var(--serif);
-    font-size: 1.2rem;
-    font-weight: 600;
+    min-height: 2.2rem;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    font-weight: 650;
+    line-height: 1.1;
   }
 
-  li p,
   small {
+    display: block;
+    margin-top: auto;
+    padding-top: 0.35rem;
+    color: var(--ink);
+    min-height: 2rem;
+    font-size: 0.72rem;
+    font-weight: 850;
+    line-height: 1.3;
+  }
+
+  .connector {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: calc(100% + 0.4rem);
+    display: grid;
+    width: calc(clamp(1.75rem, 3vw, 2.5rem) - 0.8rem);
+    place-items: center;
+    align-content: center;
+    gap: 0.4rem;
+    transform: translateY(-50%);
+  }
+
+  .connector span {
+    color: var(--copper);
+    font-size: 0.6rem;
+    font-weight: 850;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .connector i {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .connector i::after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0.4rem;
+    height: 0.4rem;
+    transform: translateY(-50%) rotate(45deg);
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    content: "";
+  }
+
+  .key-idea {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.65rem 0 0;
+    border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    padding-top: 0.55rem;
     color: var(--ink-muted);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
 
-  li p {
-    margin: 0.15rem 0 0;
+  .key-idea :global(svg) {
+    flex: 0 0 auto;
+    color: var(--gold);
   }
 
-  small {
-    text-align: right;
+  .key-idea strong {
+    display: inline;
+    min-height: 0;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: inherit;
+    font-weight: 800;
+  }
+
+  @media (max-width: 880px) {
+    .cosmic-time-map {
+      margin-bottom: 3rem;
+      padding-block: 1rem;
+    }
+
+    figcaption {
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+    }
+
+    ol {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin-inline: -0.25rem;
+      padding: 0.25rem 0.25rem 0.65rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+    }
+
+    li {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: stretch;
+      gap: 0.75rem;
+      scroll-snap-align: start;
+    }
+
+    article {
+      width: min(68vw, 14rem);
+      min-height: 8rem;
+      padding: 0.45rem 0 0.45rem 0.75rem;
+    }
+
+    .connector {
+      position: static;
+      width: 2rem;
+      flex: 0 0 auto;
+      padding: 0;
+      transform: none;
+    }
+
+    .connector span {
+      font-size: 0.65rem;
+    }
   }
 
   @media (max-width: 680px) {
-    li {
-      grid-template-columns: auto 1fr;
-      margin-right: 0;
+    figcaption {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
     }
 
-    small {
-      grid-column: 2;
-      text-align: left;
+    figcaption h2 {
+      font-size: 1.6rem;
     }
   }
 </style>

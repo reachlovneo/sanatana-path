@@ -1,7 +1,14 @@
----
+﻿---
 import { getCollection, render } from "astro:content";
 import Breadcrumbs from "../../components/navigation/Breadcrumbs.astro";
 import JsonLd from "../../components/seo/JsonLd.astro";
+import CosmicTimeJourney from "../../components/topic/CosmicTimeJourney.astro";
+import KalpaJourney from "../../components/topic/KalpaJourney.astro";
+import ManvantaraJourney from "../../components/topic/ManvantaraJourney.astro";
+import MahaYugaJourney from "../../components/topic/MahaYugaJourney.astro";
+import FourYugasJourney from "../../components/topic/FourYugasJourney.astro";
+import SatyaYugaJourney from "../../components/topic/SatyaYugaJourney.astro";
+import TretaYugaJourney from "../../components/topic/TretaYugaJourney.astro";
 import JourneyPath from "../../components/topic/JourneyPath.astro";
 import RelatedTopics from "../../components/topic/RelatedTopics.astro";
 import ReviewStatus from "../../components/topic/ReviewStatus.astro";
@@ -10,10 +17,12 @@ import SourcePanel from "../../components/topic/SourcePanel.astro";
 import TopicNavigation from "../../components/topic/TopicNavigation.astro";
 import { getAdjacentAtlasTopics } from "../../data/atlas";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
 export async function getStaticPaths() {
   const topics = await getCollection("atlas");
   return topics.map((topic) => ({ params: { slug: topic.id }, props: { topic } }));
 }
+
 const { topic } = Astro.props;
 const { Content } = await render(topic);
 const adjacentTopics = getAdjacentAtlasTopics(topic.id);
@@ -26,11 +35,7 @@ const articleJsonLd = {
   description: topic.data.summary,
   url: canonicalUrl,
   dateModified: topic.data.lastReviewed,
-  isPartOf: {
-    "@type": "CollectionPage",
-    name: "Cosmic Atlas",
-    url: new URL("/atlas", Astro.site),
-  },
+  isPartOf: { "@type": "CollectionPage", name: "Cosmic Atlas", url: new URL("/atlas", Astro.site) },
 };
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -42,24 +47,58 @@ const breadcrumbJsonLd = {
   ],
 };
 ---
+
 <BaseLayout title={`${topic.data.title} | Cosmic Atlas | Sanatana Path`} description={topic.data.summary} type="article" noindex={!isPublished}>
   <Fragment slot="head"><JsonLd data={isPublished ? [articleJsonLd, breadcrumbJsonLd] : breadcrumbJsonLd} /></Fragment>
-  <article class="container topic">
+  <article class:list={["container", "topic", topic.id === "cosmic-time" && "gateway-topic"]}>
     <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/atlas", label: "Cosmic Atlas" }, { label: topic.data.title }]} />
-    <ReviewStatus status={topic.data.reviewStatus} reviewedBy={topic.data.reviewedBy} />
-    <header class="topic-header reveal"><p class="eyebrow">Cosmic Atlas</p><h1 class="display">{topic.data.title}</h1><p class="meaning">{topic.data.oneLineMeaning}</p></header>
-    {topic.data.quickAnswer && topic.data.whyItMatters && <QuickOrientation quickAnswer={topic.data.quickAnswer} whyItMatters={topic.data.whyItMatters} />}
-    <div class="reveal reveal-delay-1"><JourneyPath steps={topic.data.whereItFits} active={topic.data.title} /></div>
-    <section class="quick-facts reveal reveal-delay-2" aria-label="Quick facts">{topic.data.quickFacts.map((fact) => <div class="surface"><span>{fact.label}</span><strong>{fact.value}</strong></div>)}</section>
-    <div class="content-layout">
-      <section class="prose"><Content /><h2>Present-life meaning</h2><p>{topic.data.presentLife}</p><RelatedTopics slugs={topic.data.relatedTopics} /><TopicNavigation previous={adjacentTopics.previous} next={adjacentTopics.next} /></section>
-      <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
-    </div>
+    {
+      topic.id === "cosmic-time" ? (
+        <CosmicTimeJourney topic={topic} next={adjacentTopics.next} />
+      ) : topic.id === "kalpa" ? (
+        <KalpaJourney topic={topic} next={adjacentTopics.next} />
+      ) : topic.id === "manvantara" ? (
+        <ManvantaraJourney topic={topic} next={adjacentTopics.next} />
+      ) : topic.id === "maha-yuga" ? (
+        <MahaYugaJourney topic={topic} next={adjacentTopics.next} />
+      ) : topic.id === "four-yugas" ? (
+        <FourYugasJourney topic={topic} next={adjacentTopics.next} />
+      ) : topic.id === "satya-yuga" ? (
+        <SatyaYugaJourney topic={topic} next={adjacentTopics.next} />
+      ) : topic.id === "treta-yuga" ? (
+        <TretaYugaJourney topic={topic} next={adjacentTopics.next} />
+      ) : (
+        <>
+          <ReviewStatus status={topic.data.reviewStatus} reviewedBy={topic.data.reviewedBy} />
+          <header class="topic-header reveal"><p class="eyebrow">Cosmic Atlas</p><h1 class="display">{topic.data.title}</h1><p class="meaning">{topic.data.oneLineMeaning}</p></header>
+          {topic.data.quickAnswer && topic.data.whyItMatters && <QuickOrientation quickAnswer={topic.data.quickAnswer} whyItMatters={topic.data.whyItMatters} />}
+          <div class="reveal reveal-delay-1"><JourneyPath steps={topic.data.whereItFits} active={topic.data.title} /></div>
+          <section class="quick-facts reveal reveal-delay-2" aria-label="Quick facts">{topic.data.quickFacts.map((fact) => <div class="surface"><span>{fact.label}</span><strong>{fact.value}</strong></div>)}</section>
+          <div class="content-layout">
+            <section class="prose"><Content /><h2>Present-life meaning</h2><p>{topic.data.presentLife}</p><RelatedTopics slugs={topic.data.relatedTopics} /><TopicNavigation previous={adjacentTopics.previous} next={adjacentTopics.next} /></section>
+            <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+          </div>
+        </>
+      )
+    }
   </article>
 </BaseLayout>
+
 <style>
-  .topic { max-width: 1080px; padding-top: 7rem; } .topic-header { max-width: 780px; margin-bottom: 2.5rem; } .meaning { max-width: 58ch; margin: 1.25rem 0 0; color: var(--ink-muted); font-size: clamp(1.1rem, 2vw, 1.3rem); }
-  .quick-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-block: 1.2rem 4rem; } .quick-facts div { padding: 1.1rem; box-shadow: none; } .quick-facts span, .quick-facts strong { display: block; } .quick-facts span { color: var(--ink-muted); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; } .quick-facts strong { margin-top: 0.25rem; font-family: var(--serif); font-size: 1.2rem; font-weight: 600; }
-  .content-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(2rem, 7vw, 6rem); } .prose { max-width: 68ch; font-size: 1.05rem; } .prose :global(h2) { margin: 3rem 0 0.75rem; font-family: var(--serif); font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 500; letter-spacing: -0.025em; } .prose :global(p), .prose :global(li) { color: var(--ink-muted); }
-  @media (max-width: 800px) { .topic { padding-top: 4rem; } .quick-facts, .content-layout { grid-template-columns: 1fr; } .quick-facts { margin-bottom: 3rem; } }
+  .topic { max-width: 1080px; padding-top: 3.5rem; }
+  .gateway-topic { width: min(1460px, calc(100% - 2rem)); max-width: 1460px; padding-top: 1rem; }
+  .topic:has(.cosmic-reading), .topic:has(.kalpa-reading), .topic:has(.manvantara-reading), .topic:has(.maha-reading), .topic:has(.yugas-reading), .topic:has(.satya-reading), .topic:has(.treta-reading) { width: min(1460px, calc(100% - 2rem)); max-width: 1460px; padding-top: 1rem; }
+  .topic-header { max-width: 780px; margin-bottom: 2rem; }
+  .topic-header .display { font-size: clamp(2.75rem, 6vw, 4.8rem); }
+  .meaning { max-width: 58ch; margin: 1rem 0 0; color: var(--ink-muted); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
+  .quick-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin-block: 1rem 2.75rem; }
+  .quick-facts div { padding: 0.85rem 1rem; box-shadow: none; }
+  .quick-facts span, .quick-facts strong { display: block; }
+  .quick-facts span { color: var(--ink-muted); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .quick-facts strong { margin-top: 0.18rem; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
+  .content-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(2rem, 7vw, 6rem); }
+  .prose { min-width: 0; max-width: 68ch; font-size: 1rem; }
+  .prose :global(h2) { max-width: 30ch; margin: 2.4rem 0 0.65rem; font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 1.95rem); font-weight: 550; letter-spacing: -0.02em; line-height: 1.12; }
+  .prose :global(p), .prose :global(li) { color: var(--ink-muted); }
+  @media (max-width: 800px) { .topic { padding-top: 2.5rem; } .gateway-topic { padding-top: 1rem; } .content-layout { grid-template-columns: 1fr; } .quick-facts { grid-template-columns: repeat(3, minmax(9.5rem, 1fr)); overflow-x: auto; } }
 </style>

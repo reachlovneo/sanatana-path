@@ -1,0 +1,294 @@
+﻿---
+import AtlasGlyph from "../ui/AtlasGlyph.astro";
+import SourcePanel from "./SourcePanel.astro";
+
+const { topic } = Astro.props;
+
+const facts = [
+  ["Also known as", "Krita Yuga"],
+  ["Duration", "1.728 million human years"],
+  ["Position", "First age of every Maha Yuga"],
+  ["Dharma", "Complete, four legs"],
+];
+
+const dharmaLegs = ["Truth", "Purity", "Compassion", "Discipline"];
+
+const symbols = [
+  ["Kamadhenu", "The Divine Cow of Abundance", "Nourishment, prosperity, generosity, and a world that provides without exploitation."],
+  ["Kalpavriksha", "The Wish-Fulfilling Celestial Tree", "Nature in harmony with prosperity, where abundance is not separated from sacred order."],
+  ["Tapas", "Deep Spiritual Discipline", "Meditation, restraint, and inner fire as the primary path of realization in Satya Yuga."],
+  ["Golden Light", "Spiritual Clarity", "The luminous atmosphere of complete Dharma, truthfulness, and inner purity."],
+];
+
+const avatars = [
+  ["Matsya", "Preserves life and sacred knowledge during a great flood."],
+  ["Kurma", "Supports Mount Mandara during the Churning of the Ocean."],
+  ["Varaha", "Restores the Earth from cosmic waters."],
+  ["Narasimha", "Protects Prahlada and restores Dharma."],
+];
+---
+
+<article class="satya-reading">
+  <header class="satya-hero">
+    <div class="hero-text">
+      <p class="eyebrow">Four Yugas / First Age</p>
+      <h1>Satya Yuga</h1>
+      <p class="meaning">The Age of Truth</p>
+      <p class="lead">Before kingdoms, quarrels, and restless ambition, Hindu cosmology remembers an age where truth was not a rule to be enforced. It was the air of the world.</p>
+      <div class="hero-links">
+        <a href="#satya-article">Enter the age</a>
+        <a href="/atlas/four-yugas">Four Yugas map</a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Satya Yuga summary">
+      <div class="hero-glyph"><AtlasGlyph name="satya-yuga" size={54} /></div>
+      <p>The story of the Yugas begins here: with Dharma complete, memory clear, and life naturally turned toward realization.</p>
+    </aside>
+  </header>
+
+  <main class="article-shell" id="satya-article">
+    <article class="prose-flow">
+      <section class="opening-scene">
+        <p class="eyebrow">Opening vision</p>
+        <h2>Imagine a world that does not need to be reminded what truth is</h2>
+        <p>Satya Yuga is remembered as the first morning of the Yuga cycle. The world is young in spirit, but not immature. Life is simple, luminous, and close to the sacred order of the cosmos.</p>
+        <p>People do not live by constant correction. They do not need heavy laws to force basic goodness. The inner compass is still awake. Dharma is not an ideal on a distant wall. It is the natural movement of life.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">The world of Satya Yuga</p>
+        <h2>A civilization shaped by inner clarity</h2>
+        <p>Traditional descriptions portray a world dramatically different from the one we know today. Life is characterized by harmony with nature, simplicity, spiritual awareness, truthfulness, and inner contentment.</p>
+        <p>Societies are not driven by competition, greed, or excessive material ambition. Human beings focus on self-realization and understanding reality rather than acquiring power or wealth.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Why it matters</p>
+        <h2>The standard by which later Yugas are understood</h2>
+        <p>Many Hindu traditions view Satya Yuga as the closest earthly reflection of divine perfection. Later ages are compared against the standard established during this age.</p>
+        <p>For this reason, Satya Yuga is not simply first in time. It is the ideal that makes decline visible. Treta, Dvapara, and Kali are understood by how far the world has moved from this original wholeness.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Name and meaning</p>
+        <h2>Why it is called Satya Yuga</h2>
+        <p><strong>Satya</strong> means truth, reality, that which is eternal, and that which does not change. The age receives this name because truth is described as the natural condition of existence.</p>
+        <p>People do not struggle to discover Dharma. They naturally live in alignment with it.</p>
+        <div class="note-card">
+          <strong>Krita Yuga</strong>
+          <p>Krita means completed, accomplished, perfected, or fully established. The name suggests that cosmic order is functioning as intended. Nothing essential is missing.</p>
+        </div>
+      </section>
+
+      <section class="fact-strip" aria-label="Satya Yuga quick facts">
+        {facts.map(([label, value]) => <div><span>{label}</span><strong>{value}</strong></div>)}
+      </section>
+
+      <section class="dharma-section">
+        <div>
+          <p class="eyebrow">Dharma on four legs</p>
+          <h2>The Bull of Dharma stands complete</h2>
+          <p>One of the most famous symbols associated with the Yugas is the Bull of Dharma. In Satya Yuga, Dharma stands firmly upon all four legs. This symbolizes complete stability and balance.</p>
+          <p>In later Yugas, one leg is lost during each transition. Satya Yuga is therefore remembered as the age in which righteousness is most stable.</p>
+        </div>
+        <aside class="dharma-card">
+          <div class="meter"><span></span><span></span><span></span><span></span></div>
+          <strong>4 / 4</strong>
+          <small>Dharma complete</small>
+          <ul>{dharmaLegs.map((leg) => <li>{leg}</li>)}</ul>
+        </aside>
+      </section>
+
+      <section class="symbols-section">
+        <p class="eyebrow">Symbols of Satya Yuga</p>
+        <h2>The age becomes easier to remember through its living symbols</h2>
+        <p>The Bull of Dharma explains the structure of righteousness. But Satya Yuga is also remembered through images of abundance, nature, meditation, and luminous clarity.</p>
+        <p>These symbols help the age feel less like an abstract time period and more like a living world.</p>
+        <div class="symbol-grid">
+          {symbols.map(([name, title, text]) => (
+            <article>
+              <span>{name.slice(0, 1)}</span>
+              <strong>{name}</strong>
+              <small>{title}</small>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+        <aside class="kamadhenu-note">
+          <strong>Kamadhenu and the feeling of the Golden Age</strong>
+          <p>Kamadhenu does not replace the Bull of Dharma. The Bull explains Dharma standing complete; Kamadhenu evokes the abundance and nourishment that naturally follow when life is aligned with Dharma.</p>
+        </aside>
+      </section>
+      <section>
+        <p class="eyebrow">Human life</p>
+        <h2>The purpose of life is realization, not accumulation</h2>
+        <p>Ancient sources portray humanity as possessing long lifespans, strong memory, deep concentration, high intelligence, and great spiritual awareness.</p>
+        <p>The mind is considered calmer and less distracted. Many traditions suggest that individuals could devote vast periods of time to contemplation, meditation, and the pursuit of wisdom.</p>
+        <p>Society revolves around Dharma, wisdom, learning, spiritual development, and ethical living. Rules and laws are less necessary because people naturally act according to higher principles.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Living knowledge</p>
+        <h2>Wisdom is carried by living memory</h2>
+        <p>One of the most fascinating aspects of Satya Yuga is the way knowledge is transmitted. Unlike modern civilizations that rely heavily on written documents, ancient traditions often describe knowledge as being preserved through direct transmission.</p>
+        <div class="flow-line"><span>Rishi</span><i></i><span>Disciple</span><i></i><span>Future generations</span></div>
+        <p>Knowledge is considered living knowledge. The ability to remember and understand is believed to be far stronger than in later ages.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Great sages</p>
+        <h2>Guardians of sacred knowledge</h2>
+        <p>Satya Yuga is closely associated with the great Rishis. These sages serve as guardians of sacred knowledge and teachers of humanity.</p>
+        <p>The Saptarishis are often remembered in this context, though traditional lists vary depending on the cosmic cycle.</p>
+        <p class="name-line">Marichi · Atri · Angiras · Pulastya · Pulaha · Kratu · Vashistha</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Divine beings</p>
+        <h2>The Yugas do not create the gods</h2>
+        <p>A common misunderstanding is that the gods appeared gradually throughout history. Traditional Hindu cosmology presents a different view.</p>
+        <p>Major deities such as Brahma, Vishnu, Shiva, Lakshmi, and Saraswati already exist within the cosmic framework. The Yugas describe changes within the world, not changes in the existence of the divine.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">Avatars and stories</p>
+        <h2>Foundational stories of restoration and devotion</h2>
+        <p>Unlike Treta Yuga and Dvapara Yuga, which are strongly associated with specific epics, Satya Yuga is remembered through foundational cosmic narratives.</p>
+        <div class="avatar-list">
+          {avatars.map(([name, text]) => <article><strong>{name}</strong><p>{text}</p></article>)}
+        </div>
+        <p>Stories such as Varaha, Dhruva, Prahlada, and Narasimha establish themes that continue throughout later ages: restoration of order, devotion, protection, and the triumph of Dharma.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">A nuanced age</p>
+        <h2>Harmony does not mean the absence of challenge</h2>
+        <p>Many people assume Satya Yuga was completely free of conflict. Traditional stories suggest something more nuanced.</p>
+        <p>Hiranyaksha challenges cosmic order. Hiranyakashipu seeks absolute power. Asuras oppose the Devas. Conflict exists, but Dharma remains overwhelmingly dominant, and restoration follows swiftly.</p>
+      </section>
+
+      <section>
+        <p class="eyebrow">The transition</p>
+        <h2>How Satya Yuga gives way to Treta Yuga</h2>
+        <p>Traditional texts do not describe a single catastrophic ending. There is no final battle or universal collapse. Instead, the transition is gradual.</p>
+        <p>Desire increases. Simplicity decreases. Society becomes more complex. Dharma requires greater effort to maintain.</p>
+        <p>In Satya Yuga, truth is natural. In Treta Yuga, truth must be consciously upheld. This shift prepares the way for kingdoms, sacred duties, and the world of the Ramayana.</p>
+      </section>
+
+      <section class="closing-scene">
+        <p class="eyebrow">What it teaches</p>
+        <h2>Satya Yuga is the memory of wholeness</h2>
+        <p>Satya Yuga represents more than a distant age. It represents an ideal.</p>
+        <p>It reminds humanity that truth, wisdom, compassion, and harmony are not merely aspirations but fundamental possibilities within existence.</p>
+      </section>
+
+      <details class="sources-drawer">
+        <summary><span>Sources and editorial notes</span><b>Open references</b></summary>
+        <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+      </details>
+
+      <a class="continue" href="/atlas/treta-yuga">
+        <span><small>Continue the journey</small><strong>Next: Treta Yuga</strong><em>The age of duty, kingdoms, and the Ramayana.</em></span>
+        <b>Open Treta Yuga -></b>
+      </a>
+    </article>
+  </main>
+</article>
+
+<style>
+  .satya-reading {
+    --accent: #7fe6d9;
+    --gold: #e9b65f;
+    --warm: #f4e6cf;
+    color: var(--warm);
+    border: 1px solid rgb(127 230 217 / .14);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgb(5 22 24 / .7), rgb(3 13 20 / .54));
+  }
+
+  .satya-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 19rem;
+    gap: 1rem;
+    width: min(100% - 2rem, 68rem);
+    margin: 0 auto;
+    padding: clamp(1.8rem, 4vw, 3.2rem) 0 1rem;
+    border-bottom: 1px solid rgb(127 230 217 / .1);
+  }
+
+  .hero-text { max-width: 46rem; }
+  .eyebrow { margin: 0; color: var(--gold); font-size: .62rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 450; letter-spacing: -.02em; }
+  h1 { margin: .35rem 0 0; font-size: clamp(2.8rem, 5vw, 4.9rem); line-height: .98; }
+  .meaning { margin: .45rem 0 0; color: var(--accent); font-family: var(--serif); font-size: clamp(1.1rem, 1.7vw, 1.45rem); }
+  .lead { max-width: 52ch; margin: .9rem 0 0; color: #d0c8bd; font-size: 1.05rem; line-height: 1.68; }
+
+  .hero-links { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+  .hero-links a, .continue { text-decoration: none; }
+  .hero-links a { border: 1px solid rgb(233 182 95 / .24); border-radius: 999px; padding: .58rem .85rem; color: #f3d79e; font-size: .68rem; font-weight: 850; text-transform: uppercase; }
+  .hero-links a:first-child { background: rgb(233 182 95 / .1); }
+
+  .hero-card { align-self: end; border: 1px solid rgb(127 230 217 / .16); border-radius: 1rem; padding: 1rem; background: radial-gradient(circle at top right, rgb(127 230 217 / .1), transparent 48%), rgb(255 255 255 / .018); }
+  .hero-glyph { display: grid; width: 4.6rem; height: 4.6rem; place-items: center; border: 1px solid rgb(127 230 217 / .36); border-radius: 50%; color: var(--accent); }
+  .hero-card p { margin: .9rem 0 0; color: #aaa49a; line-height: 1.55; }
+
+  .article-shell { width: min(100% - 2rem, 68rem); margin: 0 auto; }
+  .prose-flow { max-width: 48rem; padding: 1rem 0 1.5rem; }
+  .prose-flow section { padding-block: clamp(1.55rem, 3vw, 2.7rem); border-bottom: 1px solid rgb(127 230 217 / .09); }
+  .prose-flow h2 { max-width: 25ch; margin: .35rem 0 .75rem; font-size: clamp(1.65rem, 2.5vw, 2.35rem); line-height: 1.12; }
+  .prose-flow p { color: #aaa49a; line-height: 1.72; }
+  .prose-flow strong { color: #eee3cf; }
+
+  .opening-scene, .closing-scene { border: 1px solid rgb(233 182 95 / .13); border-radius: 1rem; padding: clamp(1.2rem, 3vw, 2rem) !important; background: radial-gradient(circle at top left, rgb(233 182 95 / .08), transparent 44%), rgb(255 255 255 / .014); }
+
+  .fact-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+  .fact-strip div { border: 1px solid rgb(127 230 217 / .12); border-radius: .8rem; padding: .7rem .8rem; background: rgb(255 255 255 / .018); }
+  .fact-strip span { display: block; color: #99938a; font-size: .55rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+  .fact-strip strong { display: block; margin-top: .18rem; color: var(--warm); font-family: var(--serif); font-size: .98rem; font-weight: 500; }
+
+  .note-card, .dharma-card, .avatar-list article, .symbol-grid article, .kamadhenu-note { border: 1px solid rgb(233 182 95 / .16); border-radius: .9rem; padding: .9rem; background: rgb(255 255 255 / .018); }
+  .note-card { margin-top: .9rem; }
+  .note-card p { margin: .35rem 0 0; }
+
+  .dharma-section { display: grid; grid-template-columns: minmax(0, 1fr) 13rem; gap: 1rem; align-items: start; }
+  .dharma-card { text-align: center; }
+  .meter { display: grid; grid-template-columns: repeat(4, 1fr); gap: .32rem; }
+  .meter span { height: .5rem; border-radius: 999px; background: linear-gradient(90deg, var(--accent), #f3d79e); }
+  .dharma-card strong { display: block; margin-top: .55rem; font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
+  .dharma-card small { color: #99938a; font-size: .66rem; text-transform: uppercase; letter-spacing: .08em; }
+  .dharma-card ul { display: grid; gap: .35rem; margin: .8rem 0 0; padding: 0; list-style: none; }
+  .dharma-card li { color: #d8c8ab; font-size: .82rem; }
+
+  .flow-line { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .9rem 0; }
+  .flow-line span, .name-line { border: 1px solid rgb(233 182 95 / .18); border-radius: 999px; padding: .42rem .65rem; color: #ead7b8; font-size: .82rem; }
+  .flow-line i { width: 1.2rem; height: 1px; background: rgb(127 230 217 / .45); }
+  .name-line { display: inline-block; }
+
+  .avatar-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: .55rem; margin: .9rem 0; }
+  .avatar-list strong { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 500; }
+  .avatar-list p { margin: .2rem 0 0; font-size: .9rem; line-height: 1.55; }
+
+  .sources-drawer { border: 0; margin-top: 1rem; }
+  .sources-drawer > summary { display: flex; align-items: center; justify-content: space-between; gap: .75rem; border: 1px solid rgb(127 230 217 / .15); border-radius: .85rem; padding: .8rem .95rem; background: rgb(127 230 217 / .035); color: var(--accent); cursor: pointer; list-style: none; }
+  .sources-drawer > summary::-webkit-details-marker { display: none; }
+  .sources-drawer span { color: #eee3cf; font-weight: 800; }
+  .sources-drawer b { color: #f3d79e; font-size: .66rem; text-transform: uppercase; }
+  .sources-drawer :global(.source-panel) { margin-top: .75rem; }
+
+  .continue { display: flex; justify-content: space-between; gap: 1rem; margin-block: 1rem 1.5rem; border: 1px solid rgb(233 182 95 / .22); border-radius: .95rem; padding: 1rem; color: #f3d79e; background: linear-gradient(100deg, rgb(233 182 95 / .055), transparent); }
+  .continue span > * { display: block; }
+  .continue small { color: #99938a; font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; }
+  .continue strong { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; }
+  .continue em { color: #aaa49a; font-size: .75rem; font-style: normal; }
+  .continue b { align-self: center; font-size: .66rem; text-transform: uppercase; }
+
+  @media (max-width: 900px) { .satya-hero, .dharma-section { grid-template-columns: 1fr; } .hero-card { align-self: stretch; } .fact-strip { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .fact-strip, .avatar-list, .symbol-grid { grid-template-columns: 1fr; } .continue { display: grid; } }
+</style>
+
+
+
+
+

@@ -1,0 +1,118 @@
+---
+import SourcePanel from "./SourcePanel.astro";
+
+const { topic, next, compact = false } = Astro.props;
+const facts = [
+  ["Duration", "306.72 million human years"],
+  ["Within a Kalpa", "One of 14 Manvantaras"],
+  ["Contains", "71 Maha Yugas"],
+  ["Current era", "Vaivasvata Manvantara"],
+];
+const manus = [
+  "Svayambhuva", "Svarocisa", "Uttama", "Tamasa", "Raivata", "Caksusa", "Vaivasvata — current",
+  "Savarni", "Daksha Savarni", "Brahma Savarni", "Dharma Savarni", "Rudra Savarni", "Deva Savarni", "Indra Savarni",
+];
+const scales = [
+  ["Human life", "About 100 years"],
+  ["Kali Yuga", "432,000 years"],
+  ["Maha Yuga", "4.32 million years"],
+  ["Manvantara", "306.72 million years"],
+  ["Kalpa", "4.32 billion years"],
+];
+---
+
+<article class="manvantara-reading">
+  <header>
+    <p class="eyebrow">Selected layer · Manvantara</p>
+    <h1>The Age of a Manu</h1>
+    <p class="lead">A Manvantara is one of the fourteen great ages that unfold within a Kalpa. If a Kalpa is a cosmic day, a Manvantara is one of its major chapters.</p>
+    <p>Each Manvantara is governed by a Manu, a primordial lawgiver and guide of humanity. Its era has its own sages, divine rulers, celestial beings, and cosmic events.</p>
+    <p>A Manvantara is not merely a measure of time. It is an era with its own identity.</p>
+  </header>
+
+  <dl class="facts">{facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+
+  <div class="reading-body"><main>
+    <section>
+      <h2>What does a Manvantara explain?</h2>
+      <p>A Manvantara identifies one of the fourteen major phases within a Kalpa and gives that vast span of time a distinct historical context.</p>
+      <p>Each phase is associated with a Manu, Saptarishis, an Indra, groups of Devas, and distinct cosmic events. A Manvantara therefore explains how cosmic stewardship changes while the larger Kalpa continues.</p>
+    </section>
+    <section>
+      <h2>Who is a Manu?</h2>
+      <p>The word <em>Manvantara</em> means the period of a Manu. A Manu is traditionally described as a progenitor, guide, and lawgiver of humanity.</p>
+      <p>The Manu establishes order, preserves dharma, and guides life through a vast chapter of cosmic history. Because every era has its own Manu, each Manvantara possesses a unique character.</p>
+    </section>
+  </main></div>
+
+  <details class="full-guide" open={!compact} data-compact={compact || undefined}>
+    <summary><span>Continue reading</span><b>Read full Manvantara guide ↓</b></summary>
+    <div class="reading-body"><main>
+      <section>
+        <h2>The fourteen Manus</h2>
+        <p>A Kalpa contains fourteen Manvantaras, each named after its ruling Manu.</p>
+        <ol class="manus">{manus.map((manu, index) => <li class:list={{ current: index === 6 }}><span>{String(index + 1).padStart(2, "0")}</span><strong>{manu}</strong></li>)}</ol>
+      </section>
+
+      <section>
+        <h2>The current Manvantara</h2>
+        <p>According to traditional cosmology, humanity currently exists within the <strong>Vaivasvata Manvantara</strong>, the seventh of the fourteen Manvantaras in the present Kalpa.</p>
+        <aside class="note"><p class="eyebrow">Our current position</p><p><strong>Shveta Varaha Kalpa</strong> · <strong>Vaivasvata Manvantara</strong> · <strong>28th Maha Yuga</strong> · <strong>Kali Yuga</strong></p></aside>
+      </section>
+
+      <section>
+        <h2>The Saptarishis</h2>
+        <p>Every Manvantara has its own group of Seven Great Sages, known as the Saptarishis. They preserve wisdom, maintain sacred knowledge, and guide humanity through changing ages.</p>
+        <p>As one Manvantara ends and another begins, the group of Saptarishis also changes. Each era therefore carries its own spiritual leadership.</p>
+      </section>
+
+      <section>
+        <h2>The role of Indra and the Devas</h2>
+        <p>Traditional cosmology presents Indra as a role whose holder changes across Manvantaras. The title remains, but the being occupying that position changes.</p>
+        <p>Different groups of Devas also become prominent during different Manvantaras. Together with the Manu and Saptarishis, they form a changing cosmic administration that supports order and creation.</p>
+      </section>
+
+      <section>
+        <h2>The scale of a Manvantara</h2>
+        <div class="scale-list">{scales.map(([label, value]) => <div><span>{label}</span><strong>{value}</strong></div>)}</div>
+        <p>A single Manvantara lasts longer than many geological epochs. Countless generations, civilizations, and transformations can occur within one such era.</p>
+      </section>
+
+      <section>
+        <h2>Transition between Manvantaras</h2>
+        <p>At the conclusion of a Manvantara, a transition period occurs before the next Manu assumes responsibility. New sages appear, new divine rulers arise, and another chapter of cosmic history begins.</p>
+        <p>The Kalpa continues, but its administration changes. This pattern repeats fourteen times throughout a Kalpa.</p>
+      </section>
+
+      <section>
+        <h2>What a Manvantara teaches</h2>
+        <p>A Manvantara teaches that cosmic order is dynamic. Leadership changes, guides change, and ages change, yet the larger rhythm continues.</p>
+        <p>It reminds us that civilizations rise and fall within patterns extending far beyond individual generations.</p>
+      </section>
+
+    </main></div>
+    <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+  </details>
+
+  <a class="continue" href={`/atlas/${next?.slug ?? "maha-yuga"}`}>
+    <span><small>Ready to move deeper?</small><strong>Next: {next?.title ?? "Maha Yuga"}</strong><em>Discover the great cycle that repeats throughout every Manvantara.</em></span>
+    <b>Explore next layer →</b>
+  </a>
+</article>
+
+<style>
+  .manvantara-reading{--accent:#65d7dc;color:#eee3cf}header,.reading-body,.facts,.manvantara-reading :global(.source-panel),.continue,.full-guide>summary{width:min(100% - 2rem,72rem);margin-inline:auto}
+  header{padding:clamp(3rem,7vw,7rem) 0 2.5rem}header p:not(.eyebrow){max-width:62ch;color:#b3aca1;line-height:1.85}header strong,.reading-body strong{color:var(--accent);font-weight:650}
+  h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.025em}h1{max-width:15ch;margin:.35rem 0 1rem;font-size:clamp(3.2rem,6vw,6rem);line-height:1}.lead{color:#d0c5b3!important;font-size:clamp(1.08rem,1.5vw,1.3rem)}
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid rgb(101 215 220/.2)}.facts div{padding:1rem}.facts div+div{border-left:1px solid rgb(101 215 220/.14)}dt{color:#99938a;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}dd{margin:.25rem 0 0;color:#e5dac8;font-family:var(--serif);font-size:1.05rem}
+  .reading-body{padding-block:2rem}.reading-body main{width:min(100%,46rem)}section{border-bottom:1px solid rgb(101 215 220/.14);padding-block:2rem}h2{margin:0 0 .8rem;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}section p,section li{color:#aaa49a;line-height:1.85}section p{margin:.65rem 0 0}section em{color:#d3c9b9}.note{margin:1.5rem 0 0;border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1rem}.note p{margin:.25rem 0;color:#c2b9aa}
+  .manus{display:grid;grid-template-columns:1fr 1fr;gap:0 .8rem;margin:1.2rem 0 0;padding:0;list-style:none}.manus li{display:flex;gap:.65rem;border-top:1px solid rgb(101 215 220/.1);padding:.55rem 0}.manus span{color:#6faaa9;font-size:.65rem}.manus .current{color:#d9ffff}.manus .current strong{color:var(--accent)}
+  .scale-list{margin-top:1.25rem;border-block:1px solid rgb(101 215 220/.14)}.scale-list div{display:flex;justify-content:space-between;gap:1rem;padding:.65rem 0;border-bottom:1px solid rgb(101 215 220/.08)}.scale-list span{color:#aaa49a}.scale-list strong{font-size:.9rem}.references{border-bottom:0}
+  .full-guide{border:0}.full-guide:not([data-compact])>summary{display:none}.full-guide>summary{display:flex;width:fit-content;align-items:center;gap:.55rem;margin-top:.9rem;border:1px solid rgb(101 215 220/.25);border-radius:999px;padding:.55rem .8rem;background:rgb(101 215 220/.035);color:var(--accent);cursor:pointer;list-style:none}.full-guide>summary::-webkit-details-marker{display:none}.full-guide>summary span{color:#99938a;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.full-guide>summary b{font-size:.67rem}.full-guide[open]>summary b{font-size:0}.full-guide[open]>summary b::after{font-size:.67rem;content:"Hide full guide ↑"}.full-guide[open]>.reading-body{animation:guide-reveal 420ms ease both}
+  .continue{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:2rem;border:1px solid rgb(199 140 255/.22);border-radius:1rem;padding:1.2rem 1.35rem;background:linear-gradient(100deg,rgb(199 140 255/.055),transparent);color:#c78cff}.continue span>*{display:block}.continue small{color:#99938a;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.continue strong{font-family:var(--serif);font-size:1.7rem;font-weight:400}.continue em{color:#aaa49a;font-size:.72rem;font-style:normal}.continue b{font-size:.68rem;text-transform:uppercase}
+  .manvantara-reading{border:1px solid rgb(101 215 220/.2);border-radius:1.4rem;padding-bottom:1rem;background:linear-gradient(145deg,rgb(8 30 37/.72),rgb(3 13 20/.48));box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22);backdrop-filter:blur(20px) saturate(115%)}
+  .facts{overflow:hidden;border:1px solid rgb(101 215 220/.2);border-radius:1rem;background:rgb(255 255 255/.025);box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
+  .note,.manus li,.continue,.full-guide>summary{box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
+  @keyframes guide-reveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+  @media(max-width:800px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(101 215 220/.14)}.manus{grid-template-columns:1fr}.continue{align-items:flex-end}}
+</style>

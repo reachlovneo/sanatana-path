@@ -41,5 +41,5 @@ const currentPath = Astro.url.pathname;
   nav { display: flex; gap: 0.25rem; }
   nav a, .theme-toggle { min-height: 44px; border: 0; border-radius: 999px; padding: 0.65rem 0.85rem; background: transparent; color: var(--ink-muted); font: inherit; font-size: 0.86rem; font-weight: 700; cursor: pointer; transition: background-color 180ms ease, color 180ms ease, transform 180ms ease; }
   nav a:hover, nav a[aria-current="page"], .theme-toggle:hover { background: var(--surface-muted); color: var(--ink); transform: translateY(-1px); }
-  @media (max-width: 800px) { .header-inner { min-height: 68px; } .brand small, nav, .theme-label { display: none; } .theme-toggle { display: grid; width: 44px; padding: 0; place-items: center; margin-left: auto; } .theme-icon { display: inline; } }
+  @media (max-width: 800px) { .site-header { background: var(--canvas); backdrop-filter: none; } .header-inner { min-height: 68px; } .brand small, nav, .theme-label { display: none; } .theme-toggle { display: grid; width: 44px; padding: 0; place-items: center; margin-left: auto; } .theme-icon { display: inline; } }
 </style>

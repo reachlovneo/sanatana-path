@@ -6,14 +6,15 @@ interface Question {
 
 interface Props {
   questions: Question[];
+  compact?: boolean;
 }
 
-const { questions } = Astro.props;
+const { questions, compact = false } = Astro.props;
 ---
 
-<section class="common-questions" aria-labelledby="common-questions-heading">
-  <p class="eyebrow">Common confusion</p>
-  <h2 id="common-questions-heading">Questions people ask first</h2>
+<section class:list={["common-questions", compact && "compact"]} aria-labelledby="common-questions-heading">
+  <p class="eyebrow">{compact ? "Questions people ask first" : "Common confusion"}</p>
+  <h2 id="common-questions-heading">{compact ? "Common questions" : "Questions people ask first"}</h2>
   <div>
     {
       questions.map((item, index) => (
@@ -28,13 +29,13 @@ const { questions } = Astro.props;
 
 <style>
   .common-questions {
-    margin: 3rem 0;
+    margin: 2.25rem 0;
   }
 
   h2 {
-    margin: 0.1rem 0 1rem;
+    margin: 0.1rem 0 0.75rem;
     font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-size: clamp(1.45rem, 2.5vw, 1.85rem);
     font-weight: 500;
     letter-spacing: -0.025em;
   }
@@ -47,7 +48,7 @@ const { questions } = Astro.props;
   details {
     border: 1px solid var(--border);
     border-radius: 1rem;
-    padding: 0.85rem 1rem;
+    padding: 0.7rem 0.85rem;
     background: var(--surface);
   }
 
@@ -57,6 +58,7 @@ const { questions } = Astro.props;
 
   summary {
     color: var(--ink);
+    font-size: 0.92rem;
     font-weight: 800;
     cursor: pointer;
   }
@@ -66,4 +68,34 @@ const { questions } = Astro.props;
     color: var(--ink-muted);
     font-size: 0.94rem;
   }
+
+  @media (max-width: 600px) {
+    .common-questions {
+      margin: 2.25rem 0;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    details {
+      padding: 0.75rem 0.85rem;
+    }
+  }
+
+  .compact { margin: 0; border: 1px solid var(--border); border-radius: 0.55rem; padding: 0.7rem 0.8rem 0.8rem; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+  .compact h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .compact .eyebrow { margin: 0 0 0.45rem; color: var(--copper); }
+  .compact div { gap: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 0.45rem; }
+  .compact details { border: 0; border-radius: 0; padding: 0.42rem 0.6rem; background: transparent; }
+  .compact details + details { border-top: 1px solid var(--border); }
+  .compact details[open] { background: color-mix(in srgb, var(--surface-muted) 55%, transparent); }
+  .compact summary { font-family: var(--serif); font-size: 0.82rem; }
+  .compact summary { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.55rem; list-style: none; }
+  .compact summary::-webkit-details-marker { display: none; }
+  .compact summary::before { display: grid; width: 1rem; height: 1rem; place-items: center; border: 1px solid var(--ink-muted); border-radius: 50%; color: var(--ink-muted); font-family: var(--sans); font-size: 0.7rem; content: "+"; }
+  .compact summary::after { color: var(--ink-muted); font-family: var(--sans); content: "⌄"; }
+  .compact details[open] summary::before { content: "−"; }
+  .compact details[open] summary::after { content: "⌃"; }
+  .compact details p { margin-top: 0.25rem; font-size: 0.7rem; line-height: 1.35; }
 </style>

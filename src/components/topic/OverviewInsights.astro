@@ -1,0 +1,91 @@
+---
+import SacredIcon from "../ui/SacredIcon.astro";
+
+const insights = [
+  { icon: "cycle", title: "Kali Yuga is not standalone", text: "It belongs inside the Four Yugas and a much larger cycle." },
+  { icon: "sun", title: "Kalpa is the larger frame", text: "A Kalpa is much larger than any single Yuga." },
+  { icon: "key", title: "The order removes confusion", text: "Each term becomes easier when placed in sequence." },
+  { icon: "map", title: "Deep pages explain details", text: "This page gives the map; each next page explains one layer." },
+] as const;
+---
+
+<section class="overview-insights" aria-labelledby="overview-insights-title">
+  <p class="eyebrow">What this overview helps you understand</p>
+  <h2 id="overview-insights-title">Why the map matters</h2>
+  <div>
+    {insights.map((item) => <article><span><SacredIcon name={item.icon} size={16} /></span><section><h3>{item.title}</h3><p>{item.text}</p></section></article>)}
+  </div>
+</section>
+
+<style>
+  .overview-insights {
+    border: 1px solid var(--border);
+    border-radius: 0.55rem;
+    padding: 0.7rem 0.8rem 0.8rem;
+    background: color-mix(in srgb, var(--surface) 55%, transparent);
+  }
+
+  .eyebrow {
+    margin: 0 0 0.45rem;
+    color: var(--copper);
+  }
+
+  h2 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .overview-insights > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem;
+    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border-radius: 0.45rem;
+    padding: 0.6rem;
+    background: color-mix(in srgb, var(--surface-muted) 24%, transparent);
+  }
+
+  article > span {
+    display: grid;
+    width: 1.8rem;
+    height: 1.8rem;
+    place-items: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--gold) 12%, transparent);
+    color: var(--gold);
+  }
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+
+  p {
+    margin-top: 0.16rem;
+    color: var(--ink-muted);
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 560px) {
+    .overview-insights > div {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,772 @@
+---
+import { getEntry } from "astro:content";
+import SacredIcon from "../ui/SacredIcon.astro";
+import AtlasGlyph from "../ui/AtlasGlyph.astro";
+import CosmicTimeJourney from "../topic/CosmicTimeJourney.astro";
+import KalpaJourney from "../topic/KalpaJourney.astro";
+import ManvantaraJourney from "../topic/ManvantaraJourney.astro";
+import MahaYugaJourney from "../topic/MahaYugaJourney.astro";
+import FourYugasJourney from "../topic/FourYugasJourney.astro";
+
+const cosmicTimeTopic = await getEntry("atlas", "cosmic-time");
+const kalpaTopic = await getEntry("atlas", "kalpa");
+const manvantaraTopic = await getEntry("atlas", "manvantara");
+const mahaYugaTopic = await getEntry("atlas", "maha-yuga");
+const fourYugasTopic = await getEntry("atlas", "four-yugas");
+const kalpaNext = { slug: "kalpa", title: "Kalpa" };
+const manvantaraNext = { slug: "manvantara", title: "Manvantara" };
+const mahaYugaNext = { slug: "maha-yuga", title: "Maha Yuga" };
+const fourYugasNext = { slug: "four-yugas", title: "Four Yugas" };
+const kaliYugaNext = { slug: "kali-yuga", title: "Kali Yuga" };
+
+const layers = [
+  { id: "cosmic-time", title: "Cosmic Time", meaning: "The infinite expanse", scale: "The largest frame", description: "The broad frame that holds every nested cycle shown in this atlas.", position: "Outermost frame", composition: "All nested cycles", color: "#e9b65f", y: 12 },
+  { id: "kalpa", title: "Kalpa", meaning: "One day of Brahma", scale: "4.32 billion human years", description: "A Kalpa consists of 14 Manvantaras and their intervening periods.", position: "Within Cosmic Time", composition: "14 Manvantaras", color: "#e9b65f", y: 29 },
+  { id: "manvantara", title: "Manvantara", meaning: "The reign of a Manu", scale: "71 Maha Yugas", description: "A major era associated with one Manu within a Kalpa.", position: "7th within this Kalpa", composition: "71 Maha Yugas", color: "#65d7dc", y: 44 },
+  { id: "maha-yuga", title: "Maha Yuga", meaning: "One complete cycle of ages", scale: "4.32 million human years", description: "One complete sequence of Satya, Treta, Dvapara, and Kali Yuga.", position: "28th in this Manvantara", composition: "Four Yugas", color: "#c78cff", y: 58 },
+  { id: "four-yugas", title: "Four Yugas", meaning: "Satya, Treta, Dvapara, and Kali", scale: "Four ages", description: "The four ages form one complete Maha Yuga.", position: "Within one Maha Yuga", composition: "Satya · Treta · Dvapara · Kali", color: "#8c91ff", y: 70 },
+  { id: "kali-yuga", title: "Kali Yuga", meaning: "The current age in the common Puranic model", scale: "The fourth Yuga", description: "Our current position within the common Puranic cycle of four Yugas.", position: "Current Yuga", composition: "Present cosmic context", color: "#ff714e", y: 80 },
+] as const;
+---
+
+<section class="atlas-explorer" data-atlas-explorer>
+  <header class="atlas-header glass">
+    <a class="atlas-brand" href="/"><span><AtlasGlyph name="brand" size={42} /></span><div><strong>Sanatana Path</strong><small>The Eternal Atlas</small></div></a>
+    <nav aria-label="Atlas product navigation"><a class="active" href="/atlas">Atlas</a><a href="/atlas/cosmic-time">Journeys</a><a href="/sources">Library</a><a href="/atlas/cosmic-time">Timeline</a><a href="/methodology">About</a></nav>
+    <div class="atlas-actions"><label><SacredIcon name="search" size={15} /><input type="search" placeholder="Search the Atlas..." aria-label="Search the Atlas" /><kbd>⌘K</kbd></label><a href="/methodology" aria-label="Atlas seal"><AtlasGlyph name="brand" size={24} /></a></div>
+  </header>
+  <div class="cosmos" id="atlas-top" aria-label="Interactive Cosmic Atlas">
+    <div class="space-layer"></div>
+    <div class="atlas-camera" data-atlas-camera>
+      <div class="connection-layer"></div>
+      {layers.map((layer, index) => (
+        <div
+          class:list={["art-layer", index === 0 && "selected"]}
+          style={`--layer-index:${index};--node-color:${layer.color};--orbit-width:${index < 2 ? 62 - index * 8 : 51 - index * 4}%;--orbit-height:${index < 2 ? 13 - index : 11 - index * .75}%`}
+          data-art-layer={layer.id}
+          aria-hidden="true"
+        >
+          <span class="orbit orbit-a"></span>
+          <span class="orbit orbit-b"></span>
+          <span class="orbit orbit-c"></span>
+          <span class="orbit orbit-d"></span>
+          <span class="orbit orbit-e"></span>
+          <span class="orbit-sweep"></span>
+          <i class="orbit-core"><AtlasGlyph name={layer.id} size={index < 2 ? 21 : 16} /></i>
+          <b class="satellite satellite-a"></b>
+          <b class="satellite satellite-b"></b>
+          <b class="satellite satellite-c"></b>
+          <b class="satellite satellite-d"></b>
+        </div>
+      ))}
+      <div class="particles-layer"></div>
+    </div>
+    <div class="vignette"></div>
+
+    <article class="intro glass">
+      <p class="kicker" data-intro-kicker>Selected layer</p>
+      <h1><span data-intro-title>Cosmic Time</span></h1>
+      <strong class="intro-meaning" data-intro-meaning>The infinite expanse</strong>
+      <p data-intro-description>The broad frame that holds every nested cycle shown in this atlas.</p>
+      <div class="intro-meta" aria-label="Selected layer scale">
+        <small>Scale</small>
+        <strong data-intro-scale>The largest frame</strong>
+      </div>
+      <button class="begin" type="button" data-explore-selected><i></i><span data-intro-action>Explore Cosmic Time</span><b>↓</b></button>
+    </article>
+
+    <nav class="coordinates glass" aria-label="Current cosmic coordinates">
+      <span>Current position</span>
+      <ol data-coordinates>
+        <li>Cosmic Time</li><li>Kalpa</li>
+      </ol>
+    </nav>
+
+    <nav class="tool-dock glass" aria-label="Atlas tools">
+      <a class="active" href="/atlas" aria-label="Atlas" title="Atlas"><AtlasGlyph name="cosmic-time" size={22} /><span>Atlas</span></a>
+      <a href="/atlas/cosmic-time" aria-label="Journeys" title="Journeys"><AtlasGlyph name="journey" size={20} /><span>Journeys</span></a>
+      <a href="/sources" aria-label="Library" title="Library"><AtlasGlyph name="library" size={19} /><span>Library</span></a>
+      <a href="/methodology" aria-label="Timeline" title="Timeline"><AtlasGlyph name="timeline" size={20} /><span>Timeline</span></a>
+      <a href="/methodology" aria-label="Settings" title="Settings"><AtlasGlyph name="settings" size={20} /><span>Settings</span></a>
+    </nav>
+    <a class="om-seal glass" href="/methodology" aria-label="Sanatana Path methodology"><AtlasGlyph name="om" size={22} /></a>
+
+    <div class="layer-nodes" aria-label="Cosmic time layers">
+      {layers.map((layer, index) => (
+        <button
+          class:list={["layer-node", index === 0 && "selected"]}
+          style={`--node-y:${layer.y}%;--node-color:${layer.color}`}
+          type="button"
+          data-layer={layer.id}
+          data-title={layer.title}
+          data-meaning={layer.meaning}
+          data-scale={layer.scale}
+          data-description={layer.description}
+          data-position={layer.position}
+          data-composition={layer.composition}
+          data-step={index + 1}
+          aria-pressed={index === 0 ? "true" : "false"}
+          data-tooltip={`${layer.title}: ${layer.scale}`}
+        >
+          <span class="node-core"><AtlasGlyph name={layer.id} size={13} /></span>
+          <strong>{layer.title}</strong>
+          <small>{layer.meaning}</small>
+        </button>
+      ))}
+      <div class="yuga-orbit" aria-label="The four Yugas">
+        <span class="satya"><i></i><strong>Satya</strong><small>Yuga</small></span>
+        <span class="treta"><i></i><strong>Treta</strong><small>Yuga</small></span>
+        <span class="dvapara"><i></i><strong>Dvapara</strong><small>Yuga</small></span>
+        <span class="kali"><i></i><strong>Kali Yuga</strong><small>Current age</small></span>
+      </div>
+      <div class="you-are-here"><span>You are here</span><strong>Kali Yuga</strong><small><span data-current-year>5128+</span> Years</small></div>
+    </div>
+
+    <aside class="context glass" aria-live="polite" style="--inspector-color:#e9b65f">
+      <p>Current layer</p>
+      <div class="context-title"><h2 data-context-title>Cosmic Time</h2><span><AtlasGlyph name="cosmic-time" size={19} /></span></div>
+      <strong data-context-meaning>The infinite expanse</strong>
+      <span class="context-description" data-context-description>The broad frame that holds every nested cycle shown in this atlas.</span>
+      <div class="duration relative-scale" data-duration><p data-duration-title>Scale</p><strong data-context-scale>The largest frame</strong><span>Cosmic hierarchy</span><i></i><ol><li>All</li><li>Kalpa</li><li>Manu</li><li>Yuga</li><li>Now</li></ol></div>
+      <div class="context-rule"></div>
+      <div class="context-facts"><span><small>Position</small><strong data-context-position>Outermost frame</strong></span><span><small>Composition</small><strong data-context-composition>All nested cycles</strong></span><span><small>Current context</small><strong>7th Manvantara</strong></span></div>
+      <p>Cosmic hierarchy</p>
+      <ol>
+        {layers.map((layer, index) => (
+          <li class:list={{ selected: index === 0 }} data-context-layer={layer.id} style={`--node-color:${layer.color}`}><button type="button" data-hierarchy-layer={layer.id}><i><AtlasGlyph name={layer.id} size={14} /></i><span><strong>{layer.title}</strong><small>{layer.meaning}</small></span></button></li>
+        ))}
+      </ol>
+      <div class="context-tabs" aria-label="Layer detail levels">
+        <span class="active">Simple</span>
+        <span>Details</span>
+        <span>Sources</span>
+      </div>
+      <div class="simple-note">
+        <span><AtlasGlyph name="cosmic-time" size={18} /></span>
+        <p data-simple-note>The whole atlas begins here. Cosmic Time is the largest frame that contains every smaller layer.</p>
+      </div>
+      <div class="context-actions"><a data-context-link href="#atlas-reading">Open journey <span>→</span></a><a href="/sources">Sources</a></div>
+    </aside>
+
+    <div class="atlas-tooltip glass" data-atlas-tooltip></div>
+  </div>
+
+  <nav class="journey-rail glass" aria-label="Cosmic Atlas journey">
+    <a href="/atlas/cosmic-time"><i><AtlasGlyph name="overview" size={19} /></i><strong>Overview</strong><small>Your Journey</small></a>
+    {layers.map((layer, index) => (
+      <button class:list={{ selected: index === 0 }} type="button" data-rail-layer={layer.id} style={`--node-color:${layer.color}`}>
+        <i><AtlasGlyph name={layer.id} size={26} /></i><strong>{layer.title}</strong><small>{layer.meaning}</small>
+      </button>
+    ))}
+  </nav>
+
+  <section class="discovery-grid">
+    <a class="discovery-card glass structure" href="/atlas/cosmic-time"><p>How everything connects</p><h2>The Grand Structure of Time</h2><small>From the smallest human life to the vast breath of Brahma.</small><span>Explore the structure →</span></a>
+    <article class="discovery-card glass comparison"><p>Readable guide</p><h2>Understand the selected layer</h2><div class="scale-symbols"><span><AtlasGlyph name="human" size={22} /><small>Human Life</small></span><span><AtlasGlyph name="kali-yuga" size={22} /><small>Kali Yuga</small></span><span><AtlasGlyph name="maha-yuga" size={22} /><small>Maha Yuga</small></span><span><AtlasGlyph name="manvantara" size={22} /><small>Manvantara</small></span><span><AtlasGlyph name="kalpa" size={22} /><small>Kalpa</small></span></div><a href="#atlas-reading">Read selected layer →</a></article>
+    <a class="discovery-card glass position" href="/atlas/manvantara"><p>Current cosmic position</p><h2>We are in the <em>7th Manvantara</em></h2><span>Learn more →</span></a>
+  </section>
+  <section class="atlas-reading" id="atlas-reading" data-atlas-reading>
+    {cosmicTimeTopic && <div data-reading-panel="cosmic-time"><CosmicTimeJourney topic={cosmicTimeTopic} next={kalpaNext} compact /></div>}
+    {kalpaTopic && <div data-reading-panel="kalpa" hidden><KalpaJourney topic={kalpaTopic} next={manvantaraNext} compact /></div>}
+    {manvantaraTopic && <div data-reading-panel="manvantara" hidden><ManvantaraJourney topic={manvantaraTopic} next={mahaYugaNext} compact /></div>}
+    {mahaYugaTopic && <div data-reading-panel="maha-yuga" hidden><MahaYugaJourney topic={mahaYugaTopic} next={fourYugasNext} compact /></div>}
+    {fourYugasTopic && <div data-reading-panel="four-yugas" hidden><FourYugasJourney topic={fourYugasTopic} next={kaliYugaNext} compact /></div>}
+    <div class="generic-reading" data-reading-panel="generic" hidden>
+      <header>
+        <div>
+          <p class="eyebrow">Selected layer</p>
+          <h2>What is <em data-reading-title>Manvantara</em>?</h2>
+          <p data-reading-description>A major era associated with one Manu within a Kalpa.</p>
+        </div>
+      </header>
+      <div class="reading-facts">
+        <article><small>Scale</small><strong data-reading-scale>71 Maha Yugas</strong></article>
+        <article><small>Position</small><strong data-reading-position>Within a Kalpa</strong></article>
+        <article><small>Composition</small><strong data-reading-composition>71 Maha Yugas</strong></article>
+      </div>
+      <section>
+        <p class="eyebrow">Why this layer matters</p>
+        <h3 data-reading-meaning>The reign of a Manu</h3>
+        <p data-reading-body>Understanding this layer shows how the larger cosmic hierarchy is divided into ordered, connected periods.</p>
+      </section>
+      <a data-reading-link href="#atlas-top"><span>Keep exploring this atlas</span><strong data-reading-link-title>Return to the atlas</strong><b>↑</b></a>
+    </div>
+  </section>
+</section>
+
+<section class="mobile-atlas">
+  <p class="eyebrow">The Eternal Atlas</p>
+  <h2>Explore Cosmic Time</h2>
+  <p>Start with the largest frame and move toward the age described as our present context.</p>
+  <div class="mobile-position"><span>You are here</span><strong>Kali Yuga</strong><small>One layer inside a much larger cosmic structure</small></div>
+  <ol>
+    {layers.map((layer, index) => <li style={`--node-color:${layer.color}`}><span>{index + 1}</span><div><h2>{layer.title}</h2><p>{layer.meaning}</p></div><a href={`/atlas/${layer.id}`}>Open →</a></li>)}
+  </ol>
+</section>
+
+<script>
+  // @ts-nocheck
+  const explorer = document.querySelector("[data-atlas-explorer]");
+  if (explorer) {
+    const nodes = [...explorer.querySelectorAll("[data-layer]")];
+    const rails = [...explorer.querySelectorAll("[data-rail-layer]")];
+    const contextLayers = [...explorer.querySelectorAll("[data-context-layer]")];
+    const hierarchyButtons = [...explorer.querySelectorAll("[data-hierarchy-layer]")];
+    const artLayers = [...explorer.querySelectorAll("[data-art-layer]")];
+    const readingPanels = [...explorer.querySelectorAll("[data-reading-panel]")];
+    const cosmos = explorer.querySelector(".cosmos");
+    const camera = explorer.querySelector("[data-atlas-camera]");
+    const contextPanel = explorer.querySelector(".context");
+    const tooltip = explorer.querySelector("[data-atlas-tooltip]");
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cameraStates = [
+      { zoom: 1, y: 0 },
+      { zoom: 1, y: 0 },
+      { zoom: 1, y: 0 },
+      { zoom: 1, y: -8 },
+      { zoom: 1, y: -14 },
+      { zoom: 1, y: -20 },
+    ];
+    let selectedIndex = 0;
+    let zoom = cameraStates[0].zoom;
+    let panX = 0;
+    let panY = reducedMotion ? cameraStates[0].y : 0;
+    const applyCamera = (animate = true) => {
+      camera.style.transitionDuration = animate && !reducedMotion ? "520ms" : "1ms";
+      camera.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoom})`;
+      explorer.style.setProperty("--camera-zoom", String(zoom));
+    };
+    const updateVisibility = () => {
+      artLayers.forEach((layer, index) => {
+        const distance = Math.abs(index - selectedIndex);
+        layer.classList.toggle("selected", index === selectedIndex);
+        layer.style.opacity = String(distance === 0 ? 1 : distance === 1 ? 0.46 : 0.14);
+      });
+    };
+    const selectLayer = (id, options = {}) => {
+      const node = nodes.find((item) => item.dataset.layer === id);
+      if (!node) return;
+      const index = nodes.indexOf(node);
+      if (index === selectedIndex && options.openIfSelected) {
+        explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        return;
+      }
+      selectedIndex = index;
+      nodes.forEach((item) => { item.classList.toggle("selected", item === node); item.setAttribute("aria-pressed", String(item === node)); });
+      rails.forEach((item) => item.classList.toggle("selected", item.dataset.railLayer === id));
+      contextLayers.forEach((item) => item.classList.toggle("selected", item.dataset.contextLayer === id));
+      explorer.querySelector("[data-context-title]").textContent = node.dataset.title;
+      explorer.querySelector("[data-context-meaning]").textContent = node.dataset.meaning;
+      explorer.querySelector("[data-intro-title]").textContent = node.dataset.title;
+      explorer.querySelector("[data-intro-meaning]").textContent = node.dataset.meaning;
+      explorer.querySelector("[data-intro-description]").textContent = node.dataset.description;
+      explorer.querySelector("[data-intro-scale]").textContent = node.dataset.scale;
+      explorer.querySelector("[data-intro-action]").textContent = `Explore ${node.dataset.title}`;
+      const scaleTarget = explorer.querySelector("[data-context-scale]");
+      scaleTarget.innerHTML = id === "kalpa" ? '4.32 <small>Billion</small>' : node.dataset.scale;
+      explorer.querySelector("[data-context-description]").textContent = node.dataset.description;
+      explorer.querySelector("[data-context-position]").textContent = node.dataset.position;
+      explorer.querySelector("[data-context-composition]").textContent = node.dataset.composition;
+      explorer.querySelector("[data-duration-title]").textContent = id === "kalpa" ? "Duration" : "Scale";
+      explorer.querySelector("[data-duration]").classList.toggle("relative-scale", id !== "kalpa");
+      const selectedColor = getComputedStyle(node).getPropertyValue("--node-color");
+      explorer.querySelector("[data-duration]").style.setProperty("--inspector-color", selectedColor);
+      contextPanel.style.setProperty("--inspector-color", selectedColor);
+      explorer.querySelector("[data-context-link]").setAttribute("href", "#atlas-reading");
+      const simpleNotes = {
+        "cosmic-time": "The whole atlas begins here. Cosmic Time is the largest frame that contains every smaller layer.",
+        kalpa: "A Kalpa is one day of Brahma and the first major structure inside Cosmic Time.",
+        manvantara: "A Manvantara is one major age inside a Kalpa. We are traditionally placed in the 7th Manvantara.",
+        "maha-yuga": "A Maha Yuga is one full cycle of the four Yugas, repeated many times inside a Manvantara.",
+        "four-yugas": "The Four Yugas are Satya, Treta, Dvapara, and Kali. Together they form one Maha Yuga.",
+        "kali-yuga": "Kali Yuga is the present age in the common Puranic model, but it is only one layer in the larger structure.",
+      };
+      explorer.querySelector("[data-simple-note]").textContent = simpleNotes[id] || node.dataset.description;
+      const readingPanel = ["cosmic-time", "kalpa", "manvantara", "maha-yuga", "four-yugas"].includes(id) ? id : "generic";
+      readingPanels.forEach((panel) => { panel.hidden = panel.dataset.readingPanel !== readingPanel; });
+      if (readingPanel === "generic") {
+        explorer.querySelector("[data-reading-title]").textContent = node.dataset.title;
+        explorer.querySelector("[data-reading-description]").textContent = node.dataset.description;
+        explorer.querySelector("[data-reading-scale]").textContent = node.dataset.scale;
+        explorer.querySelector("[data-reading-position]").textContent = node.dataset.position;
+        explorer.querySelector("[data-reading-composition]").textContent = node.dataset.composition;
+        explorer.querySelector("[data-reading-meaning]").textContent = node.dataset.meaning;
+        explorer.querySelector(".generic-reading").style.setProperty("--reading-color", getComputedStyle(node).getPropertyValue("--node-color"));
+      }
+      explorer.querySelector("[data-coordinates]").innerHTML = `<li>Cosmic Time</li><li>Kalpa</li><li>7th Manvantara</li><li>28th Maha Yuga</li><li>Kali Yuga</li>`;
+      const state = cameraStates[index];
+      zoom = state.zoom;
+      panX = 0;
+      panY = state.y;
+      updateVisibility();
+      contextPanel.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+      applyCamera(options.animate !== false);
+    };
+    const showTooltip = (node) => {
+      tooltip.textContent = node.dataset.tooltip;
+      tooltip.hidden = false;
+      const rect = node.getBoundingClientRect();
+      const cosmosRect = cosmos.getBoundingClientRect();
+      tooltip.style.left = `${rect.left - cosmosRect.left + rect.width / 2}px`;
+      tooltip.style.top = `${rect.top - cosmosRect.top - 8}px`;
+    };
+    nodes.forEach((node) => {
+      node.addEventListener("click", () => selectLayer(node.dataset.layer, { openIfSelected: true }));
+      node.addEventListener("mouseenter", () => showTooltip(node));
+      node.addEventListener("mouseleave", () => { tooltip.hidden = true; });
+    });
+    rails.forEach((node) => node.addEventListener("click", () => selectLayer(node.dataset.railLayer)));
+    hierarchyButtons.forEach((node) => node.addEventListener("click", () => selectLayer(node.dataset.hierarchyLayer)));
+    explorer.querySelector("[data-context-link]")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    explorer.querySelector("[data-reading-panel='cosmic-time'] .continue")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      selectLayer("kalpa");
+      explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    explorer.querySelector("[data-reading-panel='kalpa'] .continue")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      selectLayer("manvantara");
+      explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    explorer.querySelector("[data-reading-panel='manvantara'] .continue")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      selectLayer("maha-yuga");
+      explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    explorer.querySelector("[data-reading-panel='maha-yuga'] .continue")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      selectLayer("four-yugas");
+      explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    explorer.querySelector("[data-reading-panel='four-yugas'] .continue")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      selectLayer("kali-yuga");
+      explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    explorer.querySelector("[data-reading-link]")?.addEventListener("click", (event) => {
+      event.preventDefault();
+      explorer.querySelector(".cosmos")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    explorer.querySelector("[data-explore-selected]")?.addEventListener("click", () => {
+      explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.target.matches("input, textarea")) return;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") selectLayer(nodes[Math.min(nodes.length - 1, selectedIndex + 1)].dataset.layer);
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft") selectLayer(nodes[Math.max(0, selectedIndex - 1)].dataset.layer);
+    });
+    explorer.querySelector("[data-current-year]").textContent = `${new Date().getFullYear() + 3102}+`;
+    updateVisibility();
+    applyCamera(false);
+  }
+</script>
+
+<style>
+  .atlas-explorer { --glass: rgb(5 15 24 / 0.72); display: grid; gap: 0.75rem; padding: 0.75rem; background: #020a10; color: #eee3cf; }
+  .atlas-header { display: grid; min-height: 58px; grid-template-columns: 1fr auto 1fr; align-items: center; border: 0; border-bottom: 1px solid rgb(223 174 93 / .16); padding: 0 .2rem; background: rgb(2 10 16 / .72); box-shadow: none; }
+  .atlas-brand { display: flex; align-items: center; gap: .7rem; width: fit-content; }
+  .atlas-brand > span { display: grid; width: 2.8rem; height: 2.8rem; place-items: center; color: #d9a64f; }
+  .atlas-brand strong, .atlas-brand small { display: block; }
+  .atlas-brand strong { font-family: var(--serif); font-size: 1rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+  .atlas-brand small { color: #9c9992; font-size: .55rem; letter-spacing: .08em; text-transform: uppercase; }
+  .atlas-header nav { display: flex; height: 100%; align-items: center; gap: 1.55rem; }
+  .atlas-header nav a { position: relative; color: #aaa7a1; font-size: .62rem; letter-spacing: .05em; text-transform: uppercase; }
+  .atlas-header nav a::after { position: absolute; right: 50%; bottom: -.75rem; left: 50%; height: 1px; background: #e0aa50; box-shadow: 0 0 8px #e0aa50; content: ""; transition: left 300ms ease, right 300ms ease; }
+  .atlas-header nav a:hover, .atlas-header nav a.active { color: #e7b45f; }
+  .atlas-header nav a:hover::after, .atlas-header nav a.active::after { right: 0; left: 0; }
+  .atlas-actions { display: flex; justify-content: flex-end; align-items: center; gap: .65rem; }
+  .atlas-actions label { display: flex; width: min(22rem, 24vw); align-items: center; gap: .55rem; border: 1px solid rgb(223 174 93 / .28); border-radius: 999px; padding: .55rem .8rem; color: #8f8d88; font-size: .65rem; background: rgb(3 12 19 / .42); box-shadow: inset 0 1px rgb(255 255 255 / .03); }
+  .atlas-actions input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: #d6cdbc; font: inherit; }
+  .atlas-actions input::placeholder { color: #8f8d88; }
+  .atlas-actions kbd { border: 1px solid rgb(223 174 93 / .18); border-radius: .35rem; padding: .05rem .34rem; font: inherit; }
+  .atlas-actions > a { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid rgb(223 174 93 / .25); border-radius: 50%; background: rgb(3 12 19 / .55); color: #e7b45f; box-shadow: inset 0 0 8px rgb(223 174 93 / .12); }
+  .cosmos { position: relative; min-height: clamp(34rem, calc(100svh - 190px), 45rem); overflow: hidden; border: 0; border-bottom: 1px solid rgb(223 174 93 / 0.14); border-radius: 0; background: #02070c; }
+  .cosmos::before,
+  .cosmos::after {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+  }
+  .cosmos::before {
+    top: 14%;
+    width: min(74rem, 78vw);
+    height: min(30rem, 30vw);
+    background:
+      radial-gradient(ellipse, rgb(233 182 95 / .055), transparent 42%),
+      radial-gradient(ellipse, transparent 0 57%, rgb(233 182 95 / .09) 57.2% 57.6%, transparent 58%),
+      radial-gradient(ellipse, transparent 0 74%, rgb(101 215 220 / .04) 74.2% 74.5%, transparent 75%);
+    opacity: .72;
+    animation: atlas-halo-breathe 12s ease-in-out infinite;
+  }
+  .cosmos::after {
+    top: 15%;
+    width: min(42rem, 44vw);
+    height: min(13rem, 12vw);
+    background: radial-gradient(ellipse, rgb(255 210 125 / .1), transparent 68%);
+    animation: atlas-halo-drift 18s ease-in-out infinite;
+  }
+  .space-layer, .atlas-camera, .vignette { position: absolute; inset: 0; }
+  .space-layer {
+    background:
+      radial-gradient(circle at 49% 20%, rgb(215 165 82 / .11), transparent 22%),
+      radial-gradient(circle at 47% 56%, rgb(101 215 220 / .06), transparent 28%),
+      radial-gradient(circle at 28% 48%, rgb(126 143 255 / .035), transparent 22%),
+      radial-gradient(circle at 74% 34%, rgb(199 140 255 / .03), transparent 24%),
+      linear-gradient(155deg, #020910, #01060a 58%, #030b11);
+  }
+  .space-layer::before, .space-layer::after { position: absolute; inset: -12%; content: ""; pointer-events: none; }
+  .space-layer::before {
+    background-image:
+      radial-gradient(circle, rgb(255 226 174 / .68) 0 1px, transparent 1.4px),
+      radial-gradient(circle, rgb(127 185 222 / .48) 0 1px, transparent 1.35px),
+      radial-gradient(circle, rgb(255 255 255 / .3) 0 .7px, transparent 1px);
+    background-position: 0 0, 31px 47px, 17px 13px;
+    background-size: 131px 127px, 179px 173px, 71px 83px;
+    opacity: .18;
+    animation: star-drift 80s linear infinite;
+  }
+  .space-layer::after {
+    background:
+      radial-gradient(ellipse at 50% 50%, transparent 0 31%, rgb(215 165 82 / .025) 31.2% 31.5%, transparent 31.8%),
+      radial-gradient(ellipse at 50% 50%, transparent 0 42%, rgb(101 215 220 / .018) 42.2% 42.45%, transparent 42.7%);
+    opacity: .42;
+    animation: field-breathe 16s ease-in-out infinite;
+  }
+  .atlas-camera { z-index: 1; transform-origin: 50% 52%; transition-property: transform; transition-timing-function: cubic-bezier(.2,.8,.2,1); }
+  .art-layer {
+    position: absolute;
+    top: var(--layer-y);
+    left: 50%;
+    width: var(--orbit-width);
+    height: var(--orbit-height);
+    transform: translate(-50%, -50%);
+    transition: opacity 450ms ease;
+    pointer-events: none;
+  }
+  .art-layer[data-art-layer="cosmic-time"] { --layer-y: 11%; }
+  .art-layer[data-art-layer="kalpa"] { --layer-y: 26%; }
+  .art-layer[data-art-layer="manvantara"] { --layer-y: 41%; }
+  .art-layer[data-art-layer="maha-yuga"] { --layer-y: 55%; }
+  .art-layer[data-art-layer="four-yugas"] { --layer-y: 67%; }
+  .art-layer[data-art-layer="kali-yuga"] { --layer-y: 77%; }
+  .art-layer .orbit, .art-layer .orbit-sweep {
+    position: absolute;
+    border: 1px solid color-mix(in srgb, var(--node-color) 56%, transparent);
+    border-radius: 50%;
+    box-shadow: none;
+  }
+  .art-layer .orbit::before, .art-layer .orbit::after {
+    position: absolute;
+    top: 50%;
+    width: .24rem;
+    height: .24rem;
+    transform: translateY(-50%);
+    border: 1px solid color-mix(in srgb, var(--node-color) 82%, white);
+    border-radius: 50%;
+    background: #061019;
+    box-shadow: 0 0 5px color-mix(in srgb, var(--node-color) 55%, transparent);
+    content: "";
+  }
+  .art-layer .orbit::before { left: -.13rem; }
+  .art-layer .orbit::after { right: -.13rem; }
+  .art-layer .orbit-a { inset: 0; opacity: .72; }
+  .art-layer .orbit-b { inset: 13% 7%; opacity: .52; }
+  .art-layer .orbit-c, .art-layer .orbit-d, .art-layer .orbit-e, .art-layer .orbit-sweep { display: none; }
+  .orbit-core {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 1.65rem;
+    height: 1.65rem;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    border: 1px solid color-mix(in srgb, var(--node-color) 82%, white);
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--node-color) 34%, white), var(--node-color) 12%, #061019 58%);
+    color: color-mix(in srgb, var(--node-color) 85%, white);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--node-color) 36%, transparent);
+    font-style: normal;
+  }
+  .satellite {
+    position: absolute;
+    width: .38rem;
+    height: .38rem;
+    border: 1px solid color-mix(in srgb, var(--node-color) 75%, white);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--node-color) 55%, white);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--node-color) 55%, transparent);
+  }
+  .satellite-a { top: 24%; left: 15%; }
+  .satellite-b, .satellite-c, .satellite-d { display: none; }
+  .art-layer.selected { filter: brightness(1.06); }
+  .art-layer.selected .orbit-a { border-width: 1.5px; opacity: 1; animation: orbit-settle 10s ease-in-out infinite; }
+  .art-layer.selected .orbit-core { animation: core-breathe 7s ease-in-out infinite; }
+  .connection-layer { position: absolute; top: 8%; bottom: 10%; left: 50%; width: 1px; background: linear-gradient(#d7a552, #65d7dc, #c78cff, #ff6a3d); opacity: .42; }
+  .particles-layer { display: none; }
+  .vignette { background: linear-gradient(90deg, rgb(2 8 13 / .92), transparent 23%, transparent 73%, rgb(2 8 13 / .86)), linear-gradient(0deg, rgb(2 8 13 / .7), transparent 20%, rgb(2 8 13 / .2)); pointer-events: none; }
+  .glass { border: 1px solid rgb(223 174 93 / .2); background: rgb(5 15 24 / .78); box-shadow: 0 12px 36px rgb(0 0 0 / .2); }
+  .intro { position: absolute; z-index: 3; top: 25%; left: 3.5rem; width: min(19rem, 23vw); border: 0; padding: 1rem; background: linear-gradient(100deg, rgb(3 12 19 / .62), rgb(3 12 19 / .22) 58%, transparent); box-shadow: none; }
+  .intro::before {
+    position: absolute;
+    top: 3.2rem;
+    left: -.75rem;
+    width: 10rem;
+    height: 2.4rem;
+    transform: rotate(-2deg);
+    border: 1px solid rgb(223 174 93 / .16);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+  }
+  .kicker, .context > p, .discovery-card > p { margin: 0; color: #d8a756; font-size: .63rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+  .intro h1 { margin: .45rem 0 .25rem; font-family: var(--serif); font-size: clamp(2.45rem, 3.5vw, 4rem); font-weight: 400; line-height: .98; }
+  .intro h1 span { color: #f4e6cf; }
+  .intro-meaning { display: block; color: #e7b45f; font-family: var(--serif); font-size: clamp(1rem, 1.35vw, 1.35rem); font-weight: 500; }
+  .intro > p:not(.kicker) { max-width: 27ch; margin: .75rem 0 0; color: #b7b4ae; font-size: .78rem; line-height: 1.6; }
+  .intro-meta { display: grid; gap: .16rem; margin-top: .85rem; border-top: 1px solid rgb(223 174 93 / .18); padding-top: .72rem; }
+  .intro-meta small { color: #8f8b84; font-size: .52rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .intro-meta strong { color: #e5dac7; font-family: var(--serif); font-size: 1.05rem; font-weight: 500; }
+  .begin { display: flex; width: 100%; align-items: center; gap: .7rem; margin-top: 1rem; border: 1px solid #dca84f; border-radius: .65rem; padding: .68rem .78rem; background: linear-gradient(100deg, rgb(145 93 31 / .72), rgb(65 42 22 / .38)); color: #f8e2b7; font-family: var(--serif); font-size: .86rem; cursor: pointer; }
+  .begin i { width: 1.55rem; height: .7rem; border: 1px solid rgb(248 226 183 / .55); border-radius: 50%; }
+  .begin b { margin-left: auto; font-family: var(--sans); font-size: .78rem; font-weight: 700; }
+  .begin span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .coordinates { display: none; }
+  .coordinates > span { color: #a9a59c; text-transform: uppercase; }
+  .coordinates ol { display: flex; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+  .coordinates li + li::before { margin-right: .55rem; color: #8b7760; content: "›"; }
+  .tool-dock { display: none; }
+  .tool-dock a { display: grid; width: 3.1rem; min-height: 2.7rem; place-items: center; align-content: center; gap: .08rem; border-radius: 1rem; color: #a6a39d; }
+  .tool-dock a span { font-size: .42rem; letter-spacing: .04em; text-transform: uppercase; }
+  .tool-dock a.active, .tool-dock a:hover { background: rgb(223 174 93 / .15); color: #e7b45f; box-shadow: inset 0 0 0 1px rgb(223 174 93 / .4), 0 0 18px rgb(223 174 93 / .22); }
+  .om-seal { display: none; }
+  .layer-nodes { position: absolute; z-index: 2; inset: 0; pointer-events: none; }
+  .layer-node { position: absolute; top: var(--node-y); left: 50%; display: grid; width: 14rem; justify-items: center; transform: translate(-50%, -50%); border: 0; padding: .38rem .72rem; background: transparent; color: #ddd5c7; text-shadow: 0 2px 8px #000; cursor: pointer; pointer-events: auto; transition: transform 220ms ease, filter 220ms ease, background 220ms ease; }
+  .layer-node:hover { transform: translate(-50%, -50%) scale(1.06); filter: brightness(1.12); }
+  .layer-node::before { position: absolute; top: 50%; left: -3.55rem; display: grid; width: 1.85rem; height: 1.85rem; place-items: center; transform: translateY(-50%); border: 1px solid color-mix(in srgb, var(--node-color) 72%, transparent); border-radius: 50%; background: rgb(4 13 20 / .68); color: color-mix(in srgb, var(--node-color) 72%, #f5e5c6); box-shadow: inset 0 0 0 4px rgb(255 255 255 / .018); content: attr(data-step); font-family: var(--serif); font-size: .9rem; }
+  .layer-node .node-core { display: grid; width: 1.18rem; height: 1.18rem; place-items: center; border: 1px solid var(--node-color); border-radius: 50%; background: color-mix(in srgb, var(--node-color) 20%, #07131c); color: var(--node-color); box-shadow: 0 0 10px color-mix(in srgb, var(--node-color) 42%, transparent); }
+  .layer-node strong { margin-top: .22rem; color: var(--node-color); font-size: .76rem; letter-spacing: .04em; text-transform: uppercase; }
+  .layer-node small { color: #ccc4b8; font-size: .56rem; }
+  .layer-node.selected .node-core { width: 1.35rem; height: 1.35rem; box-shadow: 0 0 15px color-mix(in srgb, var(--node-color) 55%, transparent); }
+  .layer-node.selected { z-index: 2; border: 0; background: transparent; box-shadow: none; }
+  .layer-node.selected::after {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: 20rem;
+    height: 5.2rem;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+      radial-gradient(ellipse, color-mix(in srgb, var(--node-color) 12%, transparent), transparent 54%),
+      radial-gradient(ellipse, transparent 0 66%, color-mix(in srgb, var(--node-color) 32%, transparent) 66.5% 67.2%, transparent 68%),
+      radial-gradient(ellipse, transparent 0 80%, color-mix(in srgb, var(--node-color) 16%, transparent) 80.5% 81%, transparent 82%);
+    box-shadow: 0 0 28px color-mix(in srgb, var(--node-color) 8%, transparent);
+    content: "";
+    animation: selected-halo 9s ease-in-out infinite;
+  }
+  .yuga-orbit { position: absolute; top: 67%; left: 50%; width: 21rem; height: 6.2rem; transform: translate(-50%, -50%); border: 1px solid rgb(150 129 255 / .35); border-radius: 50%; }
+  .yuga-orbit::before { position: absolute; inset: 1rem 3.5rem; border: 1px solid rgb(150 129 255 / .28); border-radius: 50%; content: ""; }
+  .yuga-orbit span { position: absolute; display: grid; justify-items: center; color: #d8d0c3; font-size: .52rem; text-transform: uppercase; }
+  .yuga-orbit span i { width: .65rem; height: .65rem; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+  .yuga-orbit span strong { font-size: .57rem; }
+  .yuga-orbit span small { font-size: .46rem; }
+  .yuga-orbit .satya { top: 43%; left: 13%; color: #73e4dd; }
+  .yuga-orbit .treta { top: 12%; left: 68%; color: #f0bd67; }
+  .yuga-orbit .dvapara { top: 58%; left: 82%; color: #8194ff; }
+  .yuga-orbit .kali { top: 74%; left: 47%; color: #ff714e; }
+  .yuga-orbit .kali strong, .yuga-orbit .kali small { display: none; }
+  .layer-node[data-layer="kali-yuga"] { top: 77%; }
+  .you-are-here { position: absolute; top: 86.5%; left: 50%; display: grid; justify-items: center; transform: translate(-50%, -50%); color: #e7b45f; text-align: center; }
+  .you-are-here span { font-size: .58rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+  .you-are-here strong { font-family: var(--serif); font-size: 1rem; }
+  .you-are-here small { color: #aaa49b; font-size: .55rem; }
+  .context { position: absolute; z-index: 3; top: 3.1rem; right: 3rem; width: min(24rem, 25vw); max-height: calc(100% - 4.5rem); overflow: hidden; border-radius: 1rem; padding: .95rem; background: linear-gradient(150deg, rgb(5 15 24 / .84), rgb(2 9 15 / .72)); scrollbar-color: rgb(215 165 82 / .35) transparent; scrollbar-width: thin; }
+  .context h2 { margin: .16rem 0 0; color: #f4e6cf; font-family: var(--serif); font-size: clamp(1.9rem, 2.35vw, 2.4rem); font-weight: 400; }
+  .context-title { display: flex; align-items: center; gap: .7rem; }
+  .context-title { justify-content: space-between; }
+  .context-title span { display: grid; width: 2.45rem; height: 2.45rem; place-items: center; border: 1px solid var(--inspector-color, #d8a756); border-radius: 50%; color: var(--inspector-color, #d8a756); box-shadow: 0 0 12px color-mix(in srgb, var(--inspector-color, #d8a756) 16%, transparent); }
+  .context > strong, .context > span { display: block; }
+  .context > strong { color: var(--inspector-color, #e7b45f); font-family: var(--serif); font-size: .98rem; font-weight: 500; }
+  .context > span { max-width: 34ch; margin-top: .45rem; color: #c0bbb2; font-size: .68rem; line-height: 1.45; }
+  .duration { position: relative; margin-top: .45rem; }
+  .duration::before, .duration::after { display: none; }
+  .duration::before { transform: scale(.64); box-shadow: 0 0 0 8px color-mix(in srgb, var(--inspector-color, #e9b65f) 5%, transparent), 0 0 0 15px color-mix(in srgb, var(--inspector-color, #e9b65f) 4%, transparent); }
+  .duration::after { background: radial-gradient(circle, white 0 2%, var(--inspector-color, #e9b65f) 4%, transparent 12%); }
+  .duration p { color: #aaa59b; }
+  .duration > strong { display: block; color: #ddd3c2; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; line-height: 1; }
+  .duration > strong small { color: #d8a756; font-family: var(--serif); font-size: .75rem; }
+  .duration > span { color: #99958e; font-size: .55rem; }
+  .duration > i { display: block; height: 2px; margin-top: .55rem; background: linear-gradient(90deg, #d8a756, #f2d79e); box-shadow: 0 0 8px rgb(223 174 93 / .45); }
+  .context .duration ol { display: flex; justify-content: space-between; gap: 0; margin: .12rem 0 0; padding: 0; color: #99958e; font-size: .48rem; }
+  .context .duration li { display: list-item; padding: 0; background: none; }
+  .duration.relative-scale > span, .duration.relative-scale > i, .duration.relative-scale ol { display: none !important; }
+  .context-rule { height: 1px; margin: .55rem 0; background: rgb(223 174 93 / .18); }
+  .context > ol { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: .35rem; margin: .55rem 0 .65rem; padding: 0; list-style: none; }
+  .context > ol::before { display: none; }
+  .context li { border-radius: .55rem; }
+  .context li button { display: grid; width: 100%; justify-items: center; gap: .28rem; border: 0; border-radius: inherit; padding: .3rem .15rem; background: transparent; color: inherit; text-align: center; cursor: pointer; }
+  .context li.selected { background: color-mix(in srgb, var(--node-color) 13%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--node-color) 18%, transparent); }
+  .context li i { z-index: 1; display: grid; width: 1.55rem; height: 1.55rem; flex: 0 0 auto; place-items: center; border: 1px solid var(--node-color); border-radius: 50%; background: #07131c; color: var(--node-color); box-shadow: none; }
+  .context li i :global(svg) { width: .95rem; height: .95rem; }
+  .context li strong, .context li small { display: block; }
+  .context li strong { font-size: .58rem; font-weight: 600; }
+  .context li small { display: none; }
+  .context-facts { display: none; }
+  .context-facts span { border: 1px solid rgb(223 174 93 / .14); border-radius: .4rem; padding: .32rem .35rem; background: rgb(255 255 255 / .015); }
+  .context-facts span:last-child { grid-column: 1 / -1; }
+  .context-facts small, .context-facts strong { display: block; }
+  .context-facts small { color: #8f8b84; font-size: .45rem; letter-spacing: .08em; text-transform: uppercase; }
+  .context-facts strong { font-size: .56rem; font-weight: 600; }
+  .context-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; border-top: 1px solid rgb(223 174 93 / .15); padding-top: .45rem; }
+  .context-tabs span { display: grid; min-height: 1.75rem; place-items: center; border-bottom: 1px solid transparent; color: #827e78; font-size: .55rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .context-tabs .active { border-color: var(--inspector-color, #e7b45f); color: var(--inspector-color, #e7b45f); }
+  .simple-note { display: grid; grid-template-columns: auto 1fr; gap: .65rem; margin-top: .55rem; border: 1px solid color-mix(in srgb, var(--inspector-color, #e7b45f) 20%, transparent); border-radius: .7rem; padding: .65rem; background: color-mix(in srgb, var(--inspector-color, #e7b45f) 5%, transparent); }
+  .simple-note span { display: grid; width: 2.15rem; height: 2.15rem; place-items: center; border: 1px solid var(--inspector-color, #e7b45f); border-radius: 50%; color: var(--inspector-color, #e7b45f); }
+  .simple-note p { margin: 0; color: #bbb6ad; font-size: .66rem; line-height: 1.55; }
+  .context-actions { display: grid; grid-template-columns: 1fr auto; gap: .65rem; border-top: 1px solid rgb(223 174 93 / .18); margin-top: .65rem; padding-top: .6rem; }
+  .context-actions a { display: flex; justify-content: space-between; color: #e7b45f; font-size: .65rem; font-weight: 800; }
+  .atlas-tooltip { position: absolute; z-index: 8; transform: translate(-50%, -100%); border-radius: 999px; padding: .32rem .55rem; color: #d9d1c4; font-size: .55rem; pointer-events: none; }
+  .atlas-tooltip[hidden] { display: none; }
+  .journey-rail { position: relative; z-index: 5; display: grid; grid-template-columns: repeat(7, 1fr); width: min(72rem, calc(100% - 2rem)); margin: .75rem auto 1rem; overflow: hidden; border-radius: 1rem; padding: .45rem; }
+  .journey-rail button, .journey-rail > a { position: relative; display: grid; justify-items: center; border: 0; border-right: 1px solid rgb(223 174 93 / .16); padding: .35rem; background: transparent; color: #c8c1b5; cursor: pointer; }
+  .journey-rail button::before, .journey-rail > a::before { position: absolute; z-index: 0; top: 1.55rem; left: 50%; width: 100%; height: 1px; background: linear-gradient(90deg, color-mix(in srgb, var(--node-color, #aaa) 45%, transparent), rgb(150 145 138 / .2)); content: ""; }
+  .journey-rail button:last-child::before { display: none; }
+  .journey-rail button:last-child { border: 0; }
+  .journey-rail i { position: relative; z-index: 1; display: grid; width: 2.05rem; height: 2.05rem; place-items: center; border: 1px solid var(--node-color, rgb(223 174 93 / .32)); border-radius: 50%; background: #07131c; color: var(--node-color, #aaa); font-size: .58rem; font-style: normal; box-shadow: inset 0 0 0 4px rgb(255 255 255 / .012); }
+  .journey-rail i::after { position: absolute; inset: -.35rem; border: 1px solid color-mix(in srgb, var(--node-color, #aaa) 32%, transparent); border-radius: 50%; content: ""; }
+  .journey-rail strong { margin-top: .2rem; font-size: .66rem; }
+  .journey-rail small { color: #8f8b85; font-size: .5rem; }
+  .journey-rail button.selected i { background: color-mix(in srgb, var(--node-color) 18%, #07131c); box-shadow: inset 0 0 0 4px rgb(255 255 255 / .025), 0 0 12px color-mix(in srgb, var(--node-color) 38%, transparent); }
+  .discovery-grid { display: none; }
+  .discovery-card { position: relative; min-height: 10rem; overflow: hidden; border-radius: 1rem; padding: 1rem; background: radial-gradient(circle at 80% 50%, rgb(223 174 93 / .16), transparent 35%), var(--glass); }
+  .discovery-card.structure { background: linear-gradient(90deg, rgb(3 12 19 / .96), rgb(3 12 19 / .35)), url("/images/atlas/grand-structure.jpg") 68% 52% / cover; }
+  .discovery-card.position { background: linear-gradient(90deg, rgb(3 12 19 / .94), rgb(3 12 19 / .18)), url("/images/atlas/current-position.jpg") 68% 42% / cover; }
+  .discovery-card h2 { max-width: 14ch; margin: .5rem 0; font-family: var(--serif); font-size: 1.35rem; font-weight: 400; line-height: 1.1; }
+  .discovery-card span, .discovery-card > a { color: #d8a756; font-size: .65rem; }
+  .discovery-card > small { display: block; max-width: 22ch; margin-bottom: .8rem; color: #aaa59c; font-size: .58rem; }
+  .discovery-card em { color: #d8a756; font-style: normal; }
+  .scale-symbols { display: grid; grid-template-columns: repeat(5, 1fr); gap: .3rem; margin-top: .8rem; }
+  .scale-symbols span { display: grid; justify-items: center; gap: .15rem; color: #e7b45f; }
+  .scale-symbols small { color: #9c9891; font-size: .45rem; }
+  .scale { display: flex; align-items: center; gap: 1.5rem; margin: 1.4rem 0 .7rem; }
+  .scale::before { position: absolute; width: 24%; height: 1px; background: linear-gradient(90deg, #ff714e, #e9b65f); content: ""; }
+  .scale i { z-index: 1; width: .55rem; height: .55rem; border-radius: 50%; background: #e7b45f; box-shadow: 0 0 10px #e7b45f; }
+  .discovery-card small { color: #918d86; font-size: .55rem; }
+  .scale-experience { min-height: calc(100svh - 2rem); border-radius: 1rem; padding: clamp(2rem, 5vw, 5rem); background: radial-gradient(circle at 75% 50%, rgb(215 165 82 / .12), transparent 35%), var(--glass); }
+  .scale-experience > div p { margin: 0; color: #d7a552; font-size: .65rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+  .scale-experience h2 { max-width: 16ch; margin: .4rem 0; font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 400; line-height: 1; }
+  .scale-experience > div span { color: #9d9992; font-size: .7rem; }
+  .scale-experience ol { position: relative; height: 18rem; margin: 3rem 0 0; padding: 0; list-style: none; }
+  .scale-experience ol::before { position: absolute; right: 0; bottom: 4rem; left: 0; height: 1px; background: linear-gradient(90deg, #6c655b, #d7a552); box-shadow: 0 0 14px rgb(215 165 82 / .28); content: ""; }
+  .scale-experience li { position: absolute; bottom: 3.45rem; left: var(--scale-x); display: grid; justify-items: center; width: 9rem; transform: translateX(-50%); color: #d7a552; text-align: center; }
+  .scale-experience li:first-child { transform: none; justify-items: start; text-align: left; }
+  .scale-experience li:last-child { transform: translateX(-100%); justify-items: end; text-align: right; }
+  .scale-experience li::after { width: .65rem; height: .65rem; margin-top: 1rem; border-radius: 50%; background: #d7a552; box-shadow: 0 0 18px #d7a552; content: ""; }
+  .scale-experience strong, .scale-experience small { display: block; }
+  .scale-experience strong { margin-top: .65rem; color: #e5dac7; font-family: var(--serif); font-size: .9rem; }
+  .scale-experience small { color: #918d86; font-size: .52rem; }
+  .scale-experience { position: relative; min-height: min(46rem, calc(100svh - 2rem)); overflow: hidden; }
+  .scale-experience > div:not(.scale-heading), .scale-experience > ol:not([data-scale-track]) { display: none; }
+  .scale-heading { max-width: 45rem; }
+  .scale-heading h2 { max-width: 14ch; font-size: clamp(3rem, 6vw, 6.5rem); }
+  .scale-heading h2 em { color: var(--insight-color, #d7a552); font-style: normal; transition: color 500ms ease; }
+  .scale-insight { position: absolute; top: clamp(3rem, 7vw, 6rem); right: clamp(2rem, 6vw, 6rem); display: grid; width: min(25rem, 32vw); grid-template-columns: auto 1fr; gap: .8rem 1rem; border: 1px solid color-mix(in srgb, var(--insight-color) 38%, transparent); border-radius: 1rem; padding: 1rem; background: radial-gradient(circle at 12% 20%, color-mix(in srgb, var(--insight-color) 15%, transparent), transparent 40%), rgb(4 14 22 / .8); box-shadow: 0 0 40px color-mix(in srgb, var(--insight-color) 8%, transparent); transition: border-color 500ms ease, box-shadow 500ms ease; }
+  .scale-insight > span { display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border: 1px solid var(--insight-color); border-radius: 50%; color: var(--insight-color); box-shadow: 0 0 18px color-mix(in srgb, var(--insight-color) 35%, transparent); }
+  .scale-insight p, .scale-insight h3, .scale-insight strong, .scale-insight small { display: block; margin: 0; }
+  .scale-insight p { color: var(--insight-color); font-size: .55rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+  .scale-insight h3 { margin-top: .2rem; font-family: var(--serif); font-size: 1.8rem; font-weight: 400; }
+  .scale-insight strong { color: #d9cfbd; font-size: .68rem; }
+  .scale-insight small { margin-top: .45rem; color: #99958e; font-size: .58rem; line-height: 1.5; }
+  .scale-insight a { grid-column: 2; color: var(--insight-color); font-size: .62rem; font-weight: 800; }
+  .scale-experience ol[data-scale-track] { position: absolute; right: clamp(2rem, 5vw, 5rem); bottom: 5rem; left: clamp(2rem, 5vw, 5rem); height: 15rem; margin: 0; }
+  .scale-experience ol[data-scale-track]::before { bottom: 3.4rem; }
+  .scale-experience ol[data-scale-track] li { bottom: 2.85rem; color: var(--scale-color); opacity: .28; transition: opacity 500ms ease, filter 500ms ease, transform 500ms ease; }
+  .scale-experience ol[data-scale-track] li.within-selection, .scale-experience ol[data-scale-track] li.selected, .scale-experience ol[data-scale-track] li.human { opacity: .72; }
+  .scale-experience ol[data-scale-track] li.selected { z-index: 2; opacity: 1; filter: drop-shadow(0 0 15px color-mix(in srgb, var(--scale-color) 65%, transparent)); }
+  .scale-experience ol[data-scale-track] li.selected:not(:last-child) { transform: translateX(-50%) scale(1.12); }
+  .scale-experience ol[data-scale-track] li:last-child.selected { transform: translateX(-100%) scale(1.12); transform-origin: bottom right; }
+  .scale-experience ol[data-scale-track] button { display: grid; justify-items: center; border: 0; padding: 0; background: transparent; color: inherit; cursor: pointer; text-align: center; }
+  .scale-experience ol[data-scale-track] button:hover { filter: brightness(1.35); }
+  .scale-experience ol[data-scale-track] li > span, .scale-experience ol[data-scale-track] button > span { display: grid; min-height: 4rem; place-items: end center; }
+  .scale-experience ol[data-scale-track] li::after { background: var(--scale-color); box-shadow: 0 0 18px var(--scale-color); }
+  .atlas-reading { scroll-margin-top: 1rem; }
+  .atlas-reading [hidden] { display: none !important; }
+  .generic-reading { --reading-color:#65d7dc; display:grid; width:min(100%,72rem); gap:0; margin-inline:auto; border:1px solid color-mix(in srgb,var(--reading-color) 24%,transparent);border-radius:1.3rem;padding:clamp(1.5rem,4vw,4rem);background:#030d14 }
+  .generic-reading > header { padding-block:1rem 2.5rem }
+  .generic-reading h2,.generic-reading h3 { margin:.3rem 0 1rem;font-family:var(--serif);font-weight:400;line-height:1.1 }
+  .generic-reading h2 { font-size:clamp(3rem,6vw,6rem) }.generic-reading h2 em{color:var(--reading-color);font-style:normal}.generic-reading h3{font-size:clamp(1.8rem,3vw,2.6rem)}
+  .generic-reading header p:last-child,.generic-reading section p:last-child{max-width:52ch;color:#aaa49a;line-height:1.8}
+  .reading-facts{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid color-mix(in srgb,var(--reading-color) 18%,transparent)}
+  .reading-facts article{display:grid;padding:1rem}
+  .reading-facts article + article{border-left:1px solid color-mix(in srgb,var(--reading-color) 14%,transparent)}
+  .reading-facts small{color:#99938a;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}.reading-facts strong{margin-top:.3rem;font-family:var(--serif);font-size:1.35rem;font-weight:500}
+  .generic-reading > section{max-width:48rem;padding:2.5rem 0;border-bottom:1px solid color-mix(in srgb,var(--reading-color) 14%,transparent)}
+  .generic-reading > a{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1.5rem 0;color:var(--reading-color)}.generic-reading > a span,.generic-reading > a strong{display:block}.generic-reading > a span{color:#99938a;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.generic-reading > a strong{font-family:var(--serif);font-size:1.6rem;font-weight:400}.generic-reading > a b{grid-row:1/3;grid-column:2;font-size:1rem}
+  .mobile-atlas { display: none; }
+  @keyframes pulse { 50% { opacity: .35; transform: scale(1.15); } }
+  @keyframes atlas-halo-breathe { 50% { opacity: .5; transform: translateX(-50%) scaleX(1.035) scaleY(.96); } }
+  @keyframes atlas-halo-drift { 50% { opacity: .5; transform: translateX(-47%) translateY(.7rem) scaleX(1.05) scaleY(.92); } }
+  @keyframes selected-halo {
+    0%, 100% { opacity: .82; transform: translate(-50%, -50%) scaleX(1) scaleY(1); }
+    50% { opacity: .48; transform: translate(-50%, -50%) scaleX(1.08) scaleY(.9); }
+  }
+  @keyframes orbit-settle { 50% { opacity: .68; transform: scaleX(1.018) scaleY(.965); } }
+  @keyframes breathe { 50% { opacity: .62; transform: translateX(-50%) scale(1.08); } }
+  @keyframes particle-drift { to { transform: translate3d(4%, 6%, 0); } }
+  @keyframes star-drift { to { transform: translate3d(2.5%, 3%, 0); } }
+  @keyframes field-breathe { 50% { opacity: .42; transform: scale(1.04); } }
+  @keyframes orbit-sweep { to { transform: rotate(360deg); } }
+  @keyframes core-breathe { 50% { transform: translate(-50%, -50%) scale(1.14); filter: brightness(1.28); } }
+  @keyframes inspector-orbit { to { transform: rotate(360deg); } }
+  .cosmos { cursor: default; }
+  .atlas-header, .intro, .tool-dock, .om-seal, .coordinates, .journey-rail, .discovery-grid, .scale-experience { transition: opacity 500ms ease; }
+  @media (max-width: 1050px) {
+    .context { width: 16rem; }
+    .intro { width: 18rem; }
+  }
+  @media (min-width: 801px) and (max-height: 760px) {
+    .context { top: 3.6rem; max-height: calc(100% - 4.2rem); padding: .65rem .75rem; }
+    .context h2 { font-size: 1.9rem; }
+    .context-rule { margin: .55rem 0; }
+    .context ol { gap: 0; margin-block: .3rem .45rem; }
+    .context li { padding-block: .12rem; }
+    .context li small { display: none; }
+    .context a { padding-top: .45rem; }
+    .you-are-here { top: 94%; }
+    .you-are-here small { display: none; }
+  }
+  @media (max-width: 800px) {
+    .atlas-explorer { display: none; }
+    .mobile-atlas { display: block; width: min(100% - 2rem, 42rem); margin-inline: auto; padding-block: 2rem; }
+    .mobile-atlas > h2 { margin: .2rem 0 .7rem; font-family: var(--serif); font-size: clamp(2.8rem, 13vw, 4rem); font-weight: 400; line-height: 1; }
+    .mobile-atlas > p:not(.eyebrow) { color: var(--ink-muted); }
+    .mobile-position { display: grid; margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 1rem; padding: 1rem; background: radial-gradient(circle at 85% 50%, color-mix(in srgb, var(--copper) 22%, transparent), transparent 35%), var(--surface); }
+    .mobile-position span { color: var(--copper); font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .mobile-position strong { font-family: var(--serif); font-size: 1.8rem; }
+    .mobile-position small { color: var(--ink-muted); }
+    .mobile-atlas ol { display: grid; gap: .7rem; margin: 0; padding: 0; list-style: none; }
+    .mobile-atlas li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .8rem; border: 1px solid var(--border); border-radius: 1rem; padding: .85rem; background: var(--surface); }
+    .mobile-atlas li > span { display: grid; width: 2.3rem; height: 2.3rem; place-items: center; border: 1px solid var(--node-color); border-radius: 50%; color: var(--node-color); }
+    .mobile-atlas h2, .mobile-atlas li p { margin: 0; }
+    .mobile-atlas h2 { font-family: var(--serif); font-size: 1.15rem; }
+    .mobile-atlas li p, .mobile-atlas a { color: var(--ink-muted); font-size: .65rem; }
+    .mobile-atlas a { color: var(--copper); font-weight: 800; }
+    .generic-reading{padding:1.2rem}.reading-facts{grid-template-columns:1fr}.reading-facts article + article{border-top:1px solid color-mix(in srgb,var(--reading-color) 14%,transparent);border-left:0}.generic-reading > section{padding:1.5rem 0}
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .space-layer::before, .space-layer::after, .particles-layer, .orbit-sweep, .art-layer.selected .orbit-a, .art-layer.selected .orbit-core, .duration::after, .cosmos::before, .cosmos::after, .layer-node.selected::after {
+      animation: none;
+    }
+    .atlas-camera, .art-layer, .layer-node { transition-duration: 1ms; }
+  }
+</style>

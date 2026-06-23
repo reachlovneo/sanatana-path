@@ -1,39 +1,887 @@
 ---
-import JourneyPath from "../components/topic/JourneyPath.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { ATLAS_JOURNEY_TITLES } from "../data/atlas";
-const journey = ATLAS_JOURNEY_TITLES;
+
+const featuredTopics = [
+  {
+    eyebrow: "Cosmic map",
+    title: "Cosmic Time",
+    text: "Kalpa, Manvantara, Maha Yuga, Four Yugas, and Kali Yuga placed as one clear hierarchy.",
+    href: "/atlas/cosmic-time",
+    tone: "gold",
+    code: "CT",
+    image: "/images/home/home-hero.webp",
+  },
+  {
+    eyebrow: "Realms",
+    title: "14 Lokas",
+    text: "The layered worlds of Hindu cosmology, from earthly experience to subtle celestial realms.",
+    href: "/atlas",
+    tone: "teal",
+    code: "14",
+    image: "/images/home/home-lokas.webp",
+  },
+  {
+    eyebrow: "Ramayana wonder",
+    title: "Pushpaka Vimana",
+    text: "The famous aerial vehicle of the Ramayana, explored as story, symbol, and ancient imagination.",
+    href: "/atlas/treta-yuga",
+    tone: "amber",
+    code: "PV",
+    image: "/images/home/home-vimana.webp",
+  },
+  {
+    eyebrow: "Puranic mystery",
+    title: "Flying Cities of Tripura",
+    text: "The three moving cities destroyed by Shiva, one of the most cinematic stories in the Puranas.",
+    href: "/atlas",
+    tone: "violet",
+    code: "TR",
+    image: "/images/home/home-tripura.webp",
+  },
+  {
+    eyebrow: "Astra knowledge",
+    title: "Weapons That Responded to Thought",
+    text: "Astras activated by mantra, attention, discipline, and inner qualification in the epics.",
+    href: "/atlas",
+    tone: "fire",
+    code: "AS",
+    image: "/images/home/home-astras.webp",
+  },
+  {
+    eyebrow: "Story library",
+    title: "Ramayana, Mahabharata, Puranas",
+    text: "A guided library of characters, hidden episodes, symbols, books, and timeless knowledge.",
+    href: "/atlas/treta-yuga",
+    tone: "blue",
+    code: "ST",
+    image: "/images/home/home-library.webp",
+  },
+];
+
+const atlasRoutes = ["Cosmic Time", "Kalpa", "Manvantara", "Maha Yuga", "Four Yugas", "Kali Yuga"];
+const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishanku", "Bhagiratha", "Parashurama"];
 ---
-<BaseLayout title="Sanatana Path | A Clear Journey Through Cosmic Time" description="Explore Sanatana Dharma through a calm, source-aware visual knowledge atlas.">
-  <section class="hero container">
-    <div class="hero-copy reveal">
-      <p class="eyebrow">A source-aware visual knowledge atlas</p>
-      <h1 class="display">Ancient wisdom, clearly connected.</h1>
-      <p class="hero-lead muted">Begin with the big picture, understand where each idea fits, and explore deeper only when you are ready.</p>
-      <div class="actions"><a class="button" href="/atlas">Begin the Cosmic Atlas <span aria-hidden="true">-&gt;</span></a><a class="button secondary" href="/methodology">How we explain sources</a></div>
-    </div>
-    <div class="hero-atlas surface reveal reveal-delay-1" aria-label="Cosmic Atlas overview">
-      <div class="atlas-center"><span aria-hidden="true">AUM</span><strong>Cosmic Atlas</strong><small>Six connected ideas</small></div>
-      <ol>{journey.map((step, index) => <li style={`--index:${index}`}>{index + 1}. {step}</li>)}</ol>
-    </div>
-  </section>
-  <section class="container path-section reveal reveal-delay-2"><JourneyPath steps={journey} active="Cosmic Time" /></section>
-  <section class="container intro-grid">
-    <article><p class="eyebrow">The first journey</p><h2 class="section-title">Where does Kali Yuga fit?</h2></article>
-    <div class="intro-copy muted"><p>Instead of beginning with isolated facts, Sanatana Path starts with relationships. Follow six ideas from the broad structure of cosmic time to the current age.</p><a href="/atlas">Explore the ordered journey <span aria-hidden="true">-&gt;</span></a></div>
-  </section>
+<BaseLayout title="Sanatana Path | Explore Hindu Cosmology, Epics, and Sacred Knowledge" description="A visual atlas for Hindu cosmology, Ramayana, Mahabharata, Puranas, Lokas, Vimanas, Astras, and timeless knowledge traditions.">
+  <div class="home-experience">
+    <header class="home-topbar" aria-label="Sanatana Path landing navigation">
+      <a class="atlas-brand" href="/">
+        <span class="brand-sigil" aria-hidden="true">SP</span>
+        <span><strong>SANATANA PATH</strong><small>THE ETERNAL ATLAS</small></span>
+      </a>
+      <nav class="atlas-nav" aria-label="Primary navigation">
+        <a class="active" href="/">Home</a>
+        <a href="/atlas">Atlas</a>
+        <a href="/sources">Sources</a>
+        <a href="/feedback">Feedback</a>
+      </nav>
+      <a class="search-pill" href="/atlas" aria-label="Search the atlas"><span>Search the Atlas...</span><kbd>/</kbd></a>
+      <a class="round-mark" href="/atlas" aria-label="Open atlas">SP</a>
+    </header>
+
+    <main class="home-main">
+      <section class="home-hero">
+        <div class="hero-panel">
+          <p class="eyebrow">The eternal atlas</p>
+          <h1>Hindu knowledge, mapped as a living atlas.</h1>
+          <p class="hero-lead">Explore cosmic time, Lokas, Vimanas, Astras, Ramayana, Mahabharata, Puranas, and hidden knowledge through one connected visual system.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="/atlas"><i aria-hidden="true">?</i><span>Enter the Atlas</span><b aria-hidden="true">-&gt;</b></a>
+            <a class="play-action" href="#featured-topics"><i>PLAY</i><span>Preview the topic universe</span></a>
+          </div>
+          <div class="mini-topics" aria-label="Featured landing topics">
+            <span>Cosmic Time</span><span>14 Lokas</span><span>Vimanas</span><span>Astras</span><span>Epics</span>
+          </div>
+          <div class="hero-signals" aria-label="Atlas qualities">
+            <span><b>01</b>Visual journeys</span>
+            <span><b>02</b>Beginner clear</span>
+            <span><b>03</b>Source-aware</span>
+          </div>
+        </div>
+
+        <aside class="atlas-orbital" aria-label="Sanatana Path topic constellation">
+          <img class="hero-art" src="/images/home/home-hero.webp" alt="Cosmic sacred-geometry atlas visualization" loading="eager" decoding="async" />
+          <div class="orbital-field" aria-hidden="true">
+            <span class="orbit orbit-a"></span>
+            <span class="orbit orbit-b"></span>
+            <span class="orbit orbit-c"></span>
+            <span class="orbit orbit-d"></span>
+            <div class="core-node"><strong>SP</strong><small>Living Atlas</small></div>
+            {featuredTopics.map((topic, index) => <a class={`topic-node node-${index + 1} ${topic.tone}`} href={topic.href}><b>{topic.code}</b><span>{topic.title}</span></a>)}
+          </div>
+          <div class="orbital-caption">
+            <p class="eyebrow">Start anywhere</p>
+            <strong>Every topic becomes more powerful when you see what it connects to.</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section id="featured-topics" class="topic-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Open the doors</p>
+            <h2>Topics built for curiosity</h2>
+          </div>
+          <p>These are the hooks that make people stop scrolling. Some are live now; others become dedicated atlas journeys as we build.</p>
+        </div>
+        <div class="topic-grid">
+          {featuredTopics.map((topic, index) => (
+            <a class={`topic-card ${topic.tone}`} href={topic.href}>
+              <img src={topic.image} alt="" loading="lazy" decoding="async" />
+              <span class="topic-number">{String(index + 1).padStart(2, "0")}</span>
+              <i>{topic.code}</i>
+              <div class="topic-copy">
+                <p>{topic.eyebrow}</p>
+                <h3>{topic.title}</h3>
+                <small>{topic.text}</small>
+              </div>
+              <b>Explore <span aria-hidden="true">-&gt;</span></b>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="atlas-preview">
+        <div class="preview-copy">
+          <p class="eyebrow">First live journey</p>
+          <h2>Begin with Cosmic Time</h2>
+          <p>Before entering Kali Yuga, the atlas shows where it sits inside the larger structure: Four Yugas, Maha Yuga, Manvantara, Kalpa, and Brahma's cosmic day.</p>
+          <a href="/atlas/cosmic-time">Open Cosmic Time <span aria-hidden="true">-&gt;</span></a>
+        </div>
+        <div class="route-strip" aria-label="Cosmic time route">
+          {atlasRoutes.map((route, index) => <span><i>{index + 1}</i>{route}</span>)}
+        </div>
+      </section>
+
+      <section class="story-band">
+        <div>
+          <p class="eyebrow">Stories are the interface</p>
+          <h2>Not just mythology. A map of character, power, time, and consequence.</h2>
+        </div>
+        <div class="signal-grid" aria-label="Story signals">
+          {storySignals.map((signal) => <span>{signal}</span>)}
+        </div>
+      </section>
+    </main>
+  </div>
 </BaseLayout>
-<style>
-  .hero { display: grid; min-height: calc(100svh - 76px); grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: clamp(2rem, 7vw, 6rem); padding-block: 5rem; }
-  .hero-lead { max-width: 58ch; margin: 1.4rem 0 0; font-size: clamp(1.05rem, 2vw, 1.22rem); }
-  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-  .hero-atlas { position: relative; display: grid; min-height: 500px; place-items: center; overflow: hidden; padding: 2rem; }
-  .hero-atlas::before, .hero-atlas::after { position: absolute; width: 62%; aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent); border-radius: 50%; content: ""; }
-  .hero-atlas::after { width: 82%; border-style: dashed; }
-  .atlas-center { position: relative; z-index: 2; display: grid; width: 12rem; aspect-ratio: 1; place-items: center; align-content: center; border: 1px solid var(--gold); border-radius: 50%; background: var(--forest); color: var(--canvas); box-shadow: 0 0 0 14px color-mix(in srgb, var(--gold) 10%, transparent); text-align: center; }
-  .atlas-center span { color: var(--gold); font-size: 3rem; line-height: 1; } .atlas-center strong { margin-top: 0.4rem; font-family: var(--serif); font-size: 1.3rem; } .atlas-center small { opacity: 0.75; }
-  ol { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
-  li { position: absolute; z-index: 3; top: calc(50% + sin(calc(var(--index) * 60deg - 90deg)) * 42%); left: calc(50% + cos(calc(var(--index) * 60deg - 90deg)) * 42%); width: max-content; max-width: 9rem; transform: translate(-50%, -50%); border: 1px solid var(--border); border-radius: 999px; padding: 0.48rem 0.7rem; background: var(--surface); color: var(--ink); font-size: 0.73rem; font-weight: 800; box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 8%, transparent); }
-  .path-section { margin-top: -2rem; } .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding-block: 8rem 3rem; } .intro-copy { max-width: 56ch; font-size: 1.08rem; } .intro-copy a { color: var(--forest); font-weight: 800; }
-  @media (max-width: 800px) { .hero { min-height: auto; grid-template-columns: 1fr; padding-block: 4rem 2rem; } .hero-atlas { min-height: 390px; } .atlas-center { width: 9rem; } li { max-width: 7.3rem; font-size: 0.64rem; } .path-section { margin-top: 1rem; } .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-block: 5rem 1rem; } }
+<style is:global>
+  body:has(.home-experience) {
+    background: #020a10;
+    color: #f7ebd3;
+  }
+
+  body:has(.home-experience)::before {
+    display: none;
+  }
+
+  body:has(.home-experience) > .site-header,
+  body:has(.home-experience) > footer,
+  body:has(.home-experience) > .mobile-nav {
+    display: none;
+  }
+
+  .home-experience {
+    min-height: 100svh;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 70% 10%, rgb(214 172 91 / .17), transparent 28rem),
+      radial-gradient(circle at 18% 40%, rgb(101 215 220 / .08), transparent 28rem),
+      linear-gradient(180deg, #020a10, #031116 55%, #020a10);
+  }
+
+  .home-experience::before {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: radial-gradient(circle, rgb(214 172 91 / .18) 1px, transparent 1px);
+    background-size: 36px 36px;
+    mask-image: linear-gradient(to bottom, black, transparent 74%);
+    pointer-events: none;
+    content: "";
+  }
+
+  .home-topbar {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: minmax(18rem, 1fr) auto minmax(18rem, .8fr) auto;
+    gap: 1.2rem;
+    align-items: center;
+    margin: 1rem 1.35rem .6rem;
+    border: 1px solid rgb(214 172 91 / .18);
+    padding: .75rem 1rem;
+    background: rgb(2 10 16 / .76);
+    backdrop-filter: blur(18px);
+  }
+
+  .atlas-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .85rem;
+  }
+
+  .brand-sigil,
+  .round-mark {
+    display: grid;
+    place-items: center;
+    border: 1px solid rgb(214 172 91 / .45);
+    border-radius: 50%;
+    color: #d6ac5b;
+    box-shadow: 0 0 30px rgb(214 172 91 / .1);
+  }
+
+  .brand-sigil { width: 3.1rem; height: 3.1rem; font-size: .78rem; font-weight: 900; letter-spacing: .04em; }
+  .round-mark { width: 3rem; height: 3rem; font-size: .72rem; font-weight: 900; letter-spacing: .04em; }
+
+  .atlas-brand strong,
+  .atlas-brand small {
+    display: block;
+    letter-spacing: .14em;
+  }
+
+  .atlas-brand strong {
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.22rem;
+  }
+
+  .atlas-brand small {
+    margin-top: .15rem;
+    color: #9f9688;
+    font-size: .62rem;
+  }
+
+  .atlas-nav {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+  }
+
+  .atlas-nav a {
+    position: relative;
+    color: #aaa49a;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .atlas-nav a.active,
+  .atlas-nav a:hover {
+    color: #f4d19a;
+  }
+
+  .atlas-nav a.active::after {
+    position: absolute;
+    right: 0;
+    bottom: -.8rem;
+    left: 0;
+    height: 2px;
+    background: #f4c36d;
+    box-shadow: 0 0 16px rgb(244 195 109 / .8);
+    content: "";
+  }
+
+  .search-pill {
+    display: flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid rgb(214 172 91 / .22);
+    border-radius: 999px;
+    padding: .55rem .75rem .55rem 1rem;
+    color: #8f8b84;
+    background: rgb(2 10 16 / .62);
+  }
+
+  .search-pill kbd {
+    border: 1px solid rgb(214 172 91 / .18);
+    border-radius: .45rem;
+    padding: .08rem .42rem;
+    color: #c9b99d;
+    font: inherit;
+    font-size: .72rem;
+  }
+
+  .home-main {
+    position: relative;
+    z-index: 1;
+    width: min(1800px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .home-hero {
+    display: grid;
+    min-height: calc(100svh - 6rem);
+    grid-template-columns: minmax(24rem, .62fr) minmax(36rem, 1fr);
+    gap: clamp(1.25rem, 4vw, 4rem);
+    align-items: center;
+    padding: clamp(1.2rem, 2.7vw, 2.5rem) 0 2rem;
+  }
+
+  .hero-panel {
+    position: relative;
+    max-width: 42rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .hero-panel::before {
+    position: absolute;
+    inset: -2rem -4rem -2rem -2rem;
+    z-index: -1;
+    background: linear-gradient(90deg, rgb(2 10 16 / .82), transparent);
+    content: "";
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: #f0b45f;
+    font-size: .67rem;
+    font-weight: 900;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  .hero-panel h1,
+  .section-heading h2,
+  .preview-copy h2,
+  .story-band h2 {
+    margin: .6rem 0 0;
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 450;
+    letter-spacing: -.045em;
+    line-height: .95;
+  }
+
+  .hero-panel h1 {
+    max-width: 10.5ch;
+    font-size: clamp(3.25rem, 5.35vw, 6.15rem);
+  }
+
+  .hero-lead {
+    max-width: 40rem;
+    margin: 1.15rem 0 0;
+    color: #c9b99d;
+    font-size: clamp(1rem, 1.18vw, 1.15rem);
+    line-height: 1.68;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 1.55rem;
+  }
+
+  .primary-action,
+  .play-action,
+  .preview-copy a {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    text-decoration: none;
+  }
+
+  .primary-action {
+    position: relative;
+    width: min(100%, 19rem);
+    justify-content: space-between;
+    overflow: hidden;
+    border: 1px solid #e4b45e;
+    border-radius: 1rem;
+    padding: .78rem .9rem .78rem .82rem;
+    background: linear-gradient(135deg, #f8d78b 0%, #c8913c 45%, #765020 100%);
+    color: #061015;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.08rem;
+    font-weight: 800;
+    box-shadow: 0 22px 70px rgb(214 172 91 / .24), inset 0 1px rgb(255 255 255 / .38);
+  }
+
+  .primary-action::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 0 30%, rgb(255 255 255 / .28) 44%, transparent 58%);
+    transform: translateX(-120%);
+    animation: hero-sheen 5.5s ease-in-out infinite;
+    content: "";
+  }
+
+  .primary-action i,
+  .primary-action b {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgb(3 13 20 / .14);
+    font-style: normal;
+  }
+
+  .primary-action span { position: relative; z-index: 1; }
+
+  .play-action {
+    width: min(100%, 19rem);
+    border: 1px solid rgb(214 172 91 / .16);
+    border-radius: 1rem;
+    padding: .72rem .82rem;
+    color: #c9b99d;
+    background: linear-gradient(135deg, rgb(255 255 255 / .035), rgb(2 10 16 / .55));
+    box-shadow: inset 0 1px rgb(255 255 255 / .025);
+  }
+
+  .play-action i {
+    display: grid;
+    width: 2.15rem;
+    height: 2.15rem;
+    place-items: center;
+    border: 1px solid rgb(244 195 109 / .35);
+    border-radius: 50%;
+    color: #f4d19a;
+    font-size: .62rem;
+    font-style: normal;
+    font-weight: 900;
+  }
+
+  .mini-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem .55rem;
+    margin-top: 1.15rem;
+  }
+
+  .mini-topics span {
+    border: 1px solid rgb(214 172 91 / .14);
+    border-radius: 999px;
+    padding: .34rem .55rem;
+    color: #f0b45f;
+    background: rgb(2 10 16 / .32);
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .hero-signals {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .55rem;
+    margin-top: .85rem;
+    max-width: 37rem;
+  }
+
+  .hero-signals span {
+    border: 1px solid rgb(214 172 91 / .12);
+    border-radius: .85rem;
+    padding: .68rem .72rem;
+    color: #d7c8ad;
+    background: linear-gradient(145deg, rgb(255 255 255 / .035), rgb(2 10 16 / .18));
+    font-size: .72rem;
+    font-weight: 750;
+  }
+
+  .hero-signals b {
+    display: block;
+    margin-bottom: .22rem;
+    color: #f0b45f;
+    font-size: .58rem;
+    letter-spacing: .12em;
+  }
+
+  .atlas-orbital {
+    position: relative;
+    min-height: clamp(31rem, 58vh, 39rem);
+    overflow: hidden;
+    border: 1px solid rgb(214 172 91 / .2);
+    border-radius: 1.55rem;
+    background: radial-gradient(circle at 50% 42%, rgb(214 172 91 / .12), transparent 30%), rgb(3 13 20 / .22);
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 34px 110px rgb(0 0 0 / .32);
+  }
+
+  .atlas-orbital::before {
+    position: absolute;
+    inset: 1rem;
+    z-index: 1;
+    border: 1px solid rgb(244 195 109 / .16);
+    border-radius: 1.1rem;
+    pointer-events: none;
+    content: "";
+  }
+
+  .hero-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .46;
+    filter: saturate(1.08) contrast(1.05);
+  }
+
+  .atlas-orbital::after {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 46%, transparent 0 24%, rgb(2 10 16 / .36) 56%, rgb(2 10 16 / .82) 100%);
+    content: "";
+  }
+
+  .orbital-field {
+    position: absolute;
+    inset: 2rem;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+  }
+
+  .orbit {
+    position: absolute;
+    border: 1px solid rgb(214 172 91 / .24);
+    border-radius: 50%;
+    transform: rotate(-10deg) scaleY(.54);
+    animation: home-orbit 24s linear infinite;
+  }
+
+  .orbit-a { width: 82%; aspect-ratio: 1; }
+  .orbit-b { width: 64%; aspect-ratio: 1; border-color: rgb(101 215 220 / .2); animation-duration: 32s; animation-direction: reverse; }
+  .orbit-c { width: 100%; aspect-ratio: 1; border-style: dashed; opacity: .68; animation-duration: 42s; }
+  .orbit-d { width: 44%; aspect-ratio: 1; border-color: rgb(255 122 79 / .2); animation-duration: 18s; }
+
+  .core-node {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    width: clamp(9rem, 16vw, 13.5rem);
+    aspect-ratio: 1;
+    place-items: center;
+    align-content: center;
+    border: 1px solid rgb(244 195 109 / .75);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 35%, #f9df9b, #80501d 72%);
+    color: #061015;
+    box-shadow: 0 0 0 20px rgb(244 195 109 / .08), 0 0 100px rgb(244 195 109 / .25);
+    text-align: center;
+  }
+
+  .core-node strong { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1; }
+  .core-node small { margin-top: .35rem; font-size: .66rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+
+  .topic-node {
+    position: absolute;
+    z-index: 3;
+    display: grid;
+    min-width: 8.2rem;
+    place-items: center;
+    border: 1px solid rgb(214 172 91 / .24);
+    border-radius: 999px;
+    padding: .48rem .68rem;
+    color: #f7ebd3;
+    background: rgb(2 10 16 / .78);
+    box-shadow: 0 0 35px var(--node-glow, rgb(214 172 91 / .14));
+    text-align: center;
+  }
+
+  .topic-node b { color: var(--node-color, #f4d19a); font-size: .72rem; }
+  .topic-node span { margin-top: .1rem; font-size: .68rem; font-weight: 800; }
+  .topic-node.gold { --node-color: #f4d19a; --node-glow: rgb(244 195 109 / .22); }
+  .topic-node.teal { --node-color: #65d7dc; --node-glow: rgb(101 215 220 / .22); }
+  .topic-node.amber { --node-color: #ffbf73; --node-glow: rgb(255 175 78 / .22); }
+  .topic-node.violet { --node-color: #c89bff; --node-glow: rgb(190 134 255 / .22); }
+  .topic-node.fire { --node-color: #ff7a4f; --node-glow: rgb(255 122 79 / .22); }
+  .topic-node.blue { --node-color: #85a8ff; --node-glow: rgb(133 168 255 / .22); }
+
+  .node-1 { top: 7%; left: 43%; }
+  .node-2 { top: 32%; right: 4%; }
+  .node-3 { bottom: 23%; right: 10%; }
+  .node-4 { bottom: 15%; left: 40%; }
+  .node-5 { bottom: 23%; left: 8%; }
+  .node-6 { top: 32%; left: 3%; }
+
+  .orbital-caption {
+    position: absolute;
+    right: 1.35rem;
+    bottom: 1.35rem;
+    left: 1.35rem;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid rgb(214 172 91 / .14);
+    border-radius: 1rem;
+    padding: .85rem 1rem;
+    background: rgb(2 10 16 / .78);
+    backdrop-filter: blur(16px);
+  }
+
+  .orbital-caption strong {
+    display: block;
+    max-width: 40ch;
+    color: #eee3cf;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    font-weight: 450;
+    line-height: 1.25;
+  }
+
+  .topic-section,
+  .atlas-preview,
+  .story-band {
+    margin-top: 1.2rem;
+  }
+
+  .section-heading,
+  .atlas-preview,
+  .story-band {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1fr);
+    gap: 1.2rem;
+    align-items: end;
+  }
+
+  .section-heading {
+    margin-bottom: 1rem;
+  }
+
+  .section-heading h2,
+  .preview-copy h2,
+  .story-band h2 {
+    font-size: clamp(2.2rem, 4vw, 4.6rem);
+  }
+
+  .section-heading > p,
+  .preview-copy p {
+    color: #aaa49a;
+    line-height: 1.7;
+  }
+
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .topic-card {
+    position: relative;
+    display: flex;
+    min-height: clamp(25rem, 31vw, 34rem);
+    overflow: hidden;
+    align-items: flex-end;
+    border: 1px solid rgb(214 172 91 / .18);
+    border-radius: 1.25rem;
+    padding: .9rem;
+    background: rgb(3 13 20 / .35);
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 18px 50px rgb(0 0 0 / .16);
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  }
+
+  .topic-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .82;
+    filter: saturate(1.16) contrast(1.1) brightness(.92);
+    transform: scale(1.01);
+    transition: transform 850ms ease, opacity 260ms ease, filter 260ms ease;
+  }
+
+  .topic-card::after {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 76% 18%, transparent 0 26%, rgb(2 10 16 / .06) 48%, rgb(2 10 16 / .28) 100%),
+      linear-gradient(180deg, rgb(2 10 16 / .04) 0%, rgb(2 10 16 / .08) 44%, rgb(2 10 16 / .76) 100%);
+    content: "";
+  }
+
+  .topic-card::before {
+    position: absolute;
+    inset: auto -12% -24% auto;
+    z-index: 1;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    background: var(--glow, rgb(214 172 91 / .18));
+    filter: blur(42px);
+    opacity: .9;
+    transition: opacity 220ms ease, transform 700ms ease;
+    content: "";
+  }
+
+  .topic-card:hover {
+    transform: translateY(-6px);
+    border-color: rgb(244 195 109 / .5);
+    box-shadow: 0 26px 80px rgb(0 0 0 / .34), 0 0 55px var(--glow, rgb(214 172 91 / .16));
+  }
+
+  .topic-card:hover img {
+    transform: scale(1.07);
+    opacity: .95;
+    filter: saturate(1.24) contrast(1.12) brightness(1.02);
+  }
+
+  .topic-card:hover::before {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  .topic-card.gold { --glow: rgb(244 195 109 / .22); }
+  .topic-card.teal { --glow: rgb(101 215 220 / .2); }
+  .topic-card.amber { --glow: rgb(255 175 78 / .22); }
+  .topic-card.violet { --glow: rgb(190 134 255 / .2); }
+  .topic-card.fire { --glow: rgb(255 122 79 / .22); }
+  .topic-card.blue { --glow: rgb(133 168 255 / .2); }
+
+  .topic-number,
+  .topic-card i {
+    position: relative;
+    z-index: 2;
+  }
+
+  .topic-number {
+    display: grid;
+    width: 2.3rem;
+    height: 2.3rem;
+    place-items: center;
+    border: 1px solid rgb(214 172 91 / .28);
+    border-radius: 50%;
+    color: #f4d19a;
+    font-size: .75rem;
+    font-weight: 900;
+  }
+
+  .topic-card i {
+    position: absolute;
+    top: .85rem;
+    right: 1rem;
+    color: rgb(244 195 109 / .22);
+    font-size: clamp(4.4rem, 7.6vw, 7rem);
+    font-style: normal;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 0 0 45px var(--glow, rgb(214 172 91 / .24));
+  }
+
+  .topic-copy {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 10.8rem;
+    border: 1px solid rgb(214 172 91 / .12);
+    border-radius: 1rem;
+    padding: .95rem 1rem 2.55rem;
+    background:
+      linear-gradient(135deg, rgb(2 10 16 / .82), rgb(2 10 16 / .48)),
+      radial-gradient(circle at 90% 0%, var(--glow, rgb(214 172 91 / .18)), transparent 52%);
+    box-shadow: inset 0 1px rgb(255 255 255 / .03), 0 -22px 80px rgb(0 0 0 / .22);
+    backdrop-filter: blur(10px);
+  }
+
+  .topic-card p {
+    margin: 0 0 .3rem;
+    color: #f0b45f;
+    font-size: .6rem;
+    font-weight: 900;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+
+  .topic-card h3 {
+    max-width: 13ch;
+    margin: 0;
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.55rem, 2.35vw, 2.35rem);
+    font-weight: 450;
+    line-height: 1;
+  }
+
+  .topic-card small {
+    display: block;
+    max-width: 38ch;
+    margin-top: .65rem;
+    color: #c2b7a5;
+    font-size: .82rem;
+    line-height: 1.5;
+  }
+
+  .topic-card b {
+    position: absolute;
+    bottom: 1.62rem;
+    left: 1.9rem;
+    z-index: 3;
+    color: #f4d19a;
+    font-size: .68rem;
+    text-transform: uppercase;
+  }
+
+  .preview-copy,
+  .route-strip,
+  .story-band {
+    border: 1px solid rgb(214 172 91 / .16);
+    border-radius: 1.15rem;
+    background: linear-gradient(145deg, rgb(12 37 37 / .54), rgb(3 13 20 / .42));
+    box-shadow: inset 0 1px rgb(255 255 255 / .025);
+  }
+
+  .preview-copy,
+  .story-band { padding: clamp(1.2rem, 2.6vw, 2rem); }
+  .preview-copy a { margin-top: 1rem; color: #f4d19a; font-weight: 850; }
+  .route-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; padding: 1rem; }
+  .route-strip span { border: 1px solid rgb(214 172 91 / .13); border-radius: .85rem; padding: .8rem; color: #eee3cf; font-family: Georgia, "Times New Roman", serif; font-size: 1.05rem; }
+  .route-strip i { display: block; margin-bottom: .45rem; color: #f0b45f; font-family: Inter, system-ui, sans-serif; font-size: .62rem; font-style: normal; font-weight: 900; }
+
+  .signal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+  }
+
+  .signal-grid span {
+    border: 1px solid rgb(214 172 91 / .18);
+    border-radius: 999px;
+    padding: .55rem .75rem;
+    color: #d8c5a3;
+    background: rgb(255 255 255 / .02);
+    font-size: .82rem;
+    font-weight: 800;
+  }
+
+  @keyframes home-orbit {
+    from { rotate: 0deg; }
+    to { rotate: 360deg; }
+  }
+
+  @media (max-width: 1180px) {
+    .home-topbar { grid-template-columns: 1fr auto; }
+    .search-pill,
+    .round-mark { display: none; }
+    .home-hero,
+    .section-heading,
+    .atlas-preview,
+    .story-band { grid-template-columns: 1fr; }
+    .hero-panel { max-width: 44rem; }
+    .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 720px) {
+    .home-topbar { margin: .75rem; }
+    .atlas-brand small,
+    .atlas-nav { display: none; }
+    .home-main { width: min(100% - 1rem, 1800px); }
+    .home-hero { min-height: auto; grid-template-columns: 1fr; padding-top: 1.2rem; }
+    .hero-panel h1 { font-size: clamp(3rem, 16vw, 4.8rem); }
+    .hero-signals { grid-template-columns: 1fr; }
+    .atlas-orbital { min-height: 28rem; }
+    .orbital-field { inset: 1rem; }
+    .topic-node { min-width: 6.3rem; padding: .45rem; }
+    .topic-node span { display: none; }
+    .topic-grid,
+    .route-strip { grid-template-columns: 1fr; }
+  }
 </style>
+

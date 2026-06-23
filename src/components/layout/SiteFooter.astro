@@ -1,15 +1,17 @@
 ---
-import { FOOTER_NAVIGATION, SITE } from "../../config/site";
+import { FOOTER_NAVIGATION } from "../../config/site";
+import SacredIcon from "../ui/SacredIcon.astro";
 ---
 <footer>
   <div class="container footer-inner">
-    <div><strong>{SITE.name}</strong><p>{SITE.description}</p></div>
+    <span class="footer-mark"><SacredIcon name="mandala" size={22} /></span>
     <nav aria-label="Footer navigation">{FOOTER_NAVIGATION.map((link) => <a href={link.href}>{link.label}</a>)}</nav>
   </div>
 </footer>
 <style>
-  footer { margin-top: 5rem; border-top: 1px solid var(--border); color: var(--ink-muted); }
-  .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 2rem 6rem; }
-  strong { color: var(--ink); font-family: var(--serif); font-size: 1.2rem; } p { margin: 0.2rem 0 0; } nav { display: flex; flex-wrap: wrap; gap: 1rem; } a:hover { color: var(--ink); }
-  @media (max-width: 640px) { .footer-inner { align-items: flex-start; flex-direction: column; } }
+  footer { margin-top: 1rem; border-top: 1px solid var(--border); color: var(--ink-muted); }
+  .footer-inner { display: flex; min-height: 72px; align-items: center; justify-content: center; gap: 2rem; padding-block: 1rem; }
+  .footer-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid var(--border); border-radius: 50%; color: var(--gold); }
+  nav { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.78rem; } a:hover { color: var(--ink); }
+  @media (max-width: 640px) { .footer-inner { gap: 1rem; } nav { gap: 0.8rem; } }
 </style>

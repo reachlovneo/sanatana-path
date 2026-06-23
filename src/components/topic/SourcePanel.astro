@@ -1,4 +1,6 @@
 ---
+import SacredIcon from "../ui/SacredIcon.astro";
+
 interface Source {
   title: string;
   type: "primary" | "commentary" | "public-domain-translation" | "modern-reference";
@@ -19,48 +21,120 @@ const { sources, sourceNote, traditionNote, reviewedBy, lastReviewed, contentVer
 ---
 
 <aside class="source-panel" aria-label="Sources and editorial details">
-  <section class="surface note">
-    <p class="eyebrow">Sources</p>
-    {
-      sources.length > 0 ? (
-        <ul>
-          {sources.map((source) => (
-            <li>
-              {source.url ? <a href={source.url} rel="noreferrer">{source.title}</a> : <strong>{source.title}</strong>}
-              <span>{source.type.replaceAll("-", " ")}</span>
-              {source.note && <small>{source.note}</small>}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No source references have been approved yet.</p>
-      )
-    }
-    <p>{sourceNote}</p>
-  </section>
+  <details class="surface">
+    <summary>
+      <span class="source-icon"><SacredIcon name="document" size={18} /></span>
+      <span>
+        <strong>Sources and editorial notes</strong>
+        <small>{sources.length} references <span class="separator" aria-hidden="true"></span> Last reviewed {lastReviewed}</small>
+      </span>
+      <span class="action" aria-hidden="true">View</span>
+    </summary>
 
-  <section class="surface note">
-    <p class="eyebrow">Tradition note</p>
-    <p>{traditionNote}</p>
-  </section>
+    <div class="details-grid">
+      <section class="note">
+        <p class="eyebrow">Sources</p>
+        {
+          sources.length > 0 ? (
+            <ul>
+              {sources.map((source) => (
+                <li>
+                  {source.url ? <a href={source.url} rel="noreferrer">{source.title}</a> : <strong>{source.title}</strong>}
+                  <span>{source.type.replaceAll("-", " ")}</span>
+                  {source.note && <small>{source.note}</small>}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No source references have been approved yet.</p>
+          )
+        }
+        <p>{sourceNote}</p>
+      </section>
 
-  <section class="surface note metadata">
-    <p><strong>Reviewed by:</strong> {reviewedBy.length > 0 ? reviewedBy.join(", ") : "Pending"}</p>
-    <p><strong>Last reviewed:</strong> {lastReviewed}</p>
-    <p><strong>Version:</strong> {contentVersion}</p>
-  </section>
+      <section class="note">
+        <p class="eyebrow">Tradition note</p>
+        <p>{traditionNote}</p>
+      </section>
+
+      <section class="note metadata">
+        <p><strong>Reviewed by:</strong> {reviewedBy.length > 0 ? reviewedBy.join(", ") : "Pending"}</p>
+        <p><strong>Last reviewed:</strong> {lastReviewed}</p>
+        <p><strong>Version:</strong> {contentVersion}</p>
+      </section>
+    </div>
+  </details>
 </aside>
 
 <style>
   .source-panel {
-    display: grid;
-    align-content: start;
-    gap: 0.8rem;
+    width: 100%;
   }
 
-  .note {
-    padding: 1.1rem;
+  details {
+    padding: 0;
     box-shadow: none;
+  }
+
+  summary {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary > span:first-child,
+  summary strong,
+  summary small {
+    display: block;
+  }
+
+  .separator::before {
+    content: "\00b7";
+  }
+
+  .source-icon {
+    color: var(--ink);
+  }
+
+  summary small {
+    margin-top: 0.15rem;
+    color: var(--ink-muted);
+    font-size: 0.72rem;
+  }
+
+  .action {
+    color: var(--copper);
+    font-size: 0;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .action::after {
+    font-size: 0.85rem;
+    content: "⌄";
+  }
+
+  details[open] .action::after {
+    display: inline-block;
+    transform: rotate(180deg);
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.8fr;
+    gap: 1.5rem;
+    border-top: 1px solid var(--border);
+    padding: 1.1rem;
   }
 
   .note p {
@@ -113,5 +187,12 @@ const { sources, sourceNote, traditionNote, reviewedBy, lastReviewed, contentVer
 
   li small {
     color: var(--ink-muted);
+  }
+
+  @media (max-width: 800px) {
+    .details-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
   }
 </style>

@@ -1,0 +1,92 @@
+---
+import CommonQuestions from "./CommonQuestions.astro";
+import CosmicTimeMap from "./CosmicTimeMap.astro";
+import JourneyPath from "./JourneyPath.astro";
+import OverviewInsights from "./OverviewInsights.astro";
+import SourcePanel from "./SourcePanel.astro";
+import TopicNavigation from "./TopicNavigation.astro";
+import SacredIcon from "../ui/SacredIcon.astro";
+
+const { topic, next } = Astro.props;
+const questions = [
+  { question: "Is Kali Yuga the whole cosmic timeline?", answer: "No. Kali Yuga is one of four Yugas within one Maha Yuga, which belongs inside much larger cycles." },
+  { question: "Is a Kalpa the same as a Yuga?", answer: "No. A Kalpa is far larger. In the common Puranic model, one Kalpa contains one thousand Maha Yugas." },
+  { question: "Do I need to memorize all the numbers?", answer: "No. First understand the structure. The numbers become easier after the order is clear." },
+  { question: "Why should I learn Cosmic Time before Kali Yuga?", answer: "Because Kali Yuga only makes sense when you know what it belongs inside." },
+  { question: "Does every Sanatana tradition explain time in exactly the same way?", answer: "No. This page introduces a common Puranic model. Other traditions may emphasize different meanings or frameworks." },
+];
+---
+
+<section class="gateway-hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Cosmic Atlas</p>
+    <h1>{topic.data.title}</h1>
+    <p class="meaning">{topic.data.oneLineMeaning}</p>
+    <p class="hero-map">Four Yugas <span>→</span> Maha Yuga <span>→</span> Manvantara <span>→</span> Kalpa</p>
+    <nav class="hero-actions" aria-label="Cosmic Time page shortcuts">
+      <a class="primary" href="/atlas/kalpa"><SacredIcon name="compass" size={17} /> Start with Kalpa</a>
+      <a href="#cosmic-time-map"><SacredIcon name="map" size={17} /> View full map</a>
+    </nav>
+  </div>
+  <div class="hero-orbit" aria-hidden="true"></div>
+  <div class="journey"><JourneyPath steps={topic.data.whereItFits} active={topic.data.title} /></div>
+</section>
+
+<section class="dashboard">
+  <CosmicTimeMap />
+  <OverviewInsights />
+  <CommonQuestions questions={questions} compact />
+  <div class="side">
+    <section class="present-life"><span><SacredIcon name="lotus" size={24} /></span><div><p class="eyebrow">Present-life meaning</p><p>{topic.data.presentLife}</p></div></section>
+    <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+    <TopicNavigation next={next} />
+  </div>
+</section>
+
+<style>
+  .gateway-hero { position: relative; display: grid; grid-template-columns: minmax(25rem, 0.85fr) minmax(0, 1.15fr); gap: 1rem 2rem; overflow: hidden; padding: 0.6rem 0 0.8rem; }
+  .hero-copy, .journey { position: relative; z-index: 2; }
+  h1 { margin: 0.05rem 0 0.4rem; font-family: var(--serif); font-size: clamp(2.8rem, 4.5vw, 4rem); font-weight: 500; letter-spacing: -0.04em; line-height: 0.98; }
+  .meaning { max-width: 39ch; margin: 0; color: var(--ink-muted); font-size: 1rem; line-height: 1.45; }
+  .hero-map { margin: 0.7rem 0 0; color: var(--ink); font-size: 0.82rem; font-weight: 800; }
+  .hero-map span { margin-inline: 0.2rem; color: var(--copper); }
+  .hero-actions { display: flex; gap: 0.65rem; margin-top: 0.85rem; }
+  .hero-actions a { display: inline-flex; min-height: 40px; align-items: center; gap: 0.45rem; border: 1px solid var(--border); border-radius: 0.55rem; padding: 0.5rem 0.85rem; font-size: 0.78rem; font-weight: 800; }
+  .hero-actions .primary { border-color: var(--gold); background: var(--gold); color: #152321; }
+  .hero-orbit { position: absolute; z-index: 0; top: -9rem; right: -2rem; width: min(62vw, 56rem); height: 25rem; opacity: 0.6; background: radial-gradient(circle at 67% 50%, #fff3c0 0 2px, #d6ac5b 3px, transparent 8px), repeating-radial-gradient(circle at 67% 50%, transparent 0 34px, color-mix(in srgb, var(--gold) 35%, transparent) 35px 36px, transparent 37px 67px), radial-gradient(circle at 67% 50%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 28%), radial-gradient(circle at 20% 65%, color-mix(in srgb, var(--gold) 9%, transparent) 0 1px, transparent 2px); background-size: auto, auto, auto, 18px 18px; mask-image: linear-gradient(to left, black 65%, transparent); pointer-events: none; }
+  .journey { grid-column: 2; min-width: 0; align-self: end; }
+  .dashboard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.7rem; }
+  .dashboard > *, .side { min-width: 0; }
+  .side { display: grid; align-content: start; gap: 0.6rem; }
+  .present-life { display: flex; align-items: center; gap: 0.8rem; border: 1px solid var(--border); border-radius: 0.55rem; padding: 0.65rem 0.8rem; background: color-mix(in srgb, var(--surface) 65%, transparent); }
+  .present-life > span { display: grid; width: 2.5rem; height: 2.5rem; flex: 0 0 auto; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--gold) 15%, transparent); color: var(--gold); font-size: 1.35rem; }
+  .present-life p { margin: 0; color: var(--ink-muted); font-size: 0.76rem; line-height: 1.4; }
+  .present-life .eyebrow { margin-bottom: 0.12rem; color: var(--copper); }
+  .dashboard :global(.cosmic-time-map) { margin: 0; border: 1px solid var(--border); border-radius: 0.55rem; padding: 0.7rem 0.8rem; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+  .dashboard :global(.cosmic-time-map figcaption) { display: block; margin-bottom: 0.55rem; }
+  .dashboard :global(.cosmic-time-map figcaption p:last-child) { display: none; }
+  .dashboard :global(.cosmic-time-map figcaption h2) { font-family: var(--sans); font-size: 0.7rem; font-weight: 850; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); }
+  .dashboard :global(.cosmic-time-map article) { min-height: 5.9rem; border: 1px solid var(--border); border-radius: 0.45rem; padding: 0.5rem; text-align: center; align-items: center; background: color-mix(in srgb, var(--surface-muted) 28%, transparent); }
+  .dashboard :global(.cosmic-time-map .step) { width: 1.75rem; height: 1.75rem; background: color-mix(in srgb, var(--gold) 12%, transparent); }
+  .dashboard :global(.cosmic-time-map strong) { min-height: auto; margin-top: 0.45rem; font-size: 1rem; }
+  .dashboard :global(.cosmic-time-map small) { min-height: auto; font-size: 0.68rem; }
+  .dashboard :global(.cosmic-time-map .key-idea) { margin-top: 0.55rem; padding-top: 0.45rem; font-size: 0.72rem; }
+  .gateway-hero :global(.journey-path li:not(:last-child)::after) { width: 1rem; margin-inline: 0.35rem; }
+  .gateway-hero :global(.journey-path li) { font-size: 0.7rem; }
+  .gateway-hero :global(.journey-path span) { width: 1.3rem; height: 1.3rem; margin-right: 0.3rem; }
+  .gateway-hero :global(.eyebrow), .dashboard :global(.eyebrow) { letter-spacing: 0.1em; }
+  .side :global(.source-panel summary) { min-height: 42px; padding: 0.55rem 0.7rem; }
+  .side :global(.source-panel summary strong), .side :global(.source-panel summary small) { display: inline; }
+  .side :global(.source-panel summary small) { margin-left: 0.55rem; }
+  .side :global(.topic-navigation) { margin-top: 0; }
+  .side :global(.topic-navigation a.next) { min-height: 112px; overflow: hidden; border-color: var(--gold); border-radius: 0.65rem; background: radial-gradient(circle at 82% 48%, color-mix(in srgb, var(--gold) 45%, transparent), transparent 9%), repeating-radial-gradient(circle at 82% 48%, transparent 0 18px, color-mix(in srgb, var(--gold) 22%, transparent) 19px 20px, transparent 21px 38px), linear-gradient(100deg, var(--surface) 35%, color-mix(in srgb, var(--gold) 16%, var(--surface))); }
+  .side :global(.topic-navigation a.next em) { display: inline-flex; width: fit-content; border-radius: 999px; padding: 0.35rem 0.65rem; background: var(--gold); color: #152321; }
+  @media (min-width: 1001px) and (max-width: 1350px) {
+    .gateway-hero :global(.journey-path ol) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.45rem 0.7rem; overflow: visible; padding-bottom: 0; }
+    .gateway-hero :global(.journey-path li) { min-width: 0; }
+    .gateway-hero :global(.journey-path li:not(:last-child)::after) { flex: 1 1 auto; min-width: 0.45rem; }
+    .gateway-hero :global(.journey-path li:nth-child(3)::after) { display: none; }
+  }
+  @media (max-width: 1000px) { .gateway-hero, .dashboard { grid-template-columns: minmax(0, 1fr); } .journey { grid-column: 1; } .hero-orbit { right: -18rem; opacity: 0.28; } .gateway-hero :global(.journey-path ol) { overflow-x: auto; } }
+  @media (max-width: 600px) { .gateway-hero { padding-top: 0.2rem; } .hero-actions { flex-wrap: wrap; } .dashboard { gap: 0.6rem; } }
+</style>

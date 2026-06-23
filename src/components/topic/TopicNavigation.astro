@@ -1,4 +1,6 @@
 ---
+import SacredIcon from "../ui/SacredIcon.astro";
+
 interface TopicLink {
   slug: string;
   title: string;
@@ -13,7 +15,7 @@ interface Props {
 const { previous, next } = Astro.props;
 ---
 
-<nav class="topic-navigation" aria-label="Continue the Cosmic Atlas journey">
+<nav class:list={["topic-navigation", !previous && "next-only"]} aria-label="Continue the Cosmic Atlas journey">
   {
     previous ? (
       <a class="previous" href={`/atlas/${previous.slug}`}>
@@ -31,6 +33,8 @@ const { previous, next } = Astro.props;
         <span>Next topic</span>
         <strong>{next.title} -&gt;</strong>
         {next.description && <small>{next.description}</small>}
+        {!previous && <em>Open {next.title} -&gt;</em>}
+        {!previous && <span class="next-art" aria-hidden="true"><SacredIcon name="mandala" size={68} /></span>}
       </a>
     ) : (
       <a class="next" href="/atlas">
@@ -46,12 +50,50 @@ const { previous, next } = Astro.props;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
-    margin-top: 4rem;
+    margin-top: 2.5rem;
+  }
+
+  .next-only {
+    grid-template-columns: 1fr;
+  }
+
+  .next-only > span {
+    display: none;
+  }
+
+  .next-only a.next {
+    position: relative;
+    min-height: 110px;
+    border-color: color-mix(in srgb, var(--gold) 65%, var(--border));
+    background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--gold) 10%, var(--surface)));
+    text-align: left;
+  }
+
+  .next-art {
+    position: absolute;
+    right: 9%;
+    bottom: 1.1rem;
+    color: color-mix(in srgb, var(--gold) 72%, transparent);
+    opacity: 0.7;
+  }
+
+  .next-only a.next strong {
+    font-size: 1.5rem;
+  }
+
+  .next-only a.next em {
+    margin-top: 0.75rem;
+    color: var(--copper);
+    font-size: 0.76rem;
+    font-style: normal;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   a {
     display: grid;
-    min-height: 100px;
+    min-height: 84px;
     align-content: center;
     border: 1px solid var(--border);
     border-radius: 1.2rem;

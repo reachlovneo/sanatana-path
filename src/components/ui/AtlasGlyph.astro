@@ -1,0 +1,29 @@
+---
+interface Props {
+  name: "brand" | "cosmic-time" | "kalpa" | "manvantara" | "maha-yuga" | "four-yugas" | "satya-yuga" | "kali-yuga" | "overview" | "journey" | "library" | "timeline" | "settings" | "om" | "human";
+  size?: number;
+}
+
+const { name, size = 24 } = Astro.props;
+const glyphs = {
+  brand: '<circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="3"/><path d="M24 3 30 15l13-5-5 13 7 10-14 1-7 11-7-11-14-1 7-10-5-13 13 5 6-12Z"/><path d="m24 11 8 5 5 8-5 8-8 5-8-5-5-8 5-8 8-5Z"/><path d="M24 3v42M3 24h42M9 9l30 30M39 9 9 39"/>',
+  "cosmic-time": '<circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="3"/><path d="M24 5v7M24 36v7M5 24h7M36 24h7M11 11l5 5M32 32l5 5M37 11l-5 5M16 32l-5 5"/><path d="M9 30c8 4 22 4 30 0M9 18c8-4 22-4 30 0"/>',
+  kalpa: '<circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="11"/><circle cx="24" cy="24" r="4"/><path d="M24 3v7M24 38v7M3 24h7M38 24h7M9 9l5 5M34 34l5 5M39 9l-5 5M14 34l-5 5"/><path d="m24 13 3 7 7 4-7 4-3 7-3-7-7-4 7-4 3-7Z"/>',
+  manvantara: '<circle cx="24" cy="24" r="18"/><path d="m24 7 5 8 9 1-4 8 4 8-9 1-5 8-5-8-9-1 4-8-4-8 9-1 5-8Z"/><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="3"/><path d="M24 16v16M16 24h16"/>',
+  "maha-yuga": '<circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="12"/><path d="m24 10 4 10 10 4-10 4-4 10-4-10-10-4 10-4 4-10Z"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6"/>',
+  "four-yugas": '<circle cx="24" cy="24" r="18"/><path d="m24 8 4.5 11.5L40 24l-11.5 4.5L24 40l-4.5-11.5L8 24l11.5-4.5L24 8Z"/><circle cx="24" cy="24" r="6"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7"/>',
+  "satya-yuga": '<circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="8"/><path d="M24 4v9M24 35v9M4 24h9M35 24h9M10 10l6 6M32 32l6 6M38 10l-6 6M16 32l-6 6"/><path d="m24 10 3.5 10.5L38 24l-10.5 3.5L24 38l-3.5-10.5L10 24l10.5-3.5L24 10Z"/>',
+  "kali-yuga": '<circle cx="24" cy="24" r="18"/><path d="m24 7 4 11 11 6-11 6-4 11-4-11-11-6 11-6 4-11Z"/><path d="M24 15c4 4 5 7 0 15-5-8-4-11 0-15Z"/><circle cx="24" cy="24" r="3"/>',
+  overview: '<rect x="8" y="8" width="12" height="12" rx="2"/><rect x="28" y="8" width="12" height="12" rx="2"/><rect x="8" y="28" width="12" height="12" rx="2"/><rect x="28" y="28" width="12" height="12" rx="2"/>',
+  journey: '<path d="M8 36V12l10-4 14 5 8-4v27l-8 4-14-5-10 4Z"/><path d="M18 8v27M32 13v27"/>',
+  library: '<path d="M12 8h20l5 5v27H12V8Z"/><path d="M32 8v7h7M17 21h15M17 28h15M17 35h10"/>',
+  timeline: '<circle cx="24" cy="24" r="17"/><path d="M24 13v11l8 5M8 11l5 1-1-5"/>',
+  settings: '<circle cx="24" cy="24" r="6"/><path d="M40 24a16 16 0 0 0-.3-3l5-4-5-9-6 2A16 16 0 0 0 29 7L28 1h-8l-1 6a16 16 0 0 0-5 3L8 8l-5 9 5 4a16 16 0 0 0 0 6l-5 4 5 9 6-2a16 16 0 0 0 5 3l1 6h8l1-6a16 16 0 0 0 5-3l6 2 5-9-5-4a16 16 0 0 0 0-3Z"/>',
+  om: '<path d="M13 29c5 5 15 2 15-5 0-6-8-8-12-4-4 4-2 12 5 14 8 3 17-3 17-12 0-5-3-10-7-13M30 9c2 0 5 1 7 4M33 5c2 0 4 1 6 3"/><path d="M13 29c-5 1-8-2-8-6 0-4 3-7 7-7"/>',
+  human: '<circle cx="24" cy="10" r="4"/><path d="M24 14v13M15 21l9-5 9 5M19 45l5-18 5 18"/>',
+};
+---
+<svg width={size} height={size} viewBox="0 0 48 48" aria-hidden="true" set:html={glyphs[name]}></svg>
+<style>
+  svg { display: block; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
+</style>
