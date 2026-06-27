@@ -1,0 +1,340 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+interface ConceptLink {
+  title: string;
+  href: string;
+  image: string;
+  eyebrow: string;
+}
+
+interface ConceptPage {
+  title: string;
+  eyebrow: string;
+  summary: string;
+  image: string;
+  transitionName: string;
+  accent: string;
+  facts: string[];
+  sections: { title: string; body: string }[];
+  related: ConceptLink[];
+  posterHero?: boolean;
+}
+
+const { concept } = Astro.props as { concept: ConceptPage };
+const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.accent}; view-transition-name: ${concept.transitionName};`;
+---
+
+<BaseLayout title={`${concept.title} | Sanatana Path`} description={concept.summary} image={concept.image}>
+  <article class="concept-detail">
+    <section class:list={["concept-hero", concept.posterHero && "poster-hero"]} style={heroStyle}>
+      <div class="hero-shade">
+        <a class="back-link" href="/">Home</a>
+        <div class="hero-copy">
+          <p class="eyebrow">{concept.eyebrow}</p>
+          <h1>{concept.title}</h1>
+          <p>{concept.summary}</p>
+          <div class="fact-row" aria-label={`${concept.title} quick orientation`}>
+            {concept.facts.map((fact) => <span>{fact}</span>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="concept-body">
+      <main class="concept-reading">
+        {concept.sections.map((section) => (
+          <section>
+            <h2>{section.title}</h2>
+            <p>{section.body}</p>
+          </section>
+        ))}
+      </main>
+
+      <aside class="related-panel" aria-label="Related journeys">
+        <p class="eyebrow">Related screen</p>
+        <h2>Continue through the atlas</h2>
+        <div>
+          {concept.related.map((item) => (
+            <a href={item.href} style={`--related-image: url(${item.image});`}>
+              <span>{item.eyebrow}</span>
+              <strong>{item.title}</strong>
+            </a>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .concept-detail {
+    min-height: 100svh;
+    padding-bottom: 4rem;
+    background:
+      radial-gradient(circle at 72% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 26rem),
+      var(--canvas);
+  }
+
+  .concept-hero {
+    width: min(1460px, calc(100% - 2rem));
+    min-height: clamp(27rem, 62svh, 42rem);
+    margin: 1.25rem auto 0;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 1.2rem;
+    position: relative;
+    background-image: var(--hero-image);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 28px 90px rgb(0 0 0 / .28);
+    animation: concept-enter 520ms cubic-bezier(.22, 1, .36, 1) both;
+  }
+
+  .concept-hero::after {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 74% 20%, transparent 0 28%, rgb(3 13 20 / .08) 58%, rgb(3 13 20 / .24) 100%),
+      linear-gradient(180deg, rgb(3 13 20 / .02), rgb(3 13 20 / .2));
+    content: "";
+    pointer-events: none;
+  }
+  .concept-hero.poster-hero {
+    display: grid;
+    min-height: 0;
+    padding-top: clamp(23rem, 54svh, 37rem);
+    background-image: linear-gradient(145deg, rgb(3 13 20 / .88), rgb(3 13 20 / .68));
+  }
+
+  .concept-hero.poster-hero::before {
+    position: absolute;
+    inset: 0 0 auto;
+    height: clamp(23rem, 54svh, 37rem);
+    background-image:
+      linear-gradient(180deg, rgb(3 13 20 / .02), rgb(3 13 20 / .12)),
+      var(--hero-image);
+    background-position: center;
+    background-size: cover;
+    content: "";
+  }
+
+  .concept-hero.poster-hero::after {
+    top: clamp(23rem, 54svh, 37rem);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 46%, transparent), transparent);
+  }
+
+  .poster-hero .hero-shade {
+    min-height: auto;
+    justify-content: end;
+    padding: clamp(.85rem, 2vw, 1.2rem);
+  }
+
+  .poster-hero .back-link {
+    position: absolute;
+    top: clamp(1rem, 2vw, 1.5rem);
+    left: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .poster-hero .hero-copy {
+    width: 100%;
+    border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+    background:
+      linear-gradient(135deg, rgb(3 13 20 / .82), rgb(3 13 20 / .5)),
+      radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 52%);
+    backdrop-filter: none;
+  }
+
+  .poster-hero h1 {
+    font-size: clamp(2.7rem, 5.4vw, 5.2rem);
+  }
+
+  .poster-hero .fact-row {
+    margin-top: 1rem;
+  }
+
+  .hero-shade {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: inherit;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(1rem, 3.5vw, 3rem);
+  }
+
+  .hero-copy {
+    width: min(100%, 46rem);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    border-radius: 1rem;
+    padding: clamp(1rem, 2.4vw, 1.55rem);
+    background:
+      linear-gradient(135deg, rgb(3 13 20 / .74), rgb(3 13 20 / .28)),
+      radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 45%);
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 80px rgb(0 0 0 / .24);
+    backdrop-filter: blur(8px) saturate(112%);
+  }
+
+  .back-link {
+    width: fit-content;
+    margin-bottom: auto;
+    border: 1px solid color-mix(in srgb, var(--accent) 36%, transparent);
+    border-radius: 999px;
+    padding: .5rem .75rem;
+    color: color-mix(in srgb, var(--accent) 78%, white 22%);
+    background: rgb(3 13 20 / .58);
+    font-size: .72rem;
+    font-weight: 850;
+  }
+
+  .eyebrow {
+    margin: 0 0 .6rem;
+    color: color-mix(in srgb, var(--accent) 80%, white 20%);
+    font-size: .7rem;
+    font-weight: 900;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 12ch;
+    margin: 0;
+    color: #fff4df;
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 6.7rem);
+    font-weight: 450;
+    letter-spacing: -.045em;
+    line-height: .95;
+  }
+
+  .concept-hero p:not(.eyebrow) {
+    max-width: 58ch;
+    margin: 1rem 0 0;
+    color: #eee0ca;
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
+    line-height: 1.7;
+  }
+
+  .fact-row {
+    display: flex;
+    max-width: 64rem;
+    flex-wrap: wrap;
+    gap: .55rem;
+    margin-top: 1.25rem;
+  }
+
+  .fact-row span {
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border-radius: 999px;
+    padding: .48rem .7rem;
+    color: #f4e4c9;
+    background: rgb(3 13 20 / .5);
+    font-size: .72rem;
+    font-weight: 850;
+  }
+
+  .concept-body {
+    display: grid;
+    width: min(1180px, calc(100% - 2rem));
+    grid-template-columns: minmax(0, 1fr) 22rem;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    margin: clamp(1.5rem, 4vw, 3rem) auto 0;
+  }
+
+  .concept-reading {
+    display: grid;
+    gap: .9rem;
+  }
+
+  .concept-reading section,
+  .related-panel {
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: .9rem;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    box-shadow: var(--shadow);
+  }
+
+  .concept-reading h2,
+  .related-panel h2 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: clamp(1.55rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    letter-spacing: -.03em;
+    line-height: 1.08;
+  }
+
+  .concept-reading p {
+    margin: .7rem 0 0;
+    color: var(--ink-muted);
+    line-height: 1.8;
+  }
+
+  .related-panel {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
+
+  .related-panel > div {
+    display: grid;
+    gap: .7rem;
+    margin-top: 1rem;
+  }
+
+  .related-panel a {
+    min-height: 8.5rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    border-radius: .8rem;
+    padding: .85rem;
+    background-image:
+      linear-gradient(180deg, rgb(3 13 20 / .04), rgb(3 13 20 / .58)),
+      var(--related-image);
+    background-position: center;
+    background-size: cover;
+    color: #fff1d6;
+  }
+
+  .related-panel a span,
+  .related-panel a strong {
+    display: block;
+  }
+
+  .related-panel a span {
+    color: color-mix(in srgb, var(--accent) 80%, white 20%);
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .related-panel a strong {
+    max-width: 12ch;
+    margin-top: .25rem;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.04;
+  }
+
+  @keyframes concept-enter {
+    from { opacity: 0; transform: translateY(18px) scale(.985); filter: saturate(.8); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+
+  @media (max-width: 900px) {
+    .concept-body { grid-template-columns: 1fr; }
+    .related-panel { position: static; }
+    h1 { font-size: clamp(2.7rem, 13vw, 5rem); }
+  }
+
+  @media (max-width: 640px) {
+    .concept-hero { width: min(100% - 1rem, 1460px); min-height: 33rem; margin-top: .5rem; border-radius: .9rem; }
+    .hero-shade { padding: .8rem; }
+    .hero-copy { padding: .95rem; }
+    .concept-body { width: min(100% - 1rem, 1180px); }
+  }
+</style>

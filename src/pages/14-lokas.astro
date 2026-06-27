@@ -1,0 +1,27 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const related = [
+  { title: "Cosmic Time", href: "/atlas", image: "/images/home/home-hero.png", eyebrow: "Cosmic map" },
+  { title: "Pushpaka Vimana", href: "/pushpaka-vimana", image: "/images/home/home-vimana.png", eyebrow: "Ramayana wonder" },
+  { title: "Astras", href: "/astras", image: "/images/home/home-astras.png", eyebrow: "Astra knowledge" },
+];
+
+const concept = {
+  title: "14 Lokas",
+  eyebrow: "Realms of Hindu cosmology",
+  summary: "The 14 Lokas describe a layered view of existence, from earthly life to subtle higher realms and deeper lower worlds. This page gives a beginner-friendly orientation before the full atlas article is built.",
+  image: "/images/home/home-lokas.png",
+  transitionName: "concept-lokas",
+  posterHero: true,
+  accent: "#65d7dc",
+  facts: ["7 higher lokas", "7 lower lokas", "A vertical cosmology", "Draft explainer"],
+  sections: [
+    { title: "What are the Lokas?", body: "Lokas are often understood as realms, worlds, or planes of experience. In common Puranic cosmology, they help describe a universe that is not only physical, but also moral, subtle, and spiritual." },
+    { title: "How to read the idea", body: "The 14 Lokas are not just places on a map. They also give a way to think about consciousness, karma, merit, responsibility, and the many conditions through which beings experience existence." },
+    { title: "Why this belongs in the atlas", body: "Cosmic Time explains when cycles unfold. The Lokas help explain where beings, stories, devas, sages, and karmic journeys are situated within the traditional imagination." },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />

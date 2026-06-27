@@ -9,6 +9,7 @@ import MahaYugaJourney from "../../components/topic/MahaYugaJourney.astro";
 import FourYugasJourney from "../../components/topic/FourYugasJourney.astro";
 import SatyaYugaJourney from "../../components/topic/SatyaYugaJourney.astro";
 import TretaYugaJourney from "../../components/topic/TretaYugaJourney.astro";
+import GarudaPuranaJourney from "../../components/topic/GarudaPuranaJourney.astro";
 import JourneyPath from "../../components/topic/JourneyPath.astro";
 import RelatedTopics from "../../components/topic/RelatedTopics.astro";
 import ReviewStatus from "../../components/topic/ReviewStatus.astro";
@@ -67,6 +68,8 @@ const breadcrumbJsonLd = {
         <SatyaYugaJourney topic={topic} next={adjacentTopics.next} />
       ) : topic.id === "treta-yuga" ? (
         <TretaYugaJourney topic={topic} next={adjacentTopics.next} />
+      ) : topic.id === "garuda-purana" ? (
+        <GarudaPuranaJourney topic={topic} next={adjacentTopics.next} />
       ) : (
         <>
           <ReviewStatus status={topic.data.reviewStatus} reviewedBy={topic.data.reviewedBy} />
@@ -87,7 +90,7 @@ const breadcrumbJsonLd = {
 <style>
   .topic { max-width: 1080px; padding-top: 3.5rem; }
   .gateway-topic { width: min(1460px, calc(100% - 2rem)); max-width: 1460px; padding-top: 1rem; }
-  .topic:has(.cosmic-reading), .topic:has(.kalpa-reading), .topic:has(.manvantara-reading), .topic:has(.maha-reading), .topic:has(.yugas-reading), .topic:has(.satya-reading), .topic:has(.treta-reading) { width: min(1460px, calc(100% - 2rem)); max-width: 1460px; padding-top: 1rem; }
+  .topic:has(.cosmic-reading), .topic:has(.kalpa-reading), .topic:has(.manvantara-reading), .topic:has(.maha-reading), .topic:has(.yugas-reading), .topic:has(.satya-reading), .topic:has(.treta-reading), .topic:has(.garuda-reading) { width: min(1460px, calc(100% - 2rem)); max-width: 1460px; padding-top: 1rem; }
   .topic-header { max-width: 780px; margin-bottom: 2rem; }
   .topic-header .display { font-size: clamp(2.75rem, 6vw, 4.8rem); }
   .meaning { max-width: 58ch; margin: 1rem 0 0; color: var(--ink-muted); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }

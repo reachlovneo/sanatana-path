@@ -7,6 +7,7 @@
   { slug: "satya-yuga", title: "Satya Yuga", description: "The Age of Truth and complete Dharma" },
   { slug: "treta-yuga", title: "Treta Yuga", description: "The Age of Duty and the Ramayana" },
   { slug: "kali-yuga", title: "Kali Yuga", description: "The current Yuga in the common Puranic model" },
+  { slug: "garuda-purana", title: "Garuda Purana", description: "Afterlife, karma, subtle body, rebirth, and liberation" },
 ]);
 
 export const ATLAS_JOURNEY_TITLES = ATLAS_JOURNEY.map((topic) => topic.title);

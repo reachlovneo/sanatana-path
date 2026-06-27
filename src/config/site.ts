@@ -11,12 +11,14 @@ export const SITE = Object.freeze({
 export const PRIMARY_NAVIGATION = Object.freeze([
   { href: "/", label: "Home" },
   { href: "/atlas", label: "Atlas" },
+  { href: "/library", label: "Library" },
   { href: "/sources", label: "Sources" },
   { href: "/feedback", label: "Feedback" },
 ]);
 
 export const FOOTER_NAVIGATION = Object.freeze([
   { href: "/methodology", label: "Methodology" },
+  { href: "/library", label: "Library" },
   { href: "/sources", label: "Sources" },
   { href: "/feedback", label: "Feedback" },
 ]);

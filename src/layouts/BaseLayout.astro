@@ -3,6 +3,7 @@ import SiteFooter from "../components/layout/SiteFooter.astro";
 import SiteHeader from "../components/layout/SiteHeader.astro";
 import MobileNavigation from "../components/layout/MobileNavigation.astro";
 import JsonLd from "../components/seo/JsonLd.astro";
+import { ClientRouter } from "astro:transitions";
 import { SITE } from "../config/site";
 import "../styles/global.css";
 interface Props {
@@ -11,8 +12,9 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   noindex?: boolean;
+  hideChrome?: boolean;
 }
-const { title, description, image = "/images/og/default.svg", type = "website", noindex = false } = Astro.props;
+const { title, description, image = "/images/og/default.svg", type = "website", noindex = false, hideChrome = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const imageUrl = new URL(image, Astro.site);
 const websiteJsonLd = {
@@ -24,13 +26,17 @@ const websiteJsonLd = {
 };
 ---
 <!doctype html>
-<html lang={SITE.locale}>
+<html lang={SITE.locale} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content={SITE.themeColor} />
+    <script is:inline data-sanathana-theme>
+      document.documentElement.dataset.theme = "dark";
+      try { localStorage.setItem("theme", "dark"); } catch {}
+    </script>
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={title} />
@@ -44,11 +50,15 @@ const websiteJsonLd = {
     <link rel="canonical" href={canonical} />
     <title>{title}</title>
     <JsonLd data={websiteJsonLd} />
+    <ClientRouter />
     <slot name="head" />
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a><SiteHeader />
-    <main id="main-content"><slot /></main><SiteFooter /><MobileNavigation />
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {!hideChrome && <SiteHeader />}
+    <main id="main-content"><slot /></main>
+    {!hideChrome && <SiteFooter />}
+    {!hideChrome && <MobileNavigation />}
   </body>
 </html>
 <style>

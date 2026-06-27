@@ -8,7 +8,6 @@ const featuredTopics = [
     text: "Kalpa, Manvantara, Maha Yuga, Four Yugas, and Kali Yuga placed as one clear hierarchy.",
     href: "/atlas/cosmic-time",
     tone: "gold",
-    code: "CT",
     image: "/images/home/home-hero.webp",
   },
   {
@@ -17,7 +16,6 @@ const featuredTopics = [
     text: "The layered worlds of Hindu cosmology, from earthly experience to subtle celestial realms.",
     href: "/atlas",
     tone: "teal",
-    code: "14",
     image: "/images/home/home-lokas.webp",
   },
   {
@@ -26,7 +24,6 @@ const featuredTopics = [
     text: "The famous aerial vehicle of the Ramayana, explored as story, symbol, and ancient imagination.",
     href: "/atlas/treta-yuga",
     tone: "amber",
-    code: "PV",
     image: "/images/home/home-vimana.webp",
   },
   {
@@ -35,7 +32,6 @@ const featuredTopics = [
     text: "The three moving cities destroyed by Shiva, one of the most cinematic stories in the Puranas.",
     href: "/atlas",
     tone: "violet",
-    code: "TR",
     image: "/images/home/home-tripura.webp",
   },
   {
@@ -44,7 +40,6 @@ const featuredTopics = [
     text: "Astras activated by mantra, attention, discipline, and inner qualification in the epics.",
     href: "/atlas",
     tone: "fire",
-    code: "AS",
     image: "/images/home/home-astras.webp",
   },
   {
@@ -53,32 +48,33 @@ const featuredTopics = [
     text: "A guided library of characters, hidden episodes, symbols, books, and timeless knowledge.",
     href: "/atlas/treta-yuga",
     tone: "blue",
-    code: "ST",
     image: "/images/home/home-library.webp",
+  },
+  {
+    eyebrow: "Purana knowledge",
+    title: "Garuda Puranam",
+    text: "A sacred Purana exploring dharma, karma, afterlife journeys, rituals, and deeper meaning.",
+    href: "/atlas/garuda-purana",
+    tone: "shadow",
+    image: "/images/home/home-garuda-purana.png",
   },
 ];
 
 const atlasRoutes = ["Cosmic Time", "Kalpa", "Manvantara", "Maha Yuga", "Four Yugas", "Kali Yuga"];
 const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishanku", "Bhagiratha", "Parashurama"];
+const heroNodes = [
+  { label: "Cosmic Time", href: "/atlas/cosmic-time", tone: "gold", className: "node-1" },
+  { label: "Garuda Purana", href: "/atlas/garuda-purana", tone: "shadow", className: "node-7" },
+  { label: "14 Lokas", href: "/atlas", tone: "teal", className: "node-2" },
+  { label: "Vimanas", href: "/atlas/treta-yuga", tone: "amber", className: "node-3" },
+  { label: "Tripura", href: "/atlas", tone: "violet", className: "node-4" },
+  { label: "Astras", href: "/atlas", tone: "fire", className: "node-5" },
+  { label: "Epics", href: "/atlas/treta-yuga", tone: "blue", className: "node-6" },
+];
 ---
 <BaseLayout title="Sanatana Path | Explore Hindu Cosmology, Epics, and Sacred Knowledge" description="A visual atlas for Hindu cosmology, Ramayana, Mahabharata, Puranas, Lokas, Vimanas, Astras, and timeless knowledge traditions.">
   <div class="home-experience">
-    <header class="home-topbar" aria-label="Sanatana Path landing navigation">
-      <a class="atlas-brand" href="/">
-        <span class="brand-sigil" aria-hidden="true">SP</span>
-        <span><strong>SANATANA PATH</strong><small>THE ETERNAL ATLAS</small></span>
-      </a>
-      <nav class="atlas-nav" aria-label="Primary navigation">
-        <a class="active" href="/">Home</a>
-        <a href="/atlas">Atlas</a>
-        <a href="/sources">Sources</a>
-        <a href="/feedback">Feedback</a>
-      </nav>
-      <a class="search-pill" href="/atlas" aria-label="Search the atlas"><span>Search the Atlas...</span><kbd>/</kbd></a>
-      <a class="round-mark" href="/atlas" aria-label="Open atlas">SP</a>
-    </header>
-
-    <main class="home-main">
+    <div class="home-main">
       <section class="home-hero">
         <div class="hero-panel">
           <p class="eyebrow">The eternal atlas</p>
@@ -105,12 +101,11 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
             <span class="orbit orbit-b"></span>
             <span class="orbit orbit-c"></span>
             <span class="orbit orbit-d"></span>
-            <div class="core-node"><strong>SP</strong><small>Living Atlas</small></div>
-            {featuredTopics.map((topic, index) => <a class={`topic-node node-${index + 1} ${topic.tone}`} href={topic.href}><b>{topic.code}</b><span>{topic.title}</span></a>)}
+            {heroNodes.map((node) => <a class={`topic-node ${node.className} ${node.tone}`} href={node.href}><span>{node.label}</span></a>)}
           </div>
           <div class="orbital-caption">
-            <p class="eyebrow">Start anywhere</p>
-            <strong>Every topic becomes more powerful when you see what it connects to.</strong>
+            <p class="eyebrow">Follow the connections</p>
+            <strong>Start with any topic, then see its place in time, story, source, and meaning.</strong>
           </div>
         </aside>
       </section>
@@ -124,11 +119,9 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
           <p>These are the hooks that make people stop scrolling. Some are live now; others become dedicated atlas journeys as we build.</p>
         </div>
         <div class="topic-grid">
-          {featuredTopics.map((topic, index) => (
+          {featuredTopics.map((topic) => (
             <a class={`topic-card ${topic.tone}`} href={topic.href}>
               <img src={topic.image} alt="" loading="lazy" decoding="async" />
-              <span class="topic-number">{String(index + 1).padStart(2, "0")}</span>
-              <i>{topic.code}</i>
               <div class="topic-copy">
                 <p>{topic.eyebrow}</p>
                 <h3>{topic.title}</h3>
@@ -161,7 +154,7 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
           {storySignals.map((signal) => <span>{signal}</span>)}
         </div>
       </section>
-    </main>
+    </div>
   </div>
 </BaseLayout>
 <style is:global>
@@ -174,11 +167,6 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
     display: none;
   }
 
-  body:has(.home-experience) > .site-header,
-  body:has(.home-experience) > footer,
-  body:has(.home-experience) > .mobile-nav {
-    display: none;
-  }
 
   .home-experience {
     min-height: 100svh;
@@ -200,108 +188,6 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
     content: "";
   }
 
-  .home-topbar {
-    position: relative;
-    z-index: 5;
-    display: grid;
-    grid-template-columns: minmax(18rem, 1fr) auto minmax(18rem, .8fr) auto;
-    gap: 1.2rem;
-    align-items: center;
-    margin: 1rem 1.35rem .6rem;
-    border: 1px solid rgb(214 172 91 / .18);
-    padding: .75rem 1rem;
-    background: rgb(2 10 16 / .76);
-    backdrop-filter: blur(18px);
-  }
-
-  .atlas-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: .85rem;
-  }
-
-  .brand-sigil,
-  .round-mark {
-    display: grid;
-    place-items: center;
-    border: 1px solid rgb(214 172 91 / .45);
-    border-radius: 50%;
-    color: #d6ac5b;
-    box-shadow: 0 0 30px rgb(214 172 91 / .1);
-  }
-
-  .brand-sigil { width: 3.1rem; height: 3.1rem; font-size: .78rem; font-weight: 900; letter-spacing: .04em; }
-  .round-mark { width: 3rem; height: 3rem; font-size: .72rem; font-weight: 900; letter-spacing: .04em; }
-
-  .atlas-brand strong,
-  .atlas-brand small {
-    display: block;
-    letter-spacing: .14em;
-  }
-
-  .atlas-brand strong {
-    color: #f7ebd3;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.22rem;
-  }
-
-  .atlas-brand small {
-    margin-top: .15rem;
-    color: #9f9688;
-    font-size: .62rem;
-  }
-
-  .atlas-nav {
-    display: flex;
-    gap: 1.6rem;
-    align-items: center;
-  }
-
-  .atlas-nav a {
-    position: relative;
-    color: #aaa49a;
-    font-size: .78rem;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-  }
-
-  .atlas-nav a.active,
-  .atlas-nav a:hover {
-    color: #f4d19a;
-  }
-
-  .atlas-nav a.active::after {
-    position: absolute;
-    right: 0;
-    bottom: -.8rem;
-    left: 0;
-    height: 2px;
-    background: #f4c36d;
-    box-shadow: 0 0 16px rgb(244 195 109 / .8);
-    content: "";
-  }
-
-  .search-pill {
-    display: flex;
-    min-height: 3rem;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    border: 1px solid rgb(214 172 91 / .22);
-    border-radius: 999px;
-    padding: .55rem .75rem .55rem 1rem;
-    color: #8f8b84;
-    background: rgb(2 10 16 / .62);
-  }
-
-  .search-pill kbd {
-    border: 1px solid rgb(214 172 91 / .18);
-    border-radius: .45rem;
-    padding: .08rem .42rem;
-    color: #c9b99d;
-    font: inherit;
-    font-size: .72rem;
-  }
 
   .home-main {
     position: relative;
@@ -492,8 +378,11 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
   }
 
   .atlas-orbital {
+    --caption-space: 5.75rem;
     position: relative;
-    min-height: clamp(31rem, 58vh, 39rem);
+    align-self: start;
+    min-height: clamp(38rem, 70vh, 48rem);
+    margin-top: -2.2rem;
     overflow: hidden;
     border: 1px solid rgb(214 172 91 / .2);
     border-radius: 1.55rem;
@@ -503,7 +392,7 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
 
   .atlas-orbital::before {
     position: absolute;
-    inset: 1rem;
+    inset: 1rem 1rem calc(var(--caption-space) + .18rem) 1rem;
     z-index: 1;
     border: 1px solid rgb(244 195 109 / .16);
     border-radius: 1.1rem;
@@ -513,24 +402,28 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
 
   .hero-art {
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - var(--caption-space));
     object-fit: cover;
-    opacity: .46;
-    filter: saturate(1.08) contrast(1.05);
+    opacity: .82;
+    filter: saturate(1.12) contrast(1.08) brightness(.88);
   }
 
   .atlas-orbital::after {
     position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 46%, transparent 0 24%, rgb(2 10 16 / .36) 56%, rgb(2 10 16 / .82) 100%);
+    inset: 0 0 var(--caption-space) 0;
+    background:
+      radial-gradient(circle at 50% 46%, transparent 0 18%, rgb(2 10 16 / .2) 58%, rgb(2 10 16 / .68) 100%),
+      linear-gradient(180deg, rgb(2 10 16 / .2), transparent 38%, rgb(2 10 16 / .42));
     content: "";
   }
 
   .orbital-field {
     position: absolute;
-    inset: 2rem;
+    inset: 1.35rem 1.65rem calc(var(--caption-space) + .82rem) 1.65rem;
     z-index: 1;
     display: grid;
     place-items: center;
@@ -549,71 +442,85 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
   .orbit-c { width: 100%; aspect-ratio: 1; border-style: dashed; opacity: .68; animation-duration: 42s; }
   .orbit-d { width: 44%; aspect-ratio: 1; border-color: rgb(255 122 79 / .2); animation-duration: 18s; }
 
-  .core-node {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    width: clamp(9rem, 16vw, 13.5rem);
-    aspect-ratio: 1;
-    place-items: center;
-    align-content: center;
-    border: 1px solid rgb(244 195 109 / .75);
-    border-radius: 50%;
-    background: radial-gradient(circle at 50% 35%, #f9df9b, #80501d 72%);
-    color: #061015;
-    box-shadow: 0 0 0 20px rgb(244 195 109 / .08), 0 0 100px rgb(244 195 109 / .25);
-    text-align: center;
-  }
-
-  .core-node strong { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1; }
-  .core-node small { margin-top: .35rem; font-size: .66rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 
   .topic-node {
     position: absolute;
     z-index: 3;
-    display: grid;
-    min-width: 8.2rem;
-    place-items: center;
-    border: 1px solid rgb(214 172 91 / .24);
+    display: inline-flex;
+    align-items: center;
+    gap: .42rem;
+    min-width: 0;
+    border: 1px solid color-mix(in srgb, var(--node-color, #f4d19a) 42%, transparent);
     border-radius: 999px;
-    padding: .48rem .68rem;
-    color: #f7ebd3;
-    background: rgb(2 10 16 / .78);
+    padding: .48rem .72rem;
+    color: color-mix(in srgb, var(--node-color, #f4d19a) 82%, #fff2da);
+    background: rgb(2 10 16 / .72);
     box-shadow: 0 0 35px var(--node-glow, rgb(214 172 91 / .14));
+    backdrop-filter: blur(12px);
     text-align: center;
+    text-transform: uppercase;
   }
 
-  .topic-node b { color: var(--node-color, #f4d19a); font-size: .72rem; }
-  .topic-node span { margin-top: .1rem; font-size: .68rem; font-weight: 800; }
+  .topic-node::before {
+    width: .42rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--node-color, #f4d19a);
+    box-shadow: 0 0 16px var(--node-color, #f4d19a);
+    content: "";
+  }
+
+  .topic-node span { font-size: .72rem; font-weight: 900; letter-spacing: .04em; }
   .topic-node.gold { --node-color: #f4d19a; --node-glow: rgb(244 195 109 / .22); }
   .topic-node.teal { --node-color: #65d7dc; --node-glow: rgb(101 215 220 / .22); }
   .topic-node.amber { --node-color: #ffbf73; --node-glow: rgb(255 175 78 / .22); }
   .topic-node.violet { --node-color: #c89bff; --node-glow: rgb(190 134 255 / .22); }
   .topic-node.fire { --node-color: #ff7a4f; --node-glow: rgb(255 122 79 / .22); }
   .topic-node.blue { --node-color: #85a8ff; --node-glow: rgb(133 168 255 / .22); }
+  .topic-node.shadow { --node-color: #dcc49d; --node-glow: rgb(220 196 157 / .22); }
 
-  .node-1 { top: 7%; left: 43%; }
-  .node-2 { top: 32%; right: 4%; }
-  .node-3 { bottom: 23%; right: 10%; }
-  .node-4 { bottom: 15%; left: 40%; }
-  .node-5 { bottom: 23%; left: 8%; }
-  .node-6 { top: 32%; left: 3%; }
+  .node-1 { top: 13%; left: 48%; }
+  .node-7 { top: 18%; left: 49%; transform: translateY(2.1rem); }
+  .node-2 { top: 35%; right: 13%; }
+  .node-3 { bottom: 26%; right: 16%; }
+  .node-4 { bottom: 25%; left: 47%; }
+  .node-5 { bottom: 32%; left: 12%; }
+  .node-6 { top: 31%; left: 13%; }
 
   .orbital-caption {
     position: absolute;
-    right: 1.35rem;
-    bottom: 1.35rem;
-    left: 1.35rem;
+    right: 1.05rem;
+    bottom: .62rem;
+    left: 1.05rem;
     z-index: 4;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    border: 1px solid rgb(214 172 91 / .14);
+    overflow: hidden;
+    border: 1px solid rgb(214 172 91 / .2);
     border-radius: 1rem;
-    padding: .85rem 1rem;
-    background: rgb(2 10 16 / .78);
-    backdrop-filter: blur(16px);
+    padding: .65rem 1rem;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / .075), rgb(2 10 16 / .58)),
+      radial-gradient(circle at 10% 0%, rgb(244 195 109 / .12), transparent 18rem);
+    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 18px 48px rgb(0 0 0 / .28);
+    backdrop-filter: blur(22px) saturate(1.2);
+  }
+
+  .orbital-caption::before {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, rgb(255 255 255 / .12), transparent 34%, rgb(101 215 220 / .06));
+    opacity: .55;
+    pointer-events: none;
+    content: "";
+  }
+
+  .orbital-caption > * {
+    position: relative;
+    z-index: 1;
   }
 
   .orbital-caption strong {
@@ -735,36 +642,10 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
   .topic-card.violet { --glow: rgb(190 134 255 / .2); }
   .topic-card.fire { --glow: rgb(255 122 79 / .22); }
   .topic-card.blue { --glow: rgb(133 168 255 / .2); }
+  .topic-card.shadow { --glow: rgb(220 196 157 / .2); }
 
-  .topic-number,
-  .topic-card i {
-    position: relative;
-    z-index: 2;
-  }
 
-  .topic-number {
-    display: grid;
-    width: 2.3rem;
-    height: 2.3rem;
-    place-items: center;
-    border: 1px solid rgb(214 172 91 / .28);
-    border-radius: 50%;
-    color: #f4d19a;
-    font-size: .75rem;
-    font-weight: 900;
-  }
 
-  .topic-card i {
-    position: absolute;
-    top: .85rem;
-    right: 1rem;
-    color: rgb(244 195 109 / .22);
-    font-size: clamp(4.4rem, 7.6vw, 7rem);
-    font-style: normal;
-    font-weight: 900;
-    line-height: 1;
-    text-shadow: 0 0 45px var(--glow, rgb(214 172 91 / .24));
-  }
 
   .topic-copy {
     position: relative;
@@ -812,7 +693,7 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
   .topic-card b {
     position: absolute;
     bottom: 1.62rem;
-    left: 1.9rem;
+    left: 1.35rem;
     z-index: 3;
     color: #f4d19a;
     font-size: .68rem;
@@ -857,9 +738,6 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
   }
 
   @media (max-width: 1180px) {
-    .home-topbar { grid-template-columns: 1fr auto; }
-    .search-pill,
-    .round-mark { display: none; }
     .home-hero,
     .section-heading,
     .atlas-preview,
@@ -869,19 +747,15 @@ const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishank
   }
 
   @media (max-width: 720px) {
-    .home-topbar { margin: .75rem; }
-    .atlas-brand small,
-    .atlas-nav { display: none; }
     .home-main { width: min(100% - 1rem, 1800px); }
     .home-hero { min-height: auto; grid-template-columns: 1fr; padding-top: 1.2rem; }
     .hero-panel h1 { font-size: clamp(3rem, 16vw, 4.8rem); }
     .hero-signals { grid-template-columns: 1fr; }
-    .atlas-orbital { min-height: 28rem; }
-    .orbital-field { inset: 1rem; }
-    .topic-node { min-width: 6.3rem; padding: .45rem; }
-    .topic-node span { display: none; }
+    .atlas-orbital { --caption-space: 6.8rem; min-height: 34rem; margin-top: 0; }
+    .orbital-field { inset: 1rem 1rem calc(var(--caption-space) + .55rem) 1rem; }
+    .topic-node { padding: .42rem .55rem; }
+    .topic-node span { font-size: .62rem; }
     .topic-grid,
     .route-strip { grid-template-columns: 1fr; }
   }
 </style>
-

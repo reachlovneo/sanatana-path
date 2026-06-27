@@ -1,0 +1,26 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const related = [
+  { title: "Pushpaka Vimana", href: "/pushpaka-vimana", image: "/images/home/home-vimana.png", eyebrow: "Ramayana wonder" },
+  { title: "Flying Cities of Tripura", href: "/flying-cities-of-tripura", image: "/images/home/home-tripura.png", eyebrow: "Puranic mystery" },
+  { title: "Garuda Purana", href: "/atlas/garuda-purana", image: "/images/home/Garudapurana.png", eyebrow: "Afterlife atlas" },
+];
+
+const concept = {
+  title: "Astras",
+  eyebrow: "Weapons of mantra and discipline",
+  summary: "Astras are extraordinary weapons in the epics, often invoked through mantra, training, restraint, and inner qualification. This page gives a clear starting point before deeper source work.",
+  image: "/images/home/home-astras.png",
+  transitionName: "concept-astras",
+  accent: "#ff7a4f",
+  facts: ["Epic traditions", "Mantra-linked", "Requires discipline", "Draft explainer"],
+  sections: [
+    { title: "What are Astras?", body: "Astras are not ordinary weapons. In many epic passages, they are invoked with knowledge, concentration, and proper instruction, making them both martial and spiritual symbols." },
+    { title: "Why restraint matters", body: "The stories often emphasize eligibility and consequence. Power without self-mastery becomes dangerous, so the astra tradition naturally raises ethical questions." },
+    { title: "Where this topic can go", body: "Future versions can map Brahmastra, Pashupatastra, Narayanastra, Agneyastra, and other named astras with sources, contexts, and careful interpretation." },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />

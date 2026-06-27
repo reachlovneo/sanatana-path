@@ -20,23 +20,35 @@ const fourYugasNext = { slug: "four-yugas", title: "Four Yugas" };
 const kaliYugaNext = { slug: "kali-yuga", title: "Kali Yuga" };
 
 const layers = [
-  { id: "cosmic-time", title: "Cosmic Time", meaning: "The infinite expanse", scale: "The largest frame", description: "The broad frame that holds every nested cycle shown in this atlas.", position: "Outermost frame", composition: "All nested cycles", color: "#e9b65f", y: 12 },
-  { id: "kalpa", title: "Kalpa", meaning: "One day of Brahma", scale: "4.32 billion human years", description: "A Kalpa consists of 14 Manvantaras and their intervening periods.", position: "Within Cosmic Time", composition: "14 Manvantaras", color: "#e9b65f", y: 29 },
-  { id: "manvantara", title: "Manvantara", meaning: "The reign of a Manu", scale: "71 Maha Yugas", description: "A major era associated with one Manu within a Kalpa.", position: "7th within this Kalpa", composition: "71 Maha Yugas", color: "#65d7dc", y: 44 },
-  { id: "maha-yuga", title: "Maha Yuga", meaning: "One complete cycle of ages", scale: "4.32 million human years", description: "One complete sequence of Satya, Treta, Dvapara, and Kali Yuga.", position: "28th in this Manvantara", composition: "Four Yugas", color: "#c78cff", y: 58 },
-  { id: "four-yugas", title: "Four Yugas", meaning: "Satya, Treta, Dvapara, and Kali", scale: "Four ages", description: "The four ages form one complete Maha Yuga.", position: "Within one Maha Yuga", composition: "Satya · Treta · Dvapara · Kali", color: "#8c91ff", y: 70 },
-  { id: "kali-yuga", title: "Kali Yuga", meaning: "The current age in the common Puranic model", scale: "The fourth Yuga", description: "Our current position within the common Puranic cycle of four Yugas.", position: "Current Yuga", composition: "Present cosmic context", color: "#ff714e", y: 80 },
+  { id: "cosmic-time", title: "Cosmic Time", meaning: "The infinite expanse", scale: "The largest frame", description: "The broad frame that holds every nested cycle shown in this atlas.", position: "Outermost frame", composition: "All nested cycles", color: "#e9b65f", y: 12, image: "/images/atlas/layers/display/cosmic-time.png" },
+  { id: "kalpa", title: "Kalpa", meaning: "One day of Brahma", scale: "4.32 billion human years", description: "A Kalpa consists of 14 Manvantaras and their intervening periods.", position: "Within Cosmic Time", composition: "14 Manvantaras", color: "#e9b65f", y: 29, image: "/images/atlas/layers/display/kalpa.png" },
+  { id: "manvantara", title: "Manvantara", meaning: "The reign of a Manu", scale: "71 Maha Yugas", description: "A major era associated with one Manu within a Kalpa.", position: "7th within this Kalpa", composition: "71 Maha Yugas", color: "#65d7dc", y: 44, image: "/images/atlas/layers/display/manvantara.png" },
+  { id: "maha-yuga", title: "Maha Yuga", meaning: "One complete cycle of ages", scale: "4.32 million human years", description: "One complete sequence of Satya, Treta, Dvapara, and Kali Yuga.", position: "28th in this Manvantara", composition: "Four Yugas", color: "#c78cff", y: 58, image: "/images/atlas/layers/display/maha-yuga.png" },
+  { id: "four-yugas", title: "Four Yugas", meaning: "Satya, Treta, Dvapara, and Kali", scale: "Four ages", description: "The four ages form one complete Maha Yuga.", position: "Within one Maha Yuga", composition: "Satya · Treta · Dvapara · Kali", color: "#8c91ff", y: 70, image: "/images/atlas/layers/display/four-yugas.png" },
+  { id: "kali-yuga", title: "Kali Yuga", meaning: "The current age in the common Puranic model", scale: "The fourth Yuga", description: "Our current position within the common Puranic cycle of four Yugas.", position: "Current Yuga", composition: "Present cosmic context", color: "#ff714e", y: 80, image: "/images/atlas/layers/display/kali-yuga.png" },
 ] as const;
 ---
 
 <section class="atlas-explorer" data-atlas-explorer>
   <header class="atlas-header glass">
     <a class="atlas-brand" href="/"><span><AtlasGlyph name="brand" size={42} /></span><div><strong>Sanatana Path</strong><small>The Eternal Atlas</small></div></a>
-    <nav aria-label="Atlas product navigation"><a class="active" href="/atlas">Atlas</a><a href="/atlas/cosmic-time">Journeys</a><a href="/sources">Library</a><a href="/atlas/cosmic-time">Timeline</a><a href="/methodology">About</a></nav>
+    <nav aria-label="Atlas product navigation"><a class="active" href="/atlas">Atlas</a><a href="/atlas/cosmic-time">Journeys</a><a href="/library">Library</a><a href="/atlas/cosmic-time">Timeline</a><a href="/methodology">About</a></nav>
     <div class="atlas-actions"><label><SacredIcon name="search" size={15} /><input type="search" placeholder="Search the Atlas..." aria-label="Search the Atlas" /><kbd>⌘K</kbd></label><a href="/methodology" aria-label="Atlas seal"><AtlasGlyph name="brand" size={24} /></a></div>
   </header>
   <div class="cosmos" id="atlas-top" aria-label="Interactive Cosmic Atlas">
     <div class="space-layer"></div>
+    <div class="cosmic-ripple" aria-hidden="true"></div>
+    <div class="orbital-stage" aria-hidden="true">
+      <span class="core-light"></span>
+      <span class="orbit-ring ring-1"><i></i></span>
+      <span class="orbit-ring ring-2"><i></i></span>
+      <span class="orbit-ring ring-3"><i></i></span>
+      <span class="orbit-ring ring-4"><i></i></span>
+      <span class="orbit-ring ring-5"><i></i></span>
+      <span class="orbit-ring ring-6"><i></i></span>
+      <span class="cosmic-dust dust-a"></span>
+      <span class="cosmic-dust dust-b"></span>
+    </div>
     <div class="atlas-camera" data-atlas-camera>
       <div class="connection-layer"></div>
       {layers.map((layer, index) => (
@@ -72,6 +84,20 @@ const layers = [
         <small>Scale</small>
         <strong data-intro-scale>The largest frame</strong>
       </div>
+      <div class="intro-hierarchy" aria-label="Cosmic hierarchy">
+        {layers.map((layer, index) => (
+          <button
+            class:list={{ selected: index === 0 }}
+            type="button"
+            data-hierarchy-layer={layer.id}
+            style={`--node-color:${layer.color}`}
+          >
+            <i><AtlasGlyph name={layer.id} size={13} /></i>
+            <span>{layer.title}</span>
+          </button>
+        ))}
+      </div>
+      <p class="intro-note" data-simple-note>The whole atlas begins here. Cosmic Time is the largest frame that contains every smaller layer.</p>
       <button class="begin" type="button" data-explore-selected><i></i><span data-intro-action>Explore Cosmic Time</span><b>↓</b></button>
     </article>
 
@@ -85,7 +111,7 @@ const layers = [
     <nav class="tool-dock glass" aria-label="Atlas tools">
       <a class="active" href="/atlas" aria-label="Atlas" title="Atlas"><AtlasGlyph name="cosmic-time" size={22} /><span>Atlas</span></a>
       <a href="/atlas/cosmic-time" aria-label="Journeys" title="Journeys"><AtlasGlyph name="journey" size={20} /><span>Journeys</span></a>
-      <a href="/sources" aria-label="Library" title="Library"><AtlasGlyph name="library" size={19} /><span>Library</span></a>
+      <a href="/library" aria-label="Library" title="Library"><AtlasGlyph name="library" size={19} /><span>Library</span></a>
       <a href="/methodology" aria-label="Timeline" title="Timeline"><AtlasGlyph name="timeline" size={20} /><span>Timeline</span></a>
       <a href="/methodology" aria-label="Settings" title="Settings"><AtlasGlyph name="settings" size={20} /><span>Settings</span></a>
     </nav>
@@ -122,7 +148,7 @@ const layers = [
       <div class="you-are-here"><span>You are here</span><strong>Kali Yuga</strong><small><span data-current-year>5128+</span> Years</small></div>
     </div>
 
-    <aside class="context glass" aria-live="polite" style="--inspector-color:#e9b65f">
+    <aside class="context glass" aria-live="polite" style="--inspector-color:#e9b65f" hidden>
       <p>Current layer</p>
       <div class="context-title"><h2 data-context-title>Cosmic Time</h2><span><AtlasGlyph name="cosmic-time" size={19} /></span></div>
       <strong data-context-meaning>The infinite expanse</strong>
@@ -152,10 +178,15 @@ const layers = [
   </div>
 
   <nav class="journey-rail glass" aria-label="Cosmic Atlas journey">
-    <a href="/atlas/cosmic-time"><i><AtlasGlyph name="overview" size={19} /></i><strong>Overview</strong><small>Your Journey</small></a>
+    <a class="rail-card overview-card" href="/atlas/cosmic-time" style="--node-color:#d9a64f;--rail-image:url('/images/atlas/Atlasv2.png')">
+      <span class="rail-thumb" aria-hidden="true"><i><AtlasGlyph name="overview" size={20} /></i></span>
+      <span class="rail-copy"><strong>Overview</strong><small>Your journey map</small></span>
+    </a>
     {layers.map((layer, index) => (
-      <button class:list={{ selected: index === 0 }} type="button" data-rail-layer={layer.id} style={`--node-color:${layer.color}`}>
-        <i><AtlasGlyph name={layer.id} size={26} /></i><strong>{layer.title}</strong><small>{layer.meaning}</small>
+      <button class:list={["rail-card", index === 0 && "selected"]} type="button" data-rail-layer={layer.id} style={`--node-color:${layer.color};--rail-image:url('${layer.image}')`}>
+        <span class="rail-step" aria-hidden="true">{index + 1}</span>
+        <span class="rail-thumb" aria-hidden="true"><i><AtlasGlyph name={layer.id} size={24} /></i></span>
+        <span class="rail-copy"><strong>{layer.title}</strong><small>{layer.meaning}</small></span>
       </button>
     ))}
   </nav>
@@ -216,6 +247,7 @@ const layers = [
     const readingPanels = [...explorer.querySelectorAll("[data-reading-panel]")];
     const cosmos = explorer.querySelector(".cosmos");
     const camera = explorer.querySelector("[data-atlas-camera]");
+    const ripple = explorer.querySelector(".cosmic-ripple");
     const contextPanel = explorer.querySelector(".context");
     const tooltip = explorer.querySelector("[data-atlas-tooltip]");
     const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -231,10 +263,44 @@ const layers = [
     let zoom = cameraStates[0].zoom;
     let panX = 0;
     let panY = reducedMotion ? cameraStates[0].y : 0;
+    let targetTiltX = 0;
+    let targetTiltY = 0;
+    let currentTiltX = 0;
+    let currentTiltY = 0;
+    let frameId = 0;
     const applyCamera = (animate = true) => {
       camera.style.transitionDuration = animate && !reducedMotion ? "520ms" : "1ms";
-      camera.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoom})`;
+      camera.style.transform = `translate3d(${panX + currentTiltX}px, ${panY + currentTiltY}px, 0) scale(${zoom})`;
       explorer.style.setProperty("--camera-zoom", String(zoom));
+    };
+    const tickCamera = () => {
+      currentTiltX += (targetTiltX - currentTiltX) * 0.07;
+      currentTiltY += (targetTiltY - currentTiltY) * 0.07;
+      explorer.style.setProperty("--parallax-x", `${currentTiltX.toFixed(2)}px`);
+      explorer.style.setProperty("--parallax-y", `${currentTiltY.toFixed(2)}px`);
+      applyCamera(false);
+      if (Math.abs(targetTiltX - currentTiltX) > 0.02 || Math.abs(targetTiltY - currentTiltY) > 0.02) {
+        frameId = requestAnimationFrame(tickCamera);
+      } else {
+        frameId = 0;
+      }
+    };
+    const nudgeCamera = (x, y) => {
+      if (reducedMotion) return;
+      targetTiltX = x;
+      targetTiltY = y;
+      if (!frameId) frameId = requestAnimationFrame(tickCamera);
+    };
+    const pulseSelection = (node) => {
+      if (reducedMotion || !ripple) return;
+      const rect = node.getBoundingClientRect();
+      const cosmosRect = cosmos.getBoundingClientRect();
+      ripple.style.left = `${rect.left - cosmosRect.left + rect.width / 2}px`;
+      ripple.style.top = `${rect.top - cosmosRect.top + rect.height / 2}px`;
+      ripple.style.setProperty("--ripple-color", getComputedStyle(node).getPropertyValue("--node-color"));
+      ripple.classList.remove("is-active");
+      void ripple.offsetWidth;
+      ripple.classList.add("is-active");
     };
     const updateVisibility = () => {
       artLayers.forEach((layer, index) => {
@@ -254,6 +320,7 @@ const layers = [
       selectedIndex = index;
       nodes.forEach((item) => { item.classList.toggle("selected", item === node); item.setAttribute("aria-pressed", String(item === node)); });
       rails.forEach((item) => item.classList.toggle("selected", item.dataset.railLayer === id));
+      hierarchyButtons.forEach((item) => item.classList.toggle("selected", item.dataset.hierarchyLayer === id));
       contextLayers.forEach((item) => item.classList.toggle("selected", item.dataset.contextLayer === id));
       explorer.querySelector("[data-context-title]").textContent = node.dataset.title;
       explorer.querySelector("[data-context-meaning]").textContent = node.dataset.meaning;
@@ -299,6 +366,7 @@ const layers = [
       panX = 0;
       panY = state.y;
       updateVisibility();
+      pulseSelection(node);
       contextPanel.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
       applyCamera(options.animate !== false);
     };
@@ -317,6 +385,15 @@ const layers = [
     });
     rails.forEach((node) => node.addEventListener("click", () => selectLayer(node.dataset.railLayer)));
     hierarchyButtons.forEach((node) => node.addEventListener("click", () => selectLayer(node.dataset.hierarchyLayer)));
+    if (!reducedMotion) {
+      cosmos.addEventListener("pointermove", (event) => {
+        const rect = cosmos.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        nudgeCamera(x * -16, y * -10);
+      });
+      cosmos.addEventListener("pointerleave", () => nudgeCamera(0, 0));
+    }
     explorer.querySelector("[data-context-link]")?.addEventListener("click", (event) => {
       event.preventDefault();
       explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
@@ -366,7 +443,7 @@ const layers = [
 
 <style>
   .atlas-explorer { --glass: rgb(5 15 24 / 0.72); display: grid; gap: 0.75rem; padding: 0.75rem; background: #020a10; color: #eee3cf; }
-  .atlas-header { display: grid; min-height: 58px; grid-template-columns: 1fr auto 1fr; align-items: center; border: 0; border-bottom: 1px solid rgb(223 174 93 / .16); padding: 0 .2rem; background: rgb(2 10 16 / .72); box-shadow: none; }
+  .atlas-header { display: none; min-height: 58px; grid-template-columns: 1fr auto 1fr; align-items: center; border: 0; border-bottom: 1px solid rgb(223 174 93 / .16); padding: 0 .2rem; background: rgb(2 10 16 / .72); box-shadow: none; }
   .atlas-brand { display: flex; align-items: center; gap: .7rem; width: fit-content; }
   .atlas-brand > span { display: grid; width: 2.8rem; height: 2.8rem; place-items: center; color: #d9a64f; }
   .atlas-brand strong, .atlas-brand small { display: block; }
@@ -712,6 +789,562 @@ const layers = [
   .reading-facts small{color:#99938a;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}.reading-facts strong{margin-top:.3rem;font-family:var(--serif);font-size:1.35rem;font-weight:500}
   .generic-reading > section{max-width:48rem;padding:2.5rem 0;border-bottom:1px solid color-mix(in srgb,var(--reading-color) 14%,transparent)}
   .generic-reading > a{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1.5rem 0;color:var(--reading-color)}.generic-reading > a span,.generic-reading > a strong{display:block}.generic-reading > a span{color:#99938a;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.generic-reading > a strong{font-family:var(--serif);font-size:1.6rem;font-weight:400}.generic-reading > a b{grid-row:1/3;grid-column:2;font-size:1rem}
+
+  /* Cinematic Atlas v2 visual system */
+  .atlas-explorer {
+    --glass: rgb(3 12 19 / .68);
+    gap: 1rem;
+    padding: 1rem;
+    background:
+      radial-gradient(circle at 50% 0%, rgb(233 182 95 / .1), transparent 28rem),
+      linear-gradient(180deg, #020a10, #01070c 62%, #020a10);
+  }
+
+  .cosmos {
+    min-height: clamp(38rem, calc(100svh - 138px), 52rem);
+    overflow: hidden;
+    border: 1px solid rgb(223 174 93 / .18);
+    border-radius: 1.35rem;
+    background: #02070c;
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 34px 110px rgb(0 0 0 / .34);
+    isolation: isolate;
+  }
+
+  .cosmos::before {
+    z-index: 0;
+    inset: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    transform: none;
+    border-radius: inherit;
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .9), rgb(2 8 13 / .34) 26%, rgb(2 8 13 / .22) 58%, rgb(2 8 13 / .82)),
+      linear-gradient(180deg, rgb(2 8 13 / .1), rgb(2 8 13 / .42) 70%, rgb(2 8 13 / .88)),
+      url("/images/atlas/Atlasv2.png");
+    background-position: center;
+    background-size: cover;
+    opacity: .9;
+    animation: atlasv2-drift 26s ease-in-out infinite alternate;
+    content: "";
+  }
+
+  .cosmos::after {
+    z-index: 1;
+    inset: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    transform: none;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 58% 39%, rgb(255 214 132 / .18), transparent 15rem),
+      linear-gradient(112deg, transparent 0 38%, rgb(255 223 164 / .12) 47%, transparent 57%),
+      repeating-linear-gradient(90deg, transparent 0 9.5rem, rgb(101 215 220 / .035) 9.55rem 9.6rem, transparent 9.65rem 19rem);
+    mix-blend-mode: screen;
+    opacity: .58;
+    animation: atlasv2-sweep 12s ease-in-out infinite;
+    content: "";
+  }
+
+  .space-layer {
+    z-index: 1;
+    background:
+      radial-gradient(circle at 50% 44%, rgb(233 182 95 / .12), transparent 24rem),
+      radial-gradient(circle at 68% 60%, rgb(101 215 220 / .07), transparent 22rem),
+      radial-gradient(circle at 22% 38%, rgb(199 140 255 / .045), transparent 21rem);
+    opacity: .92;
+  }
+
+  .space-layer::before {
+    background-image:
+      radial-gradient(circle, rgb(255 236 196 / .78) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgb(118 211 220 / .52) 0 1px, transparent 1.35px);
+    background-position: 0 0, 41px 53px;
+    background-size: 157px 149px, 233px 211px;
+    opacity: .12;
+    animation: star-drift 95s linear infinite;
+  }
+
+  .space-layer::after {
+    background:
+      radial-gradient(ellipse at 50% 48%, transparent 0 31%, rgb(233 182 95 / .045) 31.15% 31.45%, transparent 31.7%),
+      radial-gradient(ellipse at 50% 48%, transparent 0 45%, rgb(101 215 220 / .03) 45.1% 45.35%, transparent 45.7%),
+      linear-gradient(180deg, transparent, rgb(2 8 13 / .34));
+    opacity: .6;
+    animation: field-breathe 14s ease-in-out infinite;
+  }
+
+  .atlas-camera {
+    z-index: 2;
+    mix-blend-mode: screen;
+    opacity: .74;
+    filter: drop-shadow(0 0 22px rgb(233 182 95 / .1));
+  }
+
+  .art-layer .orbit,
+  .art-layer .orbit-sweep {
+    border-color: color-mix(in srgb, var(--node-color) 62%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--node-color) 12%, transparent);
+  }
+
+  .connection-layer {
+    opacity: .56;
+    box-shadow: 0 0 28px rgb(233 182 95 / .25);
+  }
+
+  .vignette {
+    z-index: 3;
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .94), transparent 19%, transparent 72%, rgb(2 8 13 / .9)),
+      linear-gradient(0deg, rgb(2 8 13 / .88), transparent 22%, rgb(2 8 13 / .18)),
+      radial-gradient(circle at 50% 44%, transparent 0 28%, rgb(2 8 13 / .34) 72%);
+    pointer-events: none;
+  }
+
+  .glass {
+    border: 1px solid rgb(223 174 93 / .22);
+    background:
+      linear-gradient(145deg, rgb(3 12 19 / .76), rgb(3 12 19 / .48)),
+      radial-gradient(circle at 90% 8%, rgb(233 182 95 / .08), transparent 42%);
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 18px 60px rgb(0 0 0 / .28);
+    backdrop-filter: blur(14px) saturate(112%);
+  }
+
+  .intro {
+    top: 23%;
+    left: clamp(1.35rem, 3vw, 3.5rem);
+    width: min(21rem, 24vw);
+    border: 1px solid rgb(223 174 93 / .14);
+    border-left: 3px solid rgb(233 182 95 / .72);
+    border-radius: 1rem;
+    padding: 1.1rem 1.15rem;
+    background:
+      linear-gradient(135deg, rgb(3 12 19 / .82), rgb(3 12 19 / .38)),
+      radial-gradient(circle at 88% 8%, rgb(233 182 95 / .1), transparent 45%);
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 90px rgb(0 0 0 / .3);
+    backdrop-filter: blur(10px) saturate(112%);
+  }
+
+  .intro::before {
+    display: none;
+  }
+
+  .context {
+    top: clamp(1.3rem, 3vw, 3rem);
+    right: clamp(1.2rem, 3vw, 3rem);
+    border-color: rgb(223 174 93 / .2);
+    background:
+      linear-gradient(155deg, rgb(3 12 19 / .86), rgb(3 12 19 / .64)),
+      radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--inspector-color, #e9b65f) 12%, transparent), transparent 35%);
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 28px 95px rgb(0 0 0 / .36);
+  }
+
+  .layer-node::before,
+  .layer-node .node-core,
+  .orbit-core,
+  .journey-rail i {
+    background: rgb(3 12 19 / .78);
+    backdrop-filter: blur(8px);
+  }
+
+  .layer-node strong {
+    text-shadow: 0 0 14px color-mix(in srgb, var(--node-color) 46%, transparent), 0 2px 8px #000;
+  }
+
+  .layer-node.selected::after {
+    width: 22rem;
+    height: 6rem;
+    filter: blur(.2px);
+    opacity: .9;
+  }
+
+  .journey-rail {
+    border-color: rgb(223 174 93 / .18);
+    background:
+      linear-gradient(135deg, rgb(3 12 19 / .82), rgb(3 12 19 / .55)),
+      radial-gradient(circle at 50% 0%, rgb(233 182 95 / .08), transparent 50%);
+  }
+
+
+  /* Single-panel cinematic atlas layout */
+  .context[hidden] {
+    display: none !important;
+  }
+
+  .intro {
+    top: 18%;
+    left: clamp(1.25rem, 3.8vw, 4rem);
+    width: min(30rem, 32vw);
+    padding: clamp(1.1rem, 1.5vw, 1.55rem);
+    border-left-width: 4px;
+    background:
+      linear-gradient(135deg, rgb(3 12 19 / .88), rgb(3 12 19 / .58) 58%, rgb(3 12 19 / .28)),
+      radial-gradient(circle at 100% 0%, rgb(233 182 95 / .16), transparent 42%);
+  }
+
+  .intro h1 {
+    max-width: 8ch;
+    font-size: clamp(3rem, 4.7vw, 5.2rem);
+  }
+
+  .intro > p:not(.kicker):not(.intro-note) {
+    max-width: 34ch;
+    font-size: clamp(.82rem, .9vw, .98rem);
+  }
+
+  .intro-meta {
+    margin-top: 1rem;
+  }
+
+  .intro-meta strong {
+    font-size: clamp(1.15rem, 1.55vw, 1.7rem);
+  }
+
+  .intro-hierarchy {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .45rem;
+    margin-top: 1rem;
+  }
+
+  .intro-hierarchy button {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: .38rem;
+    border: 1px solid color-mix(in srgb, var(--node-color) 30%, transparent);
+    border-radius: 999px;
+    padding: .44rem .5rem;
+    background: rgb(2 10 16 / .42);
+    color: #d7cebd;
+    font: inherit;
+    font-size: .58rem;
+    font-weight: 800;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 220ms ease, background 220ms ease, color 220ms ease, transform 220ms ease;
+  }
+
+  .intro-hierarchy button:hover,
+  .intro-hierarchy button.selected {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--node-color) 76%, white);
+    background: color-mix(in srgb, var(--node-color) 17%, rgb(2 10 16 / .82));
+    color: #fff2d7;
+  }
+
+  .intro-hierarchy i {
+    display: grid;
+    width: 1.35rem;
+    height: 1.35rem;
+    place-items: center;
+    border: 1px solid var(--node-color);
+    border-radius: 50%;
+    color: var(--node-color);
+    background: rgb(3 12 19 / .7);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--node-color) 28%, transparent);
+  }
+
+  .intro-hierarchy span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .intro-note {
+    margin: .9rem 0 0 !important;
+    border-top: 1px solid rgb(223 174 93 / .14);
+    padding-top: .78rem;
+    color: #aaa49a !important;
+    font-size: .68rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .begin {
+    margin-top: .9rem;
+  }
+
+  .art-layer,
+  .layer-node,
+  .yuga-orbit,
+  .you-are-here {
+    left: 58%;
+  }
+
+  .connection-layer {
+    left: 58%;
+  }
+
+  .vignette {
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .94), rgb(2 8 13 / .48) 22%, transparent 53%, rgb(2 8 13 / .36) 92%),
+      linear-gradient(0deg, rgb(2 8 13 / .88), transparent 22%, rgb(2 8 13 / .12)),
+      radial-gradient(circle at 60% 44%, transparent 0 30%, rgb(2 8 13 / .28) 76%);
+  }
+
+  @media (max-width: 1180px) {
+    .intro {
+      width: min(26rem, 38vw);
+    }
+
+    .intro-hierarchy {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .art-layer,
+    .layer-node,
+    .yuga-orbit,
+    .you-are-here,
+    .connection-layer {
+      left: 61%;
+    }
+  }
+
+  @media (min-width: 801px) and (max-height: 760px) {
+    .intro {
+      top: 14%;
+      width: min(29rem, 34vw);
+      padding: .9rem;
+    }
+
+    .intro h1 {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+    }
+
+    .intro-hierarchy {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .32rem;
+      margin-top: .65rem;
+    }
+
+    .intro-note {
+      display: none;
+    }
+  }
+
+
+  /* Atlasv2 image-synced presentation */
+  .atlas-camera {
+    display: none;
+  }
+
+  .cosmos::before {
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .92), rgb(2 8 13 / .46) 25%, rgb(2 8 13 / .08) 52%, rgb(2 8 13 / .34) 78%, rgb(2 8 13 / .86)),
+      linear-gradient(180deg, rgb(2 8 13 / .06), rgb(2 8 13 / .22) 62%, rgb(2 8 13 / .82)),
+      url("/images/atlas/Atlasv2.png");
+    background-position: 61% 48%;
+    background-size: 118% auto;
+    opacity: .96;
+    animation: atlasv2-breathe 28s ease-in-out infinite alternate;
+  }
+
+  .cosmos::after {
+    background:
+      radial-gradient(circle at 72% 11%, rgb(255 229 169 / .2), transparent 10rem),
+      radial-gradient(circle at 72% 42%, rgb(101 215 220 / .11), transparent 17rem),
+      radial-gradient(circle at 72% 67%, rgb(233 182 95 / .13), transparent 16rem),
+      linear-gradient(100deg, transparent 0 52%, rgb(255 231 177 / .09) 58%, transparent 66%);
+    opacity: .58;
+    mix-blend-mode: screen;
+    animation: atlasv2-light-breathe 9s ease-in-out infinite;
+  }
+
+  .space-layer {
+    background:
+      radial-gradient(circle at 72% 28%, rgb(233 182 95 / .08), transparent 18rem),
+      radial-gradient(circle at 72% 63%, rgb(101 215 220 / .055), transparent 22rem);
+    opacity: .7;
+  }
+
+  .space-layer::after {
+    background:
+      linear-gradient(180deg, transparent 0 8%, rgb(255 230 171 / .07) 8.15% 8.35%, transparent 8.55% 22%, rgb(255 230 171 / .045) 22.15% 22.35%, transparent 22.55% 40%, rgb(101 215 220 / .045) 40.15% 40.35%, transparent 40.55% 56%, rgb(199 140 255 / .04) 56.15% 56.35%, transparent 56.55% 69%, rgb(140 145 255 / .038) 69.15% 69.35%, transparent 69.55% 79%, rgb(255 113 78 / .04) 79.15% 79.35%, transparent 79.55%),
+      radial-gradient(ellipse at 72% 49%, transparent 0 33%, rgb(255 230 171 / .03) 33.15% 33.35%, transparent 33.7%);
+    opacity: .42;
+    animation: atlasv2-tier-glow 10s ease-in-out infinite;
+  }
+
+  .layer-nodes {
+    z-index: 4;
+  }
+
+  .layer-nodes::before {
+    position: absolute;
+    top: 12%;
+    bottom: 10%;
+    left: 72%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgb(255 227 166 / .42), rgb(101 215 220 / .34), rgb(199 140 255 / .32), rgb(255 113 78 / .32), transparent);
+    box-shadow: 0 0 20px rgb(233 182 95 / .26);
+    content: "";
+    animation: atlasv2-spine 7s ease-in-out infinite;
+  }
+
+  .layer-node,
+  .art-layer,
+  .yuga-orbit,
+  .you-are-here,
+  .connection-layer {
+    left: 72%;
+  }
+
+  .art-layer,
+  .yuga-orbit {
+    display: none;
+  }
+
+  .layer-node {
+    width: min(15rem, 18vw);
+    justify-items: start;
+    transform: translate(.9rem, -50%);
+    border-radius: .8rem;
+    padding: .25rem .65rem .35rem;
+    background: linear-gradient(90deg, rgb(3 12 19 / .54), rgb(3 12 19 / .12), transparent);
+    text-align: left;
+    transition: transform 260ms ease, opacity 260ms ease, filter 260ms ease;
+  }
+
+  .layer-node:hover {
+    transform: translate(1.15rem, -50%);
+  }
+
+  .layer-node::before {
+    left: -3rem;
+    width: 2rem;
+    height: 2rem;
+    background: rgb(3 12 19 / .82);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--node-color) 10%, transparent), 0 0 18px color-mix(in srgb, var(--node-color) 42%, transparent);
+    animation: atlasv2-marker 5.5s ease-in-out infinite;
+  }
+
+  .layer-node .node-core {
+    position: absolute;
+    top: 50%;
+    left: -1.18rem;
+    width: .62rem;
+    height: .62rem;
+    transform: translate(-50%, -50%);
+    border-color: color-mix(in srgb, var(--node-color) 85%, white);
+    background: var(--node-color);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--node-color) 65%, transparent);
+  }
+
+  .layer-node .node-core :global(svg) {
+    display: none;
+  }
+
+  .layer-node strong {
+    margin: 0;
+    font-size: clamp(.68rem, .82vw, .92rem);
+    letter-spacing: .08em;
+  }
+
+  .layer-node small {
+    margin-top: .05rem;
+    color: rgb(238 227 207 / .76);
+    font-size: clamp(.52rem, .58vw, .66rem);
+    line-height: 1.25;
+  }
+
+  .layer-node.selected {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--node-color) 16%, rgb(3 12 19 / .68)), rgb(3 12 19 / .18), transparent);
+    filter: brightness(1.15);
+  }
+
+  .layer-node.selected::after {
+    top: 50%;
+    left: -3rem;
+    width: 9rem;
+    height: 3.8rem;
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--node-color) 24%, transparent), transparent 68%);
+    animation: atlasv2-selected-soft 4.8s ease-in-out infinite;
+  }
+
+  .layer-node[data-layer="cosmic-time"] { top: 16%; }
+  .layer-node[data-layer="kalpa"] { top: 31%; }
+  .layer-node[data-layer="manvantara"] { top: 46%; }
+  .layer-node[data-layer="maha-yuga"] { top: 60%; }
+  .layer-node[data-layer="four-yugas"] { top: 70.5%; }
+  .layer-node[data-layer="kali-yuga"] { top: 79.5%; }
+
+  .you-are-here {
+    top: 89%;
+    transform: translate(-50%, -50%);
+    opacity: .76;
+  }
+
+  .vignette {
+    z-index: 3;
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .96), rgb(2 8 13 / .62) 30%, transparent 58%, rgb(2 8 13 / .26) 82%, rgb(2 8 13 / .82)),
+      linear-gradient(0deg, rgb(2 8 13 / .9), transparent 24%, rgb(2 8 13 / .14));
+  }
+
+  @media (max-width: 1180px) {
+    .cosmos::before {
+      background-position: 66% 48%;
+      background-size: auto 108%;
+    }
+
+    .layer-node,
+    .art-layer,
+    .yuga-orbit,
+    .you-are-here,
+    .connection-layer,
+    .layer-nodes::before {
+      left: 74%;
+    }
+
+    .layer-node {
+      width: 13rem;
+    }
+  }
+
+  @keyframes atlasv2-breathe {
+    0% { transform: scale(1.025) translate3d(-.25%, -.2%, 0); filter: saturate(1.08) contrast(1.04) brightness(.94); }
+    50% { filter: saturate(1.16) contrast(1.07) brightness(.99); }
+    100% { transform: scale(1.06) translate3d(.35%, .18%, 0); filter: saturate(1.13) contrast(1.06) brightness(.97); }
+  }
+
+  @keyframes atlasv2-light-breathe {
+    0%, 100% { opacity: .38; transform: translateY(-.35rem); }
+    50% { opacity: .68; transform: translateY(.35rem); }
+  }
+
+  @keyframes atlasv2-tier-glow {
+    0%, 100% { opacity: .28; transform: scaleY(.985); }
+    50% { opacity: .55; transform: scaleY(1.015); }
+  }
+
+  @keyframes atlasv2-spine {
+    0%, 100% { opacity: .34; filter: blur(0); }
+    50% { opacity: .68; filter: blur(.25px); }
+  }
+
+  @keyframes atlasv2-marker {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.06); }
+  }
+
+  @keyframes atlasv2-selected-soft {
+    0%, 100% { opacity: .45; transform: translate(-50%, -50%) scale(.96); }
+    50% { opacity: .9; transform: translate(-50%, -50%) scale(1.06); }
+  }
+
+  @keyframes atlasv2-drift {
+    0% { transform: scale(1.035) translate3d(-.7%, -.4%, 0); filter: saturate(1.06) contrast(1.04) brightness(.92); }
+    100% { transform: scale(1.085) translate3d(.9%, .5%, 0); filter: saturate(1.18) contrast(1.08) brightness(.98); }
+  }
+
+  @keyframes atlasv2-sweep {
+    0%, 100% { opacity: .28; transform: translateX(-2%); }
+    45% { opacity: .7; transform: translateX(2%); }
+    70% { opacity: .42; transform: translateX(0); }
+  }
   .mobile-atlas { display: none; }
   @keyframes pulse { 50% { opacity: .35; transform: scale(1.15); } }
   @keyframes atlas-halo-breathe { 50% { opacity: .5; transform: translateX(-50%) scaleX(1.035) scaleY(.96); } }
@@ -763,10 +1396,2310 @@ const layers = [
     .mobile-atlas a { color: var(--copper); font-weight: 800; }
     .generic-reading{padding:1.2rem}.reading-facts{grid-template-columns:1fr}.reading-facts article + article{border-top:1px solid color-mix(in srgb,var(--reading-color) 14%,transparent);border-left:0}.generic-reading > section{padding:1.5rem 0}
   }
+
+  /* Refined clean cinematic atlas: image first, text in the panel */
+  .cosmos {
+    min-height: clamp(38rem, calc(100svh - 138px), 50rem);
+  }
+
+  .cosmos::before {
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .93), rgb(2 8 13 / .58) 28%, rgb(2 8 13 / .06) 52%, rgb(2 8 13 / .22) 78%, rgb(2 8 13 / .78)),
+      linear-gradient(180deg, rgb(2 8 13 / .08), rgb(2 8 13 / .18) 58%, rgb(2 8 13 / .84)),
+      url("/images/atlas/Atlasv2.png");
+    background-position: 62% 48%;
+    background-size: 116% auto;
+    filter: saturate(1.12) contrast(1.04) brightness(.96);
+  }
+
+  .cosmos::after {
+    background:
+      radial-gradient(circle at 73% 10%, rgb(255 232 176 / .22), transparent 12rem),
+      radial-gradient(ellipse at 73% 46%, rgb(101 215 220 / .09), transparent 20rem),
+      linear-gradient(104deg, transparent 0 51%, rgb(255 231 177 / .075) 58%, transparent 66%);
+    opacity: .5;
+  }
+
+  .intro {
+    top: 17%;
+    width: min(28rem, 31vw);
+    background:
+      linear-gradient(135deg, rgb(3 12 19 / .9), rgb(3 12 19 / .68) 66%, rgb(3 12 19 / .34)),
+      radial-gradient(circle at 100% 0%, rgb(233 182 95 / .12), transparent 44%);
+  }
+
+  .intro h1 {
+    font-size: clamp(3rem, 4.35vw, 4.9rem);
+  }
+
+  .layer-nodes::before {
+    left: 72.8%;
+    top: 14%;
+    bottom: 14%;
+    opacity: .42;
+  }
+
+  .layer-node,
+  .art-layer,
+  .yuga-orbit,
+  .you-are-here,
+  .connection-layer {
+    left: 72.8%;
+  }
+
+  .layer-node {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    justify-items: center;
+    transform: translate(-50%, -50%);
+    border: 1px solid color-mix(in srgb, var(--node-color) 42%, transparent);
+    border-radius: 50%;
+    padding: 0;
+    background:
+      radial-gradient(circle, color-mix(in srgb, var(--node-color) 30%, transparent), transparent 57%),
+      rgb(3 12 19 / .62);
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--node-color) 8%, transparent), 0 0 22px color-mix(in srgb, var(--node-color) 22%, transparent);
+    backdrop-filter: blur(8px);
+  }
+
+  .layer-node:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    filter: brightness(1.15);
+  }
+
+  .layer-node::before {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #fff1d2;
+    box-shadow: none;
+    content: attr(data-step);
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1;
+    animation: none;
+  }
+
+  .layer-node .node-core {
+    position: absolute;
+    top: 50%;
+    right: -.24rem;
+    left: auto;
+    width: .8rem;
+    height: .8rem;
+    transform: translateY(-50%);
+    border: 1px solid color-mix(in srgb, var(--node-color) 80%, white);
+    background: color-mix(in srgb, var(--node-color) 85%, white);
+  }
+
+  .layer-node strong,
+  .layer-node small {
+    position: absolute;
+    left: calc(100% + .8rem);
+    width: max-content;
+    max-width: 12rem;
+    opacity: 0;
+    transform: translateX(-.35rem);
+    transition: opacity 240ms ease, transform 240ms ease;
+    pointer-events: none;
+  }
+
+  .layer-node strong {
+    top: .34rem;
+    margin: 0;
+    color: var(--node-color);
+    font-size: .78rem;
+    letter-spacing: .08em;
+  }
+
+  .layer-node small {
+    top: 1.36rem;
+    color: rgb(238 227 207 / .78);
+    font-size: .56rem;
+  }
+
+  .layer-node:hover strong,
+  .layer-node:hover small,
+  .layer-node.selected strong,
+  .layer-node.selected small {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .layer-node.selected {
+    border-color: color-mix(in srgb, var(--node-color) 82%, white);
+    background:
+      radial-gradient(circle, color-mix(in srgb, var(--node-color) 50%, transparent), transparent 62%),
+      rgb(3 12 19 / .78);
+    box-shadow: 0 0 0 9px color-mix(in srgb, var(--node-color) 10%, transparent), 0 0 34px color-mix(in srgb, var(--node-color) 48%, transparent);
+  }
+
+  .layer-node.selected::after {
+    left: 50%;
+    width: 5.7rem;
+    height: 5.7rem;
+    border: 1px solid color-mix(in srgb, var(--node-color) 28%, transparent);
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--node-color) 16%, transparent), transparent 68%);
+    animation: atlasv2-selected-soft 4.8s ease-in-out infinite;
+  }
+
+  .layer-node[data-layer="cosmic-time"] { top: 18%; }
+  .layer-node[data-layer="kalpa"] { top: 32%; }
+  .layer-node[data-layer="manvantara"] { top: 46%; }
+  .layer-node[data-layer="maha-yuga"] { top: 60%; }
+  .layer-node[data-layer="four-yugas"] { top: 71%; }
+  .layer-node[data-layer="kali-yuga"] { top: 80%; }
+
+  .you-are-here {
+    top: 88.5%;
+    left: 72.8%;
+    opacity: .62;
+  }
+
+  .you-are-here span {
+    font-size: .5rem;
+  }
+
+  .you-are-here strong {
+    font-size: .9rem;
+  }
+
+  .vignette {
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .96), rgb(2 8 13 / .68) 31%, transparent 57%, rgb(2 8 13 / .18) 82%, rgb(2 8 13 / .74)),
+      linear-gradient(0deg, rgb(2 8 13 / .92), transparent 25%, rgb(2 8 13 / .12));
+  }
+
+  @media (max-width: 1180px) {
+    .cosmos::before {
+      background-position: 67% 48%;
+      background-size: auto 108%;
+    }
+
+    .layer-nodes::before,
+    .layer-node,
+    .art-layer,
+    .yuga-orbit,
+    .you-are-here,
+    .connection-layer {
+      left: 75%;
+    }
+
+    .layer-node strong,
+    .layer-node small {
+      display: none;
+    }
+  }
+
+
+  /* Oval spine markers: no numbers, no extra side dots */
+  .layer-node {
+    width: 3.9rem;
+    height: 1.72rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    transform: translate(-50%, -50%);
+  }
+
+  .layer-node:hover {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+
+  .layer-node::before {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: auto;
+    height: auto;
+    border: 1px solid color-mix(in srgb, var(--node-color) 56%, white);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 62% 50%, color-mix(in srgb, var(--node-color) 88%, white) 0 .36rem, transparent .42rem),
+      radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--node-color) 32%, transparent), transparent 68%),
+      rgb(3 12 19 / .58);
+    box-shadow:
+      inset 0 0 16px color-mix(in srgb, var(--node-color) 18%, transparent),
+      0 0 0 5px color-mix(in srgb, var(--node-color) 8%, transparent),
+      0 0 22px color-mix(in srgb, var(--node-color) 28%, transparent);
+    content: "";
+    animation: atlasv2-oval-breathe 9s ease-in-out infinite;
+  }
+
+  .layer-node .node-core {
+    display: none;
+  }
+
+  .layer-node.selected::before {
+    border-color: color-mix(in srgb, var(--node-color) 84%, white);
+    background:
+      radial-gradient(circle at 62% 50%, color-mix(in srgb, var(--node-color) 92%, white) 0 .43rem, transparent .5rem),
+      radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--node-color) 46%, transparent), transparent 68%),
+      rgb(3 12 19 / .72);
+    box-shadow:
+      inset 0 0 18px color-mix(in srgb, var(--node-color) 24%, transparent),
+      0 0 0 8px color-mix(in srgb, var(--node-color) 11%, transparent),
+      0 0 36px color-mix(in srgb, var(--node-color) 46%, transparent);
+  }
+
+  .layer-node.selected::after {
+    left: 50%;
+    width: 6.4rem;
+    height: 2.7rem;
+    border: 1px solid color-mix(in srgb, var(--node-color) 24%, transparent);
+    border-radius: 999px;
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--node-color) 20%, transparent), transparent 72%);
+    animation: atlasv2-oval-halo 9s ease-in-out infinite;
+  }
+
+  .layer-node strong,
+  .layer-node small {
+    left: calc(100% + .9rem);
+  }
+
+  .layer-node strong {
+    top: -.12rem;
+  }
+
+  .layer-node small {
+    top: 1rem;
+  }
+
+  .layer-nodes::before {
+    animation: atlasv2-spine 9s ease-in-out infinite;
+  }
+
+  @keyframes atlasv2-oval-breathe {
+    0%, 100% { opacity: .72; transform: scaleX(.96) scaleY(.92); filter: brightness(.95); }
+    50% { opacity: 1; transform: scaleX(1.04) scaleY(1.06); filter: brightness(1.18); }
+  }
+
+  @keyframes atlasv2-oval-halo {
+    0%, 100% { opacity: .32; transform: translate(-50%, -50%) scaleX(.94) scaleY(.9); }
+    50% { opacity: .76; transform: translate(-50%, -50%) scaleX(1.08) scaleY(1.12); }
+  }
+
+
+  /* Live illusion polish: synced spine light and atmospheric drift */
+  .layer-nodes::after {
+    position: absolute;
+    top: 12%;
+    bottom: 12%;
+    left: 72.8%;
+    width: 5.4rem;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(ellipse at 50% 8%, rgb(255 230 171 / .34), transparent 8%),
+      radial-gradient(ellipse at 50% 28%, rgb(255 230 171 / .24), transparent 9%),
+      radial-gradient(ellipse at 50% 48%, rgb(101 215 220 / .22), transparent 10%),
+      radial-gradient(ellipse at 50% 64%, rgb(199 140 255 / .2), transparent 10%),
+      radial-gradient(ellipse at 50% 77%, rgb(140 145 255 / .18), transparent 9%),
+      radial-gradient(ellipse at 50% 89%, rgb(255 113 78 / .18), transparent 9%);
+    mix-blend-mode: screen;
+    opacity: .42;
+    pointer-events: none;
+    content: "";
+    animation: atlasv2-living-spine 9s ease-in-out infinite;
+  }
+
+  .space-layer::before {
+    opacity: .18;
+    animation: atlasv2-star-drift 70s linear infinite;
+  }
+
+  .space-layer::after {
+    animation: atlasv2-tier-glow 9s ease-in-out infinite;
+  }
+
+  .layer-node::before {
+    animation: atlasv2-oval-breathe 9s ease-in-out infinite, atlasv2-oval-glide 18s ease-in-out infinite;
+  }
+
+  .layer-node[data-layer="cosmic-time"]::before { animation-delay: 0s, 0s; }
+  .layer-node[data-layer="kalpa"]::before { animation-delay: .18s, .12s; }
+  .layer-node[data-layer="manvantara"]::before { animation-delay: .36s, .24s; }
+  .layer-node[data-layer="maha-yuga"]::before { animation-delay: .54s, .36s; }
+  .layer-node[data-layer="four-yugas"]::before { animation-delay: .72s, .48s; }
+  .layer-node[data-layer="kali-yuga"]::before { animation-delay: .9s, .6s; }
+
+  .layer-node.selected::after {
+    box-shadow: 0 0 26px color-mix(in srgb, var(--node-color) 34%, transparent);
+  }
+
+  .cosmos {
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .035),
+      inset 0 0 90px rgb(233 182 95 / .045),
+      0 34px 110px rgb(0 0 0 / .34);
+  }
+
+  .cosmos::after {
+    animation: atlasv2-light-breathe 9s ease-in-out infinite, atlasv2-slow-scan 18s ease-in-out infinite;
+  }
+
+  @keyframes atlasv2-living-spine {
+    0%, 100% { opacity: .28; filter: blur(.2px); transform: translateX(-50%) scaleY(.98); }
+    45% { opacity: .62; filter: blur(.55px); transform: translateX(-50%) scaleY(1.03); }
+    70% { opacity: .44; filter: blur(.35px); transform: translateX(-50%) scaleY(1); }
+  }
+
+  @keyframes atlasv2-oval-glide {
+    0%, 100% { background-position: 0 0; }
+    50% { background-position: .35rem 0; }
+  }
+
+  @keyframes atlasv2-star-drift {
+    0% { transform: translate3d(-1%, -1%, 0); }
+    100% { transform: translate3d(2.5%, 2%, 0); }
+  }
+
+  @keyframes atlasv2-slow-scan {
+    0%, 100% { background-position: 0 0; }
+    50% { background-position: .9rem 1.1rem; }
+  }
+
+  @media (max-width: 1180px) {
+    .layer-nodes::after {
+      left: 75%;
+    }
+  }
+
+
+  /* Cinematic depth pass: pointer inertia, light bloom, and selection impact */
+  .atlas-explorer {
+    --parallax-x: 0px;
+    --parallax-y: 0px;
+  }
+
+  .cosmos {
+    isolation: isolate;
+    perspective: 1200px;
+  }
+
+  .cosmos::before {
+    transform: translate3d(calc(var(--parallax-x) * -.35), calc(var(--parallax-y) * -.28), 0) scale(1.018);
+    transform-origin: 62% 48%;
+    transition: filter 700ms ease;
+    will-change: transform;
+  }
+
+  .cosmos::after {
+    transform: translate3d(calc(var(--parallax-x) * .22), calc(var(--parallax-y) * .18), 0);
+    will-change: transform, background-position, opacity;
+  }
+
+  .space-layer {
+    transform: translate3d(calc(var(--parallax-x) * .12), calc(var(--parallax-y) * .08), 0) scale(1.015);
+    will-change: transform;
+  }
+
+  .cosmic-ripple {
+    position: absolute;
+    z-index: 3;
+    width: 2rem;
+    height: 2rem;
+    transform: translate(-50%, -50%) scale(.35);
+    border: 1px solid color-mix(in srgb, var(--ripple-color, #e9b65f) 64%, transparent);
+    border-radius: 999px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--ripple-color, #e9b65f) 30%, transparent), transparent 68%);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--ripple-color, #e9b65f) 34%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .cosmic-ripple.is-active {
+    animation: atlas-impact-ripple 780ms cubic-bezier(.12,.72,.2,1) both;
+  }
+
+  .atlas-camera {
+    will-change: transform;
+  }
+
+  .art-layer {
+    transition: opacity 560ms ease, filter 560ms ease, transform 560ms cubic-bezier(.16,.84,.25,1);
+  }
+
+  .art-layer.selected {
+    filter: brightness(1.16) saturate(1.14) drop-shadow(0 0 20px color-mix(in srgb, var(--node-color) 24%, transparent));
+  }
+
+  .layer-node {
+    transition: transform 360ms cubic-bezier(.16,.84,.25,1), filter 300ms ease;
+  }
+
+  .layer-node::before,
+  .layer-node.selected::after {
+    will-change: transform, filter, opacity;
+  }
+
+  .layer-node.selected::before {
+    animation: atlasv2-oval-breathe 7s ease-in-out infinite, atlas-node-charge 1250ms cubic-bezier(.14,.82,.24,1) both;
+  }
+
+  .intro {
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .05),
+      inset 0 0 52px rgb(233 182 95 / .045),
+      0 24px 80px rgb(0 0 0 / .34);
+    transform: translate3d(calc(var(--parallax-x) * .08), calc(var(--parallax-y) * .05), 0);
+    transition: transform 180ms linear, box-shadow 500ms ease;
+  }
+
+  .intro::after {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(116deg, transparent 0 42%, rgb(255 238 190 / .08) 48%, transparent 56%);
+    opacity: .42;
+    pointer-events: none;
+    content: "";
+    animation: atlas-panel-sheen 11s ease-in-out infinite;
+  }
+
+  @keyframes atlas-impact-ripple {
+    0% { opacity: .9; transform: translate(-50%, -50%) scale(.32); filter: blur(0); }
+    68% { opacity: .24; transform: translate(-50%, -50%) scale(4.6); filter: blur(.7px); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(5.8); filter: blur(1.4px); }
+  }
+
+  @keyframes atlas-node-charge {
+    0% { filter: brightness(1.8) saturate(1.35); box-shadow: 0 0 0 2px color-mix(in srgb, var(--node-color) 22%, transparent), 0 0 54px color-mix(in srgb, var(--node-color) 54%, transparent); }
+    100% { filter: brightness(1); }
+  }
+
+  @keyframes atlas-panel-sheen {
+    0%, 68%, 100% { transform: translateX(-42%); opacity: 0; }
+    78% { opacity: .38; }
+    88% { transform: translateX(42%); opacity: 0; }
+  }
+
+
+
+  /* Immediate visual signal after refresh */
+  .cosmos {
+    border-color: rgb(233 182 95 / .34);
+  }
+
+  .layer-node.selected::before {
+    outline: 1px solid color-mix(in srgb, var(--node-color) 48%, white);
+    outline-offset: 5px;
+  }
+
+  .layer-node.selected strong {
+    color: color-mix(in srgb, var(--node-color) 78%, #fff4d5);
+    text-shadow: 0 0 18px color-mix(in srgb, var(--node-color) 68%, transparent), 0 2px 8px #000;
+  }
+
+  .intro .begin {
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .08),
+      0 0 24px rgb(233 182 95 / .18),
+      0 12px 36px rgb(0 0 0 / .3);
+    animation: atlas-begin-breathe 3.8s ease-in-out infinite;
+  }
+
+  @keyframes atlas-begin-breathe {
+    0%, 100% { filter: brightness(1); transform: translateY(0); }
+    50% { filter: brightness(1.18); transform: translateY(-1px); }
+  }
+  /* Visible cinematic upgrade: make the atlas feel alive even at rest */
+  .cosmos {
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .055),
+      inset 0 0 120px rgb(233 182 95 / .075),
+      inset 0 -80px 120px rgb(2 8 13 / .72),
+      0 34px 120px rgb(0 0 0 / .42);
+  }
+
+  .cosmos::before {
+    filter: saturate(1.26) contrast(1.1) brightness(1.04);
+    animation: atlas-hero-living-depth 18s ease-in-out infinite alternate;
+  }
+
+  .cosmos::after {
+    background:
+      radial-gradient(circle at 72% 10%, rgb(255 232 176 / .34), transparent 11rem),
+      radial-gradient(ellipse at 72% 45%, rgb(101 215 220 / .17), transparent 19rem),
+      radial-gradient(ellipse at 72% 70%, rgb(255 113 78 / .11), transparent 17rem),
+      linear-gradient(100deg, transparent 0 45%, rgb(255 231 177 / .16) 53%, transparent 61%),
+      linear-gradient(180deg, transparent 0 12%, rgb(255 226 166 / .075) 12.25% 12.55%, transparent 12.9% 31%, rgb(101 215 220 / .07) 31.2% 31.5%, transparent 31.9% 50%, rgb(199 140 255 / .06) 50.2% 50.5%, transparent 50.9% 69%, rgb(255 113 78 / .06) 69.2% 69.5%, transparent 69.9%);
+    opacity: .82;
+    animation: atlas-visible-light-sweep 6.5s ease-in-out infinite;
+  }
+
+  .space-layer::before {
+    opacity: .28;
+    animation: atlas-visible-starfield 34s linear infinite;
+  }
+
+  .space-layer::after {
+    opacity: .76;
+    animation: atlas-visible-aura 5.8s ease-in-out infinite;
+  }
+
+  .intro {
+    border-color: rgb(233 182 95 / .32);
+    border-left-color: rgb(233 182 95 / .9);
+    background:
+      linear-gradient(135deg, rgb(3 12 19 / .93), rgb(3 12 19 / .68) 62%, rgb(3 12 19 / .38)),
+      radial-gradient(circle at 96% 0%, rgb(233 182 95 / .22), transparent 43%);
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .07),
+      inset 0 0 70px rgb(233 182 95 / .07),
+      0 30px 100px rgb(0 0 0 / .46),
+      0 0 38px rgb(233 182 95 / .08);
+  }
+
+  .layer-nodes::before {
+    width: 3px;
+    background: linear-gradient(180deg, transparent, rgb(255 230 171 / .86) 12%, rgb(101 215 220 / .76) 48%, rgb(199 140 255 / .68) 66%, rgb(255 113 78 / .7) 86%, transparent);
+    box-shadow: 0 0 16px rgb(255 230 171 / .56), 0 0 38px rgb(101 215 220 / .28);
+    opacity: .86;
+    animation: atlas-spine-breath-visible 4.6s ease-in-out infinite;
+  }
+
+  .layer-nodes::after {
+    width: 8.8rem;
+    background:
+      radial-gradient(ellipse at 50% var(--active-y, 8%), rgb(255 244 207 / .68), transparent 9%),
+      radial-gradient(ellipse at 50% 8%, rgb(255 230 171 / .44), transparent 8%),
+      radial-gradient(ellipse at 50% 28%, rgb(255 230 171 / .34), transparent 10%),
+      radial-gradient(ellipse at 50% 48%, rgb(101 215 220 / .34), transparent 11%),
+      radial-gradient(ellipse at 50% 64%, rgb(199 140 255 / .3), transparent 11%),
+      radial-gradient(ellipse at 50% 78%, rgb(140 145 255 / .28), transparent 10%),
+      radial-gradient(ellipse at 50% 90%, rgb(255 113 78 / .3), transparent 10%);
+    opacity: .82;
+    filter: blur(.15px);
+    animation: atlas-energy-pulse-visible 5.2s ease-in-out infinite;
+  }
+
+  .layer-node::before {
+    border-color: color-mix(in srgb, var(--node-color) 78%, white);
+    background:
+      radial-gradient(circle at 62% 50%, color-mix(in srgb, var(--node-color) 95%, white) 0 .42rem, transparent .5rem),
+      linear-gradient(90deg, transparent, rgb(255 255 255 / .13), transparent),
+      radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--node-color) 48%, transparent), transparent 70%),
+      rgb(3 12 19 / .72);
+    box-shadow:
+      inset 0 0 18px color-mix(in srgb, var(--node-color) 28%, transparent),
+      0 0 0 7px color-mix(in srgb, var(--node-color) 10%, transparent),
+      0 0 28px color-mix(in srgb, var(--node-color) 42%, transparent);
+    animation: atlas-node-breathe-visible 3.2s ease-in-out infinite, atlas-node-shimmer-visible 5.5s linear infinite;
+  }
+
+  .layer-node:hover::before,
+  .layer-node.selected::before {
+    box-shadow:
+      inset 0 0 22px color-mix(in srgb, var(--node-color) 36%, transparent),
+      0 0 0 9px color-mix(in srgb, var(--node-color) 16%, transparent),
+      0 0 46px color-mix(in srgb, var(--node-color) 64%, transparent),
+      0 0 90px color-mix(in srgb, var(--node-color) 22%, transparent);
+  }
+
+  .layer-node.selected::after {
+    width: 7.8rem;
+    height: 3.6rem;
+    border-color: color-mix(in srgb, var(--node-color) 42%, transparent);
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--node-color) 34%, transparent), transparent 70%);
+    box-shadow: 0 0 42px color-mix(in srgb, var(--node-color) 54%, transparent);
+    animation: atlas-selected-halo-visible 2.8s ease-in-out infinite;
+  }
+
+  .you-are-here {
+    opacity: .95;
+    text-shadow: 0 0 18px rgb(233 182 95 / .42), 0 2px 8px #000;
+    animation: atlas-you-are-here-visible 4.2s ease-in-out infinite;
+  }
+
+  .cosmic-ripple {
+    width: 3rem;
+    height: 3rem;
+    box-shadow: 0 0 48px color-mix(in srgb, var(--ripple-color, #e9b65f) 62%, transparent);
+  }
+
+  .cosmic-ripple.is-active {
+    animation: atlas-impact-ripple-visible 920ms cubic-bezier(.1,.74,.16,1) both;
+  }
+
+  @keyframes atlas-hero-living-depth {
+    0% { transform: translate3d(calc(var(--parallax-x) * -.45 - .25%), calc(var(--parallax-y) * -.35 - .18%), 0) scale(1.035); filter: saturate(1.2) contrast(1.08) brightness(.98); }
+    100% { transform: translate3d(calc(var(--parallax-x) * -.45 + .35%), calc(var(--parallax-y) * -.35 + .24%), 0) scale(1.065); filter: saturate(1.32) contrast(1.12) brightness(1.06); }
+  }
+
+  @keyframes atlas-visible-light-sweep {
+    0%, 100% { opacity: .56; background-position: 0 0; }
+    45% { opacity: .95; background-position: 1.2rem 1rem; }
+    68% { opacity: .72; }
+  }
+
+  @keyframes atlas-visible-starfield {
+    to { transform: translate3d(3.5%, 2.4%, 0); }
+  }
+
+  @keyframes atlas-visible-aura {
+    0%, 100% { opacity: .46; transform: scale(.99); }
+    50% { opacity: .86; transform: scale(1.025); }
+  }
+
+  @keyframes atlas-spine-breath-visible {
+    0%, 100% { opacity: .56; filter: blur(.15px); transform: translateX(-50%) scaleY(.98); }
+    50% { opacity: .96; filter: blur(.45px); transform: translateX(-50%) scaleY(1.025); }
+  }
+
+  @keyframes atlas-energy-pulse-visible {
+    0%, 100% { opacity: .54; transform: translateX(-50%) scaleY(.98); }
+    38% { opacity: .96; transform: translateX(-50%) scaleY(1.04); }
+    66% { opacity: .72; }
+  }
+
+  @keyframes atlas-node-breathe-visible {
+    0%, 100% { opacity: .86; transform: scaleX(.97) scaleY(.94); filter: brightness(1); }
+    50% { opacity: 1; transform: scaleX(1.06) scaleY(1.08); filter: brightness(1.28); }
+  }
+
+  @keyframes atlas-node-shimmer-visible {
+    0%, 100% { background-position: -4rem 0, 0 0, 0 0, 0 0; }
+    50% { background-position: 4rem 0, 0 0, 0 0, 0 0; }
+  }
+
+  @keyframes atlas-selected-halo-visible {
+    0%, 100% { opacity: .5; transform: translate(-50%, -50%) scaleX(.94) scaleY(.88); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scaleX(1.14) scaleY(1.18); }
+  }
+
+  @keyframes atlas-you-are-here-visible {
+    0%, 100% { filter: brightness(.95); transform: translate(-50%, -50%) translateY(0); }
+    50% { filter: brightness(1.25); transform: translate(-50%, -50%) translateY(-.18rem); }
+  }
+
+  @keyframes atlas-impact-ripple-visible {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(.28); filter: blur(0); }
+    52% { opacity: .46; transform: translate(-50%, -50%) scale(5.6); filter: blur(.35px); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(8.2); filter: blur(1.4px); }
+  }
+
+
+  /* Clean observatory direction: calm, realistic, less neon */
+  .cosmos {
+    border-color: rgb(233 182 95 / .2);
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .035),
+      inset 0 -90px 140px rgb(2 8 13 / .72),
+      0 28px 90px rgb(0 0 0 / .36);
+  }
+
+  .cosmos::before {
+    filter: saturate(1.08) contrast(1.03) brightness(.96);
+    transform: translate3d(calc(var(--parallax-x) * -.22), calc(var(--parallax-y) * -.16), 0) scale(1.025);
+    animation: atlas-observatory-drift 32s ease-in-out infinite alternate;
+  }
+
+  .cosmos::after {
+    background:
+      radial-gradient(circle at 72% 11%, rgb(255 229 169 / .18), transparent 12rem),
+      radial-gradient(ellipse at 72% 46%, rgb(101 215 220 / .075), transparent 22rem),
+      linear-gradient(100deg, transparent 0 53%, rgb(255 231 177 / .055) 59%, transparent 68%);
+    opacity: .5;
+    mix-blend-mode: screen;
+    animation: atlas-observatory-light 14s ease-in-out infinite;
+  }
+
+  .space-layer::before {
+    opacity: .12;
+    animation: atlas-observatory-stars 120s linear infinite;
+  }
+
+  .space-layer::after {
+    opacity: .32;
+    animation: atlas-observatory-aura 16s ease-in-out infinite;
+  }
+
+  .intro {
+    border-color: rgb(223 174 93 / .18);
+    border-left-color: rgb(233 182 95 / .72);
+    background:
+      linear-gradient(135deg, rgb(3 12 19 / .9), rgb(3 12 19 / .66) 62%, rgb(3 12 19 / .42)),
+      radial-gradient(circle at 100% 0%, rgb(233 182 95 / .1), transparent 42%);
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .04),
+      0 24px 74px rgb(0 0 0 / .34);
+  }
+
+  .intro::after {
+    opacity: .16;
+    animation: atlas-observatory-panel 18s ease-in-out infinite;
+  }
+
+  .intro .begin {
+    box-shadow: inset 0 1px rgb(255 255 255 / .055), 0 10px 30px rgb(0 0 0 / .24);
+    animation: none;
+  }
+
+  .layer-nodes::before {
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgb(255 230 171 / .5) 15%, rgb(101 215 220 / .42) 48%, rgb(199 140 255 / .36) 66%, rgb(255 113 78 / .34) 86%, transparent);
+    box-shadow: 0 0 10px rgb(255 230 171 / .24);
+    opacity: .42;
+    animation: atlas-observatory-spine 12s ease-in-out infinite;
+  }
+
+  .layer-nodes::after {
+    width: 6rem;
+    background:
+      radial-gradient(ellipse at 50% 8%, rgb(255 230 171 / .22), transparent 9%),
+      radial-gradient(ellipse at 50% 28%, rgb(255 230 171 / .16), transparent 10%),
+      radial-gradient(ellipse at 50% 48%, rgb(101 215 220 / .16), transparent 11%),
+      radial-gradient(ellipse at 50% 64%, rgb(199 140 255 / .13), transparent 11%),
+      radial-gradient(ellipse at 50% 78%, rgb(140 145 255 / .12), transparent 10%),
+      radial-gradient(ellipse at 50% 90%, rgb(255 113 78 / .13), transparent 10%);
+    opacity: .38;
+    filter: blur(.35px);
+    animation: atlas-observatory-node-light 13s ease-in-out infinite;
+  }
+
+  .layer-node {
+    transform: translate(-50%, -50%);
+    filter: none;
+  }
+
+  .layer-node::before {
+    outline: 0;
+    border-color: color-mix(in srgb, var(--node-color) 48%, white);
+    background:
+      radial-gradient(circle at 62% 50%, color-mix(in srgb, var(--node-color) 78%, white) 0 .34rem, transparent .42rem),
+      radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--node-color) 18%, transparent), transparent 70%),
+      rgb(3 12 19 / .6);
+    box-shadow:
+      inset 0 0 14px color-mix(in srgb, var(--node-color) 14%, transparent),
+      0 0 0 4px color-mix(in srgb, var(--node-color) 6%, transparent),
+      0 0 18px color-mix(in srgb, var(--node-color) 18%, transparent);
+    animation: atlas-observatory-node 9s ease-in-out infinite;
+  }
+
+  .layer-node:hover::before,
+  .layer-node.selected::before {
+    border-color: color-mix(in srgb, var(--node-color) 72%, white);
+    box-shadow:
+      inset 0 0 16px color-mix(in srgb, var(--node-color) 18%, transparent),
+      0 0 0 6px color-mix(in srgb, var(--node-color) 8%, transparent),
+      0 0 26px color-mix(in srgb, var(--node-color) 28%, transparent);
+  }
+
+  .layer-node.selected::after {
+    width: 6.3rem;
+    height: 2.7rem;
+    border-color: color-mix(in srgb, var(--node-color) 22%, transparent);
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--node-color) 13%, transparent), transparent 72%);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--node-color) 22%, transparent);
+    opacity: .7;
+    animation: atlas-observatory-selected 8s ease-in-out infinite;
+  }
+
+  .layer-node.selected strong {
+    color: var(--node-color);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--node-color) 32%, transparent), 0 2px 8px #000;
+  }
+
+  .you-are-here {
+    opacity: .72;
+    text-shadow: 0 2px 8px #000;
+    animation: none;
+  }
+
+  .cosmic-ripple {
+    width: 2rem;
+    height: 2rem;
+    box-shadow: 0 0 28px color-mix(in srgb, var(--ripple-color, #e9b65f) 32%, transparent);
+  }
+
+  .cosmic-ripple.is-active {
+    animation: atlas-observatory-ripple 760ms cubic-bezier(.16,.74,.22,1) both;
+  }
+
+  @keyframes atlas-observatory-drift {
+    0% { transform: translate3d(calc(var(--parallax-x) * -.22 - .18%), calc(var(--parallax-y) * -.16 - .12%), 0) scale(1.025); }
+    100% { transform: translate3d(calc(var(--parallax-x) * -.22 + .22%), calc(var(--parallax-y) * -.16 + .14%), 0) scale(1.042); }
+  }
+
+  @keyframes atlas-observatory-light {
+    0%, 100% { opacity: .42; background-position: 0 0; }
+    50% { opacity: .58; background-position: .35rem .45rem; }
+  }
+
+  @keyframes atlas-observatory-stars {
+    to { transform: translate3d(2%, 1.4%, 0); }
+  }
+
+  @keyframes atlas-observatory-aura {
+    0%, 100% { opacity: .25; transform: scale(.995); }
+    50% { opacity: .38; transform: scale(1.012); }
+  }
+
+  @keyframes atlas-observatory-panel {
+    0%, 80%, 100% { transform: translateX(-30%); opacity: 0; }
+    88% { opacity: .16; }
+    96% { transform: translateX(30%); opacity: 0; }
+  }
+
+  @keyframes atlas-observatory-spine {
+    0%, 100% { opacity: .32; filter: blur(0); }
+    50% { opacity: .5; filter: blur(.2px); }
+  }
+
+  @keyframes atlas-observatory-node-light {
+    0%, 100% { opacity: .28; transform: translateX(-50%) scaleY(.98); }
+    50% { opacity: .44; transform: translateX(-50%) scaleY(1.02); }
+  }
+
+  @keyframes atlas-observatory-node {
+    0%, 100% { opacity: .78; transform: scaleX(.98) scaleY(.95); filter: brightness(.96); }
+    50% { opacity: .95; transform: scaleX(1.025) scaleY(1.04); filter: brightness(1.08); }
+  }
+
+  @keyframes atlas-observatory-selected {
+    0%, 100% { opacity: .36; transform: translate(-50%, -50%) scaleX(.98) scaleY(.93); }
+    50% { opacity: .72; transform: translate(-50%, -50%) scaleX(1.05) scaleY(1.08); }
+  }
+
+  @keyframes atlas-observatory-ripple {
+    0% { opacity: .82; transform: translate(-50%, -50%) scale(.35); filter: blur(0); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(5.2); filter: blur(1px); }
+  }
+
+
+  /* Circular celestial layer nodes: replace oval switch shapes */
+  .layer-node {
+    width: 3.15rem;
+    height: 3.15rem;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .layer-node:hover {
+    transform: translate(-50%, -50%) scale(1.055);
+  }
+
+  .layer-node::before {
+    inset: 0;
+    border: 1px solid color-mix(in srgb, var(--node-color) 58%, #fff1d2);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--node-color) 90%, #fff7dc) 0 .34rem, transparent .4rem),
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--node-color) 24%, transparent) 0 52%, transparent 70%),
+      radial-gradient(circle at 35% 28%, rgb(255 255 255 / .16), transparent 34%),
+      rgb(3 12 19 / .7);
+    box-shadow:
+      inset 0 0 18px rgb(255 255 255 / .035),
+      inset 0 0 20px color-mix(in srgb, var(--node-color) 12%, transparent),
+      0 0 0 5px color-mix(in srgb, var(--node-color) 6%, transparent),
+      0 0 22px color-mix(in srgb, var(--node-color) 20%, transparent);
+    animation: atlas-celestial-node 8s ease-in-out infinite;
+  }
+
+  .layer-node::after {
+    border-radius: 50%;
+  }
+
+  .layer-node:hover::before,
+  .layer-node.selected::before {
+    border-color: color-mix(in srgb, var(--node-color) 74%, #fff7dc);
+    background:
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--node-color) 92%, #fff7dc) 0 .4rem, transparent .48rem),
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--node-color) 30%, transparent) 0 56%, transparent 72%),
+      radial-gradient(circle at 35% 28%, rgb(255 255 255 / .2), transparent 34%),
+      rgb(3 12 19 / .76);
+    box-shadow:
+      inset 0 0 18px rgb(255 255 255 / .045),
+      inset 0 0 24px color-mix(in srgb, var(--node-color) 18%, transparent),
+      0 0 0 7px color-mix(in srgb, var(--node-color) 8%, transparent),
+      0 0 30px color-mix(in srgb, var(--node-color) 26%, transparent);
+  }
+
+  .layer-node.selected::after {
+    top: 50%;
+    left: 50%;
+    width: 4.85rem;
+    height: 4.85rem;
+    border: 1px solid color-mix(in srgb, var(--node-color) 28%, transparent);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, color-mix(in srgb, var(--node-color) 12%, transparent), transparent 68%),
+      conic-gradient(from 0deg, transparent 0 22%, color-mix(in srgb, var(--node-color) 38%, transparent) 26% 30%, transparent 34% 72%, color-mix(in srgb, var(--node-color) 28%, transparent) 76% 80%, transparent 84% 100%);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--node-color) 20%, transparent);
+    opacity: .78;
+    animation: atlas-celestial-ring 12s linear infinite;
+  }
+
+  .layer-node strong,
+  .layer-node small {
+    left: calc(100% + .85rem);
+  }
+
+  .layer-node strong {
+    top: .45rem;
+  }
+
+  .layer-node small {
+    top: 1.55rem;
+  }
+
+  @keyframes atlas-celestial-node {
+    0%, 100% { opacity: .8; transform: scale(.96); filter: brightness(.96); }
+    50% { opacity: .98; transform: scale(1.025); filter: brightness(1.08); }
+  }
+
+  @keyframes atlas-celestial-ring {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(.96); opacity: .46; }
+    50% { opacity: .78; }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(.96); opacity: .46; }
+  }
+
+
+  /* Spinning cosmic architecture inspired by the reference image */
+  .orbital-stage {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translate3d(calc(var(--parallax-x) * -.16), calc(var(--parallax-y) * -.12), 0);
+    transform-origin: 66% 48%;
+    mix-blend-mode: screen;
+  }
+
+  .orbital-stage::before,
+  .orbital-stage::after {
+    position: absolute;
+    left: 65%;
+    top: 49%;
+    width: min(54rem, 54vw);
+    height: min(32rem, 34vw);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    content: "";
+  }
+
+  .orbital-stage::before {
+    background:
+      radial-gradient(ellipse at 50% 48%, rgb(255 227 157 / .22), transparent 9%),
+      radial-gradient(ellipse at 50% 48%, transparent 0 28%, rgb(255 207 116 / .13) 28.2% 28.55%, transparent 29%),
+      radial-gradient(ellipse at 50% 48%, transparent 0 44%, rgb(255 227 157 / .11) 44.15% 44.45%, transparent 45%),
+      radial-gradient(ellipse at 50% 48%, transparent 0 61%, rgb(101 215 220 / .08) 61.15% 61.45%, transparent 62%);
+    filter: blur(.1px);
+    opacity: .92;
+    animation: orbital-field-breathe 8s ease-in-out infinite;
+  }
+
+  .orbital-stage::after {
+    width: min(62rem, 62vw);
+    height: min(38rem, 39vw);
+    background:
+      conic-gradient(from 20deg, transparent 0 7%, rgb(255 224 150 / .2) 8% 8.7%, transparent 10% 34%, rgb(255 224 150 / .14) 36% 36.7%, transparent 38% 68%, rgb(101 215 220 / .12) 70% 70.6%, transparent 72% 100%);
+    border-radius: 50%;
+    opacity: .42;
+    animation: orbital-star-map-spin 54s linear infinite;
+  }
+
+  .core-light {
+    position: absolute;
+    left: 72.8%;
+    top: 8%;
+    bottom: 10%;
+    width: 3px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background:
+      linear-gradient(180deg, transparent, rgb(255 246 205 / .86) 13%, rgb(255 207 116 / .78) 31%, rgb(101 215 220 / .46) 50%, rgb(199 140 255 / .42) 68%, rgb(255 113 78 / .5) 84%, transparent);
+    box-shadow:
+      0 0 18px rgb(255 224 150 / .58),
+      0 0 44px rgb(255 224 150 / .24),
+      0 0 90px rgb(101 215 220 / .12);
+    opacity: .72;
+    animation: core-light-flow 5.8s ease-in-out infinite;
+  }
+
+  .orbit-ring {
+    position: absolute;
+    left: 72.8%;
+    top: var(--orbit-top);
+    width: var(--orbit-width);
+    height: var(--orbit-height);
+    transform: translate(-50%, -50%) rotate(var(--orbit-tilt));
+    border: 1px solid rgb(255 213 128 / .23);
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 16px rgb(255 213 128 / .045),
+      0 0 18px rgb(255 213 128 / .08);
+    opacity: var(--orbit-opacity);
+    animation: orbit-precession var(--orbit-speed) linear infinite;
+  }
+
+  .orbit-ring::before,
+  .orbit-ring::after {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background:
+      conic-gradient(from 0deg, transparent 0 12%, rgb(255 238 178 / .5) 13% 14.5%, transparent 16% 58%, rgb(255 238 178 / .28) 60% 61%, transparent 63% 100%);
+    opacity: .34;
+    content: "";
+  }
+
+  .orbit-ring::after {
+    filter: blur(5px);
+    opacity: .18;
+  }
+
+  .orbit-ring i {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: var(--planet-size);
+    height: var(--planet-size);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 28%, rgb(255 241 203 / .95), transparent 24%),
+      radial-gradient(circle at 55% 55%, var(--planet-color), color-mix(in srgb, var(--planet-color) 45%, #130a04) 68%, #080807 100%);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--planet-color) 45%, transparent);
+  }
+
+  .ring-1 { --orbit-top: 20%; --orbit-width: min(38rem, 39vw); --orbit-height: min(8rem, 8vw); --orbit-tilt: -7deg; --orbit-speed: 42s; --orbit-opacity: .72; --planet-size: .64rem; --planet-color: #e9b65f; }
+  .ring-2 { --orbit-top: 32%; --orbit-width: min(48rem, 49vw); --orbit-height: min(10rem, 10vw); --orbit-tilt: 5deg; --orbit-speed: 58s; --orbit-opacity: .58; --planet-size: .88rem; --planet-color: #d79a4d; animation-direction: reverse; }
+  .ring-3 { --orbit-top: 45%; --orbit-width: min(54rem, 55vw); --orbit-height: min(12rem, 12vw); --orbit-tilt: -4deg; --orbit-speed: 67s; --orbit-opacity: .64; --planet-size: .72rem; --planet-color: #65d7dc; }
+  .ring-4 { --orbit-top: 59%; --orbit-width: min(48rem, 50vw); --orbit-height: min(10rem, 10vw); --orbit-tilt: 6deg; --orbit-speed: 52s; --orbit-opacity: .55; --planet-size: .68rem; --planet-color: #c78cff; animation-direction: reverse; }
+  .ring-5 { --orbit-top: 71%; --orbit-width: min(38rem, 40vw); --orbit-height: min(8rem, 8vw); --orbit-tilt: -5deg; --orbit-speed: 48s; --orbit-opacity: .48; --planet-size: .58rem; --planet-color: #8c91ff; }
+  .ring-6 { --orbit-top: 81%; --orbit-width: min(28rem, 30vw); --orbit-height: min(5.8rem, 6vw); --orbit-tilt: 4deg; --orbit-speed: 38s; --orbit-opacity: .5; --planet-size: .62rem; --planet-color: #ff714e; animation-direction: reverse; }
+
+  .cosmic-dust {
+    position: absolute;
+    left: 34%;
+    top: 8%;
+    width: 52%;
+    height: 80%;
+    background-image:
+      radial-gradient(circle, rgb(255 239 195 / .55) 0 1px, transparent 1.45px),
+      radial-gradient(circle, rgb(101 215 220 / .28) 0 1px, transparent 1.35px);
+    background-size: 92px 86px, 151px 139px;
+    opacity: .12;
+    animation: cosmic-dust-drift 90s linear infinite;
+  }
+
+  .dust-b {
+    opacity: .08;
+    transform: scale(1.18) rotate(-7deg);
+    animation-duration: 130s;
+    animation-direction: reverse;
+  }
+
+  .layer-nodes::before,
+  .layer-nodes::after {
+    opacity: 0 !important;
+  }
+
+  .layer-node {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .layer-node::before {
+    border-color: color-mix(in srgb, var(--node-color) 42%, #fff1d2);
+    background:
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--node-color) 88%, #fff7dc) 0 .28rem, transparent .34rem),
+      radial-gradient(circle, color-mix(in srgb, var(--node-color) 16%, transparent), transparent 68%),
+      rgb(3 12 19 / .52);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--node-color) 24%, transparent);
+  }
+
+  .layer-node.selected::after {
+    width: 3.4rem;
+    height: 3.4rem;
+    background: radial-gradient(circle, color-mix(in srgb, var(--node-color) 12%, transparent), transparent 72%);
+  }
+
+  .layer-node strong {
+    top: -.15rem;
+    left: calc(100% + .7rem);
+    font-size: .7rem;
+  }
+
+  .layer-node small {
+    top: .9rem;
+    left: calc(100% + .7rem);
+    font-size: .52rem;
+  }
+
+  @keyframes orbit-precession {
+    to { transform: translate(-50%, -50%) rotate(calc(var(--orbit-tilt) + 360deg)); }
+  }
+
+  @keyframes orbital-star-map-spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes orbital-field-breathe {
+    0%, 100% { opacity: .72; filter: blur(.1px); }
+    50% { opacity: 1; filter: blur(.35px); }
+  }
+
+  @keyframes core-light-flow {
+    0%, 100% { opacity: .56; filter: brightness(.96); transform: translateX(-50%) scaleY(.98); }
+    50% { opacity: .9; filter: brightness(1.18); transform: translateX(-50%) scaleY(1.02); }
+  }
+
+  @keyframes cosmic-dust-drift {
+    to { background-position: 180px 120px, -160px 220px; }
+  }
+
+
+  /* Axis sync pass: lock spinning orbits to the artwork spine */
+  .atlas-explorer {
+    --atlas-axis-x: 72.9%;
+    --atlas-axis-y: 48%;
+  }
+
+  .orbital-stage {
+    clip-path: polygon(39% 0, 100% 0, 100% 100%, 39% 100%);
+    transform-origin: var(--atlas-axis-x) var(--atlas-axis-y);
+    opacity: .86;
+  }
+
+  .orbital-stage::before,
+  .orbital-stage::after {
+    left: var(--atlas-axis-x);
+    top: var(--atlas-axis-y);
+  }
+
+  .orbital-stage::before {
+    width: min(39rem, 41vw);
+    height: min(30rem, 31vw);
+    background:
+      radial-gradient(ellipse at 50% 48%, rgb(255 227 157 / .18), transparent 8%),
+      radial-gradient(ellipse at 50% 48%, transparent 0 25%, rgb(255 207 116 / .11) 25.15% 25.45%, transparent 26%),
+      radial-gradient(ellipse at 50% 48%, transparent 0 42%, rgb(255 227 157 / .09) 42.15% 42.45%, transparent 43%),
+      radial-gradient(ellipse at 50% 48%, transparent 0 58%, rgb(101 215 220 / .06) 58.15% 58.45%, transparent 59%);
+  }
+
+  .orbital-stage::after {
+    width: min(44rem, 46vw);
+    height: min(34rem, 35vw);
+    opacity: .28;
+  }
+
+  .core-light,
+  .orbit-ring,
+  .layer-node,
+  .you-are-here {
+    left: var(--atlas-axis-x);
+  }
+
+  .core-light {
+    top: 10%;
+    bottom: 12%;
+    width: 2px;
+    opacity: .62;
+  }
+
+  .orbit-ring {
+    left: var(--atlas-axis-x);
+    border-color: rgb(255 213 128 / .18);
+    opacity: calc(var(--orbit-opacity) * .72);
+    box-shadow: inset 0 0 12px rgb(255 213 128 / .035), 0 0 12px rgb(255 213 128 / .055);
+  }
+
+  .orbit-ring::before {
+    opacity: .22;
+  }
+
+  .orbit-ring::after {
+    opacity: .1;
+  }
+
+  .ring-1 { --orbit-top: 19%; --orbit-width: min(27rem, 29vw); --orbit-height: min(5.7rem, 6vw); --orbit-tilt: -3deg; }
+  .ring-2 { --orbit-top: 31%; --orbit-width: min(35rem, 37vw); --orbit-height: min(7.5rem, 7.8vw); --orbit-tilt: 3deg; }
+  .ring-3 { --orbit-top: 45%; --orbit-width: min(39rem, 41vw); --orbit-height: min(8.7rem, 9vw); --orbit-tilt: -2deg; }
+  .ring-4 { --orbit-top: 59%; --orbit-width: min(34rem, 36vw); --orbit-height: min(7.3rem, 7.6vw); --orbit-tilt: 3deg; }
+  .ring-5 { --orbit-top: 70.5%; --orbit-width: min(27rem, 29vw); --orbit-height: min(5.7rem, 6vw); --orbit-tilt: -2deg; }
+  .ring-6 { --orbit-top: 80%; --orbit-width: min(20rem, 22vw); --orbit-height: min(4.3rem, 4.6vw); --orbit-tilt: 2deg; }
+
+  .cosmic-dust {
+    left: 48%;
+    top: 9%;
+    width: 45%;
+    height: 78%;
+    opacity: .09;
+  }
+
+  .layer-node[data-layer="cosmic-time"] { top: 19%; }
+  .layer-node[data-layer="kalpa"] { top: 31%; }
+  .layer-node[data-layer="manvantara"] { top: 45%; }
+  .layer-node[data-layer="maha-yuga"] { top: 59%; }
+  .layer-node[data-layer="four-yugas"] { top: 70.5%; }
+  .layer-node[data-layer="kali-yuga"] { top: 80%; }
+
+  .layer-node strong,
+  .layer-node small {
+    left: calc(100% + .95rem);
+  }
+
+  .you-are-here {
+    top: 88.2%;
+  }
+
+  @media (max-width: 1180px) {
+    .atlas-explorer { --atlas-axis-x: 74.5%; }
+    .orbital-stage { clip-path: polygon(45% 0, 100% 0, 100% 100%, 45% 100%); }
+  }
+
+
+  /* Background clarity pass: make the original cosmic artwork the attraction */
+  .cosmos {
+    background: #030a10;
+    border-color: rgb(233 182 95 / .26);
+  }
+
+  .cosmos::before {
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .9) 0%, rgb(2 8 13 / .58) 24%, rgb(2 8 13 / .12) 43%, rgb(2 8 13 / .08) 72%, rgb(2 8 13 / .28) 100%),
+      linear-gradient(180deg, rgb(2 8 13 / .06), rgb(2 8 13 / .03) 45%, rgb(2 8 13 / .34) 100%),
+      url("/images/atlas/Atlasv2.png");
+    background-position: center, center, 73% 51%;
+    background-size: auto, auto, auto 108%;
+    opacity: 1;
+    filter: saturate(1.2) contrast(1.08) brightness(1.14);
+    transform: translate3d(calc(var(--parallax-x) * -.12), calc(var(--parallax-y) * -.08), 0) scale(1.002);
+    animation: atlas-clear-art-drift 38s ease-in-out infinite alternate;
+  }
+
+  .cosmos::after {
+    background:
+      radial-gradient(circle at 72% 12%, rgb(255 232 176 / .16), transparent 12rem),
+      radial-gradient(ellipse at 72% 46%, rgb(101 215 220 / .055), transparent 23rem),
+      linear-gradient(100deg, transparent 0 56%, rgb(255 231 177 / .04) 62%, transparent 70%);
+    opacity: .36;
+  }
+
+  .vignette {
+    background:
+      linear-gradient(90deg, rgb(2 8 13 / .92), rgb(2 8 13 / .64) 27%, rgb(2 8 13 / .14) 50%, rgb(2 8 13 / .06) 76%, rgb(2 8 13 / .32)),
+      linear-gradient(0deg, rgb(2 8 13 / .62), transparent 27%, rgb(2 8 13 / .08));
+  }
+
+  .space-layer {
+    opacity: .42;
+  }
+
+  .space-layer::before {
+    opacity: .16;
+  }
+
+  .space-layer::after {
+    opacity: .18;
+  }
+
+  .orbital-stage {
+    opacity: .42;
+  }
+
+  .orbital-stage::before {
+    opacity: .38;
+  }
+
+  .orbital-stage::after {
+    opacity: .16;
+  }
+
+  .orbit-ring {
+    opacity: calc(var(--orbit-opacity) * .42);
+    border-color: rgb(255 213 128 / .13);
+  }
+
+  .orbit-ring::before {
+    opacity: .14;
+  }
+
+  .orbit-ring i {
+    opacity: .62;
+  }
+
+  .cosmic-dust {
+    opacity: .045;
+  }
+
+  .core-light {
+    opacity: .46;
+    box-shadow:
+      0 0 16px rgb(255 224 150 / .46),
+      0 0 38px rgb(255 224 150 / .16);
+  }
+
+  .layer-node::before {
+    background:
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--node-color) 86%, #fff7dc) 0 .25rem, transparent .31rem),
+      radial-gradient(circle, color-mix(in srgb, var(--node-color) 12%, transparent), transparent 68%),
+      rgb(3 12 19 / .46);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--node-color) 18%, transparent);
+  }
+
+  .intro {
+    background:
+      linear-gradient(135deg, rgb(3 12 19 / .9), rgb(3 12 19 / .72) 64%, rgb(3 12 19 / .48)),
+      radial-gradient(circle at 100% 0%, rgb(233 182 95 / .09), transparent 42%);
+  }
+
+  @keyframes atlas-clear-art-drift {
+    0% { background-position: center, center, 72.6% 50.6%; filter: saturate(1.16) contrast(1.06) brightness(1.08); }
+    100% { background-position: center, center, 73.4% 51.4%; filter: saturate(1.24) contrast(1.09) brightness(1.15); }
+  }
+
+  @media (max-width: 1180px) {
+    .cosmos::before {
+      background-position: center, center, 76% 51%;
+      background-size: auto, auto, auto 105%;
+    }
+  }
+
+
+  /* Final alignment pass: sync controls and visible spin to the image beam */
+  .atlas-explorer {
+    --atlas-axis-x: 71.45%;
+    --atlas-axis-y: 49%;
+  }
+
+  .core-light,
+  .orbit-ring,
+  .layer-node,
+  .you-are-here {
+    left: var(--atlas-axis-x) !important;
+  }
+
+  .core-light {
+    top: 9.5%;
+    bottom: 10.5%;
+    width: 2px;
+    opacity: .74;
+    background: linear-gradient(180deg, transparent, rgb(255 246 205 / .88) 12%, rgb(255 209 116 / .76) 32%, rgb(255 231 174 / .7) 52%, rgb(199 140 255 / .36) 68%, rgb(255 113 78 / .45) 84%, transparent);
+  }
+
+  .orbital-stage {
+    opacity: .95;
+    clip-path: polygon(38% 0, 100% 0, 100% 100%, 38% 100%);
+  }
+
+  .orbital-stage::before {
+    left: var(--atlas-axis-x);
+    top: var(--atlas-axis-y);
+    width: min(44rem, 46vw);
+    height: min(34rem, 35vw);
+    opacity: .68;
+  }
+
+  .orbital-stage::after {
+    left: var(--atlas-axis-x);
+    top: var(--atlas-axis-y);
+    width: min(50rem, 52vw);
+    height: min(38rem, 39vw);
+    opacity: .34;
+  }
+
+  .orbit-ring {
+    opacity: calc(var(--orbit-opacity) * .9);
+    border-color: rgb(255 216 137 / .26);
+    box-shadow: inset 0 0 14px rgb(255 213 128 / .055), 0 0 18px rgb(255 213 128 / .12);
+  }
+
+  .orbit-ring::before {
+    opacity: .38;
+  }
+
+  .orbit-ring::after {
+    opacity: .2;
+  }
+
+  .orbit-ring i {
+    opacity: .9;
+  }
+
+  .ring-1 { --orbit-top: 18.7%; --orbit-width: min(30rem, 31vw); --orbit-height: min(6.2rem, 6.4vw); --orbit-tilt: -3deg; }
+  .ring-2 { --orbit-top: 30.2%; --orbit-width: min(38rem, 40vw); --orbit-height: min(8rem, 8.4vw); --orbit-tilt: 3deg; }
+  .ring-3 { --orbit-top: 43.8%; --orbit-width: min(43rem, 45vw); --orbit-height: min(9.5rem, 9.8vw); --orbit-tilt: -2deg; }
+  .ring-4 { --orbit-top: 57.2%; --orbit-width: min(38rem, 40vw); --orbit-height: min(8rem, 8.4vw); --orbit-tilt: 3deg; }
+  .ring-5 { --orbit-top: 68.4%; --orbit-width: min(31rem, 32vw); --orbit-height: min(6.3rem, 6.6vw); --orbit-tilt: -2deg; }
+  .ring-6 { --orbit-top: 77.4%; --orbit-width: min(23rem, 24vw); --orbit-height: min(4.8rem, 5vw); --orbit-tilt: 2deg; }
+
+  .layer-node[data-layer="cosmic-time"] { top: 18.7%; }
+  .layer-node[data-layer="kalpa"] { top: 30.2%; }
+  .layer-node[data-layer="manvantara"] { top: 43.8%; }
+  .layer-node[data-layer="maha-yuga"] { top: 57.2%; }
+  .layer-node[data-layer="four-yugas"] { top: 68.4%; }
+  .layer-node[data-layer="kali-yuga"] { top: 77.4%; }
+
+  .layer-node {
+    width: 1.45rem;
+    height: 1.45rem;
+  }
+
+  .layer-node::before {
+    border-color: color-mix(in srgb, var(--node-color) 56%, #fff0c2);
+    background:
+      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--node-color) 92%, #fff7dc) 0 .22rem, transparent .29rem),
+      radial-gradient(circle, color-mix(in srgb, var(--node-color) 18%, transparent), transparent 68%),
+      rgb(3 12 19 / .5);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--node-color) 28%, transparent), 0 0 0 4px rgb(2 8 13 / .34);
+  }
+
+  .layer-node.selected::after {
+    width: 3rem;
+    height: 3rem;
+    opacity: .65;
+  }
+
+  .you-are-here {
+    top: 85.3%;
+  }
+
+  .cosmic-dust {
+    opacity: .09;
+  }
+
+  @media (max-width: 1180px) {
+    .atlas-explorer { --atlas-axis-x: 72.8%; }
+    .orbital-stage { clip-path: polygon(43% 0, 100% 0, 100% 100%, 43% 100%); }
+  }
+
+
+  /* Modern selected-layer card polish */
+  .intro {
+    width: min(31rem, 33vw);
+    border: 1px solid rgb(233 182 95 / .24);
+    border-left: 4px solid rgb(233 182 95 / .78);
+    border-radius: 1.25rem;
+    padding: clamp(1.25rem, 1.7vw, 1.8rem);
+    background:
+      linear-gradient(145deg, rgb(4 14 22 / .92), rgb(4 14 22 / .76) 58%, rgb(7 20 29 / .62)),
+      radial-gradient(circle at 100% 0%, rgb(233 182 95 / .16), transparent 42%),
+      radial-gradient(circle at 0% 100%, rgb(101 215 220 / .075), transparent 38%);
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .06),
+      inset 0 0 0 1px rgb(255 255 255 / .015),
+      0 26px 90px rgb(0 0 0 / .38),
+      0 0 48px rgb(233 182 95 / .055);
+    backdrop-filter: blur(18px) saturate(118%);
+  }
+
+  .intro::before {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(120deg, rgb(255 255 255 / .08), transparent 24% 74%, rgb(233 182 95 / .05)),
+      linear-gradient(180deg, rgb(255 255 255 / .035), transparent 34%);
+    opacity: .7;
+    pointer-events: none;
+    content: "";
+  }
+
+  .intro > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    margin: 0 0 .9rem;
+    border: 1px solid rgb(233 182 95 / .22);
+    border-radius: 999px;
+    padding: .32rem .58rem;
+    background: rgb(233 182 95 / .075);
+    color: #f0c46e;
+    font-size: .62rem;
+    letter-spacing: .13em;
+  }
+
+  .intro .kicker::before {
+    width: .42rem;
+    height: .42rem;
+    border-radius: 50%;
+    background: #e9b65f;
+    box-shadow: 0 0 14px rgb(233 182 95 / .62);
+    content: "";
+  }
+
+  .intro h1 {
+    max-width: 9ch;
+    margin: 0;
+    color: #fff0d5;
+    font-size: clamp(3.25rem, 4.9vw, 5.45rem);
+    line-height: .93;
+    text-shadow: 0 2px 18px rgb(0 0 0 / .42), 0 0 28px rgb(233 182 95 / .08);
+  }
+
+  .intro-meaning {
+    display: block;
+    margin-top: .85rem;
+    color: #efbd62;
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 1.55vw, 1.55rem);
+    font-weight: 650;
+    line-height: 1.12;
+  }
+
+  .intro > p:not(.kicker):not(.intro-note) {
+    max-width: 34ch;
+    margin-top: 1rem;
+    color: rgb(238 227 207 / .72);
+    font-size: .95rem;
+    line-height: 1.65;
+  }
+
+  .intro-meta {
+    margin-top: 1.15rem;
+    border-top: 1px solid rgb(233 182 95 / .15);
+    padding-top: 1rem;
+  }
+
+  .intro-meta small {
+    color: rgb(238 227 207 / .54);
+    font-size: .58rem;
+    letter-spacing: .14em;
+  }
+
+  .intro-meta strong {
+    margin-top: .34rem;
+    color: #f6ead6;
+    font-size: clamp(1.28rem, 1.75vw, 1.8rem);
+    line-height: 1.12;
+  }
+
+  .intro-hierarchy {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .55rem;
+    margin-top: 1.05rem;
+  }
+
+  .intro-hierarchy button {
+    min-height: 2.65rem;
+    border-color: color-mix(in srgb, var(--node-color) 30%, rgb(255 255 255 / .1));
+    border-radius: .85rem;
+    padding: .46rem .58rem;
+    background:
+      linear-gradient(145deg, rgb(255 255 255 / .035), transparent),
+      color-mix(in srgb, var(--node-color) 5%, rgb(2 10 16 / .58));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035);
+  }
+
+  .intro-hierarchy i {
+    width: 1.45rem;
+    height: 1.45rem;
+    border-color: color-mix(in srgb, var(--node-color) 68%, #fff0d0);
+    background: color-mix(in srgb, var(--node-color) 10%, rgb(3 12 19 / .78));
+  }
+
+  .intro-hierarchy button.selected {
+    border-color: color-mix(in srgb, var(--node-color) 72%, #fff0d0);
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--node-color) 20%, transparent), rgb(255 255 255 / .035)),
+      rgb(5 14 22 / .76);
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .055),
+      0 0 0 1px color-mix(in srgb, var(--node-color) 14%, transparent),
+      0 10px 24px color-mix(in srgb, var(--node-color) 12%, transparent);
+  }
+
+  .intro-hierarchy button.selected i {
+    box-shadow: 0 0 16px color-mix(in srgb, var(--node-color) 46%, transparent);
+  }
+
+  .intro-note {
+    display: none;
+  }
+
+  .begin {
+    min-height: 3.25rem;
+    margin-top: 1rem;
+    border: 1px solid rgb(233 182 95 / .46);
+    border-radius: .9rem;
+    padding: .72rem .9rem;
+    background:
+      linear-gradient(135deg, rgb(139 89 30 / .72), rgb(79 48 18 / .72)),
+      radial-gradient(circle at 0% 50%, rgb(255 226 160 / .16), transparent 38%);
+    color: #fff0d5;
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .08),
+      0 12px 34px rgb(0 0 0 / .24),
+      0 0 24px rgb(233 182 95 / .08);
+    transition: transform 220ms ease, filter 220ms ease, box-shadow 220ms ease;
+  }
+
+  .begin:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .1),
+      0 16px 38px rgb(0 0 0 / .28),
+      0 0 30px rgb(233 182 95 / .16);
+  }
+
+  .begin i {
+    width: 1.45rem;
+    height: .78rem;
+    border-color: rgb(255 226 160 / .42);
+    background: rgb(255 226 160 / .09);
+  }
+
+  .begin b {
+    display: grid;
+    width: 1.55rem;
+    height: 1.55rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgb(255 255 255 / .07);
+  }
+
+
+  /* Editorial selected-layer card finish */
+  .intro {
+    top: clamp(7rem, 14.5vh, 8.9rem);
+    left: clamp(2rem, 4.85vw, 5.35rem);
+    width: min(35.75rem, 36vw);
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid rgb(233 182 95 / .22);
+    border-left: 3px solid rgb(233 182 95 / .82);
+    border-radius: 1.15rem;
+    padding: clamp(1.55rem, 2.15vw, 2.25rem);
+    background:
+      linear-gradient(106deg, rgb(3 12 19 / .96) 0%, rgb(4 14 22 / .89) 60%, rgb(6 18 26 / .62) 100%),
+      radial-gradient(ellipse at 103% 36%, rgb(255 162 94 / .16), transparent 40%),
+      radial-gradient(circle at 10% 0%, rgb(233 182 95 / .1), transparent 32%);
+    box-shadow:
+      inset 0 1px rgb(255 255 255 / .06),
+      inset 0 0 0 1px rgb(255 255 255 / .018),
+      0 26px 90px rgb(0 0 0 / .42),
+      0 0 48px rgb(233 182 95 / .06);
+    backdrop-filter: blur(16px) saturate(116%);
+  }
+
+  .intro::before {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+      linear-gradient(90deg, rgb(255 255 255 / .045), transparent 22% 70%, rgb(255 160 91 / .08)),
+      radial-gradient(ellipse at 100% 38%, rgb(255 205 139 / .12), transparent 35%);
+    opacity: .82;
+    pointer-events: none;
+    content: "";
+  }
+
+  .intro::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 24%;
+    border-radius: 0 1rem 1rem 0;
+    background: linear-gradient(90deg, transparent, rgb(255 178 101 / .075));
+    opacity: .7;
+    pointer-events: none;
+    content: "";
+    animation: none;
+  }
+
+  .intro > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin: 0 0 1.05rem;
+    border: 1px solid rgb(233 182 95 / .24);
+    border-radius: 999px;
+    padding: .38rem .7rem;
+    background: rgb(233 182 95 / .08);
+    color: #ffad8f;
+    font-size: .63rem;
+    font-weight: 900;
+    letter-spacing: .2em;
+    line-height: 1.1;
+  }
+
+  .intro .kicker::before {
+    display: block;
+    width: .42rem;
+    height: .42rem;
+    border-radius: 50%;
+    background: #e9b65f;
+    box-shadow: 0 0 14px rgb(233 182 95 / .64);
+    content: "";
+  }
+
+  .intro h1 {
+    max-width: 8.75ch;
+    margin: 0;
+    color: #fff4df;
+    font-size: clamp(3.65rem, 5.15vw, 5.85rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: .91;
+    text-shadow: 0 2px 20px rgb(0 0 0 / .48), 0 0 26px rgb(233 182 95 / .08);
+  }
+
+  .intro-meaning {
+    display: block;
+    margin-top: .95rem;
+    color: #efbd62;
+    font-size: clamp(1.23rem, 1.58vw, 1.62rem);
+    font-weight: 650;
+    line-height: 1.14;
+  }
+
+  .intro > p:not(.kicker):not(.intro-note) {
+    max-width: 35ch;
+    margin: 1.15rem 0 0;
+    color: rgb(238 227 207 / .78);
+    font-size: clamp(.95rem, 1vw, 1.04rem);
+    line-height: 1.66;
+  }
+
+  .intro-meta {
+    display: grid;
+    gap: .36rem;
+    margin-top: 1.32rem;
+    border-top: 1px solid rgb(233 182 95 / .18);
+    padding-top: 1.08rem;
+  }
+
+  .intro-meta small {
+    color: rgb(238 227 207 / .56);
+    font-size: .58rem;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .intro-meta strong {
+    color: #f7ead5;
+    font-size: clamp(1.34rem, 1.75vw, 1.82rem);
+    font-weight: 500;
+    line-height: 1.12;
+  }
+
+  .intro-hierarchy {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .62rem;
+    margin-top: 1.18rem;
+  }
+
+  .intro-hierarchy button {
+    display: grid;
+    min-height: 2.72rem;
+    min-width: 0;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: .44rem;
+    border: 1px solid color-mix(in srgb, var(--node-color) 32%, rgb(255 255 255 / .1));
+    border-radius: 999px;
+    padding: .48rem .64rem .48rem .52rem;
+    background:
+      linear-gradient(145deg, rgb(255 255 255 / .035), transparent),
+      color-mix(in srgb, var(--node-color) 5%, rgb(2 10 16 / .58));
+    color: #f4e4c9;
+    box-shadow: inset 0 1px rgb(255 255 255 / .035);
+    font-size: .72rem;
+    font-weight: 850;
+    text-align: left;
+  }
+
+  .intro-hierarchy i {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: 0 0 auto;
+    border-color: color-mix(in srgb, var(--node-color) 52%, #fff0d0);
+    background: rgb(3 13 20 / .68);
+  }
+
+  .intro-hierarchy span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .intro-hierarchy button:hover,
+  .intro-hierarchy button.selected {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--node-color) 68%, #fff1d6);
+    background: color-mix(in srgb, var(--node-color) 16%, rgb(3 13 20 / .72));
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--node-color) 9%, transparent), 0 10px 26px rgb(0 0 0 / .18);
+  }
+
+  .intro-note {
+    display: none;
+  }
+
+  .begin {
+    display: flex;
+    width: 100%;
+    min-height: 3.2rem;
+    align-items: center;
+    gap: .72rem;
+    margin-top: 1.15rem;
+    border: 1px solid rgb(233 182 95 / .48);
+    border-radius: .82rem;
+    padding: .72rem .9rem;
+    background:
+      linear-gradient(100deg, rgb(112 69 25 / .76), rgb(78 47 17 / .68)),
+      radial-gradient(circle at 0% 50%, rgb(255 226 160 / .14), transparent 40%);
+    color: #fff0d5;
+  }
+
+  .begin span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 801px) and (max-height: 760px) {
+    .intro {
+      top: 5.7rem;
+      width: min(34rem, 38vw);
+      padding: 1.2rem;
+    }
+
+    .intro h1 {
+      font-size: clamp(3rem, 4.35vw, 4.45rem);
+    }
+
+    .intro > p:not(.kicker):not(.intro-note) {
+      margin-top: .9rem;
+      line-height: 1.52;
+    }
+
+    .intro-meta {
+      margin-top: .98rem;
+      padding-top: .82rem;
+    }
+
+    .intro-hierarchy {
+      gap: .45rem;
+      margin-top: .85rem;
+    }
+
+    .intro-hierarchy button {
+      min-height: 2.38rem;
+      padding-block: .38rem;
+      font-size: .66rem;
+    }
+  }
+
+  /* Balanced frosted-glass hero card */
+  .intro {
+    top: clamp(7.6rem, 14.5vh, 8.7rem);
+    left: clamp(3.35rem, 5.45vw, 5.9rem);
+    width: min(32.5rem, 31vw);
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid rgb(255 226 170 / .3);
+    border-left: 3px solid rgb(246 190 92 / .9);
+    border-radius: 1.1rem;
+    padding: clamp(1.22rem, 1.62vw, 1.65rem);
+    background:
+      linear-gradient(135deg, rgb(16 33 43 / .5), rgb(5 17 25 / .36) 58%, rgb(18 40 50 / .22)),
+      radial-gradient(circle at 8% 4%, rgb(255 255 255 / .14), transparent 13rem),
+      radial-gradient(circle at 94% 14%, rgb(246 190 92 / .14), transparent 12rem),
+      radial-gradient(circle at 80% 92%, rgb(101 215 220 / .1), transparent 13rem);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / .2),
+      inset 0 -1px 0 rgb(255 255 255 / .06),
+      inset 0 0 0 1px rgb(255 255 255 / .055),
+      0 24px 70px rgb(0 0 0 / .42),
+      0 0 44px rgb(246 190 92 / .1);
+    backdrop-filter: blur(24px) saturate(142%) brightness(1.05);
+    -webkit-backdrop-filter: blur(24px) saturate(142%) brightness(1.05);
+  }
+
+  .intro::before {
+    display: block;
+    position: absolute;
+    inset: 1px;
+    border-radius: calc(1.1rem - 1px);
+    background:
+      linear-gradient(145deg, rgb(255 255 255 / .18), transparent 20% 70%, rgb(246 190 92 / .08)),
+      linear-gradient(90deg, rgb(255 255 255 / .06), transparent 34% 100%);
+    opacity: .86;
+    pointer-events: none;
+    content: "";
+  }
+
+  .intro::after {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 7.2rem;
+    border-radius: 1.1rem 0 0 1.1rem;
+    background:
+      linear-gradient(90deg, rgb(255 255 255 / .09), rgb(255 255 255 / .025) 48%, transparent),
+      radial-gradient(circle at 0% 16%, rgb(246 190 92 / .18), transparent 7rem);
+    opacity: .5;
+    pointer-events: none;
+    content: "";
+    animation: none;
+  }
+
+  .intro .kicker {
+    margin-bottom: .82rem;
+    border-color: rgb(255 222 164 / .42);
+    padding: .32rem .62rem;
+    background: linear-gradient(135deg, rgb(255 255 255 / .12), rgb(246 190 92 / .1));
+    color: #ffd1ad;
+    font-size: .58rem;
+    box-shadow: inset 0 1px rgb(255 255 255 / .16), 0 7px 18px rgb(0 0 0 / .16);
+  }
+
+  .intro h1 {
+    max-width: 8.2ch;
+    color: #fff7e9;
+    font-size: clamp(3rem, 4.15vw, 4.5rem);
+    line-height: .92;
+    text-shadow: 0 3px 20px rgb(0 0 0 / .54), 0 0 28px rgb(246 190 92 / .12);
+  }
+
+  .intro-meaning {
+    margin-top: .72rem;
+    color: #ffd06f;
+    font-size: clamp(1.05rem, 1.28vw, 1.32rem);
+  }
+
+  .intro > p:not(.kicker):not(.intro-note) {
+    max-width: 32ch;
+    margin-top: .82rem;
+    color: rgb(255 246 229 / .76);
+    font-size: clamp(.82rem, .88vw, .93rem);
+    line-height: 1.55;
+  }
+
+  .intro-meta {
+    gap: .24rem;
+    margin-top: .92rem;
+    border-top-color: rgb(255 224 166 / .22);
+    padding-top: .78rem;
+  }
+
+  .intro-meta small {
+    font-size: .52rem;
+  }
+
+  .intro-meta strong {
+    font-size: clamp(1.08rem, 1.34vw, 1.38rem);
+  }
+
+  .intro-hierarchy {
+    gap: .48rem;
+    margin-top: .86rem;
+  }
+
+  .intro-hierarchy button {
+    min-height: 2.28rem;
+    gap: .36rem;
+    border-color: color-mix(in srgb, var(--node-color) 42%, rgb(255 255 255 / .16));
+    padding: .36rem .48rem .36rem .42rem;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / .095), rgb(255 255 255 / .022)),
+      color-mix(in srgb, var(--node-color) 7%, rgb(7 20 29 / .48));
+    box-shadow: inset 0 1px rgb(255 255 255 / .13), 0 7px 18px rgb(0 0 0 / .12);
+    font-size: .62rem;
+  }
+
+  .intro-hierarchy i {
+    width: 1.24rem;
+    height: 1.24rem;
+  }
+
+  .intro-hierarchy button:hover,
+  .intro-hierarchy button.selected {
+    border-color: color-mix(in srgb, var(--node-color) 76%, #fff8dc);
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / .14), rgb(255 255 255 / .03)),
+      color-mix(in srgb, var(--node-color) 16%, rgb(8 22 30 / .56));
+    box-shadow: inset 0 1px rgb(255 255 255 / .17), 0 10px 22px color-mix(in srgb, var(--node-color) 12%, rgb(0 0 0 / .18));
+  }
+
+  .begin {
+    min-height: 2.76rem;
+    margin-top: .9rem;
+    border-color: rgb(255 214 140 / .58);
+    border-radius: .74rem;
+    padding: .58rem .72rem;
+    background:
+      linear-gradient(135deg, rgb(165 99 34 / .78), rgb(94 57 22 / .68)),
+      linear-gradient(90deg, rgb(255 255 255 / .12), transparent 38%);
+    box-shadow: inset 0 1px rgb(255 255 255 / .18), 0 12px 26px rgb(0 0 0 / .24), 0 0 24px rgb(246 190 92 / .12);
+  }
+
+  @media (min-width: 801px) and (max-height: 760px) {
+    .intro {
+      top: 5.75rem;
+      width: min(30.5rem, 32vw);
+      padding: 1rem;
+    }
+
+    .intro h1 {
+      font-size: clamp(2.55rem, 3.5vw, 3.55rem);
+    }
+
+    .intro-meaning,
+    .intro > p:not(.kicker):not(.intro-note) {
+      margin-top: .62rem;
+    }
+
+    .intro-meta {
+      margin-top: .7rem;
+      padding-top: .64rem;
+    }
+
+    .intro-hierarchy {
+      gap: .36rem;
+      margin-top: .66rem;
+    }
+
+    .intro-hierarchy button {
+      min-height: 2.05rem;
+      font-size: .57rem;
+    }
+
+    .begin {
+      min-height: 2.48rem;
+      margin-top: .7rem;
+    }
+  }
+  /* Visual journey rail: image-backed hierarchy cards */
+  .journey-rail {
+    width: min(78rem, calc(100% - 2.4rem));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: .55rem;
+    margin: 1.05rem auto 1.4rem;
+    overflow: visible;
+    border: 1px solid rgb(255 222 164 / .2);
+    border-radius: 1.05rem;
+    padding: .72rem;
+    background:
+      linear-gradient(135deg, rgb(7 20 29 / .76), rgb(3 12 19 / .6)),
+      radial-gradient(circle at 50% 0%, rgb(233 182 95 / .1), transparent 50%);
+    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 22px 60px rgb(0 0 0 / .24);
+  }
+
+  .journey-rail::before {
+    position: absolute;
+    z-index: 0;
+    top: 3.04rem;
+    left: 5.25rem;
+    right: 5.25rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(233 182 95 / .34), rgb(101 215 220 / .22), rgb(255 113 78 / .28), transparent);
+    content: "";
+  }
+
+  .journey-rail .rail-card {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-height: 6.35rem;
+    align-content: end;
+    justify-items: start;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--node-color) 26%, rgb(255 255 255 / .09));
+    border-radius: .82rem;
+    padding: .62rem;
+    background:
+      linear-gradient(180deg, rgb(2 8 13 / .08), rgb(2 8 13 / .82) 68%, rgb(2 8 13 / .94)),
+      var(--rail-image);
+    background-position: center;
+    background-size: cover;
+    color: #f1e4ce;
+    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 12px 26px rgb(0 0 0 / .18);
+    isolation: isolate;
+    cursor: pointer;
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  }
+
+  .journey-rail .rail-card::before {
+    position: absolute;
+    display: block;
+    inset: 0;
+    z-index: -1;
+    width: auto;
+    height: auto;
+    background:
+      radial-gradient(circle at 50% 22%, color-mix(in srgb, var(--node-color) 24%, transparent), transparent 46%),
+      linear-gradient(90deg, rgb(2 8 13 / .58), transparent 45%, rgb(2 8 13 / .42));
+    opacity: .9;
+    content: "";
+  }
+
+  .journey-rail .rail-card::after {
+    position: absolute;
+    inset: auto .65rem .56rem .65rem;
+    height: 2px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--node-color) 72%, #fff0c8);
+    opacity: .42;
+    content: "";
+  }
+
+  .journey-rail .rail-card:hover,
+  .journey-rail .rail-card.selected {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--node-color) 72%, #fff2d4);
+    box-shadow: inset 0 1px rgb(255 255 255 / .1), 0 18px 34px rgb(0 0 0 / .26), 0 0 26px color-mix(in srgb, var(--node-color) 18%, transparent);
+    filter: saturate(1.08) brightness(1.04);
+  }
+
+  .journey-rail .rail-card.selected::after {
+    opacity: .95;
+    box-shadow: 0 0 14px color-mix(in srgb, var(--node-color) 38%, transparent);
+  }
+
+  .journey-rail .rail-step {
+    position: absolute;
+    top: .52rem;
+    right: .55rem;
+    display: grid;
+    width: 1.25rem;
+    height: 1.25rem;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--node-color) 48%, rgb(255 255 255 / .2));
+    border-radius: 50%;
+    background: rgb(2 8 13 / .58);
+    color: color-mix(in srgb, var(--node-color) 78%, #fff2d4);
+    font-size: .56rem;
+    font-weight: 900;
+  }
+
+  .journey-rail .rail-thumb {
+    position: relative;
+    display: grid;
+    width: 2.8rem;
+    height: 2.8rem;
+    place-items: center;
+    margin-bottom: .54rem;
+    border: 1px solid color-mix(in srgb, var(--node-color) 72%, #fff2d4);
+    border-radius: 50%;
+    background:
+      radial-gradient(circle, color-mix(in srgb, var(--node-color) 22%, rgb(255 255 255 / .16)), transparent 58%),
+      rgb(2 9 14 / .68);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--node-color) 10%, transparent), 0 0 18px color-mix(in srgb, var(--node-color) 24%, transparent);
+    backdrop-filter: blur(10px);
+  }
+
+  .journey-rail .rail-thumb i {
+    width: auto;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: color-mix(in srgb, var(--node-color) 86%, #fff2d4);
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .journey-rail button.rail-card::before,
+  .journey-rail .rail-card::before {
+    display: block;
+  }
+
+  .journey-rail .rail-thumb i::after {
+    display: none;
+    content: none;
+  }
+
+  .journey-rail .rail-thumb i,
+  .journey-rail .rail-thumb i::after,
+  .journey-rail .rail-card::before {
+    pointer-events: none;
+  }
+
+  .journey-rail .rail-copy {
+    display: grid;
+    gap: .12rem;
+    min-width: 0;
+  }
+
+  .journey-rail .rail-copy strong {
+    margin: 0;
+    color: #fff1d8;
+    font-size: .72rem;
+    line-height: 1.05;
+    text-shadow: 0 2px 10px rgb(0 0 0 / .52);
+  }
+
+  .journey-rail .rail-copy small {
+    display: -webkit-box;
+    min-height: 1.85em;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: rgb(238 227 207 / .68);
+    font-size: .55rem;
+    line-height: 1.18;
+  }
+
+  .journey-rail .overview-card {
+    --node-color: #d9a64f;
+  }
+
+  @media (max-width: 1180px) {
+    .journey-rail {
+      width: min(72rem, calc(100% - 1.4rem));
+      gap: .42rem;
+      padding: .55rem;
+    }
+
+    .journey-rail .rail-card {
+      min-height: 5.9rem;
+      padding: .5rem;
+    }
+
+    .journey-rail .rail-thumb {
+      width: 2.35rem;
+      height: 2.35rem;
+      margin-bottom: .45rem;
+    }
+
+    .journey-rail .rail-copy strong {
+      font-size: .64rem;
+    }
+
+    .journey-rail .rail-copy small {
+      font-size: .5rem;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .space-layer::before, .space-layer::after, .particles-layer, .orbit-sweep, .art-layer.selected .orbit-a, .art-layer.selected .orbit-core, .duration::after, .cosmos::before, .cosmos::after, .layer-node.selected::after {
+    .space-layer::before, .space-layer::after, .particles-layer, .orbit-sweep, .art-layer.selected .orbit-a, .art-layer.selected .orbit-core, .duration::after, .cosmos::before, .cosmos::after, .layer-node::before, .layer-node.selected::after, .layer-nodes::before, .layer-nodes::after, .you-are-here, .cosmic-ripple.is-active, .intro::after, .intro .begin, .orbital-stage::before, .orbital-stage::after, .core-light, .orbit-ring, .cosmic-dust {
       animation: none;
     }
-    .atlas-camera, .art-layer, .layer-node { transition-duration: 1ms; }
+    .atlas-camera, .art-layer, .layer-node, .intro { transition-duration: 1ms; }
+    .cosmos::before, .cosmos::after, .space-layer, .intro { transform: none; }
   }
 </style>

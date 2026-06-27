@@ -13,33 +13,132 @@ const currentPath = Astro.url.pathname;
     <nav aria-label="Primary navigation">
       {PRIMARY_NAVIGATION.map((link) => <a href={link.href} aria-current={isRouteActive(currentPath, link.href) ? "page" : undefined}>{link.label}</a>)}
     </nav>
-    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
-      <span class="theme-label">Theme</span>
-      <span class="theme-icon" aria-hidden="true">L/D</span>
-    </button>
+    <a class="search-pill" href="/library" aria-label="Search the library"><span>Search the Library...</span><kbd>/</kbd></a>
+    <a class="round-mark" href="/atlas" aria-label="Open atlas">SP</a>
   </div>
 </header>
-<script is:inline>
-  const root = document.documentElement;
-  const storedTheme = localStorage.getItem("theme");
-  root.dataset.theme = storedTheme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
-    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
-    root.dataset.theme = nextTheme;
-    localStorage.setItem("theme", nextTheme);
-  });
-</script>
 <style>
-  .site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent); background: color-mix(in srgb, var(--canvas) 88%, transparent); backdrop-filter: blur(18px); }
-  .header-inner { display: flex; min-height: 76px; align-items: center; gap: 1.5rem; }
-  .brand { display: inline-flex; align-items: center; gap: 0.75rem; margin-right: auto; }
-  .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: var(--copper); font-family: var(--serif); font-weight: 800; }
-  .brand strong, .brand small { display: block; }
-  .brand strong { font-family: var(--serif); font-size: 1.2rem; }
-  .brand small { color: var(--ink-muted); font-size: 0.66rem; }
-  .theme-icon { display: none; }
-  nav { display: flex; gap: 0.25rem; }
-  nav a, .theme-toggle { min-height: 44px; border: 0; border-radius: 999px; padding: 0.65rem 0.85rem; background: transparent; color: var(--ink-muted); font: inherit; font-size: 0.86rem; font-weight: 700; cursor: pointer; transition: background-color 180ms ease, color 180ms ease, transform 180ms ease; }
-  nav a:hover, nav a[aria-current="page"], .theme-toggle:hover { background: var(--surface-muted); color: var(--ink); transform: translateY(-1px); }
-  @media (max-width: 800px) { .site-header { background: var(--canvas); backdrop-filter: none; } .header-inner { min-height: 68px; } .brand small, nav, .theme-label { display: none; } .theme-toggle { display: grid; width: 44px; padding: 0; place-items: center; margin-left: auto; } .theme-icon { display: inline; } }
+  .site-header {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    border-bottom: 1px solid rgb(214 172 91 / .18);
+    background: rgb(2 10 16 / .86);
+    color: #f7ebd3;
+    backdrop-filter: blur(18px);
+  }
+
+  .header-inner {
+    display: grid;
+    min-height: 76px;
+    grid-template-columns: minmax(18rem, 1fr) auto minmax(18rem, .8fr) auto;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: .85rem;
+    min-width: 0;
+  }
+
+  .brand-mark,
+  .round-mark {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgb(214 172 91 / .45);
+    border-radius: 50%;
+    color: #d6ac5b;
+    box-shadow: 0 0 30px rgb(214 172 91 / .1);
+  }
+
+  .brand-mark { width: 3.1rem; height: 3.1rem; font-size: .78rem; font-weight: 900; letter-spacing: .04em; }
+  .round-mark { width: 3rem; height: 3rem; font-size: .72rem; font-weight: 900; letter-spacing: .04em; }
+
+  .brand strong,
+  .brand small {
+    display: block;
+    letter-spacing: .14em;
+  }
+
+  .brand strong {
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.22rem;
+    text-transform: uppercase;
+  }
+
+  .brand small {
+    margin-top: .15rem;
+    color: #9f9688;
+    font-size: .62rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+  }
+
+  nav a {
+    position: relative;
+    color: #aaa49a;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: color 180ms ease;
+  }
+
+  nav a[aria-current="page"],
+  nav a:hover {
+    color: #f4d19a;
+  }
+
+  nav a[aria-current="page"]::after {
+    position: absolute;
+    right: 0;
+    bottom: -.8rem;
+    left: 0;
+    height: 2px;
+    background: #f4c36d;
+    box-shadow: 0 0 16px rgb(244 195 109 / .8);
+    content: "";
+  }
+
+  .search-pill {
+    display: flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid rgb(214 172 91 / .22);
+    border-radius: 999px;
+    padding: .55rem .75rem .55rem 1rem;
+    color: #8f8b84;
+    background: rgb(2 10 16 / .62);
+  }
+
+  .search-pill kbd {
+    border: 1px solid rgb(214 172 91 / .18);
+    border-radius: .45rem;
+    padding: .08rem .42rem;
+    color: #c9b99d;
+    font: inherit;
+    font-size: .72rem;
+  }
+
+  @media (max-width: 1180px) {
+    .header-inner { grid-template-columns: 1fr auto; }
+    .search-pill,
+    .round-mark { display: none; }
+  }
+
+  @media (max-width: 800px) {
+    .site-header { background: #020a10; backdrop-filter: none; }
+    .header-inner { min-height: 68px; }
+    .brand small,
+    nav { display: none; }
+  }
 </style>

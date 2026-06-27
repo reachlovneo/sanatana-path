@@ -1,0 +1,26 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const related = [
+  { title: "Astras", href: "/astras", image: "/images/home/home-astras.png", eyebrow: "Astra knowledge" },
+  { title: "Pushpaka Vimana", href: "/pushpaka-vimana", image: "/images/home/home-vimana.png", eyebrow: "Ramayana wonder" },
+  { title: "Cosmic Time", href: "/atlas", image: "/images/home/home-hero.png", eyebrow: "Cosmic map" },
+];
+
+const concept = {
+  title: "Flying Cities of Tripura",
+  eyebrow: "Puranic mystery",
+  summary: "The Flying Cities of Tripura are three powerful moving cities destroyed by Shiva in a dramatic Puranic episode. This page introduces the story as cosmic drama and symbolic teaching.",
+  image: "/images/home/home-tripura.png",
+  transitionName: "concept-tripura",
+  accent: "#c89bff",
+  facts: ["Three cities", "Linked with Shiva", "Puranic episode", "Draft explainer"],
+  sections: [
+    { title: "What is Tripura?", body: "Tripura means the three cities. In the Puranic imagination, these cities become a powerful image of fortified pride, cosmic imbalance, and the restoration of order through Shiva." },
+    { title: "Why the cities move", body: "Their movement makes the story feel vast and almost cinematic. It also turns the episode into more than a battle: it becomes a lesson about timing, alignment, and the limits of power." },
+    { title: "How to explore it", body: "A full article can later map the different Purana versions, the role of the devas, Shiva as Tripurantaka, and the symbolic meaning of the three cities." },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />

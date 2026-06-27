@@ -1,0 +1,26 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const related = [
+  { title: "Flying Cities of Tripura", href: "/flying-cities-of-tripura", image: "/images/home/home-tripura.png", eyebrow: "Puranic mystery" },
+  { title: "Astras", href: "/astras", image: "/images/home/home-astras.png", eyebrow: "Astra knowledge" },
+  { title: "Treta Yuga", href: "/atlas/treta-yuga", image: "/images/atlas/story/treta-prince-ayodhya.png", eyebrow: "Epic age" },
+];
+
+const concept = {
+  title: "Pushpaka Vimana",
+  eyebrow: "Ramayana wonder",
+  summary: "Pushpaka Vimana is the famous aerial vehicle connected with Kubera, Ravana, and Rama in the Ramayana tradition. This page frames it as story, symbol, and sacred imagination.",
+  image: "/images/home/home-vimana.png",
+  transitionName: "concept-vimana",
+  accent: "#ffbf73",
+  facts: ["Ramayana tradition", "Aerial vehicle", "Linked with Lanka", "Draft explainer"],
+  sections: [
+    { title: "What is Pushpaka Vimana?", body: "Pushpaka Vimana is described as a marvelous vehicle capable of travel through the sky. It appears in the epic imagination as a sign of royal power, divine craft, and extraordinary mobility." },
+    { title: "Why it fascinates people", body: "The image of a flying palace or vehicle makes ancient narrative feel visually alive. It invites questions about technology, symbolism, kingship, and how epics express wonder." },
+    { title: "How this page will grow", body: "The full version can later separate primary verses, retellings, symbolic readings, and modern misconceptions so the topic stays beautiful without losing source awareness." },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />
