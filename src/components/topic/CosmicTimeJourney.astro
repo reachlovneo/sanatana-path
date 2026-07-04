@@ -4,96 +4,120 @@ import SourcePanel from "./SourcePanel.astro";
 const { topic, next, compact = false } = Astro.props;
 
 const facts = [
-  ["Human scale", "Days, months, years"],
-  ["Civilization scale", "Centuries and millennia"],
-  ["Cosmic scale", "Ages, cycles, and cosmic days"],
-  ["Current position", "Kali Yuga within a larger structure"],
-];
-
-const scale = [
-  ["Human life", "About 100 years"],
-  ["Recorded history", "About 5,000 years"],
-  ["Kali Yuga", "432,000 years"],
-  ["Maha Yuga", "4.32 million years"],
-  ["Manvantara", "306.72 million years"],
-  ["Kalpa", "4.32 billion years"],
+  ["Brahma's day", "4.32 billion years"],
+  ["Brahma's night", "4.32 billion years"],
+  ["Day + night", "8.64 billion years"],
+  ["Human history", "About 5,000 years"],
 ];
 ---
-
 <article class="cosmic-reading">
-  <header>
-    <p class="eyebrow">Selected layer - Cosmic Time</p>
-    <h1>The Eternal Atlas</h1>
-    <p class="lead">Cosmic Time is the largest frame of the atlas. It helps us understand where Kalpa, Manvantara, Maha Yuga, the Four Yugas, and Kali Yuga belong.</p>
-    <p>Before going into any single age or story, this layer answers the first question: what are we actually exploring?</p>
+  <header class="chapter-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">The Cosmic Clock of Hindu Scriptures</p>
+      <h1>Where are we in the timeline of the universe?</h1>
+      <p class="lead">Time is one of the greatest mysteries ever imagined. Humans measure it in seconds, days, and years, but Puranic Hindu cosmology describes time in cycles spanning millions, billions, and even trillions of years.</p>
+    </div>
+    <div class="hero-orbit" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <div class="orbit-core">
+        <strong>4.32B</strong>
+        <small>One daytime of Brahma</small>
+      </div>
+    </div>
   </header>
 
-  <dl class="facts">
+  <dl class="scale-strip" aria-label="Cosmic time scale highlights">
     {facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}
   </dl>
 
-  <div class="reading-body">
-    <main>
-      <section>
-        <h2>What does Cosmic Time explain?</h2>
-        <p>Cosmic Time explains existence at a scale far beyond ordinary life, calendars, dynasties, or recorded history.</p>
-        <p>It gives the atlas its structure: vast cycles contain smaller cycles, and those smaller cycles contain the world we recognize today.</p>
-      </section>
+  <div class="reader-flow">
+    <section class="chapter-scene">
+      <span class="scene-label">Scene 01</span>
+      <h2>How long is a day?</h2>
+      <p>Imagine someone asking you a simple question.</p>
+      <p class="question-line">How long is a day?</p>
+      <p>Most people would answer, <strong>twenty-four hours.</strong></p>
+      <p>But in the cosmic time system described in the Puranas, a single daytime of Brahma lasts <strong>4.32 billion human years.</strong></p>
+      <p class="pause-line">Read that again.</p>
+      <p>Not the age of a kingdom. Not the age of civilization. Not the age of humanity.</p>
+      <p class="reveal-line">Almost the age of Earth itself.</p>
+      <p>Just one cosmic day.</p>
+    </section>
 
-      <section>
-        <h2>How the layers fit</h2>
-        <p>The journey moves from the largest frame toward the present age: Cosmic Time, Kalpa, Manvantara, Maha Yuga, Four Yugas, and finally Kali Yuga.</p>
-        <p>Each step brings the reader closer to human history while still preserving the larger cosmic context.</p>
-      </section>
-    </main>
+    <section class="chapter-scene">
+      <span class="scene-label">Scene 02</span>
+      <h2>The day of Brahma</h2>
+      <p>According to traditional Puranic cosmology, one daytime of Brahma, the creator deity within the cosmic cycle, lasts <strong>4.32 billion years</strong>.</p>
+      <p>When that day ends, creation enters a night of equal length before the next cycle begins.</p>
+      <aside class="equation-note">
+        <span>Cosmic clock</span>
+        <p><strong>Day of Brahma</strong> -> 4.32 billion years</p>
+        <p><strong>Night of Brahma</strong> -> 4.32 billion years</p>
+        <p><strong>One full day-night cycle</strong> -> 8.64 billion years</p>
+      </aside>
+      <p>These ideas appear in traditional texts such as the Vishnu Purana, the Bhagavata Purana, and other Puranic sources. They present a vast cyclical vision of creation, dissolution, and renewal.</p>
+    </section>
   </div>
 
   <details class="full-guide" open={!compact} data-compact={compact || undefined}>
-    <summary><span>Continue reading</span><b>Read full Cosmic Time guide down</b></summary>
-    <div class="reading-body">
-      <main>
-        <section>
-          <h2>A different view of time</h2>
-          <p>Many modern explanations treat time as a straight line moving from beginning to end. Traditional Hindu cosmology often presents time as cyclical.</p>
-          <p>Creation appears, life develops, worlds transform, dissolution comes, and renewal begins again. The universe is understood through recurring rhythms rather than a single flat timeline.</p>
-        </section>
+    <summary><span>Continue reading</span><b>Read the Cosmic Clock guide</b></summary>
+    <div class="reader-flow">
+      <section class="chapter-scene">
+        <span class="scene-label">Scene 03</span>
+        <h2>A scale beyond ordinary history</h2>
+        <p>To appreciate the scale, compare it with everyday history.</p>
+        <ul>
+          <li>Recorded human history spans roughly <strong>5,000 years</strong>.</li>
+          <li>The oldest known civilizations are only a few thousand years old.</li>
+          <li>One daytime of Brahma is described as <strong>4,320,000,000 years</strong>.</li>
+        </ul>
+        <p>If one day of Brahma were compressed into a 24-hour clock, all of recorded human history would occupy only a tiny fraction of the final second.</p>
+      </section>
 
-        <section>
-          <h2>The architecture of Cosmic Time</h2>
-          <p>The structure is nested, like zooming into a map. A Kalpa contains Manvantaras. A Manvantara contains Maha Yugas. A Maha Yuga contains the Four Yugas.</p>
-          <aside class="note">
-            <p class="eyebrow">Atlas sequence</p>
-            <p><strong>Cosmic Time</strong> -> <strong>Kalpa</strong> -> <strong>Manvantara</strong> -> <strong>Maha Yuga</strong> -> <strong>Four Yugas</strong> -> <strong>Kali Yuga</strong></p>
-          </aside>
-        </section>
+      <section class="chapter-scene">
+        <span class="scene-label">Scene 04</span>
+        <h2>A different view of existence</h2>
+        <p>This enormous scale changes how we think about existence.</p>
+        <p>Human life no longer appears at the center of time.</p>
+        <p>Instead, it becomes a brief moment within an immense cosmic rhythm.</p>
+        <p>But this raises an even bigger question.</p>
+        <p class="question-line">How can one day last billions of years?</p>
+      </section>
 
-        <section>
-          <h2>The scale of the journey</h2>
-          <div class="scale-list">{scale.map(([label, value]) => <div><span>{label}</span><strong>{value}</strong></div>)}</div>
-          <p>The difference between a human life and a Kalpa is almost impossible to visualize. Yet both are placed inside the same cosmic framework.</p>
-        </section>
+      <section class="chapter-scene">
+        <span class="scene-label">Scene 05</span>
+        <h2>The system behind the clock</h2>
+        <p>The answer lies in a layered system of cosmic timekeeping built from repeating cycles: Yugas, Maha Yugas, Manvantaras, and Kalpas.</p>
+        <aside class="equation-note">
+          <span>Atlas sequence</span>
+          <p><strong>Yugas</strong> -> <strong>Maha Yuga</strong> -> <strong>Manvantara</strong> -> <strong>Kalpa</strong> -> <strong>Brahma's timeline</strong></p>
+        </aside>
+      </section>
 
-        <section>
-          <h2>Time is not empty</h2>
-          <p>In this atlas, time is not only a count of years. It is the stage where sages, Manus, avatars, scriptures, kingdoms, civilizations, and epics find their place.</p>
-          <p>Understanding Cosmic Time helps explain why the Ramayana, Mahabharata, Bhagavad Gita, Puranas, and Yuga teachings are not isolated topics. They belong within a connected map.</p>
-        </section>
+      <section class="chapter-scene">
+        <span class="scene-label">Scene 06</span>
+        <h2>What this journey will reveal</h2>
+        <p>In the chapters ahead, you will discover:</p>
+        <ul>
+          <li>What the Four Yugas are.</li>
+          <li>How they combine into one Maha Yuga.</li>
+          <li>Why one thousand Maha Yugas form one daytime of Brahma.</li>
+          <li>What a Manvantara is.</li>
+          <li>Which cosmic era the common Puranic tradition places us in today.</li>
+          <li>How these cycles fit together into one vast cosmic calendar.</li>
+        </ul>
+      </section>
 
-        <section>
-          <h2>Where are we now?</h2>
-          <p>According to the common Puranic framework used here, our current position is within the Shveta Varaha Kalpa, the Vaivasvata Manvantara, the 28th Maha Yuga, and Kali Yuga.</p>
-          <aside class="note">
-            <p class="eyebrow">Current position</p>
-            <p><strong>Cosmic Time</strong><br />Shveta Varaha Kalpa<br />Vaivasvata Manvantara<br />28th Maha Yuga<br />Kali Yuga</p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>What Cosmic Time teaches</h2>
-          <p>Cosmic Time gives perspective. Human lives are brief, civilizations are temporary, and empires rise and disappear. Yet action still matters inside the larger journey.</p>
-          <p>The point is not to make life feel meaningless. It is to make life feel situated: small in scale, but still meaningful in responsibility.</p>
-        </section>
-      </main>
+      <section class="chapter-scene final-scene">
+        <span class="scene-label">Scene 07</span>
+        <h2>Where are we now?</h2>
+        <p>By the end of this journey, you will be able to locate our present moment within the traditional cosmic timeline: from the current Kali Yuga to the present Manvantara, Kalpa, and Brahma's larger lifetime.</p>
+        <p>This is not merely a story about ancient mythology.</p>
+        <p>It is a journey through one of the most ambitious visions of time preserved in sacred tradition.</p>
+        <p class="question-line">But how does one day of the universe actually form?</p>
+      </section>
 
       <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
     </div>
@@ -104,51 +128,375 @@ const scale = [
     <b>Explore next layer -></b>
   </a>
 </article>
-
 <style>
-  .cosmic-reading { border:1px solid rgb(233 182 95/.2); border-radius:1.4rem; padding-bottom:1rem; background:linear-gradient(145deg,rgb(10 27 36/.72),rgb(3 13 20/.48)); box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22); color:#eee3cf; backdrop-filter:blur(20px) saturate(115%); }
-  header,.reading-body,.facts,.cosmic-reading :global(.source-panel),.continue,.full-guide > summary { width:min(100% - 2rem,72rem); margin-inline:auto; }
-  header { padding:clamp(3rem,7vw,7rem) 0 2.5rem; }
-  header p:not(.eyebrow) { max-width:62ch; color:#b3aca1; line-height:1.85; }
-  header strong,.reading-body strong { color:#e9b65f; font-weight:650; }
-  h1,h2 { font-family:var(--serif); font-weight:400; letter-spacing:-.025em; }
-  h1 { max-width:13ch; margin:.35rem 0 1rem; font-size:clamp(3.2rem,6vw,6rem); line-height:1; }
-  .lead { color:#d0c5b3 !important; font-size:clamp(1.08rem,1.5vw,1.3rem); }
-  .facts { display:grid; grid-template-columns:repeat(4,1fr); overflow:hidden; border:1px solid rgb(233 182 95/.18); border-radius:1rem; background:rgb(255 255 255/.025); box-shadow:inset 0 1px rgb(255 255 255/.025); backdrop-filter:blur(14px); }
-  .facts div { padding:1rem; }
-  .facts div + div { border-left:1px solid rgb(233 182 95/.14); }
-  dt { color:#99938a; font-size:.62rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
-  dd { margin:.25rem 0 0; color:#e5dac8; font-family:var(--serif); font-size:1.05rem; }
-  .reading-body { padding-block:2rem; }
-  main { width:min(100%,46rem); }
-  section { border-bottom:1px solid rgb(233 182 95/.14); padding-block:2rem; }
-  h2 { margin:0 0 .8rem; font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.15; }
-  section p,section li { color:#aaa49a; line-height:1.85; }
-  section p { margin:.65rem 0 0; }
-  .note { margin:1.5rem 0 0; border:1px solid rgb(233 182 95/.17); border-left:2px solid #e9b65f; border-radius:.7rem; padding:.8rem 1rem; background:rgb(233 182 95/.035); backdrop-filter:blur(12px); }
-  .note p { margin:.25rem 0; color:#c2b9aa; }
-  .scale-list { margin-top:1.25rem; border-block:1px solid rgb(233 182 95/.14); }
-  .scale-list div { display:flex; justify-content:space-between; gap:1rem; padding:.65rem 0; border-bottom:1px solid rgb(233 182 95/.08); }
-  .scale-list span { color:#aaa49a; }
-  .scale-list strong { font-size:.9rem; }
-  .full-guide { border:0; }
-  .full-guide:not([data-compact]) > summary { display:none; }
-  .full-guide > summary { display:flex; width:fit-content; align-items:center; gap:.55rem; margin-top:.9rem; border:1px solid rgb(233 182 95/.24); border-radius:999px; padding:.55rem .8rem; background:rgb(233 182 95/.035); color:#e9b65f; cursor:pointer; list-style:none; box-shadow:inset 0 1px rgb(255 255 255/.025); backdrop-filter:blur(14px); }
-  .full-guide > summary::-webkit-details-marker { display:none; }
-  .full-guide > summary span { color:#99938a; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; }
-  .full-guide > summary b { font-size:.67rem; }
-  .full-guide[open] > summary b { font-size:0; }
-  .full-guide[open] > summary b::after { font-size:.67rem; content:"Hide full guide up"; }
-  .full-guide[open] > .reading-body { animation:guide-reveal 420ms ease both; }
-  .continue { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:2rem; border:1px solid rgb(233 182 95/.28); border-radius:1rem; padding:1.2rem 1.35rem; background:linear-gradient(100deg,rgb(233 182 95/.07),transparent); color:#e9b65f; box-shadow:inset 0 1px rgb(255 255 255/.025); backdrop-filter:blur(14px); }
-  .continue span > * { display:block; }
-  .continue small { color:#99938a; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; }
-  .continue strong { font-family:var(--serif); font-size:1.7rem; font-weight:400; }
-  .continue em { color:#aaa49a; font-size:.72rem; font-style:normal; }
-  .continue b { font-size:.68rem; text-transform:uppercase; }
-  @keyframes guide-reveal { from { opacity:0; transform:translateY(-8px) } to { opacity:1; transform:none } }
-  @media(max-width:800px){
-    .facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(233 182 95/.14)}
-    .continue{align-items:flex-end}
+  .cosmic-reading {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgb(233 182 95 / .18);
+    border-radius: 1.35rem;
+    background:
+      radial-gradient(circle at 76% 0%, rgb(233 182 95 / .12), transparent 24rem),
+      radial-gradient(circle at 8% 28%, rgb(101 215 220 / .06), transparent 20rem),
+      linear-gradient(180deg, rgb(7 22 29 / .92), rgb(2 10 16 / .78));
+    color: #efe4d3;
+    box-shadow: inset 0 1px rgb(255 255 255 / .04), 0 24px 80px rgb(0 0 0 / .22);
+  }
+
+  .cosmic-reading::before {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgb(233 182 95 / .09) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(to bottom, black, transparent 62%);
+    pointer-events: none;
+    content: "";
+  }
+
+  .chapter-hero,
+  .scale-strip,
+  .reader-flow,
+  .continue,
+  .full-guide > summary {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 2rem, 66rem);
+    margin-inline: auto;
+  }
+
+  .chapter-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr);
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: stretch;
+    padding: clamp(1.4rem, 3.5vw, 2.8rem) 0 1rem;
+  }
+
+  .hero-copy,
+  .hero-orbit,
+  .scale-strip div,
+  .chapter-scene,
+  .continue,
+  .full-guide > summary {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .hero-copy {
+    min-height: 22rem;
+    border: 1px solid rgb(233 182 95 / .15);
+    border-radius: 1.1rem;
+    padding: clamp(1.35rem, 3.5vw, 2.7rem);
+    background: linear-gradient(145deg, rgb(255 255 255 / .055), rgb(2 10 16 / .26));
+    box-shadow: inset 0 1px rgb(255 255 255 / .04);
+  }
+
+  .eyebrow,
+  .scene-label,
+  .equation-note span {
+    color: #e9b65f;
+    font-size: .66rem;
+    font-weight: 900;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .chapter-hero h1 {
+    max-width: 13ch;
+    margin: .65rem 0 1rem;
+    color: #fff2da;
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5.4vw, 5.35rem);
+    font-weight: 430;
+    line-height: .96;
+    letter-spacing: 0;
+  }
+
+  .lead {
+    max-width: 58ch;
+    color: #d9cfbd !important;
+    font-size: clamp(1.02rem, 1.18vw, 1.16rem);
+    line-height: 1.8;
+  }
+
+  .hero-orbit {
+    position: relative;
+    display: grid;
+    min-height: 22rem;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgb(233 182 95 / .2);
+    border-radius: 1.1rem;
+    background:
+      radial-gradient(circle at center, rgb(233 182 95 / .16), transparent 8rem),
+      linear-gradient(145deg, rgb(255 255 255 / .06), rgb(2 10 16 / .48));
+    box-shadow: inset 0 1px rgb(255 255 255 / .05), 0 18px 54px rgb(0 0 0 / .18);
+  }
+
+  .hero-orbit span {
+    position: absolute;
+    width: 76%;
+    aspect-ratio: 1;
+    border: 1px solid rgb(233 182 95 / .2);
+    border-radius: 50%;
+    transform: rotate(-18deg) scaleY(.6);
+  }
+
+  .hero-orbit span:nth-child(2) {
+    width: 55%;
+    border-color: rgb(101 215 220 / .2);
+    transform: rotate(24deg) scaleY(.58);
+  }
+
+  .hero-orbit span:nth-child(3) {
+    width: 36%;
+    border-style: dashed;
+    opacity: .78;
+    transform: rotate(-42deg) scaleY(.62);
+  }
+
+  .orbit-core {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 10.5rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid rgb(233 182 95 / .42);
+    border-radius: 50%;
+    padding: 1.25rem;
+    background: radial-gradient(circle, rgb(233 182 95 / .3), rgb(105 69 26 / .5));
+    box-shadow: 0 0 40px rgb(233 182 95 / .16), inset 0 1px rgb(255 255 255 / .16);
+    text-align: center;
+  }
+
+  .orbit-core strong {
+    color: #fff0c8;
+    font-family: var(--serif);
+    font-size: 3.1rem;
+    font-weight: 520;
+    line-height: .86;
+  }
+
+  .orbit-core small {
+    max-width: 12ch;
+    color: #fff0c8;
+    font-size: .66rem;
+    font-weight: 900;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .scale-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .7rem;
+    margin-bottom: 1rem;
+  }
+
+  .scale-strip div {
+    border: 1px solid rgb(233 182 95 / .16);
+    border-radius: .9rem;
+    padding: .85rem .95rem;
+    background: linear-gradient(145deg, rgb(255 255 255 / .05), rgb(2 10 16 / .28));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035);
+  }
+
+  .scale-strip dt {
+    color: #a99f91;
+    font-size: .6rem;
+    font-weight: 850;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .scale-strip dd {
+    margin: .32rem 0 0;
+    color: #eadfcd;
+    font-family: var(--serif);
+    font-size: clamp(1rem, 1.22vw, 1.14rem);
+    line-height: 1.12;
+  }
+
+  .reader-flow {
+    width: min(100% - 2rem, 54rem);
+    padding-block: .3rem;
+  }
+
+  .chapter-scene {
+    position: relative;
+    margin-block: .75rem;
+    border: 1px solid rgb(233 182 95 / .14);
+    border-radius: 1rem;
+    padding: clamp(1.25rem, 2.6vw, 2rem);
+    background: linear-gradient(145deg, rgb(255 255 255 / .052), rgb(2 10 16 / .24));
+    box-shadow: inset 0 1px rgb(255 255 255 / .026), 0 14px 40px rgb(0 0 0 / .08);
+  }
+
+  .chapter-scene::before {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 0% 0%, rgb(233 182 95 / .07), transparent 18rem);
+    pointer-events: none;
+    content: "";
+  }
+
+  .scene-label {
+    display: inline-flex;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .75rem;
+  }
+
+  .scene-label::before {
+    width: .42rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 14px rgb(233 182 95 / .55);
+    content: "";
+  }
+
+  .chapter-scene h2 {
+    position: relative;
+    z-index: 1;
+    max-width: 17ch;
+    margin: 0 0 .8rem;
+    color: #fff2da;
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.75rem);
+    font-weight: 430;
+    line-height: 1.06;
+    letter-spacing: 0;
+  }
+
+  .chapter-scene p,
+  .chapter-scene li {
+    position: relative;
+    z-index: 1;
+    max-width: 64ch;
+    color: #d1c5b5;
+    font-size: clamp(1rem, 1.06vw, 1.1rem);
+    line-height: 1.78;
+  }
+
+  .chapter-scene p { margin: .65rem 0 0; }
+  .chapter-scene ul {
+    display: grid;
+    gap: .45rem;
+    margin: .85rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  .chapter-scene strong {
+    color: #f0c979;
+    font-weight: 720;
+  }
+
+  .question-line,
+  .reveal-line,
+  .pause-line {
+    max-width: 22ch !important;
+    color: #fff0cf !important;
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 2.1vw, 2rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  .pause-line {
+    color: #e9b65f !important;
+    font-size: clamp(1.12rem, 1.7vw, 1.45rem) !important;
+  }
+
+  .equation-note {
+    position: relative;
+    z-index: 1;
+    margin: 1.15rem 0 0;
+    border: 1px solid rgb(233 182 95 / .16);
+    border-left: 2px solid #e9b65f;
+    border-radius: .8rem;
+    padding: .85rem 1rem;
+    background: rgb(233 182 95 / .045);
+  }
+
+  .equation-note span { display: block; margin-bottom: .4rem; }
+  .equation-note p { margin: .32rem 0 0; color: #d9cfbd; line-height: 1.6; }
+
+  .full-guide { border: 0; }
+  .full-guide:not([data-compact]) > summary { display: none; }
+
+  .full-guide > summary {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: .55rem;
+    margin-top: 1rem;
+    border: 1px solid rgb(233 182 95 / .24);
+    border-radius: 999px;
+    padding: .55rem .85rem;
+    background: rgb(233 182 95 / .045);
+    color: #e9b65f;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .full-guide > summary::-webkit-details-marker { display: none; }
+  .full-guide > summary span { color: #a99f91; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+  .full-guide > summary b { font-size: .67rem; }
+  .full-guide[open] > summary b { font-size: 0; }
+  .full-guide[open] > summary b::after { font-size: .67rem; content: "Hide guide"; }
+  .full-guide[open] > .reader-flow { animation: guide-reveal 240ms ease both; }
+  .cosmic-reading :global(.source-panel) { margin-top: 1.5rem; }
+
+  .continue {
+    width: min(100% - 2rem, 54rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: .35rem;
+    border: 1px solid rgb(233 182 95 / .22);
+    border-radius: .95rem;
+    padding: 1rem 1.15rem;
+    background: linear-gradient(100deg, rgb(233 182 95 / .1), rgb(2 10 16 / .24));
+    color: #e9b65f;
+  }
+
+  .continue span > * { display: block; }
+  .continue small { color: #a99f91; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+  .continue strong { font-family: var(--serif); font-size: 1.45rem; font-weight: 430; }
+  .continue em { color: #cfc4b4; font-size: .72rem; font-style: normal; }
+  .continue b { font-size: .68rem; text-transform: uppercase; }
+
+  @keyframes guide-reveal {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .full-guide[open] > .reader-flow { animation: none; }
+  }
+
+  @media (max-width: 900px) {
+    .chapter-hero { grid-template-columns: 1fr; }
+    .hero-copy,
+    .hero-orbit { min-height: auto; }
+    .hero-orbit { min-height: 14rem; }
+    .scale-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 680px) {
+    .chapter-hero,
+    .scale-strip,
+    .reader-flow,
+    .continue,
+    .full-guide > summary { width: min(100% - 1.25rem, 56rem); }
+    .scale-strip { grid-template-columns: 1fr; }
+    .chapter-scene { padding: 1.1rem; }
+    .continue { align-items: flex-start; flex-direction: column; }
+    .chapter-hero h1 { font-size: clamp(2.45rem, 12vw, 3.7rem); }
   }
 </style>

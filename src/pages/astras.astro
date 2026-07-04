@@ -1,24 +1,112 @@
 ---
 import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
 
+const weaponJourneyItems = [
+  {
+    title: "Part I - Astras",
+    href: "/astras/part-1",
+    eyebrow: "Mantra weapons",
+    description: "Weapons invoked through mantra, concentration, discipline, and divine authority.",
+    status: "available",
+  },
+  {
+    title: "Part II - Ayudhas",
+    href: "/astras/part-2",
+    eyebrow: "Divine weapons",
+    description: "The eternal weapons carried by the gods, including the discus, trident, mace, bow, sword, and thunderbolt.",
+    status: "available",
+  },
+  {
+    title: "Part III - Epic Weapons",
+    href: "/astras/part-3",
+    eyebrow: "Hero weapons",
+    description: "The legendary weapons of epic heroes, including Gandiva, Kodanda, Vijaya, and Chandrahasa.",
+    status: "available",
+  },
+];
 const related = [
   { title: "Pushpaka Vimana", href: "/pushpaka-vimana", image: "/images/home/home-vimana.png", eyebrow: "Ramayana wonder" },
   { title: "Flying Cities of Tripura", href: "/flying-cities-of-tripura", image: "/images/home/home-tripura.png", eyebrow: "Puranic mystery" },
-  { title: "Garuda Purana", href: "/atlas/garuda-purana", image: "/images/home/Garudapurana.png", eyebrow: "Afterlife atlas" },
+  { title: "Garuda Purana", href: "/atlas/garuda-purana", image: "/images/home/home-garuda-purana.png", eyebrow: "Afterlife atlas" },
 ];
 
 const concept = {
-  title: "Astras",
-  eyebrow: "Weapons of mantra and discipline",
-  summary: "Astras are extraordinary weapons in the epics, often invoked through mantra, training, restraint, and inner qualification. This page gives a clear starting point before deeper source work.",
-  image: "/images/home/home-astras.png",
+  title: "Weapons That Responded to Thought",
+  eyebrow: "Astras, Ayudhas, and sacred weapons",
+  summary: "Astras activated by mantra, attention, discipline, and inner qualification.",
+  image: "/images/home/home-astras.webp",
   transitionName: "concept-astras",
+  posterHero: true,
+  heroLayout: "split",
+  readingLayout: "article",
   accent: "#ff7a4f",
-  facts: ["Epic traditions", "Mantra-linked", "Requires discipline", "Draft explainer"],
+  facts: ["Ramayana", "Mahabharata", "Puranas", "Mantra and restraint"],
+  journeyLabel: "Part path",
+  journeyTitle: "Sacred Weapons",
+  journeyItems: weaponJourneyItems,
   sections: [
-    { title: "What are Astras?", body: "Astras are not ordinary weapons. In many epic passages, they are invoked with knowledge, concentration, and proper instruction, making them both martial and spiritual symbols." },
-    { title: "Why restraint matters", body: "The stories often emphasize eligibility and consequence. Power without self-mastery becomes dangerous, so the astra tradition naturally raises ethical questions." },
-    { title: "Where this topic can go", body: "Future versions can map Brahmastra, Pashupatastra, Narayanastra, Agneyastra, and other named astras with sources, contexts, and careful interpretation." },
+    {
+      title: "Weapons That Responded to Thought",
+      paragraphs: [
+        "Imagine a battlefield where victory is not decided by sharper steel or greater strength.",
+        "A place where the most powerful weapon cannot be forged by a blacksmith, purchased by a king, or seized from an enemy.",
+        "Instead, it must first be earned.",
+        "In the sacred narratives of the Ramayana, the Mahabharata, and the Puranas, weapons are far more than instruments of war. Some answer only to sacred mantras. Some embody the very powers of the gods. Others become legendary through the heroes who wield them.",
+        "These are not ordinary weapons.",
+        "They are symbols of divine authority, cosmic forces, spiritual discipline, and sacred responsibility.",
+        "Among them, the most extraordinary are the Astras - weapons that do not merely rest in the hand but are awakened through mantra, unwavering concentration, and the inner qualification of the one who invokes them.",
+      ],
+    },
+    {
+      title: "Power Requires Qualification",
+      paragraphs: [
+        "The ancient texts repeatedly suggest that possessing an Astra was never enough.",
+        "The wielder required discipline.",
+        "Purity of intention.",
+        "Self-control.",
+        "And the wisdom to know when not to use it.",
+        "Alongside the Astras stand the Ayudhas - the eternal weapons of the gods themselves. The Sudarshana Chakra of Vishnu, the Trishula of Shiva, the Vajra of Indra, and many others are not simply weapons; they are enduring symbols of the divine powers they represent.",
+        "The epics also celebrate another class of sacred arms - the legendary weapons of great heroes. The Gandiva of Arjuna, the Kodanda of Rama, the Vijaya of Karna, and other renowned weapons became immortal through the courage, sacrifice, and destiny of those who carried them.",
+        "Together, these three traditions form one of the richest systems of sacred weaponry preserved in world literature.",
+      ],
+    },
+    {
+      title: "Strength, Restraint, and Responsibility",
+      paragraphs: [
+        "Some command the elements.",
+        "Some influence the mind.",
+        "Some bind rather than destroy.",
+        "Some are so powerful that they are invoked only once.",
+        "Others are never used at all, serving instead as reminders that the highest form of strength is restraint.",
+      ],
+    },
+    {
+      title: "The Three Great Traditions of Sacred Weapons",
+      paragraphs: [
+        "Part I - Astras",
+        "Weapons invoked through mantra, concentration, and divine authority.",
+        "Discover the cosmic astras, elemental astras, serpent astras, illusion astras, binding astras, and the supreme weapons entrusted only to the greatest warriors.",
+        "Part II - Ayudhas",
+        "The eternal weapons carried by the gods.",
+        "Explore the sacred discus, trident, mace, bow, sword, thunderbolt, and other divine weapons that symbolize the powers and responsibilities of the Hindu deities.",
+        "Part III - Legendary Weapons of the Epic Heroes",
+        "The celebrated weapons that became inseparable from the heroes of the epics.",
+        "Follow the stories of the Gandiva, Kodanda, Vijaya, Chandrahasa, and many other legendary weapons whose names continue to echo through the Ramayana, the Mahabharata, and later traditions.",
+      ],
+    },
+    {
+      title: "Before We Begin",
+      paragraphs: [
+        "Every weapon has a story.",
+        "Who created it?",
+        "Who was worthy to receive it?",
+        "How was it obtained?",
+        "When was it invoked?",
+        "What happened when it was unleashed?",
+        "And what lessons did the sages preserve through these extraordinary accounts?",
+        "The chapters that follow explore these questions through the sacred narratives of the Hindu tradition, drawing upon the Ramayana, the Mahabharata, and the Puranas to uncover the origins, powers, wielders, and enduring significance of these remarkable weapons.",
+      ],
+    },
   ],
   related,
 };

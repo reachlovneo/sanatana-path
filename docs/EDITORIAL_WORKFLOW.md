@@ -20,6 +20,8 @@ published
 
 ## Publication Requirements
 
+For Cosmic Clock topics, reviewers should also check that the page follows `COSMIC_CLOCK_WRITING_SYSTEM.md`: one core idea, story-first opening, simple explanation, visual structure, cliffhanger ending, and relevant sources.
+
 A topic can move to `published` only when:
 
 - Its beginner explanation is accurate and clear.
@@ -54,3 +56,4 @@ Each source entry uses:
 
 Do not add a source merely because it discusses the same broad topic. Confirm
 that it supports the specific explanation or claim being reviewed.
+

@@ -1,145 +1,117 @@
 ---
-import SacredIcon from "../ui/SacredIcon.astro";
 import SourcePanel from "./SourcePanel.astro";
 
 const { topic, next } = Astro.props;
 
-const coreFacts = [
-  ["Misunderstood as", "Only death rituals", "document"],
-  ["Deeper map", "Karma, rebirth, subtle body", "cycle"],
-  ["Afterlife lens", "Journey of the jiva", "map"],
-  ["Main insight", "Death as transition", "compass"],
+
+
+const universeTopics = [
+  ["Karma", "How action, intention, and consequence shape experience.", "#cosmos"],
+  ["Cosmic Universe", "Lokas, subtle realms, and the structure of existence.", "#cosmos"],
+  ["Narakas", "Temporary states explained through karmic learning.", "#narakas"],
+  ["Rituals", "Why rites are performed and what they are meant to support.", "#rituals"],
+  ["Dharma", "A practical way to live with clarity and responsibility.", "#purpose"],
+  ["Moksha", "The final direction of freedom, peace, and release.", "#moksha"],
 ] as const;
 
-const domains = [
-  ["Afterlife journey", "What happens immediately after death, the movement of the jiva, karmic transition, and higher paths.", "map"],
-  ["Subtle body", "The traveler between lives is not the physical body, but a subtler continuity of impressions and tendencies.", "people"],
-  ["Karma engine", "Action, intention, consequence, and rebirth are described as an ordered moral process across lifetimes.", "cycle"],
-  ["Naraka realms", "Temporary hellish states or realms, interpreted literally, symbolically, or karmically across traditions.", "flame"],
-  ["Reincarnation mechanics", "Desire, karma, and inner tendencies become forces shaping future embodiment.", "compass"],
-  ["Preta lore", "Restless transitional states and the ritual importance of helping movement after death.", "bell"],
-] as const;
 
-const sequence = [
-  "Death is not treated as simple disappearance.",
-  "The jiva continues through a transitional state.",
-  "Karma, desire, and impressions shape direction.",
-  "The subtle body carries continuity between lives.",
-  "Afterlife realms and Narakas become part of the karmic map.",
-  "The larger goal remains liberation from compulsive return.",
+const stats = [
+  ["300+", "Topics"],
+  ["18", "Major sections"],
+  ["100%", "Referenced sources"],
 ] as const;
 ---
 
-<article class="garuda-reading">
-  <header class="garuda-hero">
-    <div>
-      <p class="eyebrow">Puranic atlas</p>
-      <h1>Garuda Purana</h1>
-      <p class="lead">Most people think the Garuda Purana is only about death rituals. That is only a small part of it.</p>
-      <p>For Sanatana Path, the Garuda Purana is best understood as an afterlife atlas: a map of what continues when the physical body no longer does.</p>
-    </div>
-    <aside aria-label="Garuda Purana orientation">
-      <span><SacredIcon name="map" size={30} /></span>
-      <strong>Death is presented not as an ending, but as a transfer between states of existence.</strong>
-      <small>Karma, desire, subtle embodiment, realms, and liberation become one connected system.</small>
-    </aside>
-  </header>
-
-  <dl class="facts">
-    {coreFacts.map(([label, value, icon]) => (
-      <div>
-        <SacredIcon name={icon} size={18} />
-        <dt>{label}</dt>
-        <dd>{value}</dd>
+<article class="garuda-page">
+  <section class="gp-hero" aria-label="Garuda Purana introduction">
+    <div class="hero-copy">
+      <p class="eyebrow">Garuda Purana</p>
+      <h1>The Journey of the Soul Begins Here</h1>
+      <p class="lead">Explore the timeless wisdom of the Garuda Purana through beautiful storytelling, clear explanations, visual learning, and source-aware guidance from life to liberation.</p>
+      <div class="hero-actions">
+        <a class="primary" href="#story">Begin the Journey</a>
+        <a class="secondary" href="#cosmos">Explore Topics</a>
       </div>
-    ))}
-  </dl>
-
-  <section class="opening">
-    <div>
-      <p class="eyebrow">The hidden scope</p>
-      <h2>Not just death rites. A map of transition.</h2>
+      <p class="format-line">Sanskrit | English | Audio | Visual Stories | Authentic References</p>
     </div>
-    <div>
-      <p>The text opens a much wider field: cosmology, rebirth, karma mechanics, subtle body theory, realms after death, Narakas, time, Yugas, spiritual anatomy, and liberation.</p>
-      <p>Many Hindu texts speak about Dharma, devotion, knowledge, time, and liberation. The Garuda Purana brings those questions into one of the most uncomfortable places: death.</p>
+    <figure class="hero-visual">
+      <img src="/images/home/home-garuda-purana.png" alt="Garuda Purana visual journey" loading="eager" decoding="async" />
+      <figcaption>
+        <span>Visual atlas</span>
+        <strong>Garuda asks. Vishnu reveals. The soul receives a map.</strong>
+      </figcaption>
+    </figure>
+  </section>
+
+
+  <section id="story" class="story-section">
+    <figure>
+      <img src="/images/home/home-garuda-purana.png" alt="Garuda Purana story illustration" loading="lazy" decoding="async" />
+    </figure>
+    <div class="story-copy">
+      <p class="eyebrow">A story that began thousands of years ago</p>
+      <h2>Garuda asked the questions every human being carries.</h2>
+      <p>Long ago, Garuda, the mighty king of birds and devoted vehicle of Lord Vishnu, asked what happens after death, why people suffer, what karma means, and how one can attain peace.</p>
+      <p>In response, Lord Vishnu revealed teachings that became known as the Garuda Purana. These teachings are not only about death. They are about how to live wisely.</p>
+      <a href="#soul-journey">Discover the path</a>
     </div>
   </section>
 
-  <section class="domain-grid" aria-label="Garuda Purana topic domains">
-    {domains.map(([title, text, icon]) => (
-      <article>
-        <span><SacredIcon name={icon} size={20} /></span>
-        <h2>{title}</h2>
-        <p>{text}</p>
-      </article>
-    ))}
+  <section id="cosmos" class="cosmos-section">
+    <div class="cosmos-copy">
+      <p class="eyebrow">Step into the world of the Garuda Purana</p>
+      <h2>Explore the teachings without walking in circles.</h2>
+      <p>Each topic opens a different doorway: ethics, realms, rites, and liberation. The page now keeps the learning route at the end, so this section can stay focused on discovery.</p>
+    </div>
+    <div class="topic-mosaic">
+      {universeTopics.map(([title, text, href]) => <a href={href}><strong>{title}</strong><span>{text}</span></a>)}
+    </div>
   </section>
 
-  <section class="journey-map">
-    <div>
-      <p class="eyebrow">How the idea moves</p>
-      <h2>The journey is moral, subtle, and cosmic.</h2>
-      <p>The unseen is not treated as vague emptiness. It is described as ordered, consequential, and connected to how one has lived.</p>
+  <section id="soul-journey" class="visual-cosmos" aria-label="Soul journey visualization">
+    <img src="/images/home/home-lokas.webp" alt="Layered cosmic realms" loading="lazy" decoding="async" />
+    <div class="realm-panel">
+      <p class="eyebrow">Interactive cosmos</p>
+      <h2>Lokas, karma, and the soul's path appear as connected layers.</h2>
+      <div class="realm-list">
+        <span>Bhuloka</span><span>Bhuvarloka</span><span>Swarga</span><span>Maharloka</span><span>Janaloka</span><span>Tapoloka</span><span>Satyaloka</span>
+      </div>
     </div>
-    <ol>
-      {sequence.map((item) => <li>{item}</li>)}
+  </section>
+
+  <section id="purpose" class="purpose-section">
+    <p class="eyebrow">Why this website exists</p>
+    <h2>The Garuda Purana is often misunderstood.</h2>
+    <p>The Garuda Purana is often treated as a scripture that should only be read after someone's death. In reality, it contains profound teachings about life, ethics, devotion, karma, the soul, and liberation.</p>
+    <p>This project presents those teachings with authenticity, clarity, and respect, making them accessible to everyone.</p>
+  </section>
+
+  <section class="knowledge-stats" aria-label="Knowledge statistics">
+    {stats.map(([value, label]) => <div><strong>{value}</strong><span>{label}</span></div>)}
+  </section>
+
+  <section id="reading" class="reader-path">
+    <div class="reader-intro">
+      <p class="eyebrow">Learning path</p>
+      <h2>Not sure where to start? Follow this simple route.</h2>
+      <p>Begin with the story, understand karma, then move into the soul's journey and liberation. You can still jump to a specific topic whenever curiosity pulls you there.</p>
+    </div>
+    <ol class="learning-route">
+      <li><a href="#story"><i>01</i><strong>Begin with the story</strong><span>Meet Garuda and Vishnu before entering the teachings.</span></a></li>
+      <li><a id="karma" href="#cosmos"><i>02</i><strong>Understand karma</strong><span>See how intention, action, habit, and consequence connect.</span></a></li>
+      <li><a href="#soul-journey"><i>03</i><strong>Follow the soul's path</strong><span>Move through life, death, transition, rebirth, and moksha.</span></a></li>
+      <li><a id="moksha" href="#purpose"><i>04</i><strong>Return to purpose</strong><span>Learn why the text is about wise living, not only death.</span></a></li>
     </ol>
+    <div class="specific-jump" aria-label="Jump to a specific topic">
+      <span>Already looking for something?</span>
+      <a href="#cosmos">Cosmos</a>
+      <a href="#soul-journey">Soul</a>
+      <a id="narakas" href="#cosmos">Narakas</a>
+      <a id="rituals" href="#purpose">Rituals</a>
+
+    </div>
   </section>
 
-  <div class="reading-body">
-    <main>
-      <section>
-        <h2>Afterlife and post-death journey</h2>
-        <p>The Garuda Purana gives detailed attention to what happens after death. It speaks about the journey of the jiva, the role of karma, the transition between births, the possibility of higher realms, and the consequences of one's actions.</p>
-        <p>The person does not continue in the same visible form. Yet something continues: the jiva, shaped by karma, impressions, tendencies, and desire.</p>
-      </section>
-
-      <section>
-        <h2>Subtle body technology</h2>
-        <p>Hindu thought often distinguishes between the physical body, the subtle body, and the causal body. The physical body is visible and temporary.</p>
-        <p>The subtle body is described as carrying impressions, tendencies, karma, and memory in seed form. This helps explain why rebirth is not simply about a body coming back. It is about continuity of subtle tendencies, unresolved impressions, and karmic momentum.</p>
-      </section>
-
-      <section>
-        <h2>The karma engine</h2>
-        <p>The Garuda Purana contains one of the most detailed traditional discussions of action, consequence, rebirth patterns, and moral causation.</p>
-        <p>Karma is not presented as random reward or punishment. It is closer to a universal accounting system operating across lifetimes. Actions leave consequences. Intentions matter. Habits become tendencies. Desires shape direction.</p>
-      </section>
-
-      <section>
-        <h2>Naraka realms</h2>
-        <p>The Garuda Purana describes numerous Narakas, often translated as hell realms or hellish states. This topic must be handled carefully.</p>
-        <p>Traditional commentators and readers do not always interpret these descriptions in the same way. Some understand them as literal locations. Some understand them as temporary karmic states. Others read them symbolically as intense experiences produced by the consequences of action.</p>
-        <p>The important difference from many eternal damnation ideas is that Narakas are generally understood as temporary.</p>
-      </section>
-
-      <section>
-        <h2>Reincarnation mechanics</h2>
-        <p>The text also explores how rebirth occurs. It connects rebirth with karma, desire, inner tendencies, and the conditions that influence future embodiment.</p>
-        <p>One of the strongest ideas here is that desire itself becomes a force shaping future existence. What the mind clings to does not always disappear at death. Desire can become direction. Attachment can become momentum. Habit can become a path.</p>
-      </section>
-
-      <section>
-        <h2>Cosmic geography of the afterlife</h2>
-        <p>The Garuda Purana contains one of the most elaborate afterlife maps in Hindu literature. It describes paths after death, realms, messengers, cosmic judges, karmic transitions, and movement between worlds.</p>
-        <p>Whether read literally, symbolically, ritually, or psychologically, the structure is striking. It gives death a geography.</p>
-      </section>
-
-      <section>
-        <h2>Preta lore</h2>
-        <p>One of the most misunderstood subjects in the Garuda Purana is the preta state. Pretas are often understood as restless beings or transitional states connected with unresolved movement after death.</p>
-        <p>The mind-bending idea is this: not all beings immediately move to their next state after death. This is one reason ritual, remembrance, and correct transition matter in many Hindu traditions.</p>
-      </section>
-
-      <section>
-        <h2>What this teaches now</h2>
-        <p>The Garuda Purana does not ask readers to obsess over death. It asks them to live with awareness.</p>
-        <p>If action continues as consequence, if desire shapes movement, if the subtle body carries impressions, and if death is a transition rather than a wall, then life becomes more serious and more sacred.</p>
-        <p>The point is not fear. The point is orientation.</p>
-      </section>
-    </main>
-  </div>
 
   <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
 
@@ -150,54 +122,68 @@ const sequence = [
 </article>
 
 <style>
-  .garuda-reading { position:relative; overflow:hidden; border:1px solid rgb(214 172 91/.18); border-radius:1.35rem; padding-bottom:1rem; color:#eee3cf; background:linear-gradient(180deg,rgb(2 9 15/.08) 0 28rem,rgb(2 9 15/.78) 46rem,rgb(2 9 15/.92) 100%),linear-gradient(90deg,rgb(2 9 15/.82),rgb(2 9 15/.32) 58%,rgb(2 9 15/.76)),url("/images/home/Garudapurana.png"),radial-gradient(circle at 82% 8%, rgb(173 124 255/.12), transparent 28rem),linear-gradient(145deg,rgb(8 19 28/.78),rgb(2 9 15/.62)); background-position:center top,center top,center top,center,center; background-size:auto,auto,cover,auto,auto; box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.24); }
-  .garuda-reading::before { position:absolute; inset:0; z-index:0; background-image:radial-gradient(circle, rgb(214 172 91/.11) 1px, transparent 1px); opacity:.52; background-size:34px 34px; mask-image:linear-gradient(to bottom, black, transparent 72%); content:""; pointer-events:none; }
-  .garuda-reading > * { position:relative; z-index:1; }
-  .facts,.opening,.domain-grid,.journey-map,.reading-body,.garuda-reading :global(.source-panel),.continue { width:min(100% - 2rem,72rem); margin-inline:auto; }
-  .garuda-hero { width:min(100% - 2rem,96rem); margin-inline:auto; }
-  .garuda-hero { position:relative; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(18rem,.62fr); gap:0; overflow:hidden; border:1px solid rgb(214 172 91/.2); border-radius:1.2rem; padding:clamp(20rem,44svh,29rem) clamp(.9rem,2vw,1.3rem) clamp(.9rem,2vw,1.3rem); background:linear-gradient(145deg,rgb(2 9 15/.88),rgb(8 19 28/.7)); box-shadow:inset 0 1px rgb(255 255 255/.035),0 26px 80px rgb(0 0 0/.24); }
-  .garuda-hero::before { position:absolute; inset:0 0 auto; height:clamp(20rem,44svh,29rem); background:linear-gradient(180deg,rgb(2 9 15/.03),rgb(2 9 15/.16)),url("/images/home/Garudapurana.png"); background-position:center; background-size:cover; content:""; }
-  .garuda-hero::after { position:absolute; top:clamp(20rem,44svh,29rem); right:0; left:0; height:1px; background:linear-gradient(90deg,transparent,rgb(214 172 91/.28),transparent); content:""; pointer-events:none; }
-  .garuda-hero > * { position:relative; z-index:1; }
-  .garuda-hero > div { position:relative; min-height:clamp(18rem,32svh,25rem); border:1px solid rgb(214 172 91/.13); border-right:0; border-radius:1rem 0 0 1rem; padding:clamp(1.15rem,2.8vw,2.15rem); background:linear-gradient(135deg,rgb(2 9 15/.86),rgb(2 9 15/.5)),radial-gradient(circle at 82% 8%,rgb(214 172 91/.12),transparent 44%); box-shadow:inset 0 1px rgb(255 255 255/.035); }
-  .garuda-hero > div::before { position:absolute; top:1.1rem; bottom:1.1rem; left:0; width:3px; border-radius:999px; background:linear-gradient(#f0b45f,transparent); content:""; }
-  .eyebrow { color:#f0b45f; font-size:.68rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
-  h1,h2 { font-family:var(--serif); font-weight:400; letter-spacing:-.03em; }
-  h1 { max-width:12ch; margin:.3rem 0 1rem; font-size:clamp(3rem,5.6vw,5.7rem); line-height:.96; }
-  .lead { max-width:52ch; color:#f2dfc0 !important; font-size:clamp(1.02rem,1.25vw,1.18rem); }
-  .garuda-hero p:not(.eyebrow), .opening p, section p { color:#b6ada0; line-height:1.78; }
-  .garuda-hero > div > p:not(.eyebrow):not(.lead) { max-width:62ch; color:#b9afa0; font-size:.98rem; }
-  .garuda-hero aside { position:relative; min-height:clamp(18rem,32svh,25rem); border:1px solid rgb(214 172 91/.13); border-radius:0 1rem 1rem 0; padding:clamp(1.1rem,2.2vw,1.65rem); background:linear-gradient(145deg,rgb(6 16 24/.82),rgb(2 10 16/.56)),radial-gradient(circle at 18% 14%,rgb(214 172 91/.12),transparent 42%); box-shadow:inset 1px 0 rgb(214 172 91/.08), inset 0 1px rgb(255 255 255/.03); }
-  .garuda-hero aside::after { position:absolute; right:1rem; bottom:1rem; color:rgb(214 172 91/.16); font-family:var(--serif); font-size:5.5rem; line-height:1; content:"?"; pointer-events:none; }
-  .garuda-hero aside span { display:grid; width:3.25rem; height:3.25rem; place-items:center; border:1px solid rgb(214 172 91/.3); border-radius:50%; color:#f0b45f; background:rgb(214 172 91/.055); box-shadow:0 0 42px rgb(214 172 91/.13); }
-  .garuda-hero aside strong { position:relative; z-index:1; display:block; margin:1rem 0 .65rem; color:#f7ebd3; font-family:var(--serif); font-size:clamp(1.25rem,2vw,1.75rem); font-weight:450; line-height:1.18; }
-  .garuda-hero aside small { position:relative; z-index:1; color:#b9afa0; line-height:1.7; }
-  .facts { display:grid; grid-template-columns:repeat(4,1fr); overflow:hidden; border:1px solid rgb(214 172 91/.16); border-radius:1rem; background:rgb(255 255 255/.025); }
-  .facts div { padding:1rem; border-left:1px solid rgb(214 172 91/.12); }
-  .facts div:first-child { border-left:0; }
-  .facts svg { color:#f0b45f; margin-bottom:.5rem; }
-  dt { color:#99938a; font-size:.62rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
-  dd { margin:.25rem 0 0; color:#e7d8bf; font-family:var(--serif); font-size:1.05rem; }
-  .opening,.journey-map { display:grid; grid-template-columns:minmax(0,.75fr) minmax(0,1fr); gap:clamp(1.2rem,4vw,4rem); padding-block:2.7rem; border-bottom:1px solid rgb(214 172 91/.13); }
-  .opening h2,.journey-map h2 { margin:.35rem 0 0; font-size:clamp(2rem,4vw,3.6rem); line-height:1; }
-  .domain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; padding-block:2rem; }
-  .domain-grid article { border:1px solid rgb(214 172 91/.14); border-radius:1rem; padding:1rem; background:linear-gradient(145deg,rgb(255 255 255/.035),rgb(255 255 255/.012)); }
-  .domain-grid span { display:grid; width:2.5rem; height:2.5rem; place-items:center; border:1px solid rgb(214 172 91/.22); border-radius:50%; color:#f0b45f; }
-  .domain-grid h2 { margin:.75rem 0 .45rem; font-size:1.28rem; }
-  .domain-grid p { margin:0; font-size:.9rem; }
-  .journey-map ol { margin:0; padding:0; list-style:none; counter-reset:path; }
-  .journey-map li { position:relative; counter-increment:path; border-top:1px solid rgb(214 172 91/.12); padding:.78rem 0 .78rem 2.6rem; color:#d2c5b4; line-height:1.55; }
-  .journey-map li::before { position:absolute; left:0; top:.78rem; color:#f0b45f; font-size:.7rem; font-weight:900; content:"0" counter(path); }
-  .reading-body { padding-block:1.2rem 2rem; }
-  main { width:min(100%,48rem); }
-  main section { border-bottom:1px solid rgb(214 172 91/.12); padding-block:1.85rem; }
-  main h2 { margin:0 0 .75rem; font-size:clamp(1.75rem,3vw,2.55rem); }
-  main p { margin:.65rem 0 0; }
-  .continue { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:2rem; border:1px solid rgb(173 124 255/.24); border-radius:1rem; padding:1.1rem 1.25rem; background:linear-gradient(100deg,rgb(173 124 255/.08),transparent); color:#d7b8ff; }
-  .continue span > * { display:block; }
-  .continue small { color:#99938a; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; }
-  .continue strong { font-family:var(--serif); font-size:1.55rem; font-weight:400; }
-  .continue em { color:#aaa49a; font-size:.78rem; font-style:normal; }
-  .continue b { font-size:.68rem; text-transform:uppercase; }
-  @media(max-width:900px){ .garuda-hero,.opening,.journey-map{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(214 172 91/.12)}.domain-grid{grid-template-columns:1fr}.garuda-hero > div{border-right:1px solid rgb(214 172 91/.13);border-radius:1rem 1rem 0 0}.garuda-hero aside{border-radius:0 0 1rem 1rem}.continue{align-items:flex-start;flex-direction:column} }
+  .garuda-page { --gold:#d4af37; --ivory:#f8f4ec; --muted:#c9beae; position:relative; overflow:hidden; border:1px solid rgb(212 175 55/.16); border-radius:1rem; color:var(--ivory); background:linear-gradient(180deg,#0b1020 0%,#070b14 48%,#10100f 100%); }
+  .garuda-page::before { position:absolute; inset:0; background-image:linear-gradient(rgb(212 175 55/.055) 1px,transparent 1px),linear-gradient(90deg,rgb(212 175 55/.04) 1px,transparent 1px); background-size:74px 74px; mask-image:linear-gradient(to bottom,black,transparent 45rem); content:""; pointer-events:none; }
+  .garuda-page > * { position:relative; z-index:1; }
+  .gp-hero { display:grid; min-height:min(760px,calc(100svh - 6rem)); grid-template-columns:minmax(0,.68fr) minmax(30rem,1fr); gap:clamp(1rem,3vw,2rem); align-items:stretch; padding:clamp(1rem,2.4vw,2rem); background:radial-gradient(circle at 72% 12%,rgb(212 175 55/.16),transparent 30rem),linear-gradient(135deg,#172143,#050913 70%); }
+  .hero-copy { display:flex; flex-direction:column; justify-content:center; border:1px solid rgb(212 175 55/.13); border-radius:1rem; padding:clamp(1.25rem,3vw,2.6rem); background:linear-gradient(135deg,rgb(255 255 255/.045),rgb(255 255 255/.012)); }
+  .eyebrow { margin:0; color:#f2c766; font-size:.68rem; font-weight:900; letter-spacing:.18em; text-transform:uppercase; }
+  h1,h2,strong { font-family:Georgia,"Times New Roman",serif; }
+  h1 { max-width:10.5ch; margin:.7rem 0 0; color:#fff6e7; font-size:clamp(3rem,5.8vw,5.8rem); font-weight:430; letter-spacing:-.04em; line-height:.94; }
+  h2 { color:#fff6e7; font-weight:430; letter-spacing:-.032em; line-height:1; }
+  .lead { max-width:42rem; margin:1.1rem 0 0; color:#d8cebd; font-size:clamp(1rem,1.16vw,1.14rem); line-height:1.72; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.5rem; }
+  .hero-actions a,.story-copy a { display:inline-flex; min-height:2.85rem; align-items:center; border-radius:999px; padding:.74rem 1rem; font-weight:900; }
+  .primary { background:var(--gold); color:#080b12; box-shadow:0 16px 42px rgb(212 175 55/.2); }
+  .secondary { border:1px solid rgb(248 244 236/.26); color:var(--ivory); background:rgb(255 255 255/.035); }
+  .format-line { margin:1rem 0 0; color:#bdb3a4; font-size:.72rem; font-weight:850; letter-spacing:.09em; text-transform:uppercase; }
+  .hero-visual { position:relative; min-width:0; margin:0; overflow:hidden; border:1px solid rgb(212 175 55/.16); border-radius:1rem; background:#050913; box-shadow:0 24px 78px rgb(0 0 0/.28); }
+  .hero-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(1.05) contrast(1.06) brightness(.72); transform:scale(1.02); }
+  .hero-visual::after { position:absolute; inset:0; background:linear-gradient(90deg,rgb(5 9 19/.72),transparent 52%,rgb(5 9 19/.28)),linear-gradient(180deg,transparent,rgb(5 9 19/.58)); content:""; }
+  .hero-visual figcaption { position:absolute; right:1rem; bottom:1rem; left:1rem; z-index:1; display:grid; gap:.35rem; border:1px solid rgb(212 175 55/.18); border-radius:.9rem; padding:1rem; background:rgb(5 9 19/.68); backdrop-filter:blur(14px); }
+  .hero-visual span { color:#f2c766; font-size:.64rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+  .hero-visual strong { max-width:34rem; color:#fff6e7; font-size:clamp(1.25rem,2vw,1.8rem); font-weight:450; line-height:1.14; }
+  .story-section,.cosmos-section,.visual-cosmos,.purpose-section,.knowledge-stats,.reader-path,.garuda-page :global(.source-panel),.continue { width:min(100% - 2rem,1180px); margin-inline:auto; }
+  .purpose-section,.reader-path { padding-block:3rem; border-top:1px solid rgb(212 175 55/.12); }
+  .section-kicker { display:grid; grid-template-columns:minmax(14rem,.42fr) minmax(0,1fr); gap:1rem; align-items:end; margin-bottom:1rem; }
+  .section-kicker.centered { display:block; max-width:760px; margin-inline:auto; text-align:center; }
+  .section-kicker h2,.story-copy h2,.cosmos-copy h2,.purpose-section h2,.realm-panel h2 { margin:.45rem 0 0; font-size:clamp(2rem,4vw,3.7rem); }
+  .topic-mosaic a,.reader-path a { border:1px solid rgb(212 175 55/.14); border-radius:.85rem; background:rgb(255 255 255/.025); color:#f8f4ec; transition:transform 180ms ease,border-color 180ms ease,background 180ms ease; }
+  .topic-mosaic a:hover,.reader-path a:hover { transform:translateY(-3px); border-color:rgb(212 175 55/.42); background:rgb(212 175 55/.075); }
+  .story-section,.cosmos-section { display:grid; grid-template-columns:minmax(18rem,.55fr) minmax(0,1fr); gap:clamp(1rem,4vw,3rem); align-items:center; padding-block:3rem; border-top:1px solid rgb(212 175 55/.12); }
+  .story-section figure { position:relative; min-height:25rem; margin:0; overflow:hidden; border:1px solid rgb(212 175 55/.16); border-radius:1rem; background:#050913; }
+  .story-section img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(1.04) contrast(1.05) brightness(.74); }
+  .story-section figure::after { position:absolute; inset:0; background:linear-gradient(180deg,transparent,rgb(5 9 19/.72)); content:""; }
+  .story-copy p,.cosmos-copy p,.purpose-section p { color:#cfc5b4; line-height:1.75; }
+  .story-copy a { width:fit-content; margin-top:.7rem; border:1px solid rgb(212 175 55/.28); color:#f5d681; background:rgb(212 175 55/.1); }
+  .topic-mosaic { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
+  .topic-mosaic a { display:flex; min-height:7.4rem; flex-direction:column; justify-content:space-between; padding:1rem; }
+  .topic-mosaic span { color:#bfb5a4; font-size:.84rem; line-height:1.45; }
+  .visual-cosmos { position:relative; min-height:28rem; overflow:hidden; border:1px solid rgb(212 175 55/.16); border-radius:1rem; background:#050913; }
+  .visual-cosmos > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(1.08) contrast(1.05) brightness(.62); }
+  .visual-cosmos::after { position:absolute; inset:0; background:linear-gradient(90deg,rgb(5 9 19/.84),rgb(5 9 19/.28)); content:""; }
+  .realm-panel { position:relative; z-index:1; display:flex; min-height:28rem; max-width:46rem; flex-direction:column; justify-content:center; padding:clamp(1.2rem,3vw,2.4rem); }
+  .realm-list { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1rem; }
+  .realm-list span { border:1px solid rgb(212 175 55/.18); border-radius:999px; padding:.5rem .72rem; background:rgb(5 9 19/.58); color:#f5d681; font-size:.72rem; font-weight:850; }
+  .knowledge-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; padding-block:2rem; }
+  .knowledge-stats div { border:1px solid rgb(212 175 55/.15); border-radius:.85rem; padding:1rem; background:rgb(255 255 255/.025); }
+  .knowledge-stats strong { display:block; color:#f5d681; font-size:clamp(1.8rem,3vw,2.7rem); }
+  .knowledge-stats span { color:#bfb5a4; font-size:.78rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+  .reader-path { display:grid; gap:1.2rem; }
+  .reader-intro { max-width:780px; margin-inline:auto; text-align:center; }
+  .reader-intro p:last-child { margin:.75rem auto 0; max-width:46rem; color:#cfc5b4; line-height:1.7; }
+  .learning-route { display:grid; grid-template-columns:repeat(4,1fr); gap:.75rem; padding:0; margin:0; list-style:none; }
+  .learning-route a { display:grid; min-height:12rem; align-content:space-between; gap:.85rem; border:1px solid rgb(212 175 55/.16); border-radius:1rem; padding:1rem; color:#f8f4ec; background:linear-gradient(145deg,rgb(255 255 255/.045),rgb(255 255 255/.015)); transition:transform 180ms ease,border-color 180ms ease,background 180ms ease; }
+  .learning-route a:hover { transform:translateY(-3px); border-color:rgb(212 175 55/.42); background:rgb(212 175 55/.075); }
+  .learning-route i { display:grid; width:2.15rem; height:2.15rem; place-items:center; border:1px solid rgb(212 175 55/.22); border-radius:999px; color:#f2c766; background:rgb(212 175 55/.08); font-size:.68rem; font-style:normal; font-weight:950; letter-spacing:.08em; }
+  .learning-route strong { color:#fff6e7; font-size:clamp(1.1rem,1.5vw,1.45rem); line-height:1.12; }
+  .learning-route span { color:#bfb5a4; font-size:.86rem; line-height:1.5; }
+  .specific-jump { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.55rem; margin-top:.35rem; }
+  .specific-jump span { color:#bfb5a4; font-size:.72rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
+  .specific-jump a { border:1px solid rgb(212 175 55/.16); border-radius:999px; padding:.52rem .78rem; color:#f5d681; background:rgb(255 255 255/.025); font-size:.76rem; font-weight:900; }
+  .garuda-page :global(.source-panel) { width:min(100% - 2rem,1180px); margin:2rem auto; }
+  .continue { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:2rem auto; border:1px solid rgb(212 175 55/.18); border-radius:1rem; padding:1rem; color:#f5d681; background:rgb(255 255 255/.025); }
+  .continue span > * { display:block; }.continue small{color:#a89e8f;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.continue strong{font-size:1.45rem}.continue em{color:#bfb5a4;font-size:.8rem;font-style:normal}.continue b{font-size:.68rem;text-transform:uppercase}
+  @media(max-width:1050px){.gp-hero,.story-section,.cosmos-section,.section-kicker{grid-template-columns:1fr}.topic-mosaic,.knowledge-stats,.learning-route{grid-template-columns:repeat(2,1fr)}.hero-visual,.story-section figure{min-height:24rem}}
+  @media(max-width:640px){.gp-hero{padding:1rem;min-height:auto}.hero-copy{padding:1rem}h1{font-size:clamp(2.6rem,14vw,4rem)}.topic-mosaic,.knowledge-stats,.learning-route{grid-template-columns:1fr}.hero-actions,.continue{align-items:stretch;flex-direction:column}.hero-actions a{justify-content:center}.visual-cosmos,.realm-panel{min-height:24rem}}
 </style>

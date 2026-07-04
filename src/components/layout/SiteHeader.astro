@@ -13,8 +13,7 @@ const currentPath = Astro.url.pathname;
     <nav aria-label="Primary navigation">
       {PRIMARY_NAVIGATION.map((link) => <a href={link.href} aria-current={isRouteActive(currentPath, link.href) ? "page" : undefined}>{link.label}</a>)}
     </nav>
-    <a class="search-pill" href="/library" aria-label="Search the library"><span>Search the Library...</span><kbd>/</kbd></a>
-    <a class="round-mark" href="/atlas" aria-label="Open atlas">SP</a>
+    <a class="search-pill" href="/library" aria-label="Open the library"><span>Open Library</span><kbd aria-hidden="true">-&gt;</kbd></a>
   </div>
 </header>
 <style>
@@ -22,71 +21,78 @@ const currentPath = Astro.url.pathname;
     position: sticky;
     z-index: 20;
     top: 0;
-    border-bottom: 1px solid rgb(214 172 91 / .18);
-    background: rgb(2 10 16 / .86);
+    border-bottom: 1px solid rgb(214 172 91 / .14);
+    background: rgb(2 10 16 / .76);
     color: #f7ebd3;
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(22px) saturate(1.08);
   }
 
   .header-inner {
     display: grid;
-    min-height: 76px;
-    grid-template-columns: minmax(18rem, 1fr) auto minmax(18rem, .8fr) auto;
-    gap: 1.2rem;
+    min-height: 72px;
+    grid-template-columns: minmax(16rem, 1fr) auto minmax(10rem, 1fr);
+    gap: clamp(.9rem, 2vw, 1.6rem);
     align-items: center;
   }
 
   .brand {
     display: inline-flex;
-    align-items: center;
-    gap: .85rem;
+    width: fit-content;
     min-width: 0;
+    align-items: center;
+    gap: .72rem;
   }
 
-  .brand-mark,
-  .round-mark {
+  .brand-mark {
     display: grid;
+    width: 2.55rem;
+    height: 2.55rem;
     flex: 0 0 auto;
     place-items: center;
-    border: 1px solid rgb(214 172 91 / .45);
+    border: 1px solid rgb(214 172 91 / .42);
     border-radius: 50%;
-    color: #d6ac5b;
-    box-shadow: 0 0 30px rgb(214 172 91 / .1);
+    color: #e1b966;
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: .04em;
+    box-shadow: 0 0 24px rgb(214 172 91 / .08);
   }
-
-  .brand-mark { width: 3.1rem; height: 3.1rem; font-size: .78rem; font-weight: 900; letter-spacing: .04em; }
-  .round-mark { width: 3rem; height: 3rem; font-size: .72rem; font-weight: 900; letter-spacing: .04em; }
 
   .brand strong,
   .brand small {
     display: block;
-    letter-spacing: .14em;
+    letter-spacing: .12em;
   }
 
   .brand strong {
     color: #f7ebd3;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.22rem;
+    font-size: clamp(1rem, 1.3vw, 1.12rem);
+    line-height: 1;
     text-transform: uppercase;
   }
 
   .brand small {
-    margin-top: .15rem;
+    margin-top: .22rem;
     color: #9f9688;
-    font-size: .62rem;
+    font-size: .57rem;
+    letter-spacing: .18em;
+    white-space: nowrap;
   }
 
   nav {
     display: flex;
-    gap: 1.6rem;
+    justify-content: center;
+    gap: clamp(1rem, 2vw, 1.55rem);
     align-items: center;
   }
 
   nav a {
     position: relative;
     color: #aaa49a;
-    font-size: .78rem;
-    letter-spacing: .04em;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .08em;
     text-transform: uppercase;
     transition: color 180ms ease;
   }
@@ -99,45 +105,58 @@ const currentPath = Astro.url.pathname;
   nav a[aria-current="page"]::after {
     position: absolute;
     right: 0;
-    bottom: -.8rem;
+    bottom: -1.45rem;
     left: 0;
     height: 2px;
-    background: #f4c36d;
-    box-shadow: 0 0 16px rgb(244 195 109 / .8);
+    background: #e7b861;
+    box-shadow: 0 0 14px rgb(244 195 109 / .55);
     content: "";
   }
 
   .search-pill {
-    display: flex;
-    min-height: 3rem;
+    display: inline-flex;
+    width: fit-content;
+    min-height: 2.55rem;
+    justify-self: end;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    border: 1px solid rgb(214 172 91 / .22);
+    gap: .72rem;
+    border: 1px solid rgb(214 172 91 / .18);
     border-radius: 999px;
-    padding: .55rem .75rem .55rem 1rem;
-    color: #8f8b84;
-    background: rgb(2 10 16 / .62);
+    padding: .5rem .58rem .5rem .88rem;
+    color: #c9b99d;
+    background: rgb(255 255 255 / .025);
+    font-size: .82rem;
+    font-weight: 750;
+    transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+  }
+
+  .search-pill:hover {
+    border-color: rgb(244 195 109 / .42);
+    color: #f7ebd3;
+    background: rgb(255 255 255 / .045);
   }
 
   .search-pill kbd {
-    border: 1px solid rgb(214 172 91 / .18);
-    border-radius: .45rem;
-    padding: .08rem .42rem;
-    color: #c9b99d;
+    display: grid;
+    width: 1.8rem;
+    height: 1.8rem;
+    place-items: center;
+    border: 1px solid rgb(214 172 91 / .2);
+    border-radius: 50%;
+    color: #e7b861;
     font: inherit;
-    font-size: .72rem;
+    font-size: .68rem;
   }
 
   @media (max-width: 1180px) {
     .header-inner { grid-template-columns: 1fr auto; }
-    .search-pill,
-    .round-mark { display: none; }
+    .search-pill { display: none; }
   }
 
   @media (max-width: 800px) {
-    .site-header { background: #020a10; backdrop-filter: none; }
-    .header-inner { min-height: 68px; }
+    .site-header { background: rgb(2 10 16 / .94); backdrop-filter: none; }
+    .header-inner { min-height: 64px; }
+    .brand-mark { width: 2.35rem; height: 2.35rem; }
     .brand small,
     nav { display: none; }
   }

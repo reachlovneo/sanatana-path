@@ -1,4 +1,4 @@
-﻿export const ATLAS_JOURNEY = Object.freeze([
+export const ATLAS_JOURNEY = Object.freeze([
   { slug: "cosmic-time", title: "Cosmic Time", description: "The complete map of cycles within cycles" },
   { slug: "kalpa", title: "Kalpa", description: "Understand one day of Brahma" },
   { slug: "manvantara", title: "Manvantara", description: "A major period within a Kalpa" },

@@ -1,29 +1,36 @@
-ï»¿---
+---
 import SourcePanel from "./SourcePanel.astro";
 
 const { topic, next, compact = false } = Astro.props;
+const nextDescription = next?.slug === "cosmic-address"
+  ? "Step back and see Yuga, Maha Yuga, Manvantara, Kalpa, and Brahma's lifespan as one complete map."
+  : "Discover the great chapters that unfold within a Kalpa.";
 const facts = [
   ["Duration", "4.32 billion human years"],
-  ["Contains", "14 Manvantaras"],
-  ["Equivalent to", "1,000 Maha Yugas"],
-  ["Current cycle", "Shveta Varaha Kalpa"],
+  ["Defined as", "Daytime of Brahma"],
+  ["Contains", "1,000 Maha Yugas"],
+  ["Current Kalpa", "Shveta Varaha Kalpa"],
 ];
-const scales = [
-  ["Human life", "About 100 years"],
-  ["Kali Yuga", "432,000 years"],
-  ["Maha Yuga", "4.32 million years"],
-  ["Manvantara", "306.72 million years"],
-  ["Kalpa", "4.32 billion years"],
+const buildSteps = [
+  ["Four Yugas", "Satya, Treta, Dvapara, Kali"],
+  ["One Maha Yuga", "A complete four-age cycle"],
+  ["71 Maha Yugas", "One Manvantara"],
+  ["14 Manvantaras", "The major chapters of a Kalpa"],
+  ["One Kalpa", "One daytime of Brahma"],
+];
+const cinemaPhases = [
+  ["Sunrise", "Creation begins", "The cosmic day opens and manifestation starts."],
+  ["Daylight", "Universe unfolds", "Manvantaras and Maha Yugas pass inside the Day of Brahma."],
+  ["Sunset", "The day completes", "Creation moves toward rest as the cosmic evening arrives."],
+  ["Night", "Brahma rests", "The universe becomes unmanifest before the next dawn."],
 ];
 ---
 
 <article class="kalpa-reading">
   <header>
-    <p class="eyebrow">Selected layer - Kalpa</p>
-    <h1>One Day of Brahma</h1>
-    <p class="lead">A Kalpa is one complete daytime cycle of Brahma in the traditional Puranic model of cosmic time. It is one of the largest recurring units used to describe the unfolding of the universe.</p>
-    <p>To a human being, a century feels long. To a civilization, a thousand years may feel significant. A Kalpa stretches across <strong>4.32 billion years</strong>.</p>
-    <p>Within that span, worlds emerge, life evolves, countless generations pass, and cosmic history unfolds through vast repeating cycles. A Kalpa is not merely a number. It is a complete chapter in the life of the universe.</p>
+    <p class="eyebrow">Cosmic Clock Project · Kalpa</p>
+    <h1>One Day That Lasts 4.32 Billion Years</h1>
+    <p class="lead">What if a single day was so vast that mountains could rise, continents could shift, and entire civilizations could appear and disappear before sunset?</p>
   </header>
 
   <dl class="facts">
@@ -33,15 +40,21 @@ const scales = [
   <div class="reading-body">
     <main>
       <section>
-        <h2>What does a Kalpa explain?</h2>
-        <p>A Kalpa provides the larger frame for understanding recurring periods of cosmic activity and rest in the traditional Puranic model.</p>
-        <p>It places smaller cycles such as Manvantaras, Maha Yugas, and the Four Yugas within one vast daytime cycle of Brahma.</p>
+        <h2>A day unlike any other</h2>
+        <p>When someone says <strong>one day</strong>, we immediately think of 24 hours.</p>
+        <p>It is the rhythm of our lives. We wake up. We work. We rest. Then another day begins.</p>
+        <p>But Hindu cosmology invites us to imagine a completely different scale of time.</p>
+        <p>According to traditional scriptures, there exists a day so immense that it spans <strong>4.32 billion human years</strong>.</p>
+        <p>This extraordinary span of time is called a <strong>Kalpa</strong>.</p>
       </section>
 
       <section>
-        <h2>How a Kalpa is organized</h2>
-        <p>A Kalpa is not a single uninterrupted period. It contains fourteen Manvantaras and is equivalent to one thousand Maha Yugas.</p>
-        <p>Each smaller layer gives a more detailed view of where events and ages belong within the larger cosmic cycle.</p>
+        <h2>What is a Kalpa?</h2>
+        <p>A Kalpa is one of the largest units of time described in Hindu cosmology.</p>
+        <aside class="definition-card"><span>Traditional definition</span><strong>One daytime of Brahma</strong></aside>
+        <p>According to the Puranic tradition, during this cosmic day, the universe unfolds through creation, preservation, and countless changes.</p>
+        <p>When the day ends, the universe enters a period of rest known as the Night of Brahma, after which a new cosmic day begins.</p>
+        <p>A Kalpa is therefore not the entire lifetime of the universe. It is one day in an ongoing cycle of cosmic time.</p>
       </section>
     </main>
   </div>
@@ -50,80 +63,106 @@ const scales = [
     <summary><span>Continue reading</span><b>Read full Kalpa guide</b></summary>
     <div class="reading-body">
       <main>
-      <section>
-        <h2>The current Kalpa</h2>
-        <p>Traditional sources identify the present cosmic cycle as the <strong>Shveta Varaha Kalpa</strong>. The name is associated with the Varaha incarnation of Vishnu.</p>
-        <p>In the traditional narrative, the Earth had become submerged within the cosmic waters. Vishnu, in the form of Varaha, restores and raises the Earth so creation can continue. The account symbolizes renewal, restoration, and the re-establishment of cosmic order.</p>
-      </section>
+        <section>
+          <h2>Building a Kalpa</h2>
+          <p>By now, you have explored several layers of cosmic time. Each one builds upon the previous.</p>
+          <p>Like small streams joining to form a great river, each cycle becomes part of a larger one.</p>
+          <div class="build-ladder" aria-label="Kalpa structure">
+            {buildSteps.map(([title, detail], index) => <article><span>{String(index + 1).padStart(2, "0")}</span><strong>{title}</strong><small>{detail}</small></article>)}
+          </div>
+          <p>This is the architecture of time described in Hindu cosmology. Every layer has its place. Every cycle contributes to something larger.</p>
+        </section>
 
-      <section>
-        <h2>The beginning of a Kalpa</h2>
-        <p>According to traditional cosmology, a period of rest follows the previous cosmic cycle. The universe remains in an unmanifest state, awaiting the next cycle of creation.</p>
-        <p>Then a new Kalpa begins. Brahma awakens, creation resumes, the worlds become active, cosmic order is established, and beings emerge into existence. This marks the dawn of another vast cosmic cycle.</p>
-      </section>
+        <section>
+          <h2>How long is a Kalpa?</h2>
+          <p>Traditional Hindu texts describe the calculation in a remarkably simple way.</p>
+          <div class="calculation-card">
+            <div><span>1 Kalpa contains</span><strong>1,000 Maha Yugas</strong></div>
+            <div><span>1 Maha Yuga lasts</span><strong>4.32 million years</strong></div>
+            <div class="result"><span>Therefore</span><strong>1 Kalpa = 4.32 billion human years</strong></div>
+          </div>
+          <p>This is the same astonishing number introduced at the beginning of the journey. Now, at last, you know where it comes from.</p>
+        </section>
 
-      <section>
-        <h2>The fourteen Manvantaras</h2>
-        <p>Each Manvantara represents a major chapter within the larger cosmic cycle. Together, the fourteen Manvantaras form a framework through which life, civilizations, sages, and cosmic events unfold across a Kalpa.</p>
-        <aside class="note">
-          <p class="eyebrow">Our current position</p>
-          <p>We are described as living within the <strong>Shveta Varaha Kalpa</strong>, the <strong>7th Manvantara</strong>, the <strong>28th Maha Yuga</strong>, and specifically within <strong>Kali Yuga</strong>.</p>
-        </aside>
-      </section>
+        <section>
+          <h2>A universe that breathes</h2>
+          <p>One of the most beautiful ideas in Hindu cosmology is that the universe follows a rhythm.</p>
+          <p>Not unlike breathing.</p>
+          <p>During the Day of Brahma, creation unfolds. Worlds exist. Life evolves. Civilizations rise and fall.</p>
+          <p>When evening arrives, the universe enters the Night of Brahma. Creation becomes unmanifest. The next cosmic day begins only after this immense night has passed.</p>
+          <p>This recurring cycle of manifestation and rest gives Hindu cosmology its deeply cyclical character.</p>
+        </section>
 
-      <section>
-        <h2>A day and night of Brahma</h2>
-        <p>A Kalpa represents only the daytime of Brahma. An equally long night follows it. During the day, creation remains active. During the night, creation enters a dormant state. When the next day begins, creation resumes.</p>
-        <div class="comparison">
-          <div><span>Day of Brahma</span><strong>4.32 billion years</strong><small>Creation remains active</small></div>
-          <div><span>Night of Brahma</span><strong>4.32 billion years</strong><small>Creation enters rest</small></div>
-        </div>
-      </section>
+        <section class="kalpa-cinema" data-kalpa-cinema>
+          <h2>A visual journey through a Kalpa</h2>
+          <p>As you move through this section, the cosmic day travels from sunrise to daylight, then sunset, and finally into the star-filled Night of Brahma.</p>
+          <div class="cinema-stage" aria-label="Scroll animated Kalpa timeline">
+            <div class="cinema-sky" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="cinema-sun" aria-hidden="true"></div>
+            <div class="cinema-track">
+              {cinemaPhases.map(([phase, title, detail], index) => <article><small>{phase}</small><strong>{title}</strong><p>{detail}</p><span>{String(index + 1).padStart(2, "0")}</span></article>)}
+            </div>
+            <div class="cinema-line" aria-hidden="true"><i></i></div>
+          </div>
+          <p>Without memorizing every number, the idea becomes visible: a Kalpa is the universe's day, followed by its night, in an endless rhythm described by Hindu cosmology.</p>
+        </section>
 
-      <section>
-        <h2>Major events of a Kalpa</h2>
-        <ol class="events">
-          <li><strong>Dawn of creation</strong><span>A new Kalpa begins and the universe becomes active once again.</span></li>
-          <li><strong>Restoration of cosmic order</strong><span>The current Kalpa is associated with Varaha and the restoration of the Earth.</span></li>
-          <li><strong>The fourteen Manvantaras</strong><span>The Kalpa progresses through fourteen major chapters.</span></li>
-          <li><strong>Cosmic rest</strong><span>Creation gradually prepares for withdrawal and rest.</span></li>
-          <li><strong>Transition to the next cycle</strong><span>The end of one Kalpa prepares the beginning of another.</span></li>
-        </ol>
-      </section>
+        <section>
+          <h2>Which Kalpa are we living in?</h2>
+          <p>According to the traditional Puranic chronology, we are currently living in the <strong>Shveta Varaha Kalpa</strong>.</p>
+          <p>This is the name traditionally given to the present Day of Brahma.</p>
+          <aside class="note"><p class="eyebrow">Our current position</p><p><strong>Shveta Varaha Kalpa</strong> · <strong>7th Manvantara</strong> · <strong>28th Maha Yuga</strong> · <strong>Kali Yuga</strong></p></aside>
+          <p>The cosmic timeline is remarkably detailed. It does not simply describe vast stretches of time. It also tells us where we stand within them.</p>
+        </section>
 
-      <section>
-        <h2>The end of a Kalpa</h2>
-        <p>At the conclusion of a Kalpa, a partial cosmic dissolution occurs. This event is traditionally known as <strong>Naimittika Pralaya</strong>.</p>
-        <p>The active universe gradually withdraws, ordinary activity ceases in lower realms, and creation enters a state of rest. This is not the end of existence itself. It is a pause between cycles and preparation for renewal.</p>
-      </section>
+        <section>
+          <h2>Why is 4.32 billion interesting?</h2>
+          <p>For many readers today, this number immediately stands out because modern science estimates the Earth to be about <strong>4.54 billion years old</strong>.</p>
+          <p>It is tempting to compare these two figures. However, they come from very different frameworks.</p>
+          <div class="comparison-panel">
+            <article><span>Traditional cosmology</span><strong>4.32 billion years</strong><p>The duration of a Kalpa in the Puranic model.</p></article>
+            <article><span>Modern science</span><strong>About 4.54 billion years</strong><p>The estimated age of Earth based on evidence such as radiometric dating and geological research.</p></article>
+          </div>
+          <p>The similarity in scale is often discussed, but the two numbers arise from different methods and should not be treated as direct equivalents.</p>
+        </section>
 
-      <section>
-        <h2>The scale of a Kalpa</h2>
-        <div class="scale-list">{scales.map(([label, value]) => <div><span>{label}</span><strong>{value}</strong></div>)}</div>
-        <p>At this scale, civilizations become brief moments. Empires rise and disappear, languages emerge and vanish, species evolve and become extinct, and even geological ages occupy only a fraction of a Kalpa.</p>
-      </section>
+        <section>
+          <h2>Did you know?</h2>
+          <p>A full day and night of Brahma lasts:</p>
+          <div class="day-night-card">
+            <div><span>Day</span><strong>4.32 billion years</strong></div>
+            <b>+</b>
+            <div><span>Night</span><strong>4.32 billion years</strong></div>
+            <b>=</b>
+            <div><span>Full cycle</span><strong>8.64 billion years</strong></div>
+          </div>
+          <p>And yet, this is still only one day in Brahma's life.</p>
+        </section>
 
-      <section>
-        <h2>What a Kalpa teaches</h2>
-        <p>The idea of a Kalpa is not only about measuring time. It also offers a way of understanding existence.</p>
-        <ul>
-          <li>Time operates on many scales.</li>
-          <li>Creation is cyclical rather than linear.</li>
-          <li>Endings can prepare new beginnings.</li>
-          <li>Individual lives exist within much larger patterns.</li>
-          <li>Change is a fundamental feature of the cosmos.</li>
-        </ul>
-        <p>Through the lens of a Kalpa, human history becomes part of a much larger story and ordinary life can be viewed from a cosmic perspective.</p>
-      </section>
+        <section>
+          <h2>Pause and reflect</h2>
+          <p>Imagine living for 100 years.</p>
+          <p>Now compare that to 4.32 billion years.</p>
+          <p>Your entire lifetime would be less than a blink within a Kalpa.</p>
+          <p>Hindu cosmology invites us to step outside the scale of ordinary human history and consider time from a cosmic perspective.</p>
+        </section>
 
-    </main>
+        <section>
+          <h2>What comes next?</h2>
+          <p>A Kalpa is only one day. But every day is followed by a night.</p>
+          <p>What happens to the universe during that immense cosmic night?</p>
+          <p>Does everything disappear? Or does creation simply rest until the next dawn?</p>
+          <p>The next chapter explores one of the most fascinating ideas in Hindu cosmology: the <strong>Day and Night of Brahma</strong>.</p>
+          <a class="recap-link" href="/atlas/cosmic-address"><span>Need the full map?</span><strong>Read: Where Are We in the Cosmic Timeline?</strong><small>See Yuga, Maha Yuga, Manvantara, Kalpa, Brahma's lifespan, and our current cosmic address together.</small></a>
+        </section>
+      </main>
+    </div>
 
     <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
-
   </details>
 
   <a class="continue" href={`/atlas/${next?.slug ?? "manvantara"}`}>
-    <span><small>Ready to move deeper?</small><strong>Next: {next?.title ?? "Manvantara"}</strong><em>Discover the great chapters that unfold within a Kalpa.</em></span>
+    <span><small>Ready to move deeper?</small><strong>Next: {next?.title ?? "Manvantara"}</strong><em>{nextDescription}</em></span>
     <b>Explore next layer -></b>
   </a>
 </article>
@@ -134,7 +173,7 @@ const scales = [
   header { padding:clamp(3rem,7vw,7rem) 0 2.5rem; }
   header p:not(.eyebrow) { max-width:62ch; color:#b3aca1; line-height:1.85; }
   header strong,.reading-body strong { color:#e9b65f; font-weight:650; }
-  h1,h2 { font-family:var(--serif); font-weight:400; letter-spacing:-.025em; }
+  h1,h2 { font-family:var(--serif); font-weight:400; letter-spacing:0; }
   h1 { max-width:15ch; margin:.35rem 0 1rem; font-size:clamp(3.2rem,6vw,6rem); line-height:1; }
   .lead { color:#d0c5b3 !important; font-size:clamp(1.08rem,1.5vw,1.3rem); }
   .facts { display:grid; grid-template-columns:repeat(4,1fr); border-block:1px solid rgb(233 182 95/.18); }
@@ -148,22 +187,54 @@ const scales = [
   h2 { margin:0 0 .8rem; font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.15; }
   section p,section li { color:#aaa49a; line-height:1.85; }
   section p { margin:.65rem 0 0; }
-  .note { margin:1.5rem 0 0; border-left:2px solid #e9b65f; padding:.2rem 0 .2rem 1rem; }
+  .definition-card,.note,.calculation-card,.comparison-panel article,.day-night-card,.continue,.full-guide>summary { backdrop-filter:blur(14px); box-shadow:inset 0 1px rgb(255 255 255/.025); }
+  .definition-card { display:grid; gap:.35rem; margin:1.25rem 0; border:1px solid rgb(233 182 95/.2); border-radius:.9rem; padding:1rem; background:rgb(233 182 95/.045); }
+  .definition-card span,.calculation-card span,.comparison-panel span,.day-night-card span { color:#a99f91; font-size:.62rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+  .definition-card strong { color:#ffe3a1; font-family:var(--serif); font-size:1.45rem; font-weight:500; }
+  .build-ladder { display:grid; gap:.55rem; margin:1.35rem 0; }
+  .build-ladder article { display:grid; grid-template-columns:3.25rem 1fr; gap:.2rem .85rem; border:1px solid rgb(233 182 95/.15); border-radius:.85rem; padding:.8rem .95rem; background:linear-gradient(145deg,rgb(233 182 95/.055),rgb(255 255 255/.018)); }
+  .build-ladder span { grid-row:1/3; color:#e9b65f; font-size:.68rem; font-weight:900; letter-spacing:.12em; }
+  .build-ladder strong { color:#f0e3cc; font-family:var(--serif); font-size:1.15rem; }
+  .build-ladder small { color:#9f978d; }
+  .calculation-card { display:grid; gap:.7rem; margin:1.35rem 0; border:1px solid rgb(233 182 95/.18); border-radius:1rem; padding:1rem; background:linear-gradient(145deg,rgb(233 182 95/.06),rgb(255 255 255/.018)); }
+  .calculation-card div { display:flex; justify-content:space-between; gap:1rem; border-bottom:1px solid rgb(233 182 95/.1); padding:.65rem 0; }
+  .calculation-card div:last-child { border-bottom:0; }
+  .calculation-card strong { text-align:right; }
+  .calculation-card .result strong { color:#ffe3a1; font-size:1.1rem; }
+  .kalpa-cinema { min-height: 185vh; }
+  .cinema-stage { position: sticky; top: 1rem; min-height: min(72vh, 38rem); overflow: hidden; border:1px solid rgb(233 182 95/.18); border-radius:1.2rem; margin:1.35rem 0; background:#07131b; box-shadow:inset 0 1px rgb(255 255 255/.04),0 20px 54px rgb(0 0 0/.22); }
+  .cinema-sky { position:absolute; inset:0; background:linear-gradient(180deg,#f2b36e 0%,#28495f 48%,#07131b 100%); transition:background 120ms linear; }
+  .cinema-sky span { position:absolute; inset:0; opacity:0; transition:opacity 120ms linear; }
+  .cinema-sky span:nth-child(1) { background:linear-gradient(180deg,#86b8d5 0%,#1b4961 48%,#09202d 100%); opacity:clamp(0, calc((var(--kalpa-progress, 0) - .18) * 5), 1); }
+  .cinema-sky span:nth-child(2) { background:linear-gradient(180deg,#9b5b46 0%,#251a2c 52%,#080b16 100%); opacity:clamp(0, calc((var(--kalpa-progress, 0) - .52) * 5), 1); }
+  .cinema-sky span:nth-child(3) { background:radial-gradient(circle at 28% 22%,rgb(255 255 255/.7) 1px,transparent 2px),radial-gradient(circle at 72% 34%,rgb(255 255 255/.55) 1px,transparent 2px),radial-gradient(circle at 54% 72%,rgb(255 255 255/.45) 1px,transparent 2px),linear-gradient(180deg,#060816,#01040a); background-size:90px 90px,130px 130px,160px 160px,auto; opacity:clamp(0, calc((var(--kalpa-progress, 0) - .72) * 5), 1); }
+  .cinema-sun { position:absolute; left:var(--kalpa-sun-left, 8%); top:var(--kalpa-sun-top, 70%); width:4.8rem; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,#fff5bc,#e9b65f 48%,rgb(233 182 95/.12) 70%,transparent 72%); box-shadow:0 0 60px rgb(233 182 95/.55); transform:translate(-50%,-50%); }
+  .cinema-track { position:absolute; left:7%; right:7%; bottom:5.2rem; display:grid; grid-template-columns:repeat(4,minmax(14rem,1fr)); gap:1rem; transform:translateX(calc(var(--kalpa-progress, 0) * -18%)); transition:transform 120ms linear; }
+  .cinema-track article { position:relative; min-height:10rem; border:1px solid rgb(255 255 255/.14); border-radius:1rem; padding:1rem; background:rgb(2 10 16/.58); backdrop-filter:blur(16px); box-shadow:inset 0 1px rgb(255 255 255/.04); }
+  .cinema-track small { color:#e9b65f; font-size:.62rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+  .cinema-track strong { display:block; margin:.45rem 0; color:#fff0cf; font-family:var(--serif); font-size:1.35rem; font-weight:500; }
+  .cinema-track p { color:#cfc4b4; font-size:.82rem; line-height:1.55; }
+  .cinema-track article > span { position:absolute; right:1rem; bottom:.8rem; color:rgb(233 182 95/.34); font-family:var(--serif); font-size:2rem; }
+  .cinema-line { position:absolute; left:7%; right:7%; bottom:2.8rem; height:2px; background:rgb(255 255 255/.16); }
+  .cinema-line i { display:block; width:calc(var(--kalpa-progress, 0) * 100%); height:100%; border-radius:999px; background:linear-gradient(90deg,#e9b65f,#65d7dc); box-shadow:0 0 18px rgb(233 182 95/.34); }
+  .day-ribbon { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:.45rem; margin:1.35rem 0; }
+  .day-ribbon article { min-height:6.2rem; border:1px solid rgb(233 182 95/.15); border-radius:.85rem; padding:.7rem; background:linear-gradient(180deg,rgb(233 182 95/.07),rgb(255 255 255/.018)); }
+  .day-ribbon .night { border-color:rgb(101 215 220/.24); background:linear-gradient(180deg,rgb(101 215 220/.08),rgb(255 255 255/.018)); }
+  .day-ribbon span { color:#e9b65f; font-size:.62rem; font-weight:900; }
+  .day-ribbon strong { display:block; margin-top:2rem; color:#f0e3cc; font-size:.78rem; line-height:1.25; }
+  .note { margin:1.5rem 0 0; border:1px solid rgb(233 182 95/.17); border-left:2px solid #e9b65f; border-radius:.7rem; padding:.8rem 1rem; background:rgb(233 182 95/.035); }
   .note p { margin:.25rem 0; color:#c2b9aa; }
-  .comparison { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin-top:1.5rem; }
-  .comparison div { border:1px solid rgb(233 182 95/.16); border-radius:.7rem; padding:1rem; }
-  .comparison span,.comparison strong,.comparison small { display:block; }
-  .comparison span,.comparison small { color:#99938a; font-size:.68rem; }
-  .comparison strong { margin:.25rem 0; font-family:var(--serif); font-size:1.15rem; font-weight:500; }
-  .events { margin:1.2rem 0 0; padding:0; list-style:none; counter-reset:event; }
-  .events li { display:grid; grid-template-columns:2rem 1fr; gap:0 .7rem; padding:.8rem 0; border-top:1px solid rgb(233 182 95/.1); counter-increment:event; }
-  .events li::before { grid-row:1/3; color:#e9b65f; font-size:.7rem; content:"0" counter(event); }
-  .events strong,.events span { display:block; }.events strong{color:#ddd2c0}.events span{font-size:.85rem}
-  .scale-list { margin-top:1.25rem; border-block:1px solid rgb(233 182 95/.14); }
-  .scale-list div { display:flex; justify-content:space-between; gap:1rem; padding:.65rem 0; border-bottom:1px solid rgb(233 182 95/.08); }
-  .scale-list span { color:#aaa49a; }.scale-list strong{font-size:.9rem}
-  ul { padding-left:1.15rem; }
-  .references { border-bottom:0; }
+  .comparison-panel { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin:1.35rem 0; }
+  .comparison-panel article { border:1px solid rgb(233 182 95/.15); border-radius:.85rem; padding:1rem; background:rgb(255 255 255/.02); }
+  .comparison-panel strong { display:block; margin:.45rem 0; color:#ffe3a1; font-family:var(--serif); font-size:1.25rem; }
+  .day-night-card { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:.65rem; align-items:center; margin:1.35rem 0; border:1px solid rgb(233 182 95/.18); border-radius:1rem; padding:1rem; background:rgb(255 255 255/.02); }
+  .day-night-card div { display:grid; gap:.35rem; }
+  .day-night-card b { color:#e9b65f; font-size:1.2rem; }
+  .day-night-card strong { color:#ffe3a1; font-family:var(--serif); font-size:1.05rem; }
+  .recap-link { display:grid; gap:.28rem; margin-top:1.35rem; border:1px solid rgb(101 215 220/.24); border-radius:.95rem; padding:1rem 1.1rem; background:linear-gradient(135deg,rgb(101 215 220/.08),rgb(255 255 255/.02)); color:#65d7dc; box-shadow:inset 0 1px rgb(255 255 255/.035); }
+  .recap-link span { color:#a99f91; font-size:.62rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+  .recap-link strong { color:#dfffff; font-family:var(--serif); font-size:1.3rem; font-weight:500; }
+  .recap-link small { color:#aaa49a; line-height:1.55; }
   .full-guide { border:0; }
   .full-guide:not([data-compact]) > summary { display:none; }
   .full-guide > summary { display:flex; width:fit-content; align-items:center; gap:.55rem; margin-top:.9rem; border:1px solid rgb(233 182 95/.24); border-radius:999px; padding:.55rem .8rem; background:rgb(233 182 95/.035); color:#e9b65f; cursor:pointer; list-style:none; }
@@ -181,11 +252,45 @@ const scales = [
   .continue b { font-size:.68rem; text-transform:uppercase; }
   .kalpa-reading{border:1px solid rgb(233 182 95/.2);border-radius:1.4rem;padding-bottom:1rem;background:linear-gradient(145deg,rgb(10 27 36/.72),rgb(3 13 20/.48));box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22);backdrop-filter:blur(20px) saturate(115%)}
   .facts{overflow:hidden;border:1px solid rgb(233 182 95/.18);border-radius:1rem;background:rgb(255 255 255/.025);box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
-  .note{border:1px solid rgb(233 182 95/.17);border-left:2px solid #e9b65f;border-radius:.7rem;padding:.8rem 1rem;background:rgb(233 182 95/.035);backdrop-filter:blur(12px)}
-  .comparison div,.continue,.full-guide>summary{box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
   @keyframes guide-reveal { from { opacity:0; transform:translateY(-8px) } to { opacity:1; transform:none } }
-  @media(max-width:800px){
-    .facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(233 182 95/.14)}
-    .comparison{grid-template-columns:1fr}.continue{align-items:flex-end}
-  }
+  @media(max-width:900px){ .cinema-stage{min-height:34rem}.cinema-track{grid-template-columns:repeat(4,minmax(12rem,1fr));left:1rem;right:auto;width:max-content;transform:translateX(calc(var(--kalpa-progress, 0) * -42%));}.day-ribbon{grid-template-columns:repeat(4,minmax(0,1fr));} .comparison-panel{grid-template-columns:1fr;} .day-night-card{grid-template-columns:1fr;} .day-night-card b{display:none;} }
+  @media(max-width:800px){ .facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(233 182 95/.14)} .continue{align-items:flex-end} }
+  @media(max-width:620px){ .day-ribbon{grid-template-columns:1fr 1fr;} .continue{align-items:flex-start;flex-direction:column;} }
 </style>
+
+<script is:inline>
+  // @ts-nocheck
+  const kalpaCinemas = document.querySelectorAll("[data-kalpa-cinema]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  let ticking = false;
+
+  function updateKalpaCinema() {
+    kalpaCinemas.forEach((section) => {
+      if (reduceMotion) {
+        section.style.setProperty("--kalpa-progress", "0.45");
+        section.style.setProperty("--kalpa-sun-left", "43%");
+        section.style.setProperty("--kalpa-sun-top", "24%");
+        return;
+      }
+      const rect = section.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - window.innerHeight);
+      const progress = clamp((window.innerHeight * 0.12 - rect.top) / travel, 0, 1);
+      section.style.setProperty("--kalpa-progress", progress.toFixed(4));
+      section.style.setProperty("--kalpa-sun-left", `${8 + progress * 78}%`);
+      section.style.setProperty("--kalpa-sun-top", `${70 - Math.sin(progress * Math.PI) * 46}%`);
+    });
+    ticking = false;
+  }
+
+  function requestKalpaCinemaUpdate() {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(updateKalpaCinema);
+    }
+  }
+
+  updateKalpaCinema();
+  window.addEventListener("scroll", requestKalpaCinemaUpdate, { passive: true });
+  window.addEventListener("resize", requestKalpaCinemaUpdate);
+</script>

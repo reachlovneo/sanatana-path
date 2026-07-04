@@ -1,0 +1,227 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const journeyItems = [
+  {
+    title: "The Fourteen Lokas",
+    href: "/14-lokas",
+    eyebrow: "Layered worlds",
+    description: "The layered worlds of existence: seven higher Lokas, Bhuloka, and seven lower Lokas.",
+    status: "available",
+  },
+  {
+    title: "Mount Meru",
+    href: "/mount-meru",
+    eyebrow: "Cosmic axis",
+    description: "The cosmic axis at the center of the universe, where Meru is introduced as the pillar of cosmic order.",
+    status: "available",
+  },
+  {
+    title: "The Sapta Dvipa",
+    href: "/sapta-dvipa",
+    eyebrow: "Seven continents",
+    description: "The seven great continents of Puranic cosmic geography.",
+    status: "available",
+  },
+  {
+    title: "The Cosmic Oceans",
+    href: "/cosmic-oceans",
+    eyebrow: "Cosmic boundaries",
+    description: "The seven oceans that separate the great Dvipas: salt, sugarcane juice, sura, ghee, curd, milk, and pure sweet water.",
+    status: "available",
+  },
+  {
+    title: "The Higher Worlds",
+    href: "/14-lokas",
+    eyebrow: "Upper realms",
+    description: "Where sages, celestial beings, devas, and higher states of existence are described.",
+    status: "available",
+  },
+  {
+    title: "The Lower Worlds",
+    href: "/14-lokas",
+    eyebrow: "Hidden realms",
+    description: "Mysterious realms beneath the Earth, associated with powerful beings, hidden cities, and treasures.",
+    status: "available",
+  },
+];
+
+const related = [
+  { title: "Mount Meru", href: "/mount-meru", image: "/images/atlas/cosmic-architecture.jpg", eyebrow: "Cosmic axis" },
+  { title: "The Fourteen Lokas", href: "/14-lokas", image: "/images/home/home-lokas.png", eyebrow: "Layered worlds" },
+  { title: "The Hindu Cosmic Universe", href: "/cosmic-universe", image: "/images/home/home-lokas.png", eyebrow: "Cosmic structure" },
+];
+
+const concept = {
+  title: "The Sapta Dvipa - The Seven Great Continents of the Cosmic Universe",
+  eyebrow: "Chapter 3",
+  summary: "The scriptures call the seven great cosmic landmasses the Sapta Dvipa: concentric continents radiating outward from Mount Meru, each separated by an extraordinary ocean.",
+  image: "/images/atlas/grand-structure.jpg",
+  transitionName: "concept-sapta-dvipa",
+  posterHero: true,
+  readingLayout: "article",
+  accent: "#65d7dc",
+  facts: ["Seven continents", "Seven oceans", "Jambudvipa", "Bharata Varsha"],
+  journeyItems,
+  sections: [
+    {
+      title: "The Sapta Dvipa - The Seven Great Continents of the Cosmic Universe",
+      paragraphs: [
+        "Imagine looking upon the universe from a vantage point beyond the heavens.",
+        "At the very center rises the magnificent Mount Meru, shining like a pillar of gold.",
+        "Around it stretches a vast circular continent.",
+        "Beyond that lies an immense ocean.",
+        "Then another continent.",
+        "Another ocean.",
+        "Again and again, the pattern unfolds in perfect symmetry until seven great continents and seven extraordinary oceans spread across the cosmic world.",
+        "This is the universe described in many Hindu scriptures.",
+        "A universe designed not as random land and sea, but as an ordered creation where every continent has its own purpose, every ocean marks a new boundary, and every realm plays a role in the cosmic order.",
+        "The scriptures call these seven great landmasses the Sapta Dvipa - the Seven Continents.",
+      ],
+    },
+    {
+      title: "What Is a Dvipa?",
+      paragraphs: [
+        "The Sanskrit word Dvipa literally means \"island\" or \"continent.\"",
+        "In the Puranas, however, a dvipa is much more than land surrounded by water.",
+        "Each dvipa is a vast cosmic region, complete with its own mountains, rivers, forests, kingdoms, and inhabitants.",
+        "Every continent is encircled by a cosmic ocean, and beyond that ocean lies another, even larger continent.",
+        "Together they form a series of concentric rings radiating outward from Mount Meru, creating one of the most remarkable cosmological maps found in ancient literature.",
+        "Unlike the continents of modern geography, the Sapta Dvipa belong to a sacred cosmic landscape where geography and spirituality are woven together.",
+      ],
+    },
+    {
+      title: "The Seven Great Continents",
+      paragraphs: [
+        "The Sapta Dvipa unfold outward from Mount Meru in a sacred cosmic pattern.",
+      ],
+    },
+    {
+      title: "1. Jambudvipa",
+      paragraphs: [
+        "At the heart of the cosmic world lies Jambudvipa, the most important of all seven continents.",
+        "Mount Meru stands at its center, and within Jambudvipa lies Bharata Varsha, the land where human beings live according to the Puranic worldview.",
+        "It is here that the great epics unfold, sages perform penance, avatars descend, and the journey toward liberation takes place.",
+        "Because of its central importance, Jambudvipa receives the most detailed description in the Puranas.",
+      ],
+    },
+    {
+      title: "2. Plaksha Dvipa",
+      paragraphs: [
+        "Surrounding Jambudvipa beyond the Ocean of Salt is Plaksha Dvipa, named after a magnificent Plaksha tree said to grow at its center.",
+        "The scriptures describe it as a prosperous land divided into several regions, nourished by sacred rivers and inhabited by righteous people devoted to Dharma.",
+        "Life here is portrayed as peaceful, orderly, and spiritually elevated.",
+      ],
+    },
+    {
+      title: "3. Shalmala Dvipa",
+      paragraphs: [
+        "Beyond the Ocean of Sugarcane Juice lies Shalmala Dvipa.",
+        "Its name comes from the enormous Shalmali, or silk cotton, tree that dominates the continent.",
+        "The Puranas describe this land as rich in natural beauty, filled with sacred mountains and rivers, where its inhabitants worship the Divine in their own traditional forms.",
+      ],
+    },
+    {
+      title: "4. Kusha Dvipa",
+      paragraphs: [
+        "Crossing the Ocean of Wine brings one to Kusha Dvipa.",
+        "The continent is named after the sacred Kusha grass, which has long been associated with Vedic rituals and spiritual ceremonies.",
+        "The scriptures portray this land as one where sacred traditions flourish and its people live in harmony with cosmic law.",
+      ],
+    },
+    {
+      title: "5. Krauncha Dvipa",
+      paragraphs: [
+        "Beyond the Ocean of Clarified Butter lies Krauncha Dvipa.",
+        "It is named after the great Krauncha Mountain, a landmark celebrated in several ancient texts.",
+        "The Puranas describe this continent as home to majestic mountains, fertile lands, and communities devoted to righteous living.",
+        "Its landscapes are both beautiful and spiritually significant.",
+      ],
+    },
+    {
+      title: "6. Shaka Dvipa",
+      paragraphs: [
+        "Past the Ocean of Curd lies Shaka Dvipa, named after the sacred Shaka tree.",
+        "The scriptures describe its inhabitants as noble, disciplined, and devoted to virtuous living.",
+        "The continent is presented as another harmonious realm where prosperity and spiritual practice exist together.",
+      ],
+    },
+    {
+      title: "7. Pushkara Dvipa",
+      paragraphs: [
+        "The outermost and largest of all the continents is Pushkara Dvipa.",
+        "It is surrounded by the Ocean of Pure Water and occupies the farthest reaches of the inhabited cosmic world.",
+        "At its center stands the great Manasottara Mountain, which divides the continent into two vast regions.",
+        "The Puranas describe Pushkara as a realm of extraordinary purity and serenity, marking the final continent before the universe transitions into regions beyond the Sapta Dvipa.",
+      ],
+    },
+    {
+      title: "The Seven Cosmic Oceans",
+      paragraphs: [
+        "Separating these continents are seven extraordinary oceans.",
+        "Unlike the seas of our world, each possesses a unique substance.",
+        "Beginning from the center, they are described as:",
+      ],
+      list: [
+        "Ocean of Salt Water.",
+        "Ocean of Sugarcane Juice.",
+        "Ocean of Wine.",
+        "Ocean of Clarified Butter, or Ghee.",
+        "Ocean of Curd.",
+        "Ocean of Milk.",
+        "Ocean of Pure Water.",
+      ],
+    },
+    {
+      title: "A Sacred Cosmic Landscape",
+      paragraphs: [
+        "These oceans are among the most distinctive features of Puranic cosmology.",
+        "Whether understood literally or symbolically, they illustrate that this universe is a sacred cosmic landscape rather than a map of the physical Earth.",
+      ],
+    },
+    {
+      title: "A Universe Built in Perfect Order",
+      paragraphs: [
+        "One remarkable feature shared across the Bhagavata Purana and Vishnu Purana is the symmetry of the Sapta Dvipa.",
+        "Each continent is larger than the one before it.",
+        "Each ocean matches the width of the continent it surrounds.",
+        "From the golden summit of Mount Meru to the outermost boundaries of Pushkara Dvipa, the universe expands in carefully balanced circles.",
+        "Nothing is random.",
+        "Every continent has its own rulers.",
+        "Every land has its own mountains and rivers.",
+        "Every region has its own spiritual traditions.",
+        "Together they form a cosmic world governed by harmony, balance, and Dharma.",
+      ],
+    },
+    {
+      title: "A Journey Across the Cosmic World",
+      paragraphs: [
+        "This chapter has introduced the seven great continents that make up the terrestrial portion of the Hindu cosmic universe.",
+        "Each one possesses its own unique geography, inhabitants, and sacred significance.",
+        "In the chapters ahead, we will journey through each of these continents individually.",
+        "Beginning at the center - with Jambudvipa, the continent that surrounds Mount Meru and contains Bharata Varsha, the realm where human life unfolds according to the Puranas.",
+        "Only by exploring each continent in detail can we truly appreciate the extraordinary vision of the universe preserved in the ancient Hindu scriptures.",
+      ],
+    },
+    {
+      title: "Scriptural References",
+      paragraphs: ["Primary Sources"],
+      list: [
+        "Bhagavata Purana, Canto 5, Chapters 16-20.",
+        "Vishnu Purana, Book II, Chapters 2-7.",
+        "Brahmanda Purana, Cosmographical Sections.",
+        "Matsya Purana, Cosmology.",
+        "Vayu Purana, Cosmography.",
+      ],
+    },
+    {
+      title: "Editorial Note",
+      paragraphs: [
+        "This chapter provides a broad overview of the Sapta Dvipa as presented in the Puranic tradition. Later chapters will explore each continent individually, drawing on the detailed descriptions found in the primary scriptures while noting important variations where different Puranas preserve different traditions.",
+      ],
+    },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />

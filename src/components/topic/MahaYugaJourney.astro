@@ -5,103 +5,131 @@ const { topic, next, compact = false } = Astro.props;
 const facts = [
   ["Duration", "4.32 million human years"],
   ["Contains", "Four Yugas"],
-  ["Within a Manvantara", "71 Maha Yugas"],
-  ["Current cycle", "28th Maha Yuga"],
+  ["Pattern", "4 : 3 : 2 : 1"],
+  ["Next scale", "Manvantara"],
 ];
 const ages = [
-  ["Satya Yuga", "1.728 million years", "Dharma on four legs"],
-  ["Treta Yuga", "1.296 million years", "Dharma on three legs"],
-  ["Dvapara Yuga", "864,000 years", "Dharma on two legs"],
-  ["Kali Yuga", "432,000 years", "Dharma on one leg"],
+  ["Satya Yuga", "1,728,000 years", "Truth, harmony, spiritual wisdom"],
+  ["Treta Yuga", "1,296,000 years", "Virtue remains strong, but decline begins"],
+  ["Dvapara Yuga", "864,000 years", "Knowledge and morality become divided"],
+  ["Kali Yuga", "432,000 years", "Conflict, confusion, and spiritual decline"],
 ];
-const scales = [
-  ["Human life", "About 100 years"],
+const yugaOrder = ages.map(([name]) => name);
+const recurringNumbers = [
   ["Kali Yuga", "432,000 years"],
-  ["Dvapara Yuga", "864,000 years"],
-  ["Treta Yuga", "1.296 million years"],
-  ["Satya Yuga", "1.728 million years"],
   ["Maha Yuga", "4.32 million years"],
+  ["Daytime of Brahma", "4.32 billion years"],
 ];
 ---
 
 <article class="maha-reading">
   <header>
-    <p class="eyebrow">Selected layer · Maha Yuga</p>
-    <h1>The Great Cycle</h1>
-    <p class="lead">A Maha Yuga is one complete cycle of cosmic ages and one of the fundamental rhythms through which time unfolds in Hindu cosmology.</p>
-    <p>Existence moves through recurring phases of growth, flourishing, decline, transformation, and renewal. Every Maha Yuga contains four Yugas. Together, they form one complete cosmic rhythm.</p>
+    <p class="eyebrow">Cosmic Clock Project � Maha Yuga</p>
+    <h1>A Cycle That Lasts Millions of Years</h1>
+    <p class="lead">What if history does not move in a straight line? What if it moves in cycles: rising, declining, ending, and beginning again?</p>
   </header>
 
   <dl class="facts">{facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
 
   <div class="reading-body"><main>
     <section>
-      <h2>What does a Maha Yuga explain?</h2>
-      <p>A Maha Yuga explains how the four Yugas belong together as one complete recurring cycle rather than four disconnected ages.</p>
-      <p>Across that cycle, civilizations, values, knowledge, and human conditions change. Its meaning therefore comes from both its duration and its pattern.</p>
+      <h2>Every ending is also a beginning</h2>
+      <p>Think about the seasons.</p>
+      <p>Spring brings new life. Summer brings growth. Autumn prepares the world for change. Winter appears to bring everything to an end.</p>
+      <p>But when winter finishes, spring returns. The cycle begins again.</p>
+      <p>Nature does not move in a straight line. It moves in repeating patterns.</p>
+      <p>According to Hindu scriptures, time itself follows a similar rhythm. Human civilization is not viewed as progressing endlessly in one direction. Instead, it passes through four great ages that repeat over and over again.</p>
+      <p>Together, these four ages form a <strong>Maha Yuga</strong>.</p>
     </section>
+
     <section>
-      <h2>The four ages as one story</h2>
-      <p>The four Yugas are often studied separately, but they are meant to be understood together. Viewed individually, they are ages. Viewed collectively, they become a Maha Yuga.</p>
-      <p>The complete story moves through emergence, growth, complexity, transformation, and renewal.</p>
+      <h2>What is a Maha Yuga?</h2>
+      <p>A Maha Yuga is one complete cycle of the four Yugas described in Hindu cosmology.</p>
+      <p>These four Yugas always appear in the same order:</p>
+      <div class="yuga-flow" aria-label="Maha Yuga sequence">
+        {yugaOrder.map((name, index) => <span>{index + 1}<strong>{name}</strong></span>)}
+      </div>
+      <p>Each Yuga has its own character, duration, and place within the cycle. Together, they create one complete cosmic age.</p>
+      <p>This complete cycle is called a Maha Yuga.</p>
     </section>
   </main></div>
 
   <details class="full-guide" open={!compact} data-compact={compact || undefined}>
-    <summary><span>Continue reading</span><b>Read full Maha Yuga guide ↓</b></summary>
+    <summary><span>Continue reading</span><b>Read full Maha Yuga guide</b></summary>
     <div class="reading-body"><main>
       <section>
-        <h2>The architecture of a Maha Yuga</h2>
-        <p>The sequence of the four ages remains constant. Each phase contributes something essential to the whole journey from harmony to transformation and renewal.</p>
-        <div class="ages">{ages.map(([name, duration, dharma]) => <article><strong>{name}</strong><span>{duration}</span><small>{dharma}</small></article>)}</div>
+        <h2>Imagine a cosmic year</h2>
+        <p>One way to understand a Maha Yuga is to compare it with a calendar year.</p>
+        <p>A year has four seasons. Each season feels different. Each has its own purpose. But none of them exists independently.</p>
+        <p>Only together do they complete the year.</p>
+        <aside class="note"><p class="eyebrow">The cycle</p><p><strong>Satya Yuga</strong> -> <strong>Treta Yuga</strong> -> <strong>Dvapara Yuga</strong> -> <strong>Kali Yuga</strong> -> <strong>Satya Yuga begins again</strong></p></aside>
+        <p>A Maha Yuga is not simply four separate ages. It is one continuous cycle.</p>
       </section>
 
       <section>
-        <h2>The cycle of Dharma</h2>
-        <p>Traditional texts often symbolize Dharma as a bull standing on four legs. Across the cycle, the number of supporting legs gradually decreases from four in Satya Yuga to one in Kali Yuga.</p>
-        <p>The imagery describes a gradual change in the condition of the world. As the cycle progresses, sustaining balance requires increasing effort. Yet Dharma never completely disappears, so renewal remains possible.</p>
+        <h2>The four Yugas at a glance</h2>
+        <p>Each age gradually transitions into the next. The change is not described as an overnight event, but as part of a long cosmic rhythm.</p>
+        <div class="yuga-table">{ages.map(([name, duration, meaning]) => <article><strong>{name}</strong><span>{duration}</span><small>{meaning}</small></article>)}</div>
       </section>
 
       <section>
-        <h2>The rhythm of transformation</h2>
-        <p>A Maha Yuga is often misunderstood as only a story of decline. It is more accurately understood as a cycle of transformation.</p>
-        <p>Harmony gives birth to order. Order gives birth to complexity. Complexity gives birth to fragmentation. Fragmentation creates the conditions for renewal. The cycle moves not toward permanent destruction, but toward regeneration.</p>
+        <h2>How long is one Maha Yuga?</h2>
+        <p>According to traditional Hindu cosmology, each Yuga has a specific duration.</p>
+        <aside class="note"><p class="eyebrow">Traditional total</p><p><strong>1,728,000</strong> + <strong>1,296,000</strong> + <strong>864,000</strong> + <strong>432,000</strong> = <strong>4,320,000 years</strong></p></aside>
+        <p>According to Hindu scriptures, one Maha Yuga lasts <strong>4.32 million human years</strong>.</p>
       </section>
 
       <section>
-        <h2>Why the cycle repeats</h2>
-        <p>Traditional cosmology suggests that creation itself is rhythmic. Days follow nights, seasons follow one another, and breathing alternates between inhalation and exhalation.</p>
-        <p>The Maha Yuga is one expression of that universal rhythm. Its repetition reflects patterns woven into existence itself.</p>
+        <h2>A hidden pattern in the numbers</h2>
+        <p>The lengths of the four Yugas are not random. They follow a simple ratio.</p>
+        <div class="scale-list">
+          <div><span>Satya Yuga</span><strong>4 parts</strong></div>
+          <div><span>Treta Yuga</span><strong>3 parts</strong></div>
+          <div><span>Dvapara Yuga</span><strong>2 parts</strong></div>
+          <div><span>Kali Yuga</span><strong>1 part</strong></div>
+        </div>
+        <p>This gives the ratio <strong>4 : 3 : 2 : 1</strong>.</p>
+        <p>Traditional scriptures preserve this proportion. Different philosophical traditions may interpret its symbolism differently, but the numerical pattern remains one of the defining features of the Yuga system.</p>
       </section>
 
       <section>
-        <h2>Maha Yugas within a Manvantara</h2>
-        <p>A single Maha Yuga is immense, yet the cycle repeats seventy-one times within a Manvantara. The pattern of rise, transformation, and renewal therefore unfolds repeatedly throughout cosmic history.</p>
-        <aside class="note"><p class="eyebrow">The heartbeat of a Manvantara</p><p><strong>1 Manvantara</strong> contains <strong>71 Maha Yugas</strong>.</p></aside>
+        <h2>Why does the cycle repeat?</h2>
+        <p>One of the most distinctive ideas in Hindu cosmology is that time is cyclical.</p>
+        <p>Many historical traditions imagine time as a straight path with a beginning and an end. Hindu cosmology presents a different picture.</p>
+        <p>Creation unfolds. Civilization rises. Values gradually change. A cycle completes. Then another begins.</p>
+        <p>Rather than repeating in exactly the same way, each cycle represents the ongoing rhythm of cosmic time.</p>
       </section>
 
       <section>
-        <h2>The current Maha Yuga</h2>
-        <p>According to traditional cosmology, twenty-seven complete Maha Yugas have passed within the present Vaivasvata Manvantara. We are living within the twenty-eighth cycle and specifically within Kali Yuga.</p>
-        <aside class="note"><p class="eyebrow">Our current position</p><p><strong>Shveta Varaha Kalpa</strong> · <strong>Vaivasvata Manvantara</strong> · <strong>28th Maha Yuga</strong> · <strong>Kali Yuga</strong></p></aside>
+        <h2>The Maha Yuga is only the beginning</h2>
+        <p>Although 4.32 million years seems unimaginably long, in the cosmic calendar it is only a single building block.</p>
+        <p>One Maha Yuga is not the largest unit of time. Far from it.</p>
+        <aside class="note"><p class="eyebrow">Larger cycles</p><p>Many Maha Yugas make up a <strong>Manvantara</strong>. Fourteen Manvantaras occur during one <strong>Kalpa</strong>, the daytime of Brahma.</p></aside>
+        <p>The cosmic clock continues to expand far beyond the scale of a Maha Yuga.</p>
       </section>
 
       <section>
-        <h2>Visualizing a Maha Yuga</h2>
-        <div class="scale-list">{scales.map(([label, value]) => <div><span>{label}</span><strong>{value}</strong></div>)}</div>
-        <p>A single Maha Yuga spans millions of years. Entire civilizations could emerge, flourish, disappear, and be forgotten many times within one complete cycle.</p>
+        <h2>Did you know?</h2>
+        <p>The number <strong>4.32</strong> appears repeatedly in Hindu cosmological calculations.</p>
+        <div class="number-ladder">
+          {recurringNumbers.map(([label, value], index) => <div><span>0{index + 1}</span><p>{label}</p><strong>{value}</strong></div>)}
+        </div>
+        <p>These recurring values form part of the traditional mathematical structure used to describe cosmic time in several Hindu texts.</p>
       </section>
 
       <section>
-        <h2>The wisdom of the Maha Yuga</h2>
-        <p>Nothing remains unchanged forever. Periods of prosperity are temporary, and periods of difficulty are temporary. Decline is not necessarily the end, because renewal remains possible.</p>
-        <p>What appears to be an ending may simply be preparation for a new beginning.</p>
+        <h2>Pause and reflect</h2>
+        <p>Imagine standing on a mountain that has existed for millions of years.</p>
+        <p>Now imagine that even the lifetime of that mountain would be only a small part of a Maha Yuga.</p>
+        <p>Hindu cosmology invites us to see human history from a much larger perspective. It shifts the focus from individual lifetimes to the immense cycles through which the universe unfolds.</p>
       </section>
 
       <section>
-        <h2>Maha Yuga in the Cosmic Atlas</h2>
-        <p>Kalpa provides the grand cosmic stage. Manvantara provides the great chapters. Maha Yuga provides the repeating rhythm.</p>
-        <p>It is the cycle that gives shape to the rise, transformation, and renewal of worlds. It is the heartbeat of cosmic history.</p>
+        <h2>What comes next?</h2>
+        <p>Now we know that the four Yugas together form a Maha Yuga.</p>
+        <p>But another question naturally follows.</p>
+        <p>If one Maha Yuga lasts 4.32 million years, how many Maha Yugas exist before the universe enters its next great stage?</p>
+        <p>To answer that, we must explore a larger cycle known as the <strong>Manvantara</strong>.</p>
       </section>
 
     </main></div>
@@ -110,23 +138,23 @@ const scales = [
 
   <a class="continue" href={`/atlas/${next?.slug ?? "four-yugas"}`}>
     <span><small>Ready to explore the cycle?</small><strong>Next: {next?.title ?? "Four Yugas"}</strong><em>Discover how each age shapes the rhythm of cosmic history.</em></span>
-    <b>Explore next layer →</b>
+    <b>Explore next layer -></b>
   </a>
 </article>
 
 <style>
   .maha-reading{--accent:#c78cff;color:#eee3cf}header,.reading-body,.facts,.maha-reading :global(.source-panel),.continue,.full-guide>summary{width:min(100% - 2rem,72rem);margin-inline:auto}
   header{padding:clamp(3rem,7vw,7rem) 0 2.5rem}header p:not(.eyebrow){max-width:62ch;color:#b3aca1;line-height:1.85}header strong,.reading-body strong{color:var(--accent);font-weight:650}
-  h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.025em}h1{max-width:15ch;margin:.35rem 0 1rem;font-size:clamp(3.2rem,6vw,6rem);line-height:1}.lead{color:#d0c5b3!important;font-size:clamp(1.08rem,1.5vw,1.3rem)}
+  h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:0}h1{max-width:15ch;margin:.35rem 0 1rem;font-size:clamp(3.2rem,6vw,6rem);line-height:1}.lead{color:#d0c5b3!important;font-size:clamp(1.08rem,1.5vw,1.3rem)}
   .facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid rgb(199 140 255/.2)}.facts div{padding:1rem}.facts div+div{border-left:1px solid rgb(199 140 255/.14)}dt{color:#99938a;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}dd{margin:.25rem 0 0;color:#e5dac8;font-family:var(--serif);font-size:1.05rem}
   .reading-body{padding-block:2rem}.reading-body main{width:min(100%,46rem)}section{border-bottom:1px solid rgb(199 140 255/.14);padding-block:2rem}h2{margin:0 0 .8rem;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}section p,section li{color:#aaa49a;line-height:1.85}section p{margin:.65rem 0 0}.note{margin:1.5rem 0 0;border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1rem}.note p{margin:.25rem 0;color:#c2b9aa}
-  .ages{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1.4rem}.ages article{border:1px solid rgb(199 140 255/.15);border-radius:.65rem;padding:.85rem}.ages strong,.ages span,.ages small{display:block}.ages span,.ages small{color:#99938a;font-size:.7rem}.ages strong{font-family:var(--serif);font-size:1.15rem;font-weight:500}
-  .scale-list{margin-top:1.25rem;border-block:1px solid rgb(199 140 255/.14)}.scale-list div{display:flex;justify-content:space-between;gap:1rem;padding:.65rem 0;border-bottom:1px solid rgb(199 140 255/.08)}.scale-list span{color:#aaa49a}.scale-list strong{font-size:.9rem}.references{border-bottom:0}
-  .full-guide{border:0}.full-guide:not([data-compact])>summary{display:none}.full-guide>summary{display:flex;width:fit-content;align-items:center;gap:.55rem;margin-top:.9rem;border:1px solid rgb(199 140 255/.25);border-radius:999px;padding:.55rem .8rem;background:rgb(199 140 255/.035);color:var(--accent);cursor:pointer;list-style:none}.full-guide>summary::-webkit-details-marker{display:none}.full-guide>summary span{color:#99938a;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.full-guide>summary b{font-size:.67rem}.full-guide[open]>summary b{font-size:0}.full-guide[open]>summary b::after{font-size:.67rem;content:"Hide full guide ↑"}.full-guide[open]>.reading-body{animation:guide-reveal 420ms ease both}
+  .yuga-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:1.35rem 0}.yuga-flow span{position:relative;display:grid;gap:.35rem;border:1px solid rgb(199 140 255/.16);border-radius:999px;padding:.75rem .85rem;background:linear-gradient(145deg,rgb(199 140 255/.08),rgb(255 255 255/.018));color:#c78cff;font-size:.66rem;font-weight:900}.yuga-flow span+span::before{position:absolute;left:-.47rem;top:50%;width:.42rem;height:1px;background:rgb(199 140 255/.35);content:""}.yuga-flow strong{color:#efe3ff;font-family:var(--sans);font-size:.76rem;letter-spacing:.02em}.yuga-table{display:grid;margin-top:1.4rem;border:1px solid rgb(199 140 255/.16);border-radius:.85rem;overflow:hidden}.yuga-table article{display:grid;grid-template-columns:minmax(8rem,.8fr) minmax(7rem,.55fr) 1fr;gap:1rem;align-items:center;padding:.85rem 1rem;background:rgb(255 255 255/.018)}.yuga-table article+article{border-top:1px solid rgb(199 140 255/.1)}.yuga-table strong,.yuga-table span,.yuga-table small{display:block}.yuga-table span,.yuga-table small{color:#99938a;font-size:.76rem}.yuga-table strong{font-family:var(--serif);font-size:1.1rem;font-weight:500}
+  .scale-list{margin-top:1.25rem;border-block:1px solid rgb(199 140 255/.14)}.scale-list div{display:flex;justify-content:space-between;gap:1rem;padding:.65rem 0;border-bottom:1px solid rgb(199 140 255/.08)}.scale-list span{color:#aaa49a}.scale-list strong{font-size:.9rem}.number-ladder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin:1.4rem 0}.number-ladder div{border:1px solid rgb(199 140 255/.16);border-radius:.8rem;padding:1rem;background:linear-gradient(145deg,rgb(199 140 255/.08),rgb(255 255 255/.018))}.number-ladder span{color:#c78cff;font-size:.62rem;font-weight:900;letter-spacing:.14em}.number-ladder p{margin:.55rem 0 .25rem;color:#d0c5b3;font-size:.86rem;line-height:1.35}.number-ladder strong{display:block;color:#e3b4ff;font-family:var(--serif);font-size:1.25rem}.references{border-bottom:0}
+  .full-guide{border:0}.full-guide:not([data-compact])>summary{display:none}.full-guide>summary{display:flex;width:fit-content;align-items:center;gap:.55rem;margin-top:.9rem;border:1px solid rgb(199 140 255/.25);border-radius:999px;padding:.55rem .8rem;background:rgb(199 140 255/.035);color:var(--accent);cursor:pointer;list-style:none}.full-guide>summary::-webkit-details-marker{display:none}.full-guide>summary span{color:#99938a;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.full-guide>summary b{font-size:.67rem}.full-guide[open]>summary b{font-size:0}.full-guide[open]>summary b::after{font-size:.67rem;content:"Hide full guide"}.full-guide[open]>.reading-body{animation:guide-reveal 420ms ease both}
   .continue{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:2rem;border:1px solid rgb(140 145 255/.24);border-radius:1rem;padding:1.2rem 1.35rem;background:linear-gradient(100deg,rgb(140 145 255/.06),transparent);color:#aeb1ff}.continue span>*{display:block}.continue small{color:#99938a;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.continue strong{font-family:var(--serif);font-size:1.7rem;font-weight:400}.continue em{color:#aaa49a;font-size:.72rem;font-style:normal}.continue b{font-size:.68rem;text-transform:uppercase}
   .maha-reading{border:1px solid rgb(199 140 255/.2);border-radius:1.4rem;padding-bottom:1rem;background:linear-gradient(145deg,rgb(25 19 40/.72),rgb(3 13 20/.48));box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22);backdrop-filter:blur(20px) saturate(115%)}
   .facts{overflow:hidden;border:1px solid rgb(199 140 255/.2);border-radius:1rem;background:rgb(255 255 255/.025);box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
-  .note,.ages article,.continue,.full-guide>summary{box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
+  .note,.yuga-table article,.number-ladder div,.continue,.full-guide>summary{box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
   @keyframes guide-reveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-  @media(max-width:800px){.facts,.ages{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(199 140 255/.14)}.continue{align-items:flex-end}}
+  @media(max-width:800px){.facts,.yuga-flow,.number-ladder{grid-template-columns:1fr 1fr}.yuga-table article{grid-template-columns:1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(199 140 255/.14)}.continue{align-items:flex-end}}
 </style>

@@ -1,0 +1,210 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const journeyItems = [
+  {
+    title: "The Fourteen Lokas",
+    href: "/14-lokas",
+    eyebrow: "Layered worlds",
+    description: "The layered worlds of existence: seven higher Lokas, Bhuloka, and seven lower Lokas.",
+    status: "available",
+  },
+  {
+    title: "Mount Meru",
+    href: "/mount-meru",
+    eyebrow: "Cosmic axis",
+    description: "The cosmic axis at the center of the universe, where Meru is introduced as the pillar of cosmic order.",
+    status: "available",
+  },
+  {
+    title: "The Sapta Dvipa",
+    href: "/sapta-dvipa",
+    eyebrow: "Seven continents",
+    description: "The seven great continents of Puranic cosmic geography.",
+    status: "available",
+  },
+  {
+    title: "The Cosmic Oceans",
+    href: "/cosmic-oceans",
+    eyebrow: "Cosmic boundaries",
+    description: "The seven oceans that separate the great Dvipas: salt, sugarcane juice, sura, ghee, curd, milk, and pure sweet water.",
+    status: "available",
+  },
+  {
+    title: "The Higher Worlds",
+    href: "/14-lokas",
+    eyebrow: "Upper realms",
+    description: "Where sages, celestial beings, devas, and higher states of existence are described.",
+    status: "available",
+  },
+  {
+    title: "The Lower Worlds",
+    href: "/14-lokas",
+    eyebrow: "Hidden realms",
+    description: "Mysterious realms beneath the Earth, associated with powerful beings, hidden cities, and treasures.",
+    status: "available",
+  },
+];
+
+const related = [
+  { title: "The Fourteen Lokas", href: "/14-lokas", image: "/images/home/home-lokas.png", eyebrow: "Layered worlds" },
+  { title: "The Hindu Cosmic Universe", href: "/cosmic-universe", image: "/images/home/home-lokas.png", eyebrow: "Cosmic structure" },
+  { title: "Cosmic Time", href: "/atlas", image: "/images/home/home-hero.png", eyebrow: "Cosmic map" },
+];
+
+const concept = {
+  title: "Mount Meru - The Cosmic Axis of the Universe",
+  eyebrow: "Chapter 2",
+  summary: "According to many Hindu scriptures, Mount Meru is the cosmic axis: the great pillar around which the worlds, continents, celestial bodies, and heavenly realms are arranged.",
+  image: "/images/atlas/cosmic-architecture.jpg",
+  transitionName: "concept-mount-meru",
+  posterHero: true,
+  readingLayout: "article",
+  accent: "#d6ac5b",
+  facts: ["Golden Mountain", "Jambudvipa", "Brahmapuri", "Ganga's four streams"],
+  journeyItems,
+  sections: [
+    {
+      title: "Mount Meru - The Cosmic Axis of the Universe",
+      paragraphs: [
+        "Imagine standing at the very center of the universe.",
+        "Not the center of a galaxy.",
+        "Not the center of a solar system.",
+        "But the very point around which the entire cosmic world is organized.",
+        "According to many Hindu scriptures, such a place exists.",
+        "It is called Mount Meru.",
+        "Unlike any mountain found on Earth, Meru is not simply a towering peak of rock and snow. It is described as the cosmic axis - the great pillar around which the worlds, continents, celestial bodies, and heavenly realms are arranged.",
+        "If the Fourteen Lokas form the structure of the universe, then Mount Meru is its central pillar.",
+        "Everything begins here.",
+      ],
+    },
+    {
+      title: "The Mountain at the Center",
+      paragraphs: [
+        "The Bhagavata Purana describes Mount Meru as standing at the exact center of Jambudvipa, the innermost and most important of the Seven Continents.",
+        "Its brilliance is unlike anything found in the earthly world.",
+        "The scriptures compare its radiance to pure gold, causing it to shine with extraordinary splendor. Because of this luminous appearance, Meru is often called the Golden Mountain.",
+        "But its importance is not merely its beauty.",
+        "Meru is the cosmic landmark from which the geography of the universe unfolds.",
+        "The great continents spread outward from it.",
+        "The heavenly worlds rise above it.",
+        "Even the movements of the Sun, Moon, and planets are described in relation to it.",
+        "To the ancient sages, Meru was the universe's fixed point - a symbol of perfect balance amid the ever-changing cosmos.",
+      ],
+    },
+    {
+      title: "How Large Is Mount Meru?",
+      paragraphs: [
+        "The Puranas describe Meru on a scale far beyond ordinary human imagination.",
+        "According to the Bhagavata Purana and the Vishnu Purana, Mount Meru rises 84,000 yojanas above the Earth.",
+        "Its base extends 16,000 yojanas beneath the surface, anchoring it firmly within the cosmic world.",
+        "The mountain is said to measure 32,000 yojanas across at its summit and 16,000 yojanas across at its base, giving it the appearance of an enormous inverted pyramid that widens toward the heavens.",
+        "The exact length of a yojana varies among ancient Indian traditions, so modern scholars do not agree on a single conversion into kilometers.",
+        "For this reason, many researchers emphasize the proportions described in the scriptures rather than assigning precise modern measurements.",
+        "Regardless of the conversion used, the intended message is unmistakable.",
+        "Mount Meru is not an ordinary mountain.",
+        "Its dimensions belong to a cosmic universe rather than the physical landscape of Earth.",
+      ],
+    },
+    {
+      title: "A Mountain of Divine Splendor",
+      paragraphs: [
+        "The scriptures describe Meru as dazzling in every direction.",
+        "Its slopes are adorned with celestial forests.",
+        "Magnificent rivers descend from its heights.",
+        "Precious gems and radiant minerals illuminate its sides.",
+        "The air is filled with fragrant blossoms that never fade.",
+        "Birds with brilliant plumage sing continuously through its sacred groves.",
+        "Unlike earthly mountains that endure storms and erosion, Meru remains eternally magnificent, untouched by decay.",
+        "Its beauty reflects the divine order of creation itself.",
+      ],
+    },
+    {
+      title: "The Abode of the Gods",
+      paragraphs: [
+        "Mount Meru is not an empty peak.",
+        "It is alive with celestial activity.",
+        "Near its summit stands the magnificent city of Brahmapuri, the residence of Brahma, the creator of the universe.",
+        "The Bhagavata Purana describes Brahmapuri as an immense city adorned with extraordinary palaces and surrounded by the realms of the guardians of the eight directions.",
+        "These divine protectors - known as the Lokapalas - watch over every quarter of the universe.",
+        "Around Meru also dwell great sages, Siddhas, Gandharvas, Kinnaras, Yakshas, and countless celestial beings who participate in the maintenance of cosmic order.",
+        "To the Puranas, Meru is not only a mountain.",
+        "It is the meeting place of heaven and Earth.",
+      ],
+    },
+    {
+      title: "The Four Faces of Meru",
+      paragraphs: [
+        "One of the most beautiful descriptions found in the Puranas is that each side of Mount Meru possesses its own distinct appearance.",
+        "The eastern face shines with a brilliant white radiance.",
+        "The southern face glows with a golden-yellow hue.",
+        "The western face reflects a deep, dark color, often compared with rain-filled clouds.",
+        "The northern face displays a rich crimson or reddish brilliance.",
+        "These colors symbolize harmony among the directions and express the mountain's extraordinary nature rather than the appearance of an ordinary geological formation.",
+      ],
+    },
+    {
+      title: "Four Rivers That Nourish the World",
+      paragraphs: [
+        "From the summit of Mount Meru flows the sacred celestial river Ganga.",
+        "After descending from the higher heavens, its waters reach the peak of Meru before dividing into four mighty streams.",
+        "Each river flows toward one of the four cardinal directions.",
+        "The eastern stream is known as Sita.",
+        "The southern stream is Alakananda.",
+        "The western stream is Chakshu.",
+        "The northern stream is Bhadra.",
+        "Together, these rivers nourish the lands surrounding Meru and become life-giving sources for the regions of Jambudvipa.",
+        "The descent of the Ganga from the heavens to the cosmic mountain represents one of the most celebrated themes in Hindu sacred literature.",
+      ],
+    },
+    {
+      title: "Meru in Different Scriptures",
+      paragraphs: [
+        "Although nearly every major Purana places Mount Meru at the center of the cosmic world, individual texts emphasize different aspects.",
+        "The Vishnu Purana focuses on its role in cosmic geography.",
+        "The Bhagavata Purana provides the most detailed description of its dimensions, surrounding mountains, forests, rivers, and neighboring regions.",
+        "The Mahabharata presents Meru as a sacred mountain revered by gods and sages.",
+        "Other Puranas add further descriptions of its divine inhabitants, surrounding peaks, and spiritual significance.",
+        "Together, these sources present a consistent picture.",
+        "Meru is not simply a mountain.",
+        "It is the cosmic center around which the universe is ordered.",
+      ],
+    },
+    {
+      title: "More Than a Mountain",
+      paragraphs: [
+        "Many philosophers have also understood Mount Meru symbolically.",
+        "To them, it represents stability within change.",
+        "The unmoving center around which all existence revolves.",
+        "The axis connecting the earthly realm with the divine.",
+        "Whether approached as sacred cosmology, symbolic philosophy, or spiritual metaphor, Mount Meru occupies a unique place in Hindu thought.",
+        "It reminds us that every great journey begins from a center.",
+      ],
+    },
+    {
+      title: "The Universe Expands",
+      paragraphs: [
+        "Yet Mount Meru does not stand alone.",
+        "Encircling it lies an immense continent known as Jambudvipa.",
+        "Beyond Jambudvipa stretch six more colossal continents.",
+        "Each is separated by an ocean unlike any found on Earth.",
+        "Together they form one of the most extraordinary geographical visions ever described in ancient literature.",
+        "Our journey now moves outward from the cosmic mountain to explore these remarkable lands - the Sapta Dvipa, the Seven Continents of the Hindu universe.",
+      ],
+    },
+    {
+      title: "Scriptural References",
+      paragraphs: [],
+      list: [
+        "Bhagavata Purana, Canto 5, Chapters 16-17.",
+        "Vishnu Purana, Book II, Chapters 2-4.",
+        "Mahabharata, Bhishma Parva.",
+        "Matsya Purana, Cosmological Sections.",
+        "Brahmanda Purana, Cosmography.",
+      ],
+    },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />

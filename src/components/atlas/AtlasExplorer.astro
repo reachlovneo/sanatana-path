@@ -14,7 +14,7 @@ const manvantaraTopic = await getEntry("atlas", "manvantara");
 const mahaYugaTopic = await getEntry("atlas", "maha-yuga");
 const fourYugasTopic = await getEntry("atlas", "four-yugas");
 const kalpaNext = { slug: "kalpa", title: "Kalpa" };
-const manvantaraNext = { slug: "manvantara", title: "Manvantara" };
+const cosmicAddressNext = { slug: "cosmic-address", title: "Cosmic Address" };
 const mahaYugaNext = { slug: "maha-yuga", title: "Maha Yuga" };
 const fourYugasNext = { slug: "four-yugas", title: "Four Yugas" };
 const kaliYugaNext = { slug: "kali-yuga", title: "Kali Yuga" };
@@ -198,7 +198,7 @@ const layers = [
   </section>
   <section class="atlas-reading" id="atlas-reading" data-atlas-reading>
     {cosmicTimeTopic && <div data-reading-panel="cosmic-time"><CosmicTimeJourney topic={cosmicTimeTopic} next={kalpaNext} compact /></div>}
-    {kalpaTopic && <div data-reading-panel="kalpa" hidden><KalpaJourney topic={kalpaTopic} next={manvantaraNext} compact /></div>}
+    {kalpaTopic && <div data-reading-panel="kalpa" hidden><KalpaJourney topic={kalpaTopic} next={cosmicAddressNext} compact /></div>}
     {manvantaraTopic && <div data-reading-panel="manvantara" hidden><ManvantaraJourney topic={manvantaraTopic} next={mahaYugaNext} compact /></div>}
     {mahaYugaTopic && <div data-reading-panel="maha-yuga" hidden><MahaYugaJourney topic={mahaYugaTopic} next={fourYugasNext} compact /></div>}
     {fourYugasTopic && <div data-reading-panel="four-yugas" hidden><FourYugasJourney topic={fourYugasTopic} next={kaliYugaNext} compact /></div>}
@@ -309,6 +309,12 @@ const layers = [
         layer.style.opacity = String(distance === 0 ? 1 : distance === 1 ? 0.46 : 0.14);
       });
     };
+    const getHashLayer = () => decodeURIComponent(window.location.hash.replace("#", "")).trim();
+    const isAtlasLayer = (id) => nodes.some((item) => item.dataset.layer === id);
+    const syncLayerHash = (id) => {
+      if (!id || window.location.hash === `#${id}`) return;
+      history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${id}`);
+    };
     const selectLayer = (id, options = {}) => {
       const node = nodes.find((item) => item.dataset.layer === id);
       if (!node) return;
@@ -369,6 +375,7 @@ const layers = [
       pulseSelection(node);
       contextPanel.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
       applyCamera(options.animate !== false);
+      if (options.syncHash !== false) syncLayerHash(id);
     };
     const showTooltip = (node) => {
       tooltip.textContent = node.dataset.tooltip;
@@ -435,9 +442,15 @@ const layers = [
       if (event.key === "ArrowDown" || event.key === "ArrowRight") selectLayer(nodes[Math.min(nodes.length - 1, selectedIndex + 1)].dataset.layer);
       if (event.key === "ArrowUp" || event.key === "ArrowLeft") selectLayer(nodes[Math.max(0, selectedIndex - 1)].dataset.layer);
     });
+    const applyHashSelection = () => {
+      const hashLayer = getHashLayer();
+      if (isAtlasLayer(hashLayer)) selectLayer(hashLayer, { animate: false, syncHash: false });
+    };
+    window.addEventListener("hashchange", applyHashSelection);
     explorer.querySelector("[data-current-year]").textContent = `${new Date().getFullYear() + 3102}+`;
     updateVisibility();
     applyCamera(false);
+    applyHashSelection();
   }
 </script>
 

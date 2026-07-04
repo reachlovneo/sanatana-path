@@ -1,0 +1,225 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const journeyItems = [
+  {
+    title: "The Fourteen Lokas",
+    href: "/14-lokas",
+    eyebrow: "Layered worlds",
+    description: "The layered worlds of existence: seven higher Lokas, Bhuloka, and seven lower Lokas.",
+    status: "available",
+  },
+  {
+    title: "Mount Meru",
+    href: "/mount-meru",
+    eyebrow: "Cosmic axis",
+    description: "The cosmic axis at the center of the universe, where Meru is introduced as the pillar of cosmic order.",
+    status: "available",
+  },
+  {
+    title: "The Sapta Dvipa",
+    href: "/sapta-dvipa",
+    eyebrow: "Seven continents",
+    description: "The seven great continents of Puranic cosmic geography.",
+    status: "available",
+  },
+  {
+    title: "The Cosmic Oceans",
+    href: "/cosmic-oceans",
+    eyebrow: "Cosmic boundaries",
+    description: "The seven oceans that separate the great Dvipas: salt, sugarcane juice, sura, ghee, curd, milk, and pure sweet water.",
+    status: "available",
+  },
+  {
+    title: "The Higher Worlds",
+    href: "/14-lokas",
+    eyebrow: "Upper realms",
+    description: "Where sages, celestial beings, devas, and higher states of existence are described.",
+    status: "available",
+  },
+  {
+    title: "The Lower Worlds",
+    href: "/14-lokas",
+    eyebrow: "Hidden realms",
+    description: "Mysterious realms beneath the Earth, associated with powerful beings, hidden cities, and treasures.",
+    status: "available",
+  },
+];
+
+const related = [
+  { title: "The Sapta Dvipa", href: "/sapta-dvipa", image: "/images/atlas/grand-structure.jpg", eyebrow: "Seven continents" },
+  { title: "Mount Meru", href: "/mount-meru", image: "/images/atlas/cosmic-architecture.jpg", eyebrow: "Cosmic axis" },
+  { title: "The Hindu Cosmic Universe", href: "/cosmic-universe", image: "/images/home/home-lokas.png", eyebrow: "Cosmic structure" },
+];
+
+const concept = {
+  title: "The Seven Cosmic Oceans - Seas Beyond Imagination",
+  eyebrow: "Chapter 4",
+  summary: "The Puranas describe seven immense cosmic oceans arranged around the Sapta Dvipa: seas of salt water, sugarcane juice, sura, ghee, curd, milk, and pure sweet water.",
+  image: "/images/atlas/current-position.jpg",
+  transitionName: "concept-cosmic-oceans",
+  posterHero: true,
+  readingLayout: "article",
+  accent: "#65d7dc",
+  facts: ["Lavana Samudra", "Kshira Samudra", "Seven boundaries", "Samudra Manthana"],
+  journeyItems,
+  sections: [
+    {
+      title: "Oceans That Mark the Boundaries of Worlds",
+      paragraphs: [
+        "At first, the pattern seems simple.",
+        "A continent.",
+        "An ocean.",
+        "Another continent.",
+        "Another ocean.",
+        "But as the journey continues, something remarkable becomes clear.",
+        "Nothing in this universe is placed at random.",
+        "The farther you travel from Mount Meru, the more the cosmic design reveals itself.",
+        "The Puranas describe the Seven Continents and the Seven Cosmic Oceans as perfectly arranged concentric rings, expanding outward from the center of creation.",
+        "Each continent is embraced by its own ocean.",
+        "Beyond that ocean lies another continent.",
+        "Beyond that, another ocean.",
+        "The pattern continues again and again until the universe reaches the distant shores of Pushkara Dvipa, the outermost of the Seven Continents.",
+        "Even their proportions follow a divine order.",
+        "Each ocean is said to be equal in width to the continent it surrounds.",
+        "The result is a universe built with remarkable balance and symmetry - a design where every boundary has purpose and every realm has its appointed place.",
+        "These oceans are not empty spaces separating distant lands.",
+        "They are thresholds.",
+        "To cross one is to leave behind an entire world and enter another.",
+        "New mountains rise on the horizon.",
+        "Different rivers flow across the land.",
+        "New kingdoms flourish.",
+        "Different beings inhabit these realms.",
+        "Even the forms of worship described in the Puranas vary from one continent to the next.",
+        "With every ocean crossed, the universe becomes larger, richer, and more wondrous than before.",
+        "The journey is no longer across geography alone.",
+        "It is a journey through the sacred architecture of the cosmos itself.",
+      ],
+    },
+    {
+      title: "1. Lavana Samudra - The Ocean of Salt Water",
+      paragraphs: [
+        "The first ocean surrounding Jambudvipa is Lavana Samudra, the Ocean of Salt Water.",
+        "Of all the cosmic oceans, this is the most familiar.",
+        "Its salty waters resemble the seas of our own world, making it the easiest for readers to imagine.",
+        "Beyond its vast expanse lies Plaksha Dvipa, the second of the Seven Continents.",
+        "Here, the journey begins to move beyond the ordinary world and into increasingly extraordinary realms.",
+      ],
+    },
+    {
+      title: "2. Ikshu-rasa Samudra - The Ocean of Sugarcane Juice",
+      paragraphs: [
+        "Encircling Plaksha Dvipa is Ikshu-rasa Samudra, the Ocean of Sugarcane Juice.",
+        "The Sanskrit word Ikshu means sugarcane, while rasa means juice or essence.",
+        "In ancient Indian tradition, sugarcane represents sweetness, nourishment, prosperity, and the abundance of nature.",
+        "Its presence in the cosmic universe reminds the reader that the Puranas describe a creation overflowing with richness far beyond ordinary human experience.",
+      ],
+    },
+    {
+      title: "3. Sura Samudra - The Ocean of Sura",
+      paragraphs: [
+        "Beyond Shalmala Dvipa lies Sura Samudra.",
+        "The Sanskrit word Sura refers to a sacred fermented beverage mentioned in Vedic and Puranic literature.",
+        "Although it is sometimes translated simply as \"wine,\" the original Sanskrit term carries a broader cultural and ritual significance than the modern word suggests.",
+        "The Puranas present this ocean as another marvelous feature of the cosmic landscape, illustrating that each successive realm possesses its own unique character.",
+      ],
+    },
+    {
+      title: "4. Ghrita Samudra - The Ocean of Clarified Butter",
+      paragraphs: [
+        "Surrounding Kusha Dvipa is Ghrita Samudra, the Ocean of Clarified Butter, commonly known as ghee.",
+        "Few substances hold greater importance in Vedic tradition.",
+        "Ghee is offered into the sacred fire during yajnas, used in countless religious ceremonies, and regarded as a symbol of purity, nourishment, and divine blessing.",
+        "Its appearance as one of the cosmic oceans reflects the sacred nature of the universe itself.",
+      ],
+    },
+    {
+      title: "5. Dadhi Samudra - The Ocean of Curd",
+      paragraphs: [
+        "Beyond Krauncha Dvipa lies Dadhi Samudra, the Ocean of Curd.",
+        "Curd has occupied an important place in Indian life for thousands of years.",
+        "It is associated with prosperity, well-being, fertility, and auspiciousness.",
+        "From temple offerings to traditional rituals, it remains one of the most revered foods in Hindu culture.",
+        "Within the cosmic geography, Dadhi Samudra continues the sequence of sacred substances separating one continent from another.",
+      ],
+    },
+    {
+      title: "6. Kshira Samudra - The Ocean of Milk",
+      paragraphs: [
+        "Among all the cosmic oceans, none is more famous than Kshira Samudra, the Ocean of Milk.",
+        "It surrounds Shaka Dvipa and occupies a special place throughout Hindu sacred literature.",
+        "According to the Puranas, it was here that the Devas and Asuras joined together in the great Samudra Manthana, the Churning of the Ocean of Milk.",
+        "Using Mount Mandara as the churning rod and the great serpent Vasuki as the rope, they churned the ocean in search of Amrita, the nectar of immortality.",
+        "From its depths emerged many of Hindu tradition's most celebrated treasures - the goddess Lakshmi, Kamadhenu, Airavata, Uchchaihshravas, the celestial jewel Kaustubha, the divine physician Dhanvantari carrying the pot of Amrita, and many other sacred beings and objects.",
+        "Because of this event, Kshira Samudra is remembered not only as part of the cosmic geography but also as the setting for one of the greatest episodes in the Puranas.",
+      ],
+    },
+    {
+      title: "7. Svadu-jala Samudra - The Ocean of Pure, Sweet Water",
+      paragraphs: [
+        "Beyond Pushkara Dvipa, the outermost of the Seven Continents, lies Svadu-jala Samudra.",
+        "The Sanskrit words Svadu and Jala mean \"sweet\" and \"water.\"",
+        "This final ocean forms the outer boundary of the inhabited world described in the Puranas.",
+        "Beyond it, the scriptures speak of regions that lead toward the limits of the material universe itself.",
+        "The journey has reached the farthest edge of the cosmic world.",
+      ],
+    },
+    {
+      title: "Literal or Symbolic?",
+      paragraphs: [
+        "For centuries, scholars, philosophers, and spiritual teachers have reflected upon the meaning of these remarkable oceans.",
+        "Some traditions understand them as literal features of the universe described in the Puranas.",
+        "Others see them as symbolic representations of abundance, purity, sacrifice, nourishment, or different stages of spiritual understanding.",
+        "The cosmological chapters of the Puranas themselves primarily present these oceans as integral parts of the universe's structure, without insisting on a single philosophical interpretation.",
+        "This openness has allowed readers across generations to appreciate these descriptions from historical, theological, symbolic, and devotional perspectives.",
+      ],
+    },
+    {
+      title: "A Universe of Order and Wonder",
+      paragraphs: [
+        "What makes the Seven Cosmic Oceans remarkable is not merely the substances they contain.",
+        "It is the vision they create.",
+        "Every continent is carefully separated.",
+        "Every boundary has meaning.",
+        "Every ocean mirrors the continent beside it.",
+        "Every ring expands the universe in perfect harmony.",
+        "Rather than depicting an empty expanse of space, the Puranas present a cosmos filled with balance, beauty, diversity, and purpose.",
+        "The oceans are not empty distances between lands.",
+        "They are part of the very architecture of creation.",
+      ],
+    },
+    {
+      title: "Beyond the Cosmic Oceans",
+      paragraphs: [
+        "Our journey has now carried us outward from Mount Meru, across the Seven Continents, and through the Seven Cosmic Oceans.",
+        "Yet we have explored only the broad outline of this extraordinary universe.",
+        "Among all the continents described in the Puranas, one receives far greater attention than the others.",
+        "It is the continent at the very center.",
+        "The land surrounding Mount Meru.",
+        "The only region where human beings are said to perform karma, pursue Dharma, and strive for Moksha.",
+        "It is called Jambudvipa.",
+        "In the next chapter, we leave the broad map behind and step into the heart of the Puranic universe, exploring the sacred continent where the story of humanity unfolds.",
+      ],
+    },
+    {
+      title: "Scriptural References",
+      paragraphs: ["Primary Sources"],
+      list: [
+        "Bhagavata Purana, Canto 5, Chapters 20-21.",
+        "Vishnu Purana, Book II, Chapters 4-7.",
+        "Brahmanda Purana, Cosmographical Sections.",
+        "Matsya Purana, Cosmological Sections.",
+        "Vayu Purana, Cosmographical Sections.",
+      ],
+    },
+    {
+      title: "Editorial Note",
+      paragraphs: [
+        "The major Puranas consistently describe seven concentric oceans surrounding the Sapta Dvipa. Throughout this book, the original Sanskrit names - such as Lavana Samudra, Kshira Samudra, and Ghrita Samudra - are used alongside their English meanings to remain faithful to the traditional texts while ensuring clarity for modern readers.",
+      ],
+    },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />

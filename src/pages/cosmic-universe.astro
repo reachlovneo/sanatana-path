@@ -1,0 +1,131 @@
+---
+import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+
+const journeyItems = [
+  {
+    title: "The Fourteen Lokas",
+    href: "/14-lokas",
+    eyebrow: "Layered worlds",
+    description: "The layered worlds of existence: seven higher Lokas, Bhuloka, and seven lower Lokas.",
+    status: "available",
+  },
+  {
+    title: "Mount Meru",
+    href: "/mount-meru",
+    eyebrow: "Cosmic axis",
+    description: "The cosmic axis at the center of the universe, where Meru is introduced as the pillar of cosmic order.",
+    status: "available",
+  },
+  {
+    title: "The Sapta Dvipa",
+    href: "/sapta-dvipa",
+    eyebrow: "Seven continents",
+    description: "The seven great continents of Puranic cosmic geography.",
+    status: "available",
+  },
+  {
+    title: "The Cosmic Oceans",
+    href: "/cosmic-oceans",
+    eyebrow: "Cosmic boundaries",
+    description: "The seven oceans that separate the great Dvipas: salt, sugarcane juice, sura, ghee, curd, milk, and pure sweet water.",
+    status: "available",
+  },
+  {
+    title: "The Higher Worlds",
+    href: "/14-lokas",
+    eyebrow: "Upper realms",
+    description: "Where sages, celestial beings, devas, and higher states of existence are described.",
+    status: "available",
+  },
+  {
+    title: "The Lower Worlds",
+    href: "/14-lokas",
+    eyebrow: "Hidden realms",
+    description: "Mysterious realms beneath the Earth, associated with powerful beings, hidden cities, and treasures.",
+    status: "available",
+  },
+];
+const related = [
+  { title: "The Fourteen Lokas", href: "/14-lokas", image: "/images/home/home-lokas.png", eyebrow: "Layered worlds" },
+  { title: "Cosmic Time", href: "/atlas", image: "/images/home/home-hero.png", eyebrow: "Cosmic map" },
+  { title: "Garuda Purana", href: "/atlas/garuda-purana", image: "/images/home/home-garuda-purana.png", eyebrow: "Afterlife atlas" },
+];
+
+const concept = {
+  title: "The Hindu Cosmic Universe",
+  eyebrow: "Realms of Hindu cosmology",
+  summary: "When most people imagine the universe, they think of planets, stars, galaxies, and endless space. But many Hindu scriptures describe the cosmos in a very different way: as a vast, layered structure of worlds, sacred mountains, continents, oceans, divine realms, and hidden regions beneath the Earth.",
+  image: "/images/home/home-lokas.png",
+  transitionName: "concept-cosmic-universe",
+  posterHero: true,
+  readingLayout: "article",
+  accent: "#65d7dc",
+  facts: ["Fourteen Lokas", "Mount Meru", "Sapta Dvipa", "Cosmic oceans"],
+  journeyItems,
+  visualFeature: {
+    eyebrow: "See it visually",
+    title: "A Living Map of the Cosmic Universe",
+    text: "Before entering each chapter, pause and see the whole structure at once: Mount Meru at the center, the Sapta Dvipa spreading outward, the cosmic oceans forming their boundaries, and the Lokas rising above and below the world of human life.",
+    image: "/images/atlas/cosmic_universe.png",
+    alt: "A visual map of Mount Meru, the Fourteen Lokas, the Sapta Dvipa, and the cosmic oceans arranged as a sacred universe.",
+  },
+  sections: [
+    {
+      title: "What Does the Universe Look Like According to Hindu Scriptures?",
+      paragraphs: [
+        "Imagine someone asking you a simple question.",
+        "Where do we live?",
+        "Most people would answer, On Earth. Some might say, In the Solar System. Others would go even further: In the Milky Way Galaxy.",
+        "According to modern science, that answer is correct. But according to many Hindu scriptures, Earth is only one small part of a much larger cosmic design.",
+        "Not a universe made only of planets and stars, but one divided into fourteen realms of existence, connected through a grand cosmic order.",
+      ],
+    },
+    {
+      title: "A Layered Cosmic Design",
+      paragraphs: [
+        "At the very center stands a magnificent mountain said to support the worlds themselves.",
+        "Around it stretch enormous continents, each separated by oceans unlike any found on Earth. Some are described as oceans of salt. Others of sugarcane juice. Still others of wine, clarified butter, curd, milk, and pure water.",
+        "Above our world lie higher realms inhabited by sages, celestial beings, and divine creators. Below it exist mysterious subterranean worlds filled with powerful beings, hidden cities, and unimaginable treasures.",
+        "This is not a map meant for travelers. It is a map of existence itself.",
+      ],
+    },
+    {
+      title: "A Vision Preserved in the Puranas",
+      paragraphs: [
+        "These descriptions appear throughout traditional Hindu scriptures, including the Vishnu Purana, the Bhagavata Purana, the Markandeya Purana, and several other Puranic texts.",
+        "Whether understood literally, symbolically, or philosophically, they present one of humanity's most elaborate visions of the cosmos.",
+        "To appreciate its scale, imagine the universe not as empty space, but as a vast, living structure where every realm has its own inhabitants, purpose, and place in the cosmic order.",
+        "Suddenly, Earth is no longer the whole story. It becomes just one level among many.",
+      ],
+    },
+    {
+      title: "The Question This Journey Answers",
+      paragraphs: [
+        "But this raises an even bigger question: What does this cosmic universe actually look like?",
+        "How are these worlds arranged? Why is Mount Meru placed at the center? What are the Seven Continents? Why are they separated by different cosmic oceans? Who lives in the higher worlds? And what lies beneath our own?",
+      ],
+    },
+    {
+      title: "In the Chapters Ahead",
+      paragraphs: ["You will discover the major parts of this cosmic map:"],
+      list: [
+        "The Fourteen Lokas - the layered worlds of existence.",
+        "Mount Meru - the cosmic axis at the center of the universe.",
+        "The Sapta Dvipa - the seven great continents.",
+        "The Cosmic Oceans that separate them.",
+        "The Higher Worlds, where sages and celestial beings reside.",
+        "The Lower Worlds, mysterious realms beneath the Earth.",
+      ],
+    },
+    {
+      title: "A Map of Existence",
+      paragraphs: [
+        "By the end of this journey, you will be able to visualize the extraordinary universe described in Hindu scriptures - from the world we inhabit to the highest heavenly realms and the deepest subterranean worlds.",
+        "This is not merely a description of an ancient universe. It is an exploration of one of the most imaginative and intricate cosmic maps ever envisioned.",
+      ],
+    },
+  ],
+  related,
+};
+---
+<ConceptDetailPage concept={concept} />

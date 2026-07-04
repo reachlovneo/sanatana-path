@@ -14,7 +14,7 @@ const featuredTopics = [
     eyebrow: "Realms",
     title: "14 Lokas",
     text: "The layered worlds of Hindu cosmology, from earthly experience to subtle celestial realms.",
-    href: "/atlas",
+    href: "/14-lokas",
     tone: "teal",
     image: "/images/home/home-lokas.webp",
   },
@@ -22,7 +22,7 @@ const featuredTopics = [
     eyebrow: "Ramayana wonder",
     title: "Pushpaka Vimana",
     text: "The famous aerial vehicle of the Ramayana, explored as story, symbol, and ancient imagination.",
-    href: "/atlas/treta-yuga",
+    href: "/pushpaka-vimana",
     tone: "amber",
     image: "/images/home/home-vimana.webp",
   },
@@ -30,7 +30,7 @@ const featuredTopics = [
     eyebrow: "Puranic mystery",
     title: "Flying Cities of Tripura",
     text: "The three moving cities destroyed by Shiva, one of the most cinematic stories in the Puranas.",
-    href: "/atlas",
+    href: "/flying-cities-of-tripura",
     tone: "violet",
     image: "/images/home/home-tripura.webp",
   },
@@ -38,7 +38,7 @@ const featuredTopics = [
     eyebrow: "Astra knowledge",
     title: "Weapons That Responded to Thought",
     text: "Astras activated by mantra, attention, discipline, and inner qualification in the epics.",
-    href: "/atlas",
+    href: "/astras",
     tone: "fire",
     image: "/images/home/home-astras.webp",
   },
@@ -52,7 +52,7 @@ const featuredTopics = [
   },
   {
     eyebrow: "Purana knowledge",
-    title: "Garuda Puranam",
+    title: "Garuda Purana",
     text: "A sacred Purana exploring dharma, karma, afterlife journeys, rituals, and deeper meaning.",
     href: "/atlas/garuda-purana",
     tone: "shadow",
@@ -60,15 +60,52 @@ const featuredTopics = [
   },
 ];
 
-const atlasRoutes = ["Cosmic Time", "Kalpa", "Manvantara", "Maha Yuga", "Four Yugas", "Kali Yuga"];
-const storySignals = ["Rama", "Sita", "Hanuman", "Ravana", "Vedavati", "Trishanku", "Bhagiratha", "Parashurama"];
+const curiosityPrompts = [
+  {
+    label: "Cosmic scale",
+    title: "How large is time?",
+    text: "Walk from a human lifetime into Yugas, Manvantaras, Kalpas, and Brahma's day.",
+    href: "/atlas/cosmic-time",
+  },
+  {
+    label: "Hidden worlds",
+    title: "What are the 14 Lokas?",
+    text: "Explore layered realms, subtle worlds, and where earthly life fits in the larger map.",
+    href: "/14-lokas",
+  },
+  {
+    label: "Epic wonder",
+    title: "Did Vimanas fly?",
+    text: "Enter Pushpaka Vimana through story, symbol, imagination, and source-aware context.",
+    href: "/pushpaka-vimana",
+  },
+  {
+    label: "Power and mantra",
+    title: "What made Astras different?",
+    text: "See why epic weapons were tied to attention, discipline, mantra, and inner qualification.",
+    href: "/astras",
+  },
+  {
+    label: "Afterlife and dharma",
+    title: "What does Garuda Purana teach?",
+    text: "Follow karma, ritual, afterlife journeys, and moral imagination with a calm guide.",
+    href: "/atlas/garuda-purana",
+  },
+];
+
+const startPaths = [
+  { label: "I am new", title: "Start simple", text: "A gentle first route through cosmic time and the big map.", href: "/atlas/cosmic-time" },
+  { label: "I like stories", title: "Enter the epics", text: "Begin with characters, choices, dharma, and consequence.", href: "/atlas/treta-yuga" },
+  { label: "I want wonder", title: "Explore mysteries", text: "Vimanas, Astras, Lokas, and Puranic imagination in one path.", href: "/pushpaka-vimana" },
+  { label: "I want sources", title: "Read with context", text: "Move through source-aware notes, meanings, and connected topics.", href: "/sources" },
+];
 const heroNodes = [
   { label: "Cosmic Time", href: "/atlas/cosmic-time", tone: "gold", className: "node-1" },
   { label: "Garuda Purana", href: "/atlas/garuda-purana", tone: "shadow", className: "node-7" },
-  { label: "14 Lokas", href: "/atlas", tone: "teal", className: "node-2" },
-  { label: "Vimanas", href: "/atlas/treta-yuga", tone: "amber", className: "node-3" },
-  { label: "Tripura", href: "/atlas", tone: "violet", className: "node-4" },
-  { label: "Astras", href: "/atlas", tone: "fire", className: "node-5" },
+  { label: "14 Lokas", href: "/14-lokas", tone: "teal", className: "node-2" },
+  { label: "Vimanas", href: "/pushpaka-vimana", tone: "amber", className: "node-3" },
+  { label: "Tripura", href: "/flying-cities-of-tripura", tone: "violet", className: "node-4" },
+  { label: "Astras", href: "/astras", tone: "fire", className: "node-5" },
   { label: "Epics", href: "/atlas/treta-yuga", tone: "blue", className: "node-6" },
 ];
 ---
@@ -77,12 +114,12 @@ const heroNodes = [
     <div class="home-main">
       <section class="home-hero">
         <div class="hero-panel">
-          <p class="eyebrow">The eternal atlas</p>
-          <h1>Hindu knowledge, mapped as a living atlas.</h1>
-          <p class="hero-lead">Explore cosmic time, Lokas, Vimanas, Astras, Ramayana, Mahabharata, Puranas, and hidden knowledge through one connected visual system.</p>
+          <p class="eyebrow">A living knowledge atlas</p>
+          <h1>Ancient wisdom, explored in a modern way.</h1>
+          <p class="hero-lead">A calm visual guide to cosmic time, Lokas, Vimanas, Astras, the epics, and the Puranas. Start anywhere, then follow how each idea connects to story, source, and meaning.</p>
           <div class="hero-actions">
-            <a class="primary-action" href="/atlas"><i aria-hidden="true">?</i><span>Enter the Atlas</span><b aria-hidden="true">-&gt;</b></a>
-            <a class="play-action" href="#featured-topics"><i>PLAY</i><span>Preview the topic universe</span></a>
+            <a class="primary-action" href="/atlas"><i aria-hidden="true">SP</i><span>Enter the Atlas</span><b aria-hidden="true">-&gt;</b></a>
+            <a class="play-action" href="#featured-topics"><i>VIEW</i><span>Preview the topic universe</span></a>
           </div>
           <div class="mini-topics" aria-label="Featured landing topics">
             <span>Cosmic Time</span><span>14 Lokas</span><span>Vimanas</span><span>Astras</span><span>Epics</span>
@@ -90,7 +127,7 @@ const heroNodes = [
           <div class="hero-signals" aria-label="Atlas qualities">
             <span><b>01</b>Visual journeys</span>
             <span><b>02</b>Beginner clear</span>
-            <span><b>03</b>Source-aware</span>
+            <span><b>03</b>Sources included</span>
           </div>
         </div>
 
@@ -109,14 +146,28 @@ const heroNodes = [
           </div>
         </aside>
       </section>
-
+      <section class="start-section" aria-labelledby="start-title">
+        <div class="start-heading">
+          <p class="eyebrow">Choose your path</p>
+          <h2 id="start-title">Start with what interests you.</h2>
+        </div>
+        <div class="start-grid">
+          {startPaths.map((path) => (
+            <a class="start-card" href={path.href}>
+              <small>{path.label}</small>
+              <strong>{path.title}</strong>
+              <span>{path.text}</span>
+            </a>
+          ))}
+        </div>
+      </section>
       <section id="featured-topics" class="topic-section">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Open the doors</p>
             <h2>Topics built for curiosity</h2>
           </div>
-          <p>These are the hooks that make people stop scrolling. Some are live now; others become dedicated atlas journeys as we build.</p>
+          <p>Begin with a featured journey, then follow related ideas across time, story, source, symbol, and meaning.</p>
         </div>
         <div class="topic-grid">
           {featuredTopics.map((topic) => (
@@ -133,25 +184,21 @@ const heroNodes = [
         </div>
       </section>
 
-      <section class="atlas-preview">
-        <div class="preview-copy">
-          <p class="eyebrow">First live journey</p>
-          <h2>Begin with Cosmic Time</h2>
-          <p>Before entering Kali Yuga, the atlas shows where it sits inside the larger structure: Four Yugas, Maha Yuga, Manvantara, Kalpa, and Brahma's cosmic day.</p>
-          <a href="/atlas/cosmic-time">Open Cosmic Time <span aria-hidden="true">-&gt;</span></a>
+      <section class="curiosity-section" aria-labelledby="curiosity-title">
+        <div class="curiosity-copy">
+          <p class="eyebrow">Curiosity map</p>
+          <h2 id="curiosity-title">Choose the question that pulls you in.</h2>
+          <p>Sanatana Path works best when a topic feels alive. Start with wonder, then move into story, source, meaning, and the larger map.</p>
+          <a href="/atlas">View full atlas <span aria-hidden="true">-&gt;</span></a>
         </div>
-        <div class="route-strip" aria-label="Cosmic time route">
-          {atlasRoutes.map((route, index) => <span><i>{index + 1}</i>{route}</span>)}
-        </div>
-      </section>
-
-      <section class="story-band">
-        <div>
-          <p class="eyebrow">Stories are the interface</p>
-          <h2>Not just mythology. A map of character, power, time, and consequence.</h2>
-        </div>
-        <div class="signal-grid" aria-label="Story signals">
-          {storySignals.map((signal) => <span>{signal}</span>)}
+        <div class="curiosity-rail" aria-label="Curiosity entry points">
+          {curiosityPrompts.map((prompt) => (
+            <a class="curiosity-card" href={prompt.href}>
+              <small>{prompt.label}</small>
+              <strong>{prompt.title}</strong>
+              <span>{prompt.text}</span>
+            </a>
+          ))}
         </div>
       </section>
     </div>
@@ -229,9 +276,7 @@ const heroNodes = [
   }
 
   .hero-panel h1,
-  .section-heading h2,
-  .preview-copy h2,
-  .story-band h2 {
+  .section-heading h2 {
     margin: .6rem 0 0;
     color: #f7ebd3;
     font-family: Georgia, "Times New Roman", serif;
@@ -261,8 +306,7 @@ const heroNodes = [
   }
 
   .primary-action,
-  .play-action,
-  .preview-copy a {
+  .play-action {
     display: inline-flex;
     align-items: center;
     gap: .75rem;
@@ -533,15 +577,11 @@ const heroNodes = [
     line-height: 1.25;
   }
 
-  .topic-section,
-  .atlas-preview,
-  .story-band {
+  .topic-section {
     margin-top: 1.2rem;
   }
 
-  .section-heading,
-  .atlas-preview,
-  .story-band {
+  .section-heading {
     display: grid;
     grid-template-columns: minmax(0, .85fr) minmax(0, 1fr);
     gap: 1.2rem;
@@ -552,14 +592,11 @@ const heroNodes = [
     margin-bottom: 1rem;
   }
 
-  .section-heading h2,
-  .preview-copy h2,
-  .story-band h2 {
+  .section-heading h2 {
     font-size: clamp(2.2rem, 4vw, 4.6rem);
   }
 
-  .section-heading > p,
-  .preview-copy p {
+  .section-heading > p {
     color: #aaa49a;
     line-height: 1.7;
   }
@@ -700,36 +737,357 @@ const heroNodes = [
     text-transform: uppercase;
   }
 
-  .preview-copy,
-  .route-strip,
-  .story-band {
-    border: 1px solid rgb(214 172 91 / .16);
-    border-radius: 1.15rem;
-    background: linear-gradient(145deg, rgb(12 37 37 / .54), rgb(3 13 20 / .42));
-    box-shadow: inset 0 1px rgb(255 255 255 / .025);
+  .curiosity-section {
+    display: grid;
+    grid-template-columns: minmax(20rem, .42fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+    margin-top: clamp(1rem, 2vw, 1.6rem);
+    border: 1px solid rgb(214 172 91 / .14);
+    border-radius: 1rem;
+    padding: clamp(.85rem, 1.6vw, 1.1rem);
+    background:
+      radial-gradient(circle at 0% 0%, rgb(244 195 109 / .1), transparent 24rem),
+      radial-gradient(circle at 92% 18%, rgb(101 215 220 / .07), transparent 28rem),
+      rgb(255 255 255 / .022);
   }
 
-  .preview-copy,
-  .story-band { padding: clamp(1.2rem, 2.6vw, 2rem); }
-  .preview-copy a { margin-top: 1rem; color: #f4d19a; font-weight: 850; }
-  .route-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; padding: 1rem; }
-  .route-strip span { border: 1px solid rgb(214 172 91 / .13); border-radius: .85rem; padding: .8rem; color: #eee3cf; font-family: Georgia, "Times New Roman", serif; font-size: 1.05rem; }
-  .route-strip i { display: block; margin-bottom: .45rem; color: #f0b45f; font-family: Inter, system-ui, sans-serif; font-size: .62rem; font-style: normal; font-weight: 900; }
-
-  .signal-grid {
+  .curiosity-copy {
     display: flex;
-    flex-wrap: wrap;
-    gap: .55rem;
+    min-height: 24rem;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: .9rem;
+    padding: clamp(1.15rem, 2.5vw, 2rem);
+    background: linear-gradient(145deg, rgb(2 10 16 / .58), rgb(2 10 16 / .12));
   }
 
-  .signal-grid span {
-    border: 1px solid rgb(214 172 91 / .18);
+  .curiosity-copy h2 {
+    max-width: 11ch;
+    margin: .6rem 0 0;
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.2rem, 4vw, 4.35rem);
+    font-weight: 450;
+    letter-spacing: -.034em;
+    line-height: .98;
+  }
+
+  .curiosity-copy p:not(.eyebrow) {
+    max-width: 36rem;
+    margin: 1rem 0 0;
+    color: #bfb4a4;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .curiosity-copy a {
+    display: inline-flex;
+    width: fit-content;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: .55rem;
+    margin-top: 1.25rem;
+    border: 1px solid rgb(244 195 109 / .42);
     border-radius: 999px;
-    padding: .55rem .75rem;
-    color: #d8c5a3;
-    background: rgb(255 255 255 / .02);
+    padding: .68rem 1rem;
+    color: #061015;
+    background: #e7b861;
+    font-weight: 900;
+  }
+
+  .curiosity-rail {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(12rem, 1fr));
+    gap: .75rem;
+  }
+
+  .curiosity-card {
+    position: relative;
+    display: flex;
+    min-height: 12rem;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    border: 1px solid rgb(214 172 91 / .14);
+    border-radius: .9rem;
+    padding: 1rem;
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / .045), rgb(255 255 255 / .012)),
+      rgb(2 10 16 / .38);
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  }
+
+  .curiosity-card:nth-child(1),
+  .curiosity-card:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .curiosity-card:nth-child(2),
+  .curiosity-card:nth-child(3),
+  .curiosity-card:nth-child(4) {
+    grid-column: span 2;
+  }
+
+  .curiosity-card::after {
+    position: absolute;
+    right: .9rem;
+    bottom: .9rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid rgb(244 195 109 / .16);
+    border-radius: 50%;
+    content: "";
+  }
+
+  .curiosity-card:hover {
+    transform: translateY(-4px);
+    border-color: rgb(244 195 109 / .46);
+    background-color: rgb(12 37 37 / .44);
+  }
+
+  .curiosity-card small {
+    color: #f0b45f;
+    font-size: .64rem;
+    font-weight: 900;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+
+  .curiosity-card strong {
+    max-width: 13ch;
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.35rem, 1.8vw, 2rem);
+    font-weight: 520;
+    letter-spacing: -.015em;
+    line-height: 1.02;
+  }
+
+  .curiosity-card span {
+    max-width: 30ch;
+    color: #bdb2a1;
     font-size: .82rem;
-    font-weight: 800;
+    line-height: 1.45;
+  }
+
+
+  /* Modern home refresh */
+  .home-experience {
+    background:
+      radial-gradient(circle at 50% -8%, rgb(214 172 91 / .1), transparent 36rem),
+      linear-gradient(180deg, #02090d 0%, #041112 48%, #02090d 100%);
+  }
+
+  .home-experience::before {
+    background-image: linear-gradient(rgb(214 172 91 / .07) 1px, transparent 1px), linear-gradient(90deg, rgb(214 172 91 / .055) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, black, transparent 62%);
+  }
+
+  .home-main {
+    width: min(1560px, calc(100% - 2rem));
+  }
+
+  .home-hero {
+    min-height: min(780px, calc(100svh - 5rem));
+    grid-template-columns: minmax(24rem, .58fr) minmax(32rem, .92fr);
+  }
+
+  .hero-panel::before {
+    opacity: .72;
+  }
+
+  .hero-panel h1 {
+    max-width: 11.5ch;
+    font-size: clamp(3.2rem, 5vw, 5.65rem);
+    letter-spacing: -.035em;
+  }
+
+  .hero-lead {
+    max-width: 38rem;
+    color: #d2c8b8;
+  }
+
+  .primary-action,
+  .play-action,
+  .start-card,
+  .curiosity-card {
+    border-radius: .9rem;
+  }
+
+  .primary-action {
+    border-color: rgb(244 195 109 / .82);
+    background: #e7b861;
+    box-shadow: 0 16px 42px rgb(214 172 91 / .18);
+  }
+
+  .primary-action::after {
+    opacity: .45;
+  }
+
+  .play-action {
+    background: rgb(255 255 255 / .035);
+  }
+
+  .atlas-orbital {
+    min-height: clamp(34rem, 64vh, 43rem);
+    border-color: rgb(214 172 91 / .14);
+    border-radius: 1.1rem;
+    background: rgb(3 13 20 / .16);
+    box-shadow: 0 24px 90px rgb(0 0 0 / .24), inset 0 1px rgb(255 255 255 / .03);
+  }
+
+  .topic-node {
+    background: rgb(2 10 16 / .66);
+    box-shadow: 0 14px 38px rgb(0 0 0 / .22);
+  }
+
+  .start-section {
+    display: grid;
+    grid-template-columns: minmax(18rem, .42fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+    margin-top: .2rem;
+  }
+
+  .start-heading {
+    border: 1px solid rgb(214 172 91 / .14);
+    border-radius: 1rem;
+    padding: clamp(1.1rem, 2.4vw, 1.65rem);
+    background: rgb(255 255 255 / .025);
+  }
+
+  .start-heading h2 {
+    max-width: 11ch;
+    margin: .55rem 0 0;
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 3.3vw, 3.35rem);
+    font-weight: 450;
+    letter-spacing: -.032em;
+    line-height: 1;
+  }
+
+  .start-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem;
+  }
+
+  .start-card {
+    display: flex;
+    min-height: 13rem;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgb(214 172 91 / .14);
+    padding: 1rem;
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / .045), rgb(255 255 255 / .012)),
+      rgb(2 10 16 / .42);
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+  }
+
+  .start-card:hover {
+    transform: translateY(-4px);
+    border-color: rgb(244 195 109 / .45);
+    background-color: rgb(12 37 37 / .42);
+  }
+
+  .start-card small {
+    color: #f0b45f;
+    font-size: .64rem;
+    font-weight: 900;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+
+  .start-card strong {
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.28rem, 1.55vw, 1.7rem);
+    font-weight: 520;
+    line-height: 1.05;
+  }
+
+  .start-card span {
+    color: #bdb2a1;
+    font-size: .82rem;
+    line-height: 1.45;
+  }
+
+  .topic-section,
+  .start-section,
+  .curiosity-section {
+    margin-top: clamp(1rem, 2vw, 1.6rem);
+  }
+
+  .section-heading {
+    align-items: end;
+    margin-bottom: .85rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 3.6vw, 4rem);
+    letter-spacing: -.032em;
+  }
+
+  .section-heading > p {
+    max-width: 46rem;
+  }
+
+  .topic-grid {
+    gap: .85rem;
+  }
+
+  .topic-card {
+    min-height: clamp(21rem, 25vw, 28rem);
+    border-color: rgb(214 172 91 / .14);
+    border-radius: 1rem;
+    box-shadow: 0 16px 46px rgb(0 0 0 / .14), inset 0 1px rgb(255 255 255 / .025);
+  }
+
+  .topic-card::before {
+    opacity: .42;
+    filter: blur(54px);
+  }
+
+  .topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 62px rgb(0 0 0 / .28);
+  }
+
+  .topic-copy {
+    min-height: 9.6rem;
+    border-radius: .85rem;
+    background: linear-gradient(180deg, rgb(2 10 16 / .76), rgb(2 10 16 / .56));
+    backdrop-filter: blur(14px);
+  }
+
+  .topic-card h3 {
+    font-size: clamp(1.38rem, 2vw, 2.05rem);
+  }
+
+  @media (max-width: 1180px) {
+    .start-section { grid-template-columns: 1fr; }
+    .start-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .curiosity-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
+    .curiosity-card,
+    .curiosity-card:nth-child(1),
+    .curiosity-card:nth-child(2),
+    .curiosity-card:nth-child(3),
+    .curiosity-card:nth-child(4),
+    .curiosity-card:nth-child(5) { grid-column: auto; }
+  }
+
+  @media (max-width: 720px) {
+    .home-main { width: min(100% - 1rem, 1560px); }
+    .hero-panel { padding: .8rem .55rem; }
+    .hero-panel h1 { font-size: clamp(2.7rem, 14vw, 4.25rem); }
+    .start-grid { grid-template-columns: 1fr; }
+    .start-card { min-height: 10rem; }
+    .atlas-orbital { min-height: 32rem; }
   }
 
   @keyframes home-orbit {
@@ -740,22 +1098,21 @@ const heroNodes = [
   @media (max-width: 1180px) {
     .home-hero,
     .section-heading,
-    .atlas-preview,
-    .story-band { grid-template-columns: 1fr; }
+    .curiosity-section { grid-template-columns: 1fr; }
     .hero-panel { max-width: 44rem; }
     .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 720px) {
-    .home-main { width: min(100% - 1rem, 1800px); }
+    .home-main { width: min(100% - 1rem, 1560px); }
     .home-hero { min-height: auto; grid-template-columns: 1fr; padding-top: 1.2rem; }
-    .hero-panel h1 { font-size: clamp(3rem, 16vw, 4.8rem); }
+    .hero-panel h1 { font-size: clamp(2.7rem, 14vw, 4.25rem); }
     .hero-signals { grid-template-columns: 1fr; }
     .atlas-orbital { --caption-space: 6.8rem; min-height: 34rem; margin-top: 0; }
     .orbital-field { inset: 1rem 1rem calc(var(--caption-space) + .55rem) 1rem; }
     .topic-node { padding: .42rem .55rem; }
     .topic-node span { font-size: .62rem; }
     .topic-grid,
-    .route-strip { grid-template-columns: 1fr; }
+    .curiosity-rail { grid-template-columns: 1fr; }
   }
 </style>

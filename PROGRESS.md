@@ -1,10 +1,10 @@
 # Project Progress
 
-Last updated: 2026-06-12
+Last updated: 2026-06-27
 
 ## Current Milestone
 
-Milestone 1: Design Foundation
+Milestone 2: Library and Atlas Content Expansion
 
 ## Completed
 
@@ -32,17 +32,24 @@ Milestone 1: Design Foundation
 - Reordered Cosmic Time into an answer-first, scan-friendly learning experience.
 - Added reusable quick-orientation and common-question components.
 - Improved public draft wording and descriptive next-topic information scent.
+- Added the Library route, searchable category system, and shared header navigation.
+- Added Garuda Purana as a connected atlas topic and home/library pathway.
+- Centralized the dark theme and shared header behavior through `BaseLayout` and `SiteHeader`.
+- Added active working standards for performance, SEO, accessibility, motion, code structure, and progress discipline.
 
 ## In Progress
 
-- Verify the static build and visually review the first implementation.
-- Visually review the first implementation when the local in-app browser is available.
+- Complete Library topics one by one, starting with Cosmic Time as the first fully linked readable topic.
+- Keep Home, Atlas, Library, and topic pages connected through clear internal navigation.
+- Maintain performance, SEO, accessibility, and premium-motion standards while expanding content.
 - Prepare the Cosmic Time flagship draft for qualified source and content review.
 
 ## Next
 
-- Visually refine the first implementation after browser QA is available.
-- Complete expert-reviewed Kali Yuga content and source references.
+- Convert more Library categories into complete readable topic pages.
+- Gradually extract large Home, Library, and Atlas sections into reusable components.
+- Improve sitemap/indexing rules so review status controls publication behavior.
+- Complete expert-reviewed topic content and source references.
 - Add the secure Turnstile and D1 feedback flow after the content experience is approved.
 
 ## Decisions
@@ -56,16 +63,13 @@ Milestone 1: Design Foundation
 | 2026-06-12 | Treat motion as a governed design system | Deliver professional polish without harming performance or accessibility |
 | 2026-06-12 | Keep Cloudflare adapter deferred locally | Cloudflare `workerd` does not currently install on this Windows ARM64 environment |
 | 2026-06-12 | Temporarily use authored CSS without active Tailwind plugin | Current Tailwind Vite plugin conflicts with the Astro 6 build resolver; no Tailwind utilities are used yet |
+| 2026-06-27 | Treat performance, SEO, accessibility, and premium motion as active working standards | Keep the experience smooth, professional, and scalable as Library content grows |
 
 ## Environment Notes
 
-- GitHub repository and automated CI are active and synchronized with local
-  `main`.
-- Cloudflare's local `workerd` dependency does not currently support this
-  Windows ARM64 environment. Production remains targeted at Cloudflare Workers;
-  deploy tooling should be completed on a supported CI or development host.
-- The in-app browser was unavailable during the first visual review attempt.
-  Build and type verification passed, but visual QA remains open.
+- GitHub repository and automated CI are active and synchronized with local `main`.
+- Cloudflare's local `workerd` dependency does not currently support this Windows ARM64 environment. Production remains targeted at Cloudflare Workers; deploy tooling should be completed on a supported CI or development host.
+- Astro checks may require elevated execution on this Windows sandbox because Vite child process spawning can fail with `spawn EPERM` under restricted execution.
 
 ## Open Items Before Production
 
@@ -74,5 +78,6 @@ Milestone 1: Design Foundation
 - Turnstile site key and secret
 - Production D1 database
 - Named content reviewers and editorial review workflow
-- Final approved content for all six topics
+- Final approved content for core atlas and Library topics
 - Qualified review of Cosmic Time wording, references, and reflective framing
+- Lighthouse, accessibility, SEO, and visual QA before launch

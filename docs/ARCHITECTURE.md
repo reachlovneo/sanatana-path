@@ -2,7 +2,7 @@
 
 This document explains where new code belongs. Product requirements remain in
 `PROJECT_BLUEPRINT.md`. Editorial review and publication rules live in
-`EDITORIAL_WORKFLOW.md`.
+`EDITORIAL_WORKFLOW.md`. Cosmic Clock writing voice lives in `COSMIC_CLOCK_WRITING_SYSTEM.md`. Day-to-day quality, performance, SEO, and code standards live in `WORKING_STANDARDS.md`.
 
 ## Ownership Boundaries
 
@@ -48,3 +48,5 @@ docs/             Product, architecture, and operational documentation
 4. Complete human review.
 5. Change status to `published` only when approved.
 6. Build and review the generated route before merging.
+
+

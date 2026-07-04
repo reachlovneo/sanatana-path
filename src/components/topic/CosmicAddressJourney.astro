@@ -1,0 +1,156 @@
+---
+import SourcePanel from "./SourcePanel.astro";
+
+const { topic, next } = Astro.props;
+const address = [
+  ["Universe", "The largest frame of existence"],
+  ["Current Brahma", "The present creator-cycle in this traditional model"],
+  ["51st Year of Brahma", "Our placement within Brahma's lifespan"],
+  ["Shveta Varaha Kalpa", "The current Day of Brahma"],
+  ["Vaivasvata Manvantara", "The 7th Manvantara"],
+  ["28th Maha Yuga", "The present four-age cycle"],
+  ["Kali Yuga", "The current Yuga"],
+];
+const scaleSteps = [
+  ["Yuga", "The smallest repeating age-cycle in this journey"],
+  ["Maha Yuga", "Four Yugas forming 4.32 million years"],
+  ["Manvantara", "Many Maha Yugas under one Manu"],
+  ["Kalpa", "Fourteen Manvantaras forming one Day of Brahma"],
+  ["Brahma's life", "A cosmic scale reaching trillions of years"],
+];
+const brahmaScale = [
+  ["Day + Night", "8.64 billion years"],
+  ["Month", "30 such days and nights"],
+  ["Year", "12 Brahma months"],
+  ["Lifetime", "About 311.04 trillion years"],
+];
+---
+
+<article class="address-reading">
+  <header>
+    <p class="eyebrow">Cosmic Clock Project · Recap</p>
+    <h1>Where Are We in the Cosmic Timeline?</h1>
+    <p class="lead">We've explored the building blocks of cosmic time. Now it's time to step back and see the entire picture.</p>
+  </header>
+
+  <section class="opening-card">
+    <p>For most of our lives, we measure time in days, months, and years.</p>
+    <p>A child celebrates a birthday every year. A civilization may rise and fall over centuries. A mountain may stand for millions of years.</p>
+    <p>But throughout this journey, we've discovered a completely different way of looking at time. One that stretches far beyond human history.</p>
+    <strong>Let's bring everything together.</strong>
+  </section>
+
+  <section class="scale-map" aria-label="Cosmic time building blocks">
+    <div>
+      <p class="eyebrow">Building blocks</p>
+      <h2>From a Yuga to a Kalpa</h2>
+      <p>By now, what once seemed like unimaginably large numbers have become familiar steps in a much larger pattern.</p>
+    </div>
+    <div class="scale-steps">
+      {scaleSteps.map(([title, detail], index) => <article><span>{String(index + 1).padStart(2, "0")}</span><strong>{title}</strong><small>{detail}</small></article>)}
+    </div>
+  </section>
+
+  <section class="story-flow">
+    <h2>The whole picture</h2>
+    <p>We began with the smallest repeating cycle.</p>
+    <p>The <strong>Yuga</strong>.</p>
+    <p>Four great ages through which humanity moves, each with its own qualities and duration.</p>
+    <p>Together, these four ages form a <strong>Maha Yuga</strong>, a complete cycle lasting <strong>4.32 million human years</strong>.</p>
+    <p>Many Maha Yugas unfold within a <strong>Manvantara</strong>, the era of a Manu, who represents the guiding figure of that age according to Hindu tradition.</p>
+    <p>Fourteen Manvantaras, along with their transitional periods, make up a <strong>Kalpa</strong>, one daytime of Brahma.</p>
+  </section>
+
+  <section class="brahma-clock">
+    <div>
+      <p class="eyebrow">Beyond one day</p>
+      <h2>The clock keeps expanding</h2>
+      <p>Just as every sunrise is followed by sunset, every Day of Brahma is followed by a Night of Brahma.</p>
+      <p>During the daytime, the universe is described as manifest, with creation unfolding through countless cycles. When the day ends, the universe enters a period of rest before another cosmic dawn begins.</p>
+    </div>
+    <div class="brahma-scale">
+      {brahmaScale.map(([label, value]) => <article><span>{label}</span><strong>{value}</strong></article>)}
+    </div>
+    <p>Together, one Day and one Night of Brahma span <strong>8.64 billion human years</strong>. Yet even this is only one day in Brahma's life.</p>
+    <p>Traditional Hindu cosmology describes a month of Brahma as thirty such days and nights. Twelve months form a year. One hundred such years make the full lifetime of Brahma.</p>
+    <p>According to this traditional calculation, Brahma's lifespan is approximately <strong>311.04 trillion human years</strong>.</p>
+  </section>
+
+  <section class="address-section">
+    <div class="address-intro">
+      <p class="eyebrow">You are here</p>
+      <h2>The cosmic address</h2>
+      <p>If this cosmic clock is still turning, where are we today?</p>
+      <p>According to the traditional Puranic chronology, our current position can be described like a cosmic address.</p>
+    </div>
+    <div class="address-orbit" aria-label="Current cosmic address">
+      {address.map(([title, detail], index) => <article class:list={{ current: title === "Kali Yuga" }}><span>{String(index + 1).padStart(2, "0")}</span><strong>{title}</strong><small>{detail}</small></article>)}
+    </div>
+    <p>Rather than seeing ourselves as existing in an undefined moment, Hindu cosmology places us within an immense hierarchy of repeating cycles. Every level provides a more precise location in the cosmic timeline.</p>
+  </section>
+
+  <section class="reflection-card">
+    <h2>The perspective changes everything</h2>
+    <p>Whether viewed as sacred cosmology, philosophical symbolism, or a traditional model of the universe, this system presents one of the most detailed visions of time found in any ancient civilization.</p>
+    <p>It invites us to look beyond the span of a single lifetime and imagine existence on a scale that reaches into billions and even trillions of years.</p>
+    <p>Perhaps that is the greatest idea this journey offers.</p>
+    <p>Not simply that time is vast.</p>
+    <p>But that our understanding of time changes depending on the perspective from which we choose to observe it.</p>
+    <p>A single human life can feel long. A civilization can seem eternal. Yet, within the cosmic cycles described by Hindu scriptures, both become brief moments in a much larger rhythm.</p>
+    <p>And that rhythm, according to tradition, continues without end.</p>
+  </section>
+
+  <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
+
+  <a class="continue" href={`/atlas/${next?.slug ?? "manvantara"}`}>
+    <span><small>Ready to continue?</small><strong>Next: {next?.title ?? "Manvantara"}</strong><em>Return from the full map into the next layer of the cosmic clock.</em></span>
+    <b>Explore next layer -></b>
+  </a>
+</article>
+
+<style>
+  .address-reading { --accent:#e9b65f; overflow:hidden; border:1px solid rgb(233 182 95/.2); border-radius:1.4rem; padding-bottom:1rem; background:radial-gradient(circle at 72% 4%,rgb(233 182 95/.14),transparent 24rem),linear-gradient(145deg,rgb(10 27 36/.72),rgb(3 13 20/.5)); color:#eee3cf; box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22); }
+  header,.opening-card,.scale-map,.story-flow,.brahma-clock,.address-section,.reflection-card,.address-reading :global(.source-panel),.continue { width:min(100% - 2rem,72rem); margin-inline:auto; }
+  header { padding:clamp(3rem,7vw,7rem) 0 2rem; }
+  .eyebrow { color:#e9b65f; font-size:.66rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+  h1,h2 { font-family:var(--serif); font-weight:400; letter-spacing:0; }
+  h1 { max-width:13ch; margin:.35rem 0 1rem; color:#fff2da; font-size:clamp(3.2rem,6vw,6rem); line-height:1; }
+  h2 { margin:0 0 .8rem; color:#fff2da; font-size:clamp(1.9rem,3vw,2.7rem); line-height:1.12; }
+  .lead { max-width:62ch; color:#d0c5b3!important; font-size:clamp(1.08rem,1.5vw,1.3rem); line-height:1.8; }
+  p, small { color:#aaa49a; line-height:1.85; }
+  strong { color:#f0c979; }
+  section { border-bottom:1px solid rgb(233 182 95/.14); padding-block:2rem; }
+  .opening-card,.scale-map,.brahma-clock,.address-section,.reflection-card,.continue { border:1px solid rgb(233 182 95/.15); border-radius:1rem; padding:clamp(1.1rem,2.6vw,2rem); background:linear-gradient(145deg,rgb(255 255 255/.048),rgb(2 10 16/.22)); backdrop-filter:blur(16px); box-shadow:inset 0 1px rgb(255 255 255/.03); }
+  .opening-card { display:grid; gap:.4rem; }
+  .opening-card strong { margin-top:.6rem; font-family:var(--serif); font-size:1.45rem; font-weight:500; }
+  .scale-map { display:grid; grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr); gap:1.2rem; align-items:start; }
+  .scale-steps,.brahma-scale,.address-orbit { display:grid; gap:.65rem; }
+  .scale-steps article,.brahma-scale article,.address-orbit article { border:1px solid rgb(233 182 95/.14); border-radius:.85rem; padding:.85rem .95rem; background:rgb(255 255 255/.018); box-shadow:inset 0 1px rgb(255 255 255/.025); }
+  .scale-steps article { display:grid; grid-template-columns:2.75rem 1fr; gap:.1rem .8rem; }
+  .scale-steps span { grid-row:1/3; color:#e9b65f; font-size:.66rem; font-weight:900; letter-spacing:.12em; }
+  .scale-steps strong,.address-orbit strong { color:#f0e3cc; font-family:var(--serif); font-size:1.12rem; font-weight:500; }
+  .scale-steps small,.address-orbit small { display:block; color:#9f978d; }
+  .story-flow { max-width:54rem; }
+  .story-flow p,.reflection-card p { max-width:66ch; }
+  .brahma-clock { display:grid; gap:.8rem; }
+  .brahma-scale { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .brahma-scale span { color:#a99f91; font-size:.62rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+  .brahma-scale strong { display:block; margin-top:.35rem; color:#ffe3a1; font-family:var(--serif); font-size:1.05rem; font-weight:500; }
+  .address-section { display:grid; gap:1rem; }
+  .address-intro { max-width:50rem; }
+  .address-orbit { grid-template-columns:repeat(7,minmax(0,1fr)); align-items:stretch; }
+  .address-orbit article { position:relative; min-height:8.25rem; align-content:end; display:grid; overflow:hidden; }
+  .address-orbit article::before { position:absolute; top:.8rem; left:.85rem; width:.54rem; aspect-ratio:1; border-radius:50%; background:#e9b65f; box-shadow:0 0 18px rgb(233 182 95/.34); content:""; }
+  .address-orbit span { color:#e9b65f; font-size:.62rem; font-weight:900; letter-spacing:.12em; }
+  .address-orbit .current { border-color:rgb(255 113 78/.5); background:linear-gradient(180deg,rgb(255 113 78/.12),rgb(255 255 255/.02)); box-shadow:0 0 30px rgb(255 113 78/.14); }
+  .address-orbit .current::before { background:#ff714e; box-shadow:0 0 22px rgb(255 113 78/.58); }
+  .reflection-card { border-color:rgb(101 215 220/.18); background:linear-gradient(145deg,rgb(101 215 220/.055),rgb(2 10 16/.24)); }
+  .continue { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:2rem; color:#65d7dc; border-color:rgb(101 215 220/.22); background:linear-gradient(100deg,rgb(101 215 220/.055),transparent); }
+  .continue span > * { display:block; }
+  .continue small { color:#99938a; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; }
+  .continue strong { font-family:var(--serif); font-size:1.7rem; font-weight:400; }
+  .continue em { color:#aaa49a; font-size:.72rem; font-style:normal; }
+  .continue b { color:#65d7dc; font-size:.68rem; text-transform:uppercase; }
+  @media(max-width:980px){ .scale-map{grid-template-columns:1fr}.brahma-scale{grid-template-columns:1fr 1fr}.address-orbit{grid-template-columns:repeat(4,minmax(0,1fr));} }
+  @media(max-width:640px){ header,.opening-card,.scale-map,.story-flow,.brahma-clock,.address-section,.reflection-card,.address-reading :global(.source-panel),.continue{width:min(100% - 1.25rem,72rem)} .brahma-scale,.address-orbit{grid-template-columns:1fr 1fr}.address-orbit article{min-height:6.7rem}.continue{align-items:flex-start;flex-direction:column} }
+</style>
