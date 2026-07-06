@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SacredIcon from "../components/ui/SacredIcon.astro";
 
 const featuredTopics = [
   {
@@ -60,39 +61,14 @@ const featuredTopics = [
   },
 ];
 
-const curiosityPrompts = [
-  {
-    label: "Cosmic scale",
-    title: "How large is time?",
-    text: "Walk from a human lifetime into Yugas, Manvantaras, Kalpas, and Brahma's day.",
-    href: "/atlas/cosmic-time",
-  },
-  {
-    label: "Hidden worlds",
-    title: "What are the 14 Lokas?",
-    text: "Explore layered realms, subtle worlds, and where earthly life fits in the larger map.",
-    href: "/14-lokas",
-  },
-  {
-    label: "Epic wonder",
-    title: "Did Vimanas fly?",
-    text: "Enter Pushpaka Vimana through story, symbol, imagination, and source-aware context.",
-    href: "/pushpaka-vimana",
-  },
-  {
-    label: "Power and mantra",
-    title: "What made Astras different?",
-    text: "See why epic weapons were tied to attention, discipline, mantra, and inner qualification.",
-    href: "/astras",
-  },
-  {
-    label: "Afterlife and dharma",
-    title: "What does Garuda Purana teach?",
-    text: "Follow karma, ritual, afterlife journeys, and moral imagination with a calm guide.",
-    href: "/atlas/garuda-purana",
-  },
-];
 
+const scriptureThreads = [
+  { label: "Vedas", text: "hymns, ritual knowledge, sound, and sacred order", href: "/library#vedas" },
+  { label: "Upanishads", text: "Atman, Brahman, moksha, and inner philosophy", href: "/library#upanishads" },
+  { label: "Puranas", text: "cosmic stories, deities, lokas, and living memory", href: "/library#puranas" },
+  { label: "Itihasas", text: "Ramayana, Mahabharata, dharma, heroes, and choices", href: "/library#itihasas" },
+  { label: "Agamas", text: "temple worship, sacred practice, and divine presence", href: "/library#scriptures" },
+];
 const startPaths = [
   { label: "I am new", title: "Start simple", text: "A gentle first route through cosmic time and the big map.", href: "/atlas/cosmic-time" },
   { label: "I like stories", title: "Enter the epics", text: "Begin with characters, choices, dharma, and consequence.", href: "/atlas/treta-yuga" },
@@ -118,7 +94,7 @@ const heroNodes = [
           <h1>Ancient wisdom, explored in a modern way.</h1>
           <p class="hero-lead">A calm visual guide to cosmic time, Lokas, Vimanas, Astras, the epics, and the Puranas. Start anywhere, then follow how each idea connects to story, source, and meaning.</p>
           <div class="hero-actions">
-            <a class="primary-action" href="/atlas"><i aria-hidden="true">SP</i><span>Enter the Atlas</span><b aria-hidden="true">-&gt;</b></a>
+            <a class="primary-action" href="/atlas"><i aria-hidden="true"><img src="/images/brand/golden-lotus-logo-256.png" alt="" width="32" height="32" decoding="async" /></i><span>Enter the Atlas</span><b aria-hidden="true">-&gt;</b></a>
             <a class="play-action" href="#featured-topics"><i>VIEW</i><span>Preview the topic universe</span></a>
           </div>
           <div class="mini-topics" aria-label="Featured landing topics">
@@ -183,20 +159,20 @@ const heroNodes = [
           ))}
         </div>
       </section>
-
-      <section class="curiosity-section" aria-labelledby="curiosity-title">
-        <div class="curiosity-copy">
-          <p class="eyebrow">Curiosity map</p>
-          <h2 id="curiosity-title">Choose the question that pulls you in.</h2>
-          <p>Sanatana Path works best when a topic feels alive. Start with wonder, then move into story, source, meaning, and the larger map.</p>
-          <a href="/atlas">View full atlas <span aria-hidden="true">-&gt;</span></a>
+      <section class="scripture-shelf" aria-labelledby="scripture-shelf-title">
+        <div class="scripture-copy">
+          <p class="eyebrow">Ancient scripture shelf</p>
+          <h2 id="scripture-shelf-title">Explore the texts behind the wonder.</h2>
+          <a href="/library"><i aria-hidden="true"><SacredIcon name="document" size={16} /></i><span>Open Library</span><b aria-hidden="true">-&gt;</b></a>
         </div>
-        <div class="curiosity-rail" aria-label="Curiosity entry points">
-          {curiosityPrompts.map((prompt) => (
-            <a class="curiosity-card" href={prompt.href}>
-              <small>{prompt.label}</small>
-              <strong>{prompt.title}</strong>
-              <span>{prompt.text}</span>
+        <div class="scripture-leaves" aria-label="Scripture reading threads">
+          <span class="scripture-axis" aria-hidden="true"></span>
+          {scriptureThreads.map((thread, index) => (
+            <a class="scripture-leaf" href={thread.href}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{thread.label}</strong>
+              <small>{thread.text}</small>
+              <b aria-hidden="true">-&gt;</b>
             </a>
           ))}
         </div>
@@ -351,6 +327,8 @@ const heroNodes = [
     font-style: normal;
   }
 
+  .primary-action i { overflow: hidden; background: rgb(3 13 20 / .22); }
+  .primary-action i img { width: 86%; height: 86%; border-radius: 50%; object-fit: contain; filter: saturate(1.08) contrast(1.08); }
   .primary-action span { position: relative; z-index: 1; }
 
   .play-action {
@@ -523,8 +501,8 @@ const heroNodes = [
   .topic-node.blue { --node-color: #85a8ff; --node-glow: rgb(133 168 255 / .22); }
   .topic-node.shadow { --node-color: #dcc49d; --node-glow: rgb(220 196 157 / .22); }
 
-  .node-1 { top: 13%; left: 48%; }
-  .node-7 { top: 18%; left: 49%; transform: translateY(2.1rem); }
+  .node-1 { top: 12%; left: 42%; }
+  .node-7 { top: 24%; right: 28%; }
   .node-2 { top: 35%; right: 13%; }
   .node-3 { bottom: 26%; right: 16%; }
   .node-4 { bottom: 25%; left: 47%; }
@@ -737,142 +715,231 @@ const heroNodes = [
     text-transform: uppercase;
   }
 
-  .curiosity-section {
+
+
+  .scripture-shelf {
     display: grid;
-    grid-template-columns: minmax(20rem, .42fr) minmax(0, 1fr);
-    gap: 1rem;
+    grid-template-columns: minmax(18rem, .34fr) minmax(0, 1fr);
+    gap: .72rem;
     align-items: stretch;
-    margin-top: clamp(1rem, 2vw, 1.6rem);
-    border: 1px solid rgb(214 172 91 / .14);
+    margin-top: clamp(1rem, 2vw, 1.45rem);
+    border: 1px solid rgb(214 172 91 / .16);
     border-radius: 1rem;
-    padding: clamp(.85rem, 1.6vw, 1.1rem);
+    padding: .62rem;
     background:
-      radial-gradient(circle at 0% 0%, rgb(244 195 109 / .1), transparent 24rem),
-      radial-gradient(circle at 92% 18%, rgb(101 215 220 / .07), transparent 28rem),
-      rgb(255 255 255 / .022);
+      radial-gradient(circle at 7% 18%, rgb(244 195 109 / .12), transparent 17rem),
+      radial-gradient(circle at 91% 78%, rgb(101 215 220 / .08), transparent 20rem),
+      linear-gradient(135deg, rgb(255 255 255 / .035), rgb(2 10 16 / .32));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 14px 42px rgb(0 0 0 / .14);
   }
 
-  .curiosity-copy {
-    display: flex;
-    min-height: 24rem;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: .9rem;
-    padding: clamp(1.15rem, 2.5vw, 2rem);
-    background: linear-gradient(145deg, rgb(2 10 16 / .58), rgb(2 10 16 / .12));
-  }
-
-  .curiosity-copy h2 {
-    max-width: 11ch;
-    margin: .6rem 0 0;
-    color: #f7ebd3;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(2.2rem, 4vw, 4.35rem);
-    font-weight: 450;
-    letter-spacing: -.034em;
-    line-height: .98;
-  }
-
-  .curiosity-copy p:not(.eyebrow) {
-    max-width: 36rem;
-    margin: 1rem 0 0;
-    color: #bfb4a4;
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  .curiosity-copy a {
-    display: inline-flex;
-    width: fit-content;
-    min-height: 2.75rem;
-    align-items: center;
-    gap: .55rem;
-    margin-top: 1.25rem;
-    border: 1px solid rgb(244 195 109 / .42);
-    border-radius: 999px;
-    padding: .68rem 1rem;
-    color: #061015;
-    background: #e7b861;
-    font-weight: 900;
-  }
-
-  .curiosity-rail {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(12rem, 1fr));
-    gap: .75rem;
-  }
-
-  .curiosity-card {
+  .scripture-copy {
     position: relative;
-    display: flex;
-    min-height: 12rem;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
+    min-height: 13.5rem;
+    align-content: center;
+    gap: .85rem;
     overflow: hidden;
     border: 1px solid rgb(214 172 91 / .14);
-    border-radius: .9rem;
-    padding: 1rem;
+    border-radius: .85rem;
+    padding: clamp(1.1rem, 2vw, 1.5rem);
     background:
-      linear-gradient(180deg, rgb(255 255 255 / .045), rgb(255 255 255 / .012)),
-      rgb(2 10 16 / .38);
-    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+      linear-gradient(135deg, rgb(2 10 16 / .88), rgb(2 10 16 / .5)),
+      radial-gradient(circle at 100% 100%, rgb(244 195 109 / .12), transparent 8rem);
   }
 
-  .curiosity-card:nth-child(1),
-  .curiosity-card:nth-child(5) {
-    grid-column: span 2;
-  }
-
-  .curiosity-card:nth-child(2),
-  .curiosity-card:nth-child(3),
-  .curiosity-card:nth-child(4) {
-    grid-column: span 2;
-  }
-
-  .curiosity-card::after {
+  .scripture-copy::after {
     position: absolute;
-    right: .9rem;
-    bottom: .9rem;
-    width: 2.4rem;
-    height: 2.4rem;
-    border: 1px solid rgb(244 195 109 / .16);
+    right: clamp(1rem, 2vw, 1.4rem);
+    bottom: clamp(1rem, 2vw, 1.35rem);
+    width: 4.1rem;
+    aspect-ratio: 1;
+    border: 1px solid rgb(244 195 109 / .18);
     border-radius: 50%;
+    background: radial-gradient(circle, rgb(244 195 109 / .18), transparent 62%);
+    box-shadow: inset 0 0 18px rgb(244 195 109 / .08), 0 0 34px rgb(244 195 109 / .06);
     content: "";
   }
 
-  .curiosity-card:hover {
-    transform: translateY(-4px);
-    border-color: rgb(244 195 109 / .46);
-    background-color: rgb(12 37 37 / .44);
-  }
-
-  .curiosity-card small {
-    color: #f0b45f;
-    font-size: .64rem;
-    font-weight: 900;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-  }
-
-  .curiosity-card strong {
-    max-width: 13ch;
+  .scripture-copy h2 {
+    max-width: 11ch;
+    margin: 0;
     color: #f7ebd3;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(1.35rem, 1.8vw, 2rem);
+    font-size: clamp(1.8rem, 2.8vw, 3.15rem);
+    font-weight: 450;
+    letter-spacing: -.024em;
+    line-height: .98;
+  }
+
+  .scripture-copy a {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    width: fit-content;
+    min-height: 2.48rem;
+    align-items: center;
+    gap: .5rem;
+    border: 1px solid rgb(244 195 109 / .52);
+    border-radius: 999px;
+    padding: .34rem .76rem .34rem .42rem;
+    color: #061015;
+    background: #e7b861;
+    box-shadow: 0 12px 26px rgb(214 172 91 / .14);
+    font-size: .83rem;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .scripture-copy a i,
+  .scripture-copy a b {
+    display: grid;
+    width: 1.82rem;
+    height: 1.82rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgb(3 13 20 / .16);
+    color: #061015;
+    font-style: normal;
+  }
+
+  .scripture-copy a i {
+    background: rgb(3 13 20 / .2);
+    color: #07131a;
+  }
+
+  .scripture-copy a b {
+    width: 1.58rem;
+    height: 1.58rem;
+    margin-left: .08rem;
+    font-size: .68rem;
+  }
+
+  .scripture-leaves {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: .5rem;
+    min-height: 13.5rem;
+    overflow: hidden;
+    border: 1px solid rgb(214 172 91 / .1);
+    border-radius: .85rem;
+    padding: .62rem;
+    background:
+      linear-gradient(90deg, rgb(2 10 16 / .26), rgb(4 20 24 / .34)),
+      repeating-linear-gradient(90deg, rgb(214 172 91 / .05) 0 1px, transparent 1px 20%);
+  }
+
+  .scripture-axis {
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    left: 1.2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(244 195 109 / .22), transparent);
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .scripture-axis::before,
+  .scripture-axis::after {
+    position: absolute;
+    top: 50%;
+    width: .45rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #f0b45f;
+    box-shadow: 0 0 18px rgb(244 195 109 / .42);
+    transform: translateY(-50%);
+    content: "";
+  }
+
+  .scripture-axis::before { left: 0; }
+  .scripture-axis::after { right: 0; }
+
+  .scripture-leaf {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-height: 12.2rem;
+    align-content: space-between;
+    overflow: hidden;
+    border: 1px solid rgb(214 172 91 / .13);
+    border-radius: .78rem;
+    padding: .78rem;
+    background:
+      radial-gradient(circle at 50% 100%, rgb(244 195 109 / .09), transparent 7rem),
+      linear-gradient(180deg, rgb(255 255 255 / .052), rgb(2 10 16 / .46));
+    box-shadow: inset 0 1px rgb(255 255 255 / .025);
+    text-decoration: none;
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .scripture-leaf::before {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0 34%, rgb(244 195 109 / .12) 48%, transparent 64%);
+    opacity: 0;
+    transform: translateX(-90%);
+    transition: opacity 180ms ease, transform 520ms ease;
+    content: "";
+  }
+
+  .scripture-leaf:hover {
+    transform: translateY(-3px);
+    border-color: rgb(244 195 109 / .42);
+    background-color: rgb(12 37 37 / .36);
+    box-shadow: 0 16px 34px rgb(0 0 0 / .18);
+  }
+
+  .scripture-leaf:hover::before {
+    opacity: 1;
+    transform: translateX(74%);
+  }
+
+  .scripture-leaf span,
+  .scripture-leaf strong,
+  .scripture-leaf small,
+  .scripture-leaf b {
+    position: relative;
+    z-index: 1;
+  }
+
+  .scripture-leaf span {
+    width: fit-content;
+    border-bottom: 1px solid rgb(244 195 109 / .28);
+    padding-bottom: .22rem;
+    color: #f0b45f;
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: .13em;
+  }
+
+  .scripture-leaf strong {
+    color: #f7ebd3;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.18rem, 1.55vw, 1.52rem);
     font-weight: 520;
-    letter-spacing: -.015em;
     line-height: 1.02;
   }
 
-  .curiosity-card span {
-    max-width: 30ch;
-    color: #bdb2a1;
-    font-size: .82rem;
-    line-height: 1.45;
+  .scripture-leaf small {
+    color: #c7bbab;
+    font-size: .73rem;
+    line-height: 1.38;
   }
 
-
+  .scripture-leaf b {
+    display: grid;
+    width: 1.62rem;
+    height: 1.62rem;
+    place-items: center;
+    justify-self: end;
+    border: 1px solid rgb(244 195 109 / .2);
+    border-radius: 50%;
+    color: #f0b45f;
+    font-size: .68rem;
+  }
   /* Modern home refresh */
   .home-experience {
     background:
@@ -912,8 +979,7 @@ const heroNodes = [
 
   .primary-action,
   .play-action,
-  .start-card,
-  .curiosity-card {
+  .start-card {
     border-radius: .9rem;
   }
 
@@ -1019,7 +1085,7 @@ const heroNodes = [
 
   .topic-section,
   .start-section,
-  .curiosity-section {
+  .scripture-shelf {
     margin-top: clamp(1rem, 2vw, 1.6rem);
   }
 
@@ -1070,23 +1136,21 @@ const heroNodes = [
   }
 
   @media (max-width: 1180px) {
-    .start-section { grid-template-columns: 1fr; }
+    .start-section,
+    .scripture-shelf { grid-template-columns: 1fr; }
     .start-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .curiosity-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
-    .curiosity-card,
-    .curiosity-card:nth-child(1),
-    .curiosity-card:nth-child(2),
-    .curiosity-card:nth-child(3),
-    .curiosity-card:nth-child(4),
-    .curiosity-card:nth-child(5) { grid-column: auto; }
+    .scripture-leaves { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .scripture-leaf { min-height: 8.5rem; }
   }
 
   @media (max-width: 720px) {
     .home-main { width: min(100% - 1rem, 1560px); }
     .hero-panel { padding: .8rem .55rem; }
     .hero-panel h1 { font-size: clamp(2.7rem, 14vw, 4.25rem); }
-    .start-grid { grid-template-columns: 1fr; }
+    .start-grid,
+    .scripture-leaves { grid-template-columns: 1fr; }
     .start-card { min-height: 10rem; }
+    .scripture-leaf { min-height: 7.25rem; }
     .atlas-orbital { min-height: 32rem; }
   }
 
@@ -1097,8 +1161,7 @@ const heroNodes = [
 
   @media (max-width: 1180px) {
     .home-hero,
-    .section-heading,
-    .curiosity-section { grid-template-columns: 1fr; }
+    .section-heading { grid-template-columns: 1fr; }
     .hero-panel { max-width: 44rem; }
     .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
@@ -1112,7 +1175,6 @@ const heroNodes = [
     .orbital-field { inset: 1rem 1rem calc(var(--caption-space) + .55rem) 1rem; }
     .topic-node { padding: .42rem .55rem; }
     .topic-node span { font-size: .62rem; }
-    .topic-grid,
-    .curiosity-rail { grid-template-columns: 1fr; }
+    .topic-grid { grid-template-columns: 1fr; }
   }
 </style>
