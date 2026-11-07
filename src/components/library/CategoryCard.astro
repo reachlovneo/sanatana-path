@@ -1,0 +1,37 @@
+---
+import type { LibraryCategory } from "../../data/library";
+import { getTopicHref } from "../../data/libraryRoutes";
+interface Props { category: LibraryCategory; }
+const { category } = Astro.props;
+const readyTopics = category.topics.filter(topic => getTopicHref(topic));
+const upcomingTopics = category.topics.filter(topic => !getTopicHref(topic));
+const available = Boolean(category.href) || readyTopics.length > 0;
+---
+<article id={category.id} class="category-card surface" data-library-card data-available={String(available)} data-title={category.title.toLowerCase()} data-topics={category.topics.join(" ").toLowerCase()} data-description={category.description.toLowerCase()} data-group={category.eyebrow.toLowerCase()}>
+  {category.href && <a class="category-image" href={category.href} aria-label={category.title}><img src={category.image} alt="" loading="lazy" decoding="async" width="480" height="220" /></a>}
+  <div class="category-copy">
+    <p class="eyebrow">{category.eyebrow}</p>
+    <h2>{category.title}</h2><p>{category.description}</p>
+    {readyTopics.length > 0 && <div class="category-topics" aria-label={`${category.title} available topics`}>{readyTopics.map(topic => <a href={getTopicHref(topic)}>{topic} <span aria-hidden="true">→</span></a>)}</div>}
+    {upcomingTopics.length > 0 && <details><summary>Planned topics ({upcomingTopics.length})</summary><p class="planned-topics">{upcomingTopics.join(" · ")}</p></details>}
+    {category.href && <a class="category-open" href={category.href}>Read the guide →</a>}
+    {!available && <small>In planning — no guide available yet.</small>}
+  </div>
+</article>
+<style>
+  .category-card { overflow:hidden; scroll-margin-top:7rem; box-shadow:none; }
+  .category-image { display:block; height:150px; overflow:hidden; }
+  img { width:100%; height:100%; object-fit:cover; }
+  .category-copy { padding:1.15rem; }
+  h2 { margin:.25rem 0 .6rem; font:500 1.65rem/1.15 var(--serif); color:var(--ink); }
+  p { margin:.5rem 0 1rem; color:var(--ink-muted); font-size:.95rem; }
+  .eyebrow { margin:0; font-size:.68rem; color:var(--copper); }
+  .category-topics { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .category-topics a { display:inline-flex; align-items:center; gap:.35rem; min-height:44px; border:1px solid var(--border); border-radius:.6rem; padding:.35rem .6rem; font-size:.82rem; }
+  a:hover { color:var(--copper); }
+  details { margin-top:1rem; color:var(--ink-muted); font-size:.85rem; }
+  summary { padding:.6rem 0; cursor:pointer; }
+  .planned-topics { font-size:.85rem; }
+  .category-open { display:inline-block; margin-top:.75rem; padding:.5rem 0; color:var(--copper); font-weight:700; }
+  small { display:block; margin-top:1rem; color:var(--ink-muted); }
+</style>

@@ -29,6 +29,10 @@ const atlas = defineCollection({
     contentVersion: z.string(),
     reviewStatus: z.enum(["draft", "expert-review-needed", "reviewed", "published"]),
     reviewedBy: z.array(z.string()),
+  }).superRefine((entry, ctx) => {
+    if (entry.reviewStatus === "published" && (!entry.reviewedBy.some(name => name.trim()) || entry.sources.length === 0)) {
+      ctx.addIssue({ code: "custom", message: "Published entries require a named reviewer and source references." });
+    }
   }),
 });
 

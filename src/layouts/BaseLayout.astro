@@ -6,6 +6,9 @@ import JsonLd from "../components/seo/JsonLd.astro";
 import { ClientRouter } from "astro:transitions";
 import { SITE } from "../config/site";
 import "../styles/global.css";
+import "../styles/reading.css";
+import EditorialNotice from "../components/topic/EditorialNotice.astro";
+import { isKnowledgeRoute } from "../config/editorial";
 interface Props {
   title: string;
   description: string;
@@ -14,7 +17,8 @@ interface Props {
   noindex?: boolean;
   hideChrome?: boolean;
 }
-const { title, description, image = "/images/og/default.svg", type = "website", noindex = false, hideChrome = false } = Astro.props;
+const { title, description, image = "/images/og/default.svg", type = "website", noindex, hideChrome = false } = Astro.props;
+const isPreview = noindex ?? isKnowledgeRoute(Astro.url.pathname);
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const imageUrl = new URL(image, Astro.site);
 const websiteJsonLd = {
@@ -31,7 +35,7 @@ const websiteJsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {isPreview && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content={SITE.themeColor} />
     <script is:inline data-sanathana-theme>
       (() => {
@@ -62,7 +66,7 @@ const websiteJsonLd = {
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     {!hideChrome && <SiteHeader />}
-    <main id="main-content"><slot /></main>
+    <main id="main-content">{isPreview && <EditorialNotice />}<slot /></main>
     {!hideChrome && <SiteFooter />}
     {!hideChrome && <MobileNavigation />}
   </body>

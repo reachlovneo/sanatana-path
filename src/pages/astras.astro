@@ -1,114 +1,1036 @@
 ---
-import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SacredIcon from "../components/ui/SacredIcon.astro";
 
-const weaponJourneyItems = [
+const heroImage = "/images/astras/astras-archive-hero.png";
+
+const chapterPaths = [
   {
-    title: "Part I - Astras",
+    number: "01",
+    title: "Astras",
+    subtitle: "Mantra weapons",
+    text: "Weapons awakened through mantra, concentration, discipline, divine authority, and inner mastery.",
     href: "/astras/part-1",
-    eyebrow: "Mantra weapons",
-    description: "Weapons invoked through mantra, concentration, discipline, and divine authority.",
-    status: "available",
+    image: "/images/astras/astras-card-mantra.png",
+    examples: ["Brahmastra", "Pashupatastra", "Narayanastra"],
+    tone: "blue",
   },
   {
-    title: "Part II - Ayudhas",
+    number: "02",
+    title: "Ayudhas",
+    subtitle: "Divine weapons",
+    text: "The personal weapons of the gods, inseparable from their cosmic roles and sacred symbolism.",
     href: "/astras/part-2",
-    eyebrow: "Divine weapons",
-    description: "The eternal weapons carried by the gods, including the discus, trident, mace, bow, sword, and thunderbolt.",
-    status: "available",
+    image: "/images/astras/astras-card-ayudhas.png",
+    examples: ["Sudarshana Chakra", "Trishula", "Vajra"],
+    tone: "gold",
   },
   {
-    title: "Part III - Epic Weapons",
+    number: "03",
+    title: "Epic Weapons",
+    subtitle: "Hero weapons",
+    text: "Legendary bows, swords, maces, and rare weapons remembered through the heroes who carried them.",
     href: "/astras/part-3",
-    eyebrow: "Hero weapons",
-    description: "The legendary weapons of epic heroes, including Gandiva, Kodanda, Vijaya, and Chandrahasa.",
-    status: "available",
+    image: "/images/astras/astras-card-epic.png",
+    examples: ["Gandiva", "Kodanda", "Chandrahasa"],
+    tone: "fire",
   },
-];
-const related = [
-  { title: "Pushpaka Vimana", href: "/pushpaka-vimana", image: "/images/home/home-vimana.png", eyebrow: "Ramayana wonder" },
-  { title: "Flying Cities of Tripura", href: "/flying-cities-of-tripura", image: "/images/home/home-tripura.png", eyebrow: "Puranic mystery" },
-  { title: "Garuda Purana", href: "/atlas/garuda-purana", image: "/images/home/home-garuda-purana.png", eyebrow: "Afterlife atlas" },
 ];
 
-const concept = {
-  title: "Weapons That Responded to Thought",
-  eyebrow: "Astras, Ayudhas, and sacred weapons",
-  summary: "Astras activated by mantra, attention, discipline, and inner qualification.",
-  image: "/images/home/home-astras.webp",
-  transitionName: "concept-astras",
-  posterHero: true,
-  heroLayout: "split",
-  readingLayout: "article",
-  accent: "#ff7a4f",
-  facts: ["Ramayana", "Mahabharata", "Puranas", "Mantra and restraint"],
-  journeyLabel: "Part path",
-  journeyTitle: "Sacred Weapons",
-  journeyItems: weaponJourneyItems,
-  sections: [
-    {
-      title: "Weapons That Responded to Thought",
-      paragraphs: [
-        "Imagine a battlefield where victory is not decided by sharper steel or greater strength.",
-        "A place where the most powerful weapon cannot be forged by a blacksmith, purchased by a king, or seized from an enemy.",
-        "Instead, it must first be earned.",
-        "In the sacred narratives of the Ramayana, the Mahabharata, and the Puranas, weapons are far more than instruments of war. Some answer only to sacred mantras. Some embody the very powers of the gods. Others become legendary through the heroes who wield them.",
-        "These are not ordinary weapons.",
-        "They are symbols of divine authority, cosmic forces, spiritual discipline, and sacred responsibility.",
-        "Among them, the most extraordinary are the Astras - weapons that do not merely rest in the hand but are awakened through mantra, unwavering concentration, and the inner qualification of the one who invokes them.",
-      ],
-    },
-    {
-      title: "Power Requires Qualification",
-      paragraphs: [
-        "The ancient texts repeatedly suggest that possessing an Astra was never enough.",
-        "The wielder required discipline.",
-        "Purity of intention.",
-        "Self-control.",
-        "And the wisdom to know when not to use it.",
-        "Alongside the Astras stand the Ayudhas - the eternal weapons of the gods themselves. The Sudarshana Chakra of Vishnu, the Trishula of Shiva, the Vajra of Indra, and many others are not simply weapons; they are enduring symbols of the divine powers they represent.",
-        "The epics also celebrate another class of sacred arms - the legendary weapons of great heroes. The Gandiva of Arjuna, the Kodanda of Rama, the Vijaya of Karna, and other renowned weapons became immortal through the courage, sacrifice, and destiny of those who carried them.",
-        "Together, these three traditions form one of the richest systems of sacred weaponry preserved in world literature.",
-      ],
-    },
-    {
-      title: "Strength, Restraint, and Responsibility",
-      paragraphs: [
-        "Some command the elements.",
-        "Some influence the mind.",
-        "Some bind rather than destroy.",
-        "Some are so powerful that they are invoked only once.",
-        "Others are never used at all, serving instead as reminders that the highest form of strength is restraint.",
-      ],
-    },
-    {
-      title: "The Three Great Traditions of Sacred Weapons",
-      paragraphs: [
-        "Part I - Astras",
-        "Weapons invoked through mantra, concentration, and divine authority.",
-        "Discover the cosmic astras, elemental astras, serpent astras, illusion astras, binding astras, and the supreme weapons entrusted only to the greatest warriors.",
-        "Part II - Ayudhas",
-        "The eternal weapons carried by the gods.",
-        "Explore the sacred discus, trident, mace, bow, sword, thunderbolt, and other divine weapons that symbolize the powers and responsibilities of the Hindu deities.",
-        "Part III - Legendary Weapons of the Epic Heroes",
-        "The celebrated weapons that became inseparable from the heroes of the epics.",
-        "Follow the stories of the Gandiva, Kodanda, Vijaya, Chandrahasa, and many other legendary weapons whose names continue to echo through the Ramayana, the Mahabharata, and later traditions.",
-      ],
-    },
-    {
-      title: "Before We Begin",
-      paragraphs: [
-        "Every weapon has a story.",
-        "Who created it?",
-        "Who was worthy to receive it?",
-        "How was it obtained?",
-        "When was it invoked?",
-        "What happened when it was unleashed?",
-        "And what lessons did the sages preserve through these extraordinary accounts?",
-        "The chapters that follow explore these questions through the sacred narratives of the Hindu tradition, drawing upon the Ramayana, the Mahabharata, and the Puranas to uncover the origins, powers, wielders, and enduring significance of these remarkable weapons.",
-      ],
-    },
-  ],
-  related,
-};
+const coreRules = [
+  { number: "01", title: "Invocation", text: "Power is awakened through mantra, focus, and alignment." },
+  { number: "02", title: "Authority", text: "It is granted by the divine, the guru, or rightful lineage." },
+  { number: "03", title: "Restraint", text: "It is held in check by wisdom, ethics, and inner mastery." },
+  { number: "04", title: "Consequence", text: "It yields results that shape worlds, for good or ruin." },
+];
+
+const featuredAstras = [
+  { title: "Brahmastra", tag: "Cosmic | Supreme", text: "The weapon of Brahma, feared for its world-altering force.", icon: "sun", image: "/images/astras/astras-card-mantra.png", imagePosition: "50% 38%" },
+  { title: "Pashupatastra", tag: "Divine | Terrible", text: "The weapon of Rudra, granted only to the worthy.", icon: "flame", image: "/images/astras/astras-card-ayudhas.png", imagePosition: "62% 42%" },
+  { title: "Narayanastra", tag: "Divine | Unerring", text: "A weapon that multiplies against aggression and submits to surrender.", icon: "mandala", image: "/images/astras/astras-archive-hero.png", imagePosition: "68% 34%" },
+] as const;
+
+const forceClasses = [
+  { title: "Cosmic", text: "Born of creation, custody, and order.", icon: "sun" },
+  { title: "Elemental", text: "Drawn from fire, water, wind, rain, sun, and moon.", icon: "flame" },
+  { title: "Binding", text: "Made to restrain, seal, or immobilize.", icon: "key" },
+  { title: "Illusion", text: "Weapons of maya, perception, and overwhelm.", icon: "cycle" },
+  { title: "Symbolic", text: "Carriers of meaning, dharma, and essence.", icon: "lotus" },
+] as const;
+
+const guardrails = [
+  { title: "Mantra", text: "The correct sound, intention, and bhava are the key.", icon: "mandala" },
+  { title: "Guru-Lineage", text: "Passed through ancient lineages, tested through time.", icon: "people" },
+  { title: "Self-Control", text: "Without mastery over self, the wielder becomes the threat.", icon: "lotus" },
+] as const;
 ---
-<ConceptDetailPage concept={concept} />
+<BaseLayout title="Astras & Divine Weapons | Sanatana Path" description="A cinematic game-like archive of Astras, Ayudhas, and legendary sacred weapons from the Itihasas and Puranas." image={heroImage} type="article">
+  <div data-reading-body class="weapon-archive">
+    <section class="archive-hero" aria-labelledby="archive-title">
+      <img src={heroImage} alt="A cinematic sacred weapons archive with archer, chakra, trident, temples, and mountains" loading="eager" decoding="async" />
+      <div class="hero-center">
+        <a class="crumb" href="/library">Library</a>
+        <p class="eyebrow">Sacred weapons of Bharata</p>
+        <h1 id="archive-title">Astras, Ayudhas,<br />and Sacred Weapons</h1>
+        <p class="hero-line">Weapons That Answered the Mind</p>
+        <p class="hero-copy">In the Itihasas and Puranas, the most powerful weapons were invoked, earned, restrained, and feared because they carried divine force.</p>
+        <a class="core-rule" href="/astras/part-1"><span>Rule</span> Power follows qualification.</a>
+      </div>
+      <div class="rule-rail" aria-label="Sacred weapon rules">
+        {coreRules.map((item) => (
+          <article>
+            <span>{item.number}</span>
+            <div>
+              <strong>{item.title}</strong>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="chapter-section" id="weapon-paths" aria-labelledby="chapter-title">
+      <div class="ornate-title">
+        <span></span>
+        <h2 id="chapter-title">Enter the weapons archive in three paths</h2>
+        <span></span>
+      </div>
+      <div class="chapter-grid">
+        {chapterPaths.map((chapter) => (
+          <a class:list={["chapter-card", chapter.tone]} href={chapter.href}>
+            <img src={chapter.image} alt="" loading="lazy" decoding="async" />
+            <span class="chapter-index">{chapter.number}</span>
+            <div>
+              <p>{chapter.subtitle}</p>
+              <h3>{chapter.title}</h3>
+              <small>{chapter.text}</small>
+              <ul aria-label={`${chapter.title} examples`}>
+                {chapter.examples.map((example) => <li>{example}</li>)}
+              </ul>
+              <b>Open chapter -&gt;</b>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="featured-board" aria-labelledby="featured-title">
+      <div class="read-card">
+        <span class="sigil"><SacredIcon name="document" size={24} /></span>
+        <div>
+          <p class="eyebrow">How to read them</p>
+          <h2>Not all sacred weapons are the same kind of power.</h2>
+          <p>Astras are invoked through mantra and inner mastery. Ayudhas are embodiments of divine power. Hero weapons are earned through courage, dharma, and destiny.</p>
+        </div>
+      </div>
+      <div class="featured-list">
+        <div class="ornate-title compact">
+          <span></span>
+          <h2 id="featured-title">Featured Astras</h2>
+          <span></span>
+        </div>
+        <div class="featured-grid">
+          {featuredAstras.map((item) => (
+            <article style={`--astra-image:url('${item.image}'); --astra-position:${item.imagePosition}`}>
+              <span class="astra-art" aria-hidden="true"></span>
+              <i class="weapon-icon"><SacredIcon name={item.icon} size={22} /></i>
+              <strong>{item.title}</strong>
+              <small>{item.tag}</small>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="force-board" aria-labelledby="force-title">
+      <div class="ornate-title compact">
+        <span></span>
+        <h2 id="force-title">Classifying the Forces</h2>
+        <span></span>
+      </div>
+      <div class="force-grid">
+        {forceClasses.map((item) => (
+          <article>
+            <span><SacredIcon name={item.icon} size={20} /></span>
+            <strong>{item.title}</strong>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="guard-board" aria-labelledby="guard-title">
+      <div class="ornate-title compact">
+        <span></span>
+        <h2 id="guard-title">How Astra Knowledge Is Guarded</h2>
+        <span></span>
+      </div>
+      <div class="guard-grid">
+        {guardrails.map((item) => (
+          <article>
+            <span><SacredIcon name={item.icon} size={20} /></span>
+            <div>
+              <strong>{item.title}</strong>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="closing-line" aria-label="Closing teaching">
+      <p>"The true power of an astra lies in the discipline before release."</p>
+      <a href="/astras/part-1">Begin Part I -&gt;</a>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body:has(.weapon-archive)) {
+    background: light-dark(rgb(247 240 226 / 1), #02070b);
+    color: light-dark(rgb(43 33 24 / 1), #f8ecd5);
+  }
+
+  :global(body:has(.weapon-archive)::before) {
+    display: none;
+  }
+
+  .weapon-archive {
+    --gold: light-dark(rgb(93 72 34 / 1), #d9a84f);
+    --bright-gold: light-dark(rgb(110 97 69 / 1), #ffe1a1);
+    --fire: light-dark(rgb(110 52 30 / 1), #ff7a45);
+    --blue: light-dark(rgb(50 93 110 / 1), #75d8ff);
+    --ink: #02070b;
+    min-height: 100svh;
+    padding: clamp(.7rem, 1.4vw, 1rem) 0 4.8rem;
+    overflow: hidden;
+    background:
+      linear-gradient(rgb(217 168 79 / .035) 1px, transparent 1px) 0 0 / 48px 48px,
+      linear-gradient(90deg, rgb(217 168 79 / .026) 1px, transparent 1px) 0 0 / 48px 48px,
+      radial-gradient(circle at 50% 0%, rgb(217 168 79 / .12), transparent 34rem),
+      radial-gradient(circle at 0% 40%, rgb(117 216 255 / .08), transparent 24rem),
+      light-dark(rgb(247 240 226 / 1), #02070b);
+  }
+
+  .archive-hero,
+  .chapter-section,
+  .featured-board,
+  .force-board,
+  .guard-board,
+  .closing-line {
+    width: min(1480px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .archive-hero {
+    position: relative;
+    min-height: auto;
+    overflow: hidden;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.12), rgb(217 168 79 / .12));
+    border-radius: 1.8rem;
+    background: light-dark(rgb(247 240 226 / 1), #050b10);
+    box-shadow: inset 0 1px rgb(255 255 255 / .05), 0 32px 120px light-dark(rgb(91 69 38 / 0.105), rgb(0 0 0 / .3));
+    isolation: isolate;
+  }
+
+  .archive-hero > img {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(1.18) contrast(1.08) brightness(.96);
+  }
+
+  .archive-hero::before {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(circle at 50% 31%, light-dark(rgb(247 240 226 / 0.04), rgb(2 7 11 / .04)), light-dark(rgb(247 240 226 / 0.28), rgb(2 7 11 / .28)) 33%, light-dark(rgb(247 240 226 / 0.7), rgb(2 7 11 / .7)) 78%),
+      linear-gradient(90deg, light-dark(rgb(247 240 226 / 0.5), rgb(2 7 11 / .5)), transparent 24%, transparent 76%, light-dark(rgb(247 240 226 / 0.52), rgb(2 7 11 / .52))),
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.04), rgb(2 7 11 / .04)), light-dark(rgb(247 240 226 / 0.54), rgb(2 7 11 / .54)) 72%, light-dark(rgb(247 240 226 / 0.92), rgb(2 7 11 / .92)));
+    content: "";
+  }
+
+  .archive-hero::after {
+    position: absolute;
+    inset: auto clamp(2rem, 5vw, 5rem) 1.5rem;
+    z-index: -1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(217 168 79 / .38), transparent);
+    content: "";
+    pointer-events: none;
+  }
+
+  .hero-center {
+    position: relative;
+    z-index: 1;
+    width: min(58rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding-top: clamp(2.45rem, 6.8svh, 4.5rem);
+    text-align: center;
+  }
+
+  .crumb,
+  .core-rule,
+  .closing-line a {
+    display: inline-flex;
+    min-height: 2.35rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.36), rgb(217 168 79 / .36));
+    border-radius: .35rem;
+    padding: .55rem .8rem;
+    color: var(--bright-gold);
+    background: light-dark(rgb(247 240 226 / 0.48), rgb(2 7 11 / .48));
+    font-size: .68rem;
+    font-weight: 850;
+    letter-spacing: .08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 0 24px rgb(217 168 79 / .08);
+  }
+
+  .crumb {
+    margin-bottom: .85rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--gold);
+    font-size: .68rem;
+    font-weight: 950;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    color: light-dark(rgb(43 33 24 / 1), #fff3dc);
+    font-family: var(--serif);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: .98;
+  }
+
+  h1 {
+    margin-top: .5rem;
+    font-size: clamp(3.6rem, 5.8vw, 7.1rem);
+    text-shadow: 0 3px 18px light-dark(rgb(91 69 38 / 0.238), rgb(0 0 0 / .68)), 0 0 42px rgb(217 168 79 / .18);
+  }
+
+  .hero-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    margin: .75rem 0 0;
+    color: var(--bright-gold);
+    text-shadow: 0 0 28px rgb(217 168 79 / .28);
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2vw, 2rem);
+  }
+
+  .hero-line::before,
+  .hero-line::after,
+  .ornate-title span {
+    width: min(9rem, 18vw);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    content: "";
+  }
+
+  .hero-copy {
+    max-width: 43rem;
+    margin: .95rem auto 0;
+    border-top: 1px solid light-dark(rgb(118 93 55 / 0.18), rgb(217 168 79 / .18));
+    border-bottom: 1px solid light-dark(rgb(118 93 55 / 0.14), rgb(217 168 79 / .14));
+    padding: .8rem 1rem;
+    color: light-dark(rgb(91 76 57 / 1), #f1dfc8);
+    background: linear-gradient(90deg, transparent, light-dark(rgb(247 240 226 / 0.34), rgb(2 7 11 / .34)), transparent);
+    font-size: clamp(.98rem, 1.2vw, 1.12rem);
+    line-height: 1.65;
+  }
+
+  .core-rule {
+    margin-top: 1rem;
+    min-width: min(100%, 32rem);
+    min-height: 3.05rem;
+    gap: .75rem;
+    border-radius: 999px;
+    border-color: light-dark(rgb(118 93 55 / 0.32), rgb(255 225 161 / .32));
+    padding: .55rem 1.05rem .55rem .62rem;
+    background:
+      linear-gradient(90deg, rgb(255 225 161 / .18), light-dark(rgb(247 240 226 / 0.66), rgb(2 7 11 / .66)) 42%, rgb(217 168 79 / .14)),
+      light-dark(rgb(247 240 226 / 0.56), rgb(2 7 11 / .56));
+    color: var(--bright-gold);
+    font-family: var(--serif);
+    font-size: clamp(1rem, 1.45vw, 1.28rem);
+    letter-spacing: 0;
+    text-transform: none;
+    box-shadow: inset 0 1px rgb(255 255 255 / .12), 0 14px 44px light-dark(rgb(91 69 38 / 0.084), rgb(0 0 0 / .24)), 0 0 36px rgb(217 168 79 / .12);
+    backdrop-filter: blur(14px) saturate(135%);
+  }
+
+  .core-rule span {
+    display: inline-grid;
+    min-width: 3.3rem;
+    min-height: 2rem;
+    place-items: center;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.34), rgb(255 225 161 / .34));
+    border-radius: 999px;
+    padding: .25rem .58rem;
+    background: rgb(255 225 161 / .1);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: .62rem;
+    font-weight: 950;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .rule-rail {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: min(1240px, calc(100% - clamp(1.5rem, 5vw, 5rem)));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .85rem;
+    margin: clamp(2.1rem, 5vw, 4.5rem) auto clamp(1.2rem, 2.5vw, 2rem);
+  }
+
+  .rule-rail article {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .82rem;
+    align-items: center;
+    min-height: 6.15rem;
+    overflow: hidden;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.13), rgb(255 225 161 / .13));
+    border-radius: 1.35rem;
+    padding: .88rem;
+    background:
+      linear-gradient(135deg, light-dark(rgb(99 76 44 / 0.07), rgb(255 255 255 / .07)), light-dark(rgb(99 76 44 / 0.018), rgb(255 255 255 / .018))),
+      light-dark(rgb(247 240 226 / 0.42), rgb(2 7 11 / .42));
+    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 16px 45px light-dark(rgb(91 69 38 / 0.056), rgb(0 0 0 / .16));
+    backdrop-filter: blur(18px) saturate(132%);
+  }
+
+  .rule-rail article::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: linear-gradient(180deg, transparent, rgb(255 225 161 / .5), transparent);
+    content: "";
+  }
+
+  .rule-rail span,
+  .chapter-index,
+  .sigil,
+  .force-grid article > span,
+  .guard-grid article > span {
+    display: grid;
+    width: 2.72rem;
+    height: 2.72rem;
+    place-items: center;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.28), rgb(255 225 161 / .28));
+    border-radius: 50%;
+    color: var(--bright-gold);
+    background:
+      radial-gradient(circle at 35% 24%, rgb(255 225 161 / .22), transparent 42%),
+      rgb(217 168 79 / .075);
+    box-shadow: inset 0 0 18px rgb(217 168 79 / .08), 0 0 24px rgb(217 168 79 / .08);
+    font-weight: 950;
+  }
+
+  .rule-rail strong {
+    color: var(--bright-gold);
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    font-weight: 500;
+  }
+
+  .rule-rail p,
+  .chapter-card small,
+  .read-card p,
+  .featured-grid p,
+  .force-grid p,
+  .guard-grid p {
+    margin: .18rem 0 0;
+    color: light-dark(rgb(91 76 57 / 1), #d6c7b1);
+    line-height: 1.42;
+  }
+
+  .rule-rail p {
+    font-size: .82rem;
+  }
+
+  .chapter-section {
+    margin-top: 1rem;
+  }
+
+  .ornate-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .85rem;
+    margin-bottom: .85rem;
+    text-align: center;
+  }
+
+  .ornate-title h2 {
+    color: var(--bright-gold);
+    font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+    letter-spacing: .04em;
+  }
+
+  .ornate-title.compact h2 {
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .9rem;
+  }
+
+  .chapter-card {
+    position: relative;
+    display: grid;
+    min-height: clamp(22rem, 31vw, 30rem);
+    overflow: hidden;
+    align-content: end;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.35), rgb(217 168 79 / .35));
+    border-radius: 1.2rem;
+    color: inherit;
+    text-decoration: none;
+    background: light-dark(rgb(247 240 226 / 1), #050b10);
+    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 20px 72px light-dark(rgb(91 69 38 / 0.0875), rgb(0 0 0 / .25));
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .chapter-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--bright-gold);
+    box-shadow: 0 28px 90px light-dark(rgb(91 69 38 / 0.122), rgb(0 0 0 / .35)), 0 0 42px rgb(217 168 79 / .16);
+  }
+
+  .chapter-card.blue { border-color: light-dark(rgb(118 93 55 / 0.36), rgb(117 216 255 / .36)); }
+  .chapter-card.fire { border-color: light-dark(rgb(118 93 55 / 0.38), rgb(255 122 69 / .38)); }
+
+  .chapter-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 480ms ease, filter 180ms ease;
+  }
+
+  .chapter-card:hover img {
+    transform: scale(1.045);
+    filter: saturate(1.08) brightness(1.06);
+  }
+
+  .chapter-card::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.02), rgb(2 7 11 / .02)), light-dark(rgb(247 240 226 / 0.28), rgb(2 7 11 / .28)) 40%, light-dark(rgb(247 240 226 / 0.94), rgb(2 7 11 / .94)));
+    content: "";
+  }
+
+  .chapter-index {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+  }
+
+  .chapter-card > div {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: .42rem;
+    margin: .75rem;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.22), rgb(217 168 79 / .22));
+    border-radius: 1rem;
+    padding: .85rem;
+    background: linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.86), rgb(2 7 11 / .86)), light-dark(rgb(247 240 226 / 0.62), rgb(2 7 11 / .62)));
+    backdrop-filter: blur(12px) saturate(125%);
+  }
+
+  .chapter-card p {
+    margin: 0;
+    color: var(--gold);
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .chapter-card h3 {
+    color: light-dark(rgb(110 99 74 / 1), #ffe7ad);
+    font-size: clamp(1.8rem, 3vw, 3rem);
+  }
+
+  .chapter-card small {
+    font-size: .86rem;
+  }
+
+  .chapter-card ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin: .45rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .chapter-card li {
+    color: light-dark(rgb(104 93 70 / 1), #f3d9a2);
+    font-size: .68rem;
+  }
+
+  .chapter-card li + li::before {
+    margin-right: .35rem;
+    color: var(--gold);
+    content: "•";
+  }
+
+  .chapter-card b {
+    width: fit-content;
+    margin-top: .35rem;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.24), rgb(217 168 79 / .24));
+    border-radius: .35rem;
+    padding: .48rem .8rem;
+    color: var(--bright-gold);
+    font-size: .72rem;
+    font-weight: 850;
+  }
+
+  .featured-board {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(19rem, .52fr) minmax(0, .95fr);
+    gap: clamp(.9rem, 2vw, 1.4rem);
+    margin-top: clamp(1.2rem, 3vw, 2.1rem);
+    align-items: stretch;
+  }
+
+  .read-card,
+  .featured-list,
+  .force-board,
+  .guard-board,
+  .closing-line {
+    border: 1px solid light-dark(rgb(118 93 55 / 0.1), rgb(217 168 79 / .1));
+    border-radius: 1.6rem;
+    background:
+      radial-gradient(circle at 0% 0%, rgb(255 225 161 / .08), transparent 18rem),
+      linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(247 240 226 / 0.34), rgb(2 7 11 / .34)));
+    box-shadow: inset 0 1px rgb(255 255 255 / .055), 0 18px 70px light-dark(rgb(91 69 38 / 0.056), rgb(0 0 0 / .16));
+  }
+
+  .read-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: end;
+    min-height: 20rem;
+    overflow: hidden;
+    padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  }
+
+  .read-card::before {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.12), rgb(2 7 11 / .12)), light-dark(rgb(247 240 226 / 0.82), rgb(2 7 11 / .82))),
+      url('/images/astras/astras-card-mantra.png') center / cover;
+    opacity: .55;
+    content: "";
+  }
+
+  .read-card::after {
+    position: absolute;
+    inset: auto 1.2rem 1.2rem 1.2rem;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    content: "";
+  }
+
+  .read-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sigil {
+    width: 3.4rem;
+    height: 3.4rem;
+    margin-bottom: 1rem;
+    border-color: light-dark(rgb(118 93 55 / 0.25), rgb(255 225 161 / .25));
+    background: light-dark(rgb(247 240 226 / 0.46), rgb(2 7 11 / .46));
+    font-size: 1rem;
+    color: var(--bright-gold);
+  }
+
+  .read-card h2 {
+    max-width: 11ch;
+    margin-top: .45rem;
+    color: light-dark(rgb(43 33 24 / 1), #fff2d1);
+    font-size: clamp(2.25rem, 4vw, 4.25rem);
+  }
+
+  .read-card p:not(.eyebrow) {
+    max-width: 31rem;
+    margin-top: .85rem;
+    color: light-dark(rgb(91 76 57 / 1), #eadcc7);
+    font-size: 1rem;
+    line-height: 1.66;
+  }
+
+  .featured-list {
+    padding: clamp(1rem, 2vw, 1.35rem);
+  }
+
+  .featured-list .ornate-title {
+    justify-content: start;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  .featured-list .ornate-title span:first-child { display: none; }
+  .featured-list .ornate-title h2 { color: var(--gold); }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .8rem;
+    height: calc(100% - 2.5rem);
+  }
+
+  .featured-grid article,
+  .force-grid article,
+  .guard-grid article {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.1), rgb(255 225 161 / .1));
+    border-radius: 1.18rem;
+    background:
+      linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.045), rgb(255 255 255 / .045)), light-dark(rgb(99 76 44 / 0.012), rgb(255 255 255 / .012))),
+      light-dark(rgb(247 240 226 / 0.36), rgb(2 7 11 / .36));
+    box-shadow: inset 0 1px rgb(255 255 255 / .05);
+  }
+
+  .featured-grid article {
+    display: grid;
+    min-height: 17.5rem;
+    align-content: end;
+    padding: 1rem;
+  }
+
+  .astra-art {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.04), rgb(2 7 11 / .04)), light-dark(rgb(247 240 226 / 0.16), rgb(2 7 11 / .16)) 36%, light-dark(rgb(247 240 226 / 0.88), rgb(2 7 11 / .88)) 76%),
+      var(--astra-image);
+    background-position: var(--astra-position, center);
+    background-size: cover;
+    opacity: .72;
+    transition: transform 420ms ease, opacity 180ms ease;
+  }
+
+  .featured-grid article:hover .astra-art {
+    transform: scale(1.04);
+    opacity: .86;
+  }
+
+  .featured-grid article::before {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 90% 0%, rgb(217 168 79 / .2), transparent 10rem);
+    content: "";
+  }
+
+  .featured-grid article > * {
+    position: relative;
+    z-index: 1;
+  }
+  .weapon-icon {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    margin-bottom: 1rem;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.18), rgb(255 225 161 / .18));
+    border-radius: 1rem;
+    color: var(--bright-gold);
+    background:
+      radial-gradient(circle at 35% 20%, rgb(255 225 161 / .22), transparent 48%),
+      rgb(217 168 79 / .08);
+    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 0 26px rgb(217 168 79 / .08);
+  }
+
+  .weapon-icon :global(svg),
+  .sigil :global(svg),
+  .force-grid article > span :global(svg),
+  .guard-grid article > span :global(svg) {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 1.75;
+  }
+
+  .featured-grid strong,
+  .force-grid strong,
+  .guard-grid strong {
+    display: block;
+    color: light-dark(rgb(110 99 74 / 1), #ffe7ad);
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 1.8vw, 1.8rem);
+    font-weight: 500;
+  }
+
+  .featured-grid small {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: .45rem;
+    border-radius: 999px;
+    padding: .28rem .5rem;
+    color: #1a0d04;
+    background: linear-gradient(90deg, var(--gold), var(--bright-gold));
+    font-size: .62rem;
+    font-weight: 950;
+  }
+
+  .featured-grid p,
+  .force-grid p,
+  .guard-grid p {
+    color: light-dark(rgb(91 76 57 / 1), #d8cbb8);
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+
+  .force-board,
+  .guard-board {
+    margin-top: clamp(1.1rem, 2.8vw, 1.8rem);
+    padding: clamp(1rem, 2.2vw, 1.5rem);
+  }
+
+  .force-board {
+    background:
+      radial-gradient(circle at 50% 0%, rgb(117 216 255 / .08), transparent 25rem),
+      linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(247 240 226 / 0.34), rgb(2 7 11 / .34)));
+  }
+
+  .force-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: .75rem;
+  }
+
+  .force-grid article {
+    display: grid;
+    min-height: 12rem;
+    justify-items: start;
+    align-content: space-between;
+    padding: .95rem;
+    text-align: left;
+  }
+
+  .force-grid article > span {
+    width: 2.45rem;
+    height: 2.45rem;
+    margin-bottom: 1.4rem;
+    border-radius: .85rem;
+    color: var(--gold);
+    transition: transform 180ms ease, border-color 180ms ease, color 180ms ease;
+  }
+
+  .force-grid article:hover > span,
+  .guard-grid article:hover > span,
+  .featured-grid article:hover .weapon-icon {
+    transform: translateY(-2px);
+    border-color: light-dark(rgb(118 93 55 / 0.36), rgb(255 225 161 / .36));
+    color: light-dark(rgb(43 33 24 / 1), #fff2d1);
+  }
+
+  .force-grid strong {
+    font-size: clamp(1.25rem, 1.7vw, 1.65rem);
+  }
+
+  .guard-board {
+    background:
+      radial-gradient(circle at 0% 100%, rgb(255 122 69 / .08), transparent 26rem),
+      linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(247 240 226 / 0.34), rgb(2 7 11 / .34)));
+  }
+
+  .guard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .85rem;
+  }
+
+  .guard-grid article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .9rem;
+    align-items: start;
+    min-height: 8.2rem;
+    padding: 1rem;
+  }
+
+  .guard-grid article > span {
+    width: 2.55rem;
+    height: 2.55rem;
+    border-radius: .9rem;
+    color: var(--fire);
+  }
+
+  .closing-line {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    margin-top: .9rem;
+    padding: 1rem clamp(1rem, 2.5vw, 2rem);
+    text-align: center;
+  }
+
+  .closing-line p {
+    margin: 0;
+    color: var(--bright-gold);
+    font-family: var(--serif);
+    font-size: clamp(1.35rem, 2.4vw, 2.25rem);
+    font-style: italic;
+  }
+
+  .closing-line a {
+    border-radius: .5rem;
+    background: rgb(217 168 79 / .08);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chapter-card,
+    .chapter-card img,
+    .chapter-card:hover,
+    .chapter-card:hover img {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 1120px) {
+    .rule-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .chapter-grid,
+    .featured-board,
+    .closing-line { grid-template-columns: 1fr; }
+    .featured-grid { grid-template-columns: 1fr; height: auto; }
+    .force-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 720px) {
+    .weapon-archive { padding-bottom: 6rem; }
+
+    .archive-hero,
+    .chapter-section,
+    .featured-board,
+    .force-board,
+    .guard-board,
+    .closing-line {
+      width: min(100% - 1rem, 1480px);
+    }
+
+    .archive-hero {
+      min-height: auto;
+      padding-bottom: .75rem;
+    }
+
+    .archive-hero > img {
+      height: 38rem;
+      object-position: 42% center;
+    }
+
+    .archive-hero::before {
+      background:
+        linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.12), rgb(2 7 11 / .12)), light-dark(rgb(247 240 226 / 0.58), rgb(2 7 11 / .58)) 30rem, light-dark(rgb(247 240 226 / 0.98), rgb(2 7 11 / .98)) 40rem),
+        radial-gradient(circle at 50% 20%, rgb(217 168 79 / .12), transparent 16rem);
+    }
+
+    .archive-hero::after { inset: .55rem; }
+
+    .hero-center {
+      width: min(100% - 1.5rem, 48rem);
+      padding-top: 2.2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.65rem, 12vw, 4.6rem);
+    }
+
+    .hero-line {
+      flex-wrap: wrap;
+      font-size: clamp(1.2rem, 6vw, 1.65rem);
+    }
+
+    .hero-copy {
+      font-size: .96rem;
+    }
+
+    .core-rule {
+      min-width: 0;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .rule-rail {
+      width: min(100% - 1.5rem, 1240px);
+      grid-template-columns: 1fr;
+      gap: .65rem;
+      margin: clamp(1.6rem, 6vw, 2.4rem) auto .9rem;
+    }
+
+    .rule-rail article {
+      min-height: auto;
+    }
+
+    .ornate-title h2 {
+      font-size: clamp(1.35rem, 7vw, 2rem);
+    }
+
+    .ornate-title span {
+      width: 3rem;
+    }
+
+    .chapter-card {
+      min-height: 24rem;
+    }
+
+    .read-card,
+    .guard-grid article {
+      grid-template-columns: 1fr;
+    }
+
+    .read-card { min-height: 22rem; }
+    .featured-grid article { min-height: 17rem; }
+
+    .force-grid,
+    .guard-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .closing-line a {
+      width: 100%;
+    }
+  }
+</style>

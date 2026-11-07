@@ -7,7 +7,7 @@ interface Props {
 const { status, reviewedBy } = Astro.props;
 const labels = {
   draft: "Draft",
-  "expert-review-needed": "Source-aware explanation",
+  "expert-review-needed": "Expert review pending",
   reviewed: "Reviewed",
   published: "Published",
 };
@@ -19,7 +19,7 @@ const labels = {
     status === "published" || status === "reviewed" ? (
       <span>{reviewedBy.length > 0 ? `Reviewed by ${reviewedBy.join(", ")}` : "Reviewer details pending"}</span>
     ) : (
-      <span>Based on a common Puranic model. Interpretations may vary across traditions.</span>
+      <span>This reading preview awaits qualified review. Interpretations may vary across traditions.</span>
     )
   }
 </section>
@@ -60,9 +60,9 @@ const labels = {
     }
 
     .review-status span {
-      overflow: hidden;
+      overflow: visible;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      white-space: normal;
     }
   }
 </style>

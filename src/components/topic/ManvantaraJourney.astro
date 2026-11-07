@@ -17,14 +17,14 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
 
 <article class="manvantara-reading">
   <header>
-    <p class="eyebrow">Cosmic Clock Project · Manvantara</p>
+    <p class="eyebrow">Cosmic Clock Project Â· Manvantara</p>
     <h1>The Age of a Manu</h1>
     <p class="lead">If human civilization unfolds through repeating cycles, who guides each new beginning?</p>
   </header>
 
   <dl class="facts">{facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
 
-  <div class="reading-body"><main>
+  <div class="reading-body"><div data-reading-body>
     <section>
       <h2>Every great era has a beginning</h2>
       <p>Imagine rebuilding the world after an age has ended.</p>
@@ -41,11 +41,11 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
       <p>He is not simply a king. Nor is he portrayed only as a teacher. Rather, Manu represents the beginning of a new human era.</p>
       <p>Each Manvantara has its own Manu. When one Manvantara ends, another begins with a different Manu.</p>
     </section>
-  </main></div>
+  </div></div>
 
   <details class="full-guide" open={!compact} data-compact={compact || undefined}>
     <summary><span>Continue reading</span><b>Read full Manvantara guide</b></summary>
-    <div class="reading-body"><main>
+    <div class="reading-body"><div data-reading-body>
       <section>
         <h2>What is a Manvantara?</h2>
         <p>A Manvantara literally means <strong>the period of a Manu</strong>.</p>
@@ -114,7 +114,7 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
         <p>The answer is one of the most astonishing ideas in Hindu cosmology: the <strong>Kalpa</strong>, a single day of Brahma.</p>
       </section>
 
-    </main></div>
+    </div></div>
     <SourcePanel sources={topic.data.sources} sourceNote={topic.data.sourceNote} traditionNote={topic.data.traditionNote} reviewedBy={topic.data.reviewedBy} lastReviewed={topic.data.lastReviewed} contentVersion={topic.data.contentVersion} />
   </details>
 
@@ -125,21 +125,21 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
 </article>
 
 <style>
-  .manvantara-reading{--accent:#65d7dc;color:#eee3cf}header,.reading-body,.facts,.manvantara-reading :global(.source-panel),.continue,.full-guide>summary{width:min(100% - 2rem,72rem);margin-inline:auto}
-  header{padding:clamp(3rem,7vw,7rem) 0 2.5rem}header p:not(.eyebrow){max-width:62ch;color:#b3aca1;line-height:1.85}header strong,.reading-body strong{color:var(--accent);font-weight:650}
-  h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:0}h1{max-width:14ch;margin:.35rem 0 1rem;font-size:clamp(3.2rem,6vw,6rem);line-height:1}.lead{color:#d0c5b3!important;font-size:clamp(1.08rem,1.5vw,1.3rem)}
-  .facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid rgb(101 215 220/.2)}.facts div{padding:1rem}.facts div+div{border-left:1px solid rgb(101 215 220/.14)}dt{color:#99938a;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}dd{margin:.25rem 0 0;color:#e5dac8;font-family:var(--serif);font-size:1.05rem}
-  .reading-body{padding-block:2rem}.reading-body main{width:min(100%,46rem)}section{border-bottom:1px solid rgb(101 215 220/.14);padding-block:2rem}h2{margin:0 0 .8rem;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}section p,section li{color:#aaa49a;line-height:1.85}section p{margin:.65rem 0 0}section em{color:#d3c9b9}.note{margin:1.5rem 0 0;border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1rem}.note p{margin:.25rem 0;color:#c2b9aa}
-  .manu-constellation{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.65rem;margin:1.45rem 0 0}.manu-constellation::before{position:absolute;left:3%;right:3%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgb(101 215 220/.3),transparent);content:""}.manu-era{position:relative;z-index:1;display:grid;min-height:7.6rem;align-content:end;border:1px solid rgb(101 215 220/.16);border-radius:.85rem;padding:.72rem;background:linear-gradient(180deg,rgb(101 215 220/.075),rgb(255 255 255/.018));overflow:hidden}.manu-era::before{position:absolute;top:.72rem;left:.72rem;width:.58rem;aspect-ratio:1;border-radius:50%;background:rgb(101 215 220/.45);box-shadow:0 0 18px rgb(101 215 220/.28);content:""}.manu-era span{color:#6faaa9;font-size:.62rem;font-weight:900;letter-spacing:.12em}.manu-era strong{margin-top:.3rem;color:#d5edef;font-size:.72rem;line-height:1.25}.manu-era small{width:max-content;margin-top:.38rem;border-radius:999px;padding:.22rem .42rem;background:var(--accent);color:#061217;font-size:.55rem;font-weight:900;text-transform:uppercase}.manu-era.current{border-color:rgb(101 215 220/.62);background:linear-gradient(180deg,rgb(101 215 220/.16),rgb(255 255 255/.028));box-shadow:0 0 34px rgb(101 215 220/.18),inset 0 1px rgb(255 255 255/.08)}.manu-era.current::before{background:#d9ffff;box-shadow:0 0 24px rgb(101 215 220/.7)}
-  .address-map{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.55rem;margin:1.35rem 0}.address-node{position:relative;display:grid;gap:.35rem;min-height:5.7rem;align-content:center;border:1px solid rgb(101 215 220/.14);border-radius:.85rem;padding:.82rem;background:linear-gradient(145deg,rgb(101 215 220/.055),rgb(255 255 255/.018))}.address-node:not(:last-child)::after{position:absolute;right:-.48rem;top:50%;width:.38rem;height:1px;background:rgb(101 215 220/.35);content:""}.address-node span{color:#6faaa9;font-size:.62rem;font-weight:900;letter-spacing:.12em}.address-node strong{color:#d5edef;font-size:.82rem;line-height:1.25}.address-node.current{border-color:rgb(101 215 220/.48);background:linear-gradient(145deg,rgb(101 215 220/.13),rgb(255 255 255/.024));box-shadow:0 0 26px rgb(101 215 220/.13)}
-  .full-guide{border:0}.full-guide:not([data-compact])>summary{display:none}.full-guide>summary{display:flex;width:fit-content;align-items:center;gap:.55rem;margin-top:.9rem;border:1px solid rgb(101 215 220/.25);border-radius:999px;padding:.55rem .8rem;background:rgb(101 215 220/.035);color:var(--accent);cursor:pointer;list-style:none}.full-guide>summary::-webkit-details-marker{display:none}.full-guide>summary span{color:#99938a;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.full-guide>summary b{font-size:.67rem}.full-guide[open]>summary b{font-size:0}.full-guide[open]>summary b::after{font-size:.67rem;content:"Hide full guide"}.full-guide[open]>.reading-body{animation:guide-reveal 420ms ease both}
-  .continue{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:2rem;border:1px solid rgb(199 140 255/.22);border-radius:1rem;padding:1.2rem 1.35rem;background:linear-gradient(100deg,rgb(199 140 255/.055),transparent);color:#c78cff}.continue span>*{display:block}.continue small{color:#99938a;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.continue strong{font-family:var(--serif);font-size:1.7rem;font-weight:400}.continue em{color:#aaa49a;font-size:.72rem;font-style:normal}.continue b{font-size:.68rem;text-transform:uppercase}
-  .manvantara-reading{border:1px solid rgb(101 215 220/.2);border-radius:1.4rem;padding-bottom:1rem;background:linear-gradient(145deg,rgb(8 30 37/.72),rgb(3 13 20/.48));box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px rgb(0 0 0/.22);backdrop-filter:blur(20px) saturate(115%)}
-  .facts{overflow:hidden;border:1px solid rgb(101 215 220/.2);border-radius:1rem;background:rgb(255 255 255/.025);box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
+  .manvantara-reading{--accent:light-dark(rgb(43 92 95 / 1), #65d7dc);color:light-dark(rgb(91 76 57 / 1), #eee3cf)}header,.reading-body,.facts,.manvantara-reading :global(.source-panel),.continue,.full-guide>summary{width:min(100% - 2rem,72rem);margin-inline:auto}
+  header{padding:clamp(3rem,7vw,7rem) 0 2.5rem}header p:not(.eyebrow){max-width:62ch;color:light-dark(rgb(91 76 57 / 1), #b3aca1);line-height:1.85}header strong,.reading-body strong{color:var(--accent);font-weight:650}
+  h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:0}h1{max-width:14ch;margin:.35rem 0 1rem;font-size:clamp(3.2rem,6vw,6rem);line-height:1}.lead{color:light-dark(rgb(91 76 57 / 1), #d0c5b3)!important;font-size:clamp(1.08rem,1.5vw,1.3rem)}
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid light-dark(rgb(118 93 55 / 0.2), rgb(101 215 220/.2))}.facts div{padding:1rem}.facts div+div{border-left:1px solid light-dark(rgb(118 93 55 / 0.14), rgb(101 215 220/.14))}dt{color:light-dark(rgb(91 76 57 / 1), #99938a);font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}dd{margin:.25rem 0 0;color:light-dark(rgb(91 76 57 / 1), #e5dac8);font-family:var(--serif);font-size:1.05rem}
+  .reading-body{padding-block:2rem}.reading-body [data-reading-body]{width:min(100%,46rem)}section{border-bottom:1px solid light-dark(rgb(118 93 55 / 0.14), rgb(101 215 220/.14));padding-block:2rem}h2{margin:0 0 .8rem;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}section p,section li{color:light-dark(rgb(91 76 57 / 1), #aaa49a);line-height:1.85}section p{margin:.65rem 0 0}section em{color:light-dark(rgb(91 76 57 / 1), #d3c9b9)}.note{margin:1.5rem 0 0;border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1rem}.note p{margin:.25rem 0;color:light-dark(rgb(91 76 57 / 1), #c2b9aa)}
+  .manu-constellation{position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.65rem;margin:1.45rem 0 0}.manu-constellation::before{position:absolute;left:3%;right:3%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgb(101 215 220/.3),transparent);content:""}.manu-era{position:relative;z-index:1;display:grid;min-height:7.6rem;align-content:end;border:1px solid light-dark(rgb(118 93 55 / 0.16), rgb(101 215 220/.16));border-radius:.85rem;padding:.72rem;background:linear-gradient(180deg,rgb(101 215 220/.075),light-dark(rgb(99 76 44 / 0.018), rgb(255 255 255/.018)));overflow:hidden}.manu-era::before{position:absolute;top:.72rem;left:.72rem;width:.58rem;aspect-ratio:1;border-radius:50%;background:rgb(101 215 220/.45);box-shadow:0 0 18px rgb(101 215 220/.28);content:""}.manu-era span{color:light-dark(rgb(91 76 57 / 1), #6faaa9);font-size:.62rem;font-weight:900;letter-spacing:.12em}.manu-era strong{margin-top:.3rem;color:light-dark(rgb(43 33 24 / 1), #d5edef);font-size:.72rem;line-height:1.25}.manu-era small{width:max-content;margin-top:.38rem;border-radius:999px;padding:.22rem .42rem;background:var(--accent);color:#061217;font-size:.55rem;font-weight:900;text-transform:uppercase}.manu-era.current{border-color:light-dark(rgb(118 93 55 / 0.62), rgb(101 215 220/.62));background:linear-gradient(180deg,rgb(101 215 220/.16),light-dark(rgb(99 76 44 / 0.028), rgb(255 255 255/.028)));box-shadow:0 0 34px rgb(101 215 220/.18),inset 0 1px rgb(255 255 255/.08)}.manu-era.current::before{background:#d9ffff;box-shadow:0 0 24px rgb(101 215 220/.7)}
+  .address-map{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.55rem;margin:1.35rem 0}.address-node{position:relative;display:grid;gap:.35rem;min-height:5.7rem;align-content:center;border:1px solid light-dark(rgb(118 93 55 / 0.14), rgb(101 215 220/.14));border-radius:.85rem;padding:.82rem;background:linear-gradient(145deg,rgb(101 215 220/.055),light-dark(rgb(99 76 44 / 0.018), rgb(255 255 255/.018)))}.address-node:not(:last-child)::after{position:absolute;right:-.48rem;top:50%;width:.38rem;height:1px;background:rgb(101 215 220/.35);content:""}.address-node span{color:light-dark(rgb(91 76 57 / 1), #6faaa9);font-size:.62rem;font-weight:900;letter-spacing:.12em}.address-node strong{color:light-dark(rgb(43 33 24 / 1), #d5edef);font-size:.82rem;line-height:1.25}.address-node.current{border-color:light-dark(rgb(118 93 55 / 0.48), rgb(101 215 220/.48));background:linear-gradient(145deg,rgb(101 215 220/.13),light-dark(rgb(99 76 44 / 0.024), rgb(255 255 255/.024)));box-shadow:0 0 26px rgb(101 215 220/.13)}
+  .full-guide{border:0}.full-guide:not([data-compact])>summary{display:none}.full-guide>summary{display:flex;width:fit-content;align-items:center;gap:.55rem;margin-top:.9rem;border:1px solid light-dark(rgb(118 93 55 / 0.25), rgb(101 215 220/.25));border-radius:999px;padding:.55rem .8rem;background:rgb(101 215 220/.035);color:var(--accent);cursor:pointer;list-style:none}.full-guide>summary::-webkit-details-marker{display:none}.full-guide>summary span{color:light-dark(rgb(91 76 57 / 1), #99938a);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}.full-guide>summary b{font-size:.67rem}.full-guide[open]>summary b{font-size:0}.full-guide[open]>summary b::after{font-size:.67rem;content:"Hide full guide"}.full-guide[open]>.reading-body{animation:guide-reveal 420ms ease both}
+  .continue{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:2rem;border:1px solid light-dark(rgb(118 93 55 / 0.22), rgb(199 140 255/.22));border-radius:1rem;padding:1.2rem 1.35rem;background:linear-gradient(100deg,rgb(199 140 255/.055),transparent);color:light-dark(rgb(86 60 110 / 1), #c78cff)}.continue span>*{display:block}.continue small{color:light-dark(rgb(91 76 57 / 1), #99938a);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}.continue strong{font-family:var(--serif);font-size:1.7rem;font-weight:400}.continue em{color:light-dark(rgb(91 76 57 / 1), #aaa49a);font-size:.72rem;font-style:normal}.continue b{font-size:.68rem;text-transform:uppercase}
+  .manvantara-reading{border:1px solid light-dark(rgb(118 93 55 / 0.2), rgb(101 215 220/.2));border-radius:1.4rem;padding-bottom:1rem;background:linear-gradient(145deg,light-dark(rgb(250 245 234 / 0.72), rgb(8 30 37/.72)),light-dark(rgb(247 240 226 / 0.48), rgb(3 13 20/.48)));box-shadow:inset 0 1px rgb(255 255 255/.035),0 24px 80px light-dark(rgb(91 69 38 / 0.077), rgb(0 0 0/.22));backdrop-filter:blur(20px) saturate(115%)}
+  .facts{overflow:hidden;border:1px solid light-dark(rgb(118 93 55 / 0.2), rgb(101 215 220/.2));border-radius:1rem;background:light-dark(rgb(99 76 44 / 0.025), rgb(255 255 255/.025));box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
   .note,.manu-era,.address-node,.continue,.full-guide>summary{box-shadow:inset 0 1px rgb(255 255 255/.025);backdrop-filter:blur(14px)}
   @keyframes guide-reveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
   @media(max-width:900px){.manu-constellation{grid-template-columns:repeat(4,minmax(0,1fr))}.address-map{grid-template-columns:repeat(3,minmax(0,1fr))}.address-node:nth-child(3)::after{display:none}}
-  @media(max-width:800px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid rgb(101 215 220/.14)}.continue{align-items:flex-end}}
+  @media(max-width:800px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(odd){border-left:0}.facts div:nth-child(n+3){border-top:1px solid light-dark(rgb(118 93 55 / 0.14), rgb(101 215 220/.14))}.continue{align-items:flex-end}}
   @media(max-width:620px){.manu-constellation,.address-map{grid-template-columns:1fr 1fr}.manu-era{min-height:6.5rem}.address-node:not(:last-child)::after{display:none}.continue{align-items:flex-start;flex-direction:column}}
 
   :global(.manvantara-reading .manu-constellation) {
@@ -148,26 +148,26 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
     gap: .7rem !important;
     margin: 1.6rem 0 0 !important;
     padding: 1rem !important;
-    border: 1px solid rgb(101 215 220 / .16) !important;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.16), rgb(101 215 220 / .16)) !important;
     border-radius: 1rem !important;
-    background: radial-gradient(circle at 50% 0%, rgb(101 215 220 / .12), transparent 18rem), rgb(255 255 255 / .018) !important;
+    background: radial-gradient(circle at 50% 0%, rgb(101 215 220 / .12), transparent 18rem), light-dark(rgb(99 76 44 / 0.018), rgb(255 255 255 / .018)) !important;
   }
 
   :global(.manvantara-reading .manu-era) {
     display: grid !important;
     min-height: 7.25rem !important;
     align-content: end !important;
-    border: 1px solid rgb(101 215 220 / .18) !important;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.18), rgb(101 215 220 / .18)) !important;
     border-radius: .85rem !important;
     padding: .8rem !important;
-    background: linear-gradient(180deg, rgb(101 215 220 / .085), rgb(255 255 255 / .018)) !important;
+    background: linear-gradient(180deg, rgb(101 215 220 / .085), light-dark(rgb(99 76 44 / 0.018), rgb(255 255 255 / .018))) !important;
     box-shadow: inset 0 1px rgb(255 255 255 / .035) !important;
   }
 
   :global(.manvantara-reading .manu-era span),
   :global(.manvantara-reading .address-node span) {
     display: block !important;
-    color: #79dfe1 !important;
+    color: light-dark(rgb(52 96 97 / 1), #79dfe1) !important;
     font-size: .66rem !important;
     font-weight: 900 !important;
     letter-spacing: .12em !important;
@@ -177,7 +177,7 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
   :global(.manvantara-reading .address-node strong) {
     display: block !important;
     margin-top: .35rem !important;
-    color: #e4ffff !important;
+    color: light-dark(rgb(43 33 24 / 1), #e4ffff) !important;
     font-size: .82rem !important;
     line-height: 1.25 !important;
   }
@@ -196,8 +196,8 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
   }
 
   :global(.manvantara-reading .manu-era.current) {
-    border-color: rgb(101 215 220 / .72) !important;
-    background: linear-gradient(180deg, rgb(101 215 220 / .2), rgb(255 255 255 / .03)) !important;
+    border-color: light-dark(rgb(118 93 55 / 0.72), rgb(101 215 220 / .72)) !important;
+    background: linear-gradient(180deg, rgb(101 215 220 / .2), light-dark(rgb(99 76 44 / 0.03), rgb(255 255 255 / .03))) !important;
     box-shadow: 0 0 36px rgb(101 215 220 / .22), inset 0 1px rgb(255 255 255 / .08) !important;
   }
 
@@ -207,23 +207,23 @@ const address = ["Universe", "Current Brahma", "Current Kalpa", "Vaivasvata Manv
     gap: .65rem !important;
     margin: 1.45rem 0 !important;
     padding: 1rem !important;
-    border: 1px solid rgb(101 215 220 / .16) !important;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.16), rgb(101 215 220 / .16)) !important;
     border-radius: 1rem !important;
-    background: linear-gradient(145deg, rgb(101 215 220 / .06), rgb(255 255 255 / .018)) !important;
+    background: linear-gradient(145deg, rgb(101 215 220 / .06), light-dark(rgb(99 76 44 / 0.018), rgb(255 255 255 / .018))) !important;
   }
 
   :global(.manvantara-reading .address-node) {
     display: grid !important;
     min-height: 5.5rem !important;
     align-content: center !important;
-    border: 1px solid rgb(101 215 220 / .16) !important;
+    border: 1px solid light-dark(rgb(118 93 55 / 0.16), rgb(101 215 220 / .16)) !important;
     border-radius: .85rem !important;
     padding: .85rem !important;
-    background: rgb(2 12 18 / .46) !important;
+    background: light-dark(rgb(247 240 226 / 0.46), rgb(2 12 18 / .46)) !important;
   }
 
   :global(.manvantara-reading .address-node.current) {
-    border-color: rgb(101 215 220 / .58) !important;
+    border-color: light-dark(rgb(118 93 55 / 0.58), rgb(101 215 220 / .58)) !important;
     background: rgb(101 215 220 / .1) !important;
     box-shadow: 0 0 30px rgb(101 215 220 / .16) !important;
   }

@@ -1,26 +1,89 @@
 ---
-import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const related = [
-  { title: "Astras", href: "/astras", image: "/images/home/home-astras.png", eyebrow: "Astra knowledge" },
-  { title: "Pushpaka Vimana", href: "/pushpaka-vimana", image: "/images/home/home-vimana.png", eyebrow: "Ramayana wonder" },
-  { title: "Cosmic Time", href: "/atlas", image: "/images/home/home-hero.png", eyebrow: "Cosmic map" },
+const cities = [
+  "A city of gold in heaven",
+  "A city of silver in the sky",
+  "A city of iron on earth",
 ];
 
-const concept = {
-  title: "Flying Cities of Tripura",
-  eyebrow: "Puranic mystery",
-  summary: "The Flying Cities of Tripura are three powerful moving cities destroyed by Shiva in a dramatic Puranic episode. This page introduces the story as cosmic drama and symbolic teaching.",
-  image: "/images/home/home-tripura.png",
-  transitionName: "concept-tripura",
-  accent: "#c89bff",
-  facts: ["Three cities", "Linked with Shiva", "Puranic episode", "Draft explainer"],
-  sections: [
-    { title: "What is Tripura?", body: "Tripura means the three cities. In the Puranic imagination, these cities become a powerful image of fortified pride, cosmic imbalance, and the restoration of order through Shiva." },
-    { title: "Why the cities move", body: "Their movement makes the story feel vast and almost cinematic. It also turns the episode into more than a battle: it becomes a lesson about timing, alignment, and the limits of power." },
-    { title: "How to explore it", body: "A full article can later map the different Purana versions, the role of the devas, Shiva as Tripurantaka, and the symbolic meaning of the three cities." },
-  ],
-  related,
-};
+const chariot = [
+  "The earth became Shiva's chariot",
+  "The sun and moon became its wheels",
+  "The Vedas became the horses",
+  "Vishnu became the arrow",
+  "Shiva became Tripurantaka, the destroyer of Tripura",
+];
+
+const references = [
+  "Shiva Purana",
+  "Matsya Purana",
+  "Linga Purana",
+  "Mahabharata references to Tripura Samhara",
+];
 ---
-<ConceptDetailPage concept={concept} />
+<BaseLayout title="Tripura - The Three Flying Cities | Sanatana Path" description="The Puranic story of Tripura, the three flying cities of gold, silver, and iron destroyed by Shiva with one arrow." image="/images/home/home-tripura.webp" type="article">
+  <div data-reading-body class="vimana-topic tripura-page">
+    <section class="topic-hero">
+      <img src="/images/home/home-tripura.webp" alt="Three golden aerial cities suspended in a cosmic sky" loading="eager" decoding="async" />
+      <div class="hero-card">
+        <a class="back-link" href="/vimanas">Vimanas</a>
+        <p class="eyebrow">Topic 2</p>
+        <h1>Tripura - The Three Flying Cities</h1>
+        <strong>Episode 3 - The Cities That Could Never Be Destroyed</strong>
+        <p>"One enemy. Three moving cities. One arrow that could be released only at the perfect moment."</p>
+      </div>
+    </section>
+
+    <section class="topic-layout">
+      <article class="reading-panel">
+        <p>Imagine an enemy you cannot reach.</p>
+        <p>A kingdom without borders. A fortress that never stays in one place. A city that moves across the heavens, safe from ordinary attack.</p>
+        <p>Now imagine three such cities.</p>
+        <p>This is the story of Tripura, the three flying cities destroyed by Shiva.</p>
+
+        <h2>The Cities of the Asuras</h2>
+        <p>In the Puranas, Tripura was not a single vehicle carrying passengers. It was a set of enormous aerial fortresses.</p>
+        <p>They were granted to the sons of the asura Taraka after they performed severe austerities and received a powerful boon.</p>
+        <p>The divine architect Maya built the three cities:</p>
+        <ul>{cities.map((item) => <li>{item}</li>)}</ul>
+        <p>These cities moved independently through the cosmos. They did not remain fixed like earthly kingdoms.</p>
+
+        <h2>The Impossible Boon</h2>
+        <p>The asuras asked for protection that would make them almost impossible to defeat.</p>
+        <p>Their cities could be destroyed only when all three aligned perfectly in a single line, and only by a single arrow.</p>
+        <p>Such an alignment would happen only after a vast span of time. Until then, Tripura could not be destroyed by ordinary force.</p>
+
+        <h2>The Gods Turn to Shiva</h2>
+        <p>As the power of the three cities grew, the gods became troubled. The worlds were disturbed, and cosmic balance was threatened.</p>
+        <p>The devas turned to Shiva.</p>
+        <p>When the rare moment of alignment arrived, the entire universe became part of Shiva's chariot.</p>
+        <ul>{chariot.map((item) => <li>{item}</li>)}</ul>
+        <p>At the appointed moment, Shiva released the single arrow. The three cities were destroyed together.</p>
+        <p>This event is known as Tripura Samhara, the destruction of Tripura.</p>
+
+        <h2>More Than a Battle</h2>
+        <p>The story of Tripura is one of the most dramatic cosmic episodes in the Puranas. It is also deeply symbolic.</p>
+        <p>In some traditions, the three cities represent literal aerial fortresses. In others, they also symbolize the three bodies, three impurities, or three forms of bondage that keep beings trapped in ignorance.</p>
+        <p>Shiva's single arrow becomes the power of knowledge that destroys all bondage at once.</p>
+
+        <h2>How Tripura Differs From Pushpaka</h2>
+        <p>Pushpaka Vimana is a royal aerial palace connected with movement, kingship, and dharma.</p>
+        <p>Tripura is different. It is not a personal vehicle. It is a moving civilization, a fortress-system, and a cosmic challenge.</p>
+        <p>One carries Rama home. The other requires Shiva to restore balance to the worlds.</p>
+      </article>
+
+      <aside class="side-panel">
+        <p class="eyebrow">Key idea</p>
+        <p>Tripura shows that not every flying object in the scriptures is a Vimana. Some are cities, fortresses, weapons, or symbolic worlds.</p>
+        <h2>Primary Sources</h2>
+        <ul>{references.map((item) => <li>{item}</li>)}</ul>
+        <a href="/saubha">Continue to Saubha <span aria-hidden="true">-&gt;</span></a>
+      </aside>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body:has(.vimana-topic)){background:light-dark(rgb(247 240 226 / 1), #020b10);color:light-dark(rgb(43 33 24 / 1), #fff4df)}:global(body:has(.vimana-topic)::before){display:none}.vimana-topic{min-height:100svh;padding-bottom:4rem;background:radial-gradient(circle at 78% 0%,rgb(200 155 255/.13),transparent 30rem),linear-gradient(180deg,light-dark(rgb(247 240 226 / 1), #020b10),light-dark(rgb(247 240 226 / 1), #031517) 54%,light-dark(rgb(247 240 226 / 1), #020b10))}.topic-hero{position:relative;width:min(1460px,calc(100% - 2rem));min-height:clamp(28rem,56svh,38rem);margin:1.25rem auto 0;overflow:hidden;border:1px solid light-dark(rgb(118 93 55 / 0.28), rgb(200 155 255/.28));border-radius:1.1rem;background:light-dark(rgb(247 240 226 / 1), #061117);box-shadow:inset 0 1px rgb(255 255 255/.035),0 28px 90px light-dark(rgb(91 69 38 / 0.112), rgb(0 0 0/.32))}.topic-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.06) brightness(.66)}.topic-hero::after{position:absolute;inset:0;background:linear-gradient(90deg,light-dark(rgb(247 240 226 / 0.96), rgb(2 11 16/.96)),light-dark(rgb(247 240 226 / 0.58), rgb(2 11 16/.58)) 48%,light-dark(rgb(247 240 226 / 0.16), rgb(2 11 16/.16))),linear-gradient(180deg,transparent 58%,light-dark(rgb(247 240 226 / 0.62), rgb(2 11 16/.62)));content:""}.hero-card{position:relative;z-index:1;width:min(48rem,54%);margin:clamp(1.25rem,3vw,2.5rem);border:1px solid light-dark(rgb(118 93 55 / 0.34), rgb(200 155 255/.34));border-radius:1rem;padding:clamp(1.2rem,2.6vw,2rem);background:linear-gradient(145deg,light-dark(rgb(247 240 226 / 0.68), rgb(3 13 20/.68)),light-dark(rgb(247 240 226 / 0.3), rgb(3 13 20/.3)));box-shadow:inset 0 1px rgb(255 255 255/.08),0 24px 70px light-dark(rgb(91 69 38 / 0.077), rgb(0 0 0/.22));backdrop-filter:blur(20px) saturate(126%)}.back-link{display:inline-flex;width:fit-content;margin-bottom:1.2rem;border:1px solid light-dark(rgb(118 93 55 / 0.34), rgb(200 155 255/.34));border-radius:999px;padding:.5rem .72rem;background:light-dark(rgb(247 240 226 / 0.38), rgb(3 13 20/.38));color:light-dark(rgb(91 76 57 / 1), #dcc6ff);font-size:.72rem;font-weight:850;text-decoration:none}.eyebrow{margin:0;color:light-dark(rgb(86 67 110 / 1), #c89bff);font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}h1,h2{margin:0;color:light-dark(rgb(43 33 24 / 1), #fff4df);font-family:var(--serif);font-weight:500;letter-spacing:0;line-height:.98}.hero-card h1{margin-top:.6rem;font-size:clamp(3rem,5.4vw,6rem)}.hero-card strong{display:block;margin-top:.8rem;color:light-dark(rgb(91 76 57 / 1), #dcc6ff)}.hero-card p:not(.eyebrow){margin:1rem 0 0;color:light-dark(rgb(43 33 24 / 1), #eadfff);font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.65}.topic-layout{display:grid;width:min(1460px,calc(100% - 2rem));grid-template-columns:minmax(0,1fr) minmax(20rem,28rem);gap:1rem;margin:clamp(1rem,2.4vw,1.7rem) auto 0}.reading-panel,.side-panel{border:1px solid light-dark(rgb(118 93 55 / 0.2), rgb(200 155 255/.2));border-radius:1rem;background:linear-gradient(145deg,light-dark(rgb(247 240 226 / 0.84), rgb(3 13 20/.84)),light-dark(rgb(247 240 226 / 0.58), rgb(3 13 20/.58)));box-shadow:inset 0 1px rgb(255 255 255/.045),0 20px 60px light-dark(rgb(91 69 38 / 0.063), rgb(0 0 0/.18))}.reading-panel{padding:clamp(1.1rem,2.5vw,1.9rem);columns:2 24rem;column-gap:clamp(1.4rem,3vw,2.8rem)}.reading-panel h2{break-after:avoid;margin:1.2rem 0 .7rem;font-size:clamp(1.8rem,2.8vw,3rem)}.reading-panel p,.reading-panel li,.side-panel p,.side-panel li{color:light-dark(rgb(91 76 57 / 1), #dfd1ba);font-size:clamp(1rem,1.16vw,1.08rem);line-height:1.72}.reading-panel p{margin:0 0 .8rem}.reading-panel ul,.side-panel ul{display:grid;gap:.5rem;margin:0 0 .9rem;padding:0;list-style:none}.reading-panel li,.side-panel li{border:1px solid light-dark(rgb(118 93 55 / 0.14), rgb(200 155 255/.14));border-radius:.7rem;padding:.55rem .7rem;background:rgb(200 155 255/.04)}.side-panel{position:sticky;top:6rem;align-self:start;padding:clamp(1.1rem,2.2vw,1.5rem)}.side-panel h2{margin:1.2rem 0 .8rem;font-size:clamp(1.6rem,2.4vw,2.4rem)}.side-panel a{display:inline-flex;margin-top:.6rem;border:1px solid light-dark(rgb(118 93 55 / 0.32), rgb(200 155 255/.32));border-radius:999px;padding:.55rem .78rem;color:light-dark(rgb(91 76 57 / 1), #dcc6ff);background:rgb(200 155 255/.07);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}@media(max-width:920px){.hero-card{width:auto;margin-top:clamp(10rem,28svh,15rem)}.topic-layout{grid-template-columns:1fr}.reading-panel{columns:1}.side-panel{position:static}}@media(max-width:640px){.topic-hero,.topic-layout{width:min(100% - 1rem,1460px)}.hero-card{margin:clamp(8rem,24svh,12rem) .75rem .75rem}}
+</style>

@@ -13,3 +13,7 @@ coverage/
 .DS_Store
 Thumbs.db
 
+
+# Local dev-server output and temporary screenshots
+dev-server.*
+tmp-*

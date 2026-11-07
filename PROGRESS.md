@@ -1,12 +1,21 @@
 # Project Progress
 
-Last updated: 2026-06-27
+Last updated: 2026-09-30
 
 ## Current Milestone
 
 Milestone 2: Library and Atlas Content Expansion
 
 ## Completed
+
+- Completed a local quality pass preserving the static Astro architecture, artwork, and core journeys.
+- Added readable Day surfaces, consistent reading typography, a mobile cosmic-time map, and clearer Library availability/search.
+- Repaired internal links, devotion anchors, mixed encodings, duplicate main landmarks, and misleading draft labels.
+- Built the Sources directory, linked specific time-cycle and Garuda edition passages, and expanded the Kali Yuga preview.
+- Kept expert review explicitly pending; aligned preview robots/sitemaps and required reviewer/source metadata before publication.
+- Added `npm run verify`: type check, production build, and 42-route links/assets/metadata/landmark/encoding/sitemap audit.
+
+The earlier milestones below are historical. Qualified content review, a real feedback service, and a donation provider remain outstanding.
 
 - Reviewed original README, development guide, and visual mockups.
 - Narrowed Version 1 to the six-topic Cosmic Atlas journey.

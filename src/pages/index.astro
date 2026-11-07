@@ -55,7 +55,7 @@ const featuredTopics = [
     eyebrow: "Purana knowledge",
     title: "Garuda Purana",
     text: "A sacred Purana exploring dharma, karma, afterlife journeys, rituals, and deeper meaning.",
-    href: "/atlas/garuda-purana",
+    href: "/garuda-purana",
     tone: "shadow",
     image: "/images/home/home-garuda-purana.png",
   },
@@ -63,8 +63,8 @@ const featuredTopics = [
 
 
 const scriptureThreads = [
-  { label: "Vedas", text: "hymns, ritual knowledge, sound, and sacred order", href: "/library#vedas" },
-  { label: "Upanishads", text: "Atman, Brahman, moksha, and inner philosophy", href: "/library#upanishads" },
+  { label: "Vedas", text: "hymns, ritual knowledge, sound, and sacred order", href: "/library#scriptures" },
+  { label: "Upanishads", text: "Atman, Brahman, moksha, and inner philosophy", href: "/library#scriptures" },
   { label: "Puranas", text: "cosmic stories, deities, lokas, and living memory", href: "/library#puranas" },
   { label: "Itihasas", text: "Ramayana, Mahabharata, dharma, heroes, and choices", href: "/library#itihasas" },
   { label: "Agamas", text: "temple worship, sacred practice, and divine presence", href: "/library#scriptures" },
@@ -72,14 +72,14 @@ const scriptureThreads = [
 const startPaths = [
   { label: "I am new", title: "Start simple", text: "A gentle first route through cosmic time and the big map.", href: "/atlas/cosmic-time" },
   { label: "I like stories", title: "Enter the epics", text: "Begin with characters, choices, dharma, and consequence.", href: "/atlas/treta-yuga" },
-  { label: "I want wonder", title: "Explore mysteries", text: "Vimanas, Astras, Lokas, and Puranic imagination in one path.", href: "/pushpaka-vimana" },
+  { label: "I want wonder", title: "Explore mysteries", text: "Vimanas, Astras, Lokas, and Puranic imagination in one path.", href: "/vimanas" },
   { label: "I want sources", title: "Read with context", text: "Move through source-aware notes, meanings, and connected topics.", href: "/sources" },
 ];
 const heroNodes = [
   { label: "Cosmic Time", href: "/atlas/cosmic-time", tone: "gold", className: "node-1" },
-  { label: "Garuda Purana", href: "/atlas/garuda-purana", tone: "shadow", className: "node-7" },
+  { label: "Garuda Purana", href: "/garuda-purana", tone: "shadow", className: "node-7" },
   { label: "14 Lokas", href: "/14-lokas", tone: "teal", className: "node-2" },
-  { label: "Vimanas", href: "/pushpaka-vimana", tone: "amber", className: "node-3" },
+  { label: "Vimanas", href: "/vimanas", tone: "amber", className: "node-3" },
   { label: "Tripura", href: "/flying-cities-of-tripura", tone: "violet", className: "node-4" },
   { label: "Astras", href: "/astras", tone: "fire", className: "node-5" },
   { label: "Epics", href: "/atlas/treta-yuga", tone: "blue", className: "node-6" },
@@ -103,7 +103,7 @@ const heroNodes = [
           <div class="hero-signals" aria-label="Atlas qualities">
             <span><b>01</b>Visual journeys</span>
             <span><b>02</b>Beginner clear</span>
-            <span><b>03</b>Sources included</span>
+            <span><b>03</b>Source notes & context</span>
           </div>
         </div>
 
@@ -182,8 +182,8 @@ const heroNodes = [
 </BaseLayout>
 <style is:global>
   body:has(.home-experience) {
-    background: #020a10;
-    color: #f7ebd3;
+    background: light-dark(rgb(247 240 226 / 1), #020a10);
+    color: light-dark(rgb(43 33 24 / 1), #f7ebd3);
   }
 
   body:has(.home-experience)::before {
@@ -197,7 +197,7 @@ const heroNodes = [
     background:
       radial-gradient(circle at 70% 10%, rgb(214 172 91 / .17), transparent 28rem),
       radial-gradient(circle at 18% 40%, rgb(101 215 220 / .08), transparent 28rem),
-      linear-gradient(180deg, #020a10, #031116 55%, #020a10);
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 1), #020a10), light-dark(rgb(247 240 226 / 1), #031116) 55%, light-dark(rgb(247 240 226 / 1), #020a10));
   }
 
   .home-experience::before {
@@ -238,13 +238,13 @@ const heroNodes = [
     position: absolute;
     inset: -2rem -4rem -2rem -2rem;
     z-index: -1;
-    background: linear-gradient(90deg, rgb(2 10 16 / .82), transparent);
+    background: linear-gradient(90deg, light-dark(rgb(247 240 226 / 0.82), rgb(2 10 16 / .82)), transparent);
     content: "";
   }
 
   .eyebrow {
     margin: 0;
-    color: #f0b45f;
+    color: light-dark(rgb(103 77 41 / 1), #f0b45f);
     font-size: .67rem;
     font-weight: 900;
     letter-spacing: .18em;
@@ -254,7 +254,7 @@ const heroNodes = [
   .hero-panel h1,
   .section-heading h2 {
     margin: .6rem 0 0;
-    color: #f7ebd3;
+    color: light-dark(rgb(43 33 24 / 1), #f7ebd3);
     font-family: Georgia, "Times New Roman", serif;
     font-weight: 450;
     letter-spacing: -.045em;
@@ -269,7 +269,7 @@ const heroNodes = [
   .hero-lead {
     max-width: 40rem;
     margin: 1.15rem 0 0;
-    color: #c9b99d;
+    color: light-dark(rgb(91 76 57 / 1), #c9b99d);
     font-size: clamp(1rem, 1.18vw, 1.15rem);
     line-height: 1.68;
   }
@@ -294,10 +294,10 @@ const heroNodes = [
     width: min(100%, 19rem);
     justify-content: space-between;
     overflow: hidden;
-    border: 1px solid #e4b45e;
+    border: 1px solid light-dark(rgb(118 93 55 / 1), #e4b45e);
     border-radius: 1rem;
     padding: .78rem .9rem .78rem .82rem;
-    background: linear-gradient(135deg, #f8d78b 0%, #c8913c 45%, #765020 100%);
+    background: linear-gradient(135deg, #f8d78b 0%, #c8913c 45%, light-dark(rgb(250 245 234 / 1), #765020) 100%);
     color: #061015;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.08rem;
@@ -308,7 +308,7 @@ const heroNodes = [
   .primary-action::after {
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, transparent 0 30%, rgb(255 255 255 / .28) 44%, transparent 58%);
+    background: linear-gradient(105deg, transparent 0 30%, light-dark(rgb(99 76 44 / 0.28), rgb(255 255 255 / .28)) 44%, transparent 58%);
     transform: translateX(-120%);
     animation: hero-sheen 5.5s ease-in-out infinite;
     content: "";
@@ -323,21 +323,21 @@ const heroNodes = [
     height: 2rem;
     place-items: center;
     border-radius: 50%;
-    background: rgb(3 13 20 / .14);
+    background: light-dark(rgb(247 240 226 / 0.14), rgb(3 13 20 / .14));
     font-style: normal;
   }
 
-  .primary-action i { overflow: hidden; background: rgb(3 13 20 / .22); }
+  .primary-action i { overflow: hidden; background: light-dark(rgb(247 240 226 / 0.22), rgb(3 13 20 / .22)); }
   .primary-action i img { width: 86%; height: 86%; border-radius: 50%; object-fit: contain; filter: saturate(1.08) contrast(1.08); }
   .primary-action span { position: relative; z-index: 1; }
 
   .play-action {
     width: min(100%, 19rem);
-    border: 1px solid rgb(214 172 91 / .16);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.16), rgb(214 172 91 / .16));
     border-radius: 1rem;
     padding: .72rem .82rem;
-    color: #c9b99d;
-    background: linear-gradient(135deg, rgb(255 255 255 / .035), rgb(2 10 16 / .55));
+    color: light-dark(rgb(91 76 57 / 1), #c9b99d);
+    background: linear-gradient(135deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(247 240 226 / 0.55), rgb(2 10 16 / .55)));
     box-shadow: inset 0 1px rgb(255 255 255 / .025);
   }
 
@@ -346,9 +346,9 @@ const heroNodes = [
     width: 2.15rem;
     height: 2.15rem;
     place-items: center;
-    border: 1px solid rgb(244 195 109 / .35);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.35), rgb(244 195 109 / .35));
     border-radius: 50%;
-    color: #f4d19a;
+    color: light-dark(rgb(105 90 66 / 1), #f4d19a);
     font-size: .62rem;
     font-style: normal;
     font-weight: 900;
@@ -362,11 +362,11 @@ const heroNodes = [
   }
 
   .mini-topics span {
-    border: 1px solid rgb(214 172 91 / .14);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.14), rgb(214 172 91 / .14));
     border-radius: 999px;
     padding: .34rem .55rem;
-    color: #f0b45f;
-    background: rgb(2 10 16 / .32);
+    color: light-dark(rgb(103 77 41 / 1), #f0b45f);
+    background: light-dark(rgb(247 240 226 / 0.32), rgb(2 10 16 / .32));
     font-size: .62rem;
     font-weight: 900;
     letter-spacing: .08em;
@@ -382,11 +382,11 @@ const heroNodes = [
   }
 
   .hero-signals span {
-    border: 1px solid rgb(214 172 91 / .12);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.12), rgb(214 172 91 / .12));
     border-radius: .85rem;
     padding: .68rem .72rem;
-    color: #d7c8ad;
-    background: linear-gradient(145deg, rgb(255 255 255 / .035), rgb(2 10 16 / .18));
+    color: light-dark(rgb(91 76 57 / 1), #d7c8ad);
+    background: linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(247 240 226 / 0.18), rgb(2 10 16 / .18)));
     font-size: .72rem;
     font-weight: 750;
   }
@@ -394,7 +394,7 @@ const heroNodes = [
   .hero-signals b {
     display: block;
     margin-bottom: .22rem;
-    color: #f0b45f;
+    color: light-dark(rgb(103 77 41 / 1), #f0b45f);
     font-size: .58rem;
     letter-spacing: .12em;
   }
@@ -406,17 +406,17 @@ const heroNodes = [
     min-height: clamp(38rem, 70vh, 48rem);
     margin-top: -2.2rem;
     overflow: hidden;
-    border: 1px solid rgb(214 172 91 / .2);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.2), rgb(214 172 91 / .2));
     border-radius: 1.55rem;
-    background: radial-gradient(circle at 50% 42%, rgb(214 172 91 / .12), transparent 30%), rgb(3 13 20 / .22);
-    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 34px 110px rgb(0 0 0 / .32);
+    background: radial-gradient(circle at 50% 42%, rgb(214 172 91 / .12), transparent 30%), light-dark(rgb(247 240 226 / 0.22), rgb(3 13 20 / .22));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 34px 110px light-dark(rgb(91 69 38 / 0.112), rgb(0 0 0 / .32));
   }
 
   .atlas-orbital::before {
     position: absolute;
     inset: 1rem 1rem calc(var(--caption-space) + .18rem) 1rem;
     z-index: 1;
-    border: 1px solid rgb(244 195 109 / .16);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.16), rgb(244 195 109 / .16));
     border-radius: 1.1rem;
     pointer-events: none;
     content: "";
@@ -438,8 +438,8 @@ const heroNodes = [
     position: absolute;
     inset: 0 0 var(--caption-space) 0;
     background:
-      radial-gradient(circle at 50% 46%, transparent 0 18%, rgb(2 10 16 / .2) 58%, rgb(2 10 16 / .68) 100%),
-      linear-gradient(180deg, rgb(2 10 16 / .2), transparent 38%, rgb(2 10 16 / .42));
+      radial-gradient(circle at 50% 46%, transparent 0 18%, light-dark(rgb(247 240 226 / 0.2), rgb(2 10 16 / .2)) 58%, light-dark(rgb(247 240 226 / 0.68), rgb(2 10 16 / .68)) 100%),
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.2), rgb(2 10 16 / .2)), transparent 38%, light-dark(rgb(247 240 226 / 0.42), rgb(2 10 16 / .42)));
     content: "";
   }
 
@@ -453,16 +453,16 @@ const heroNodes = [
 
   .orbit {
     position: absolute;
-    border: 1px solid rgb(214 172 91 / .24);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.24), rgb(214 172 91 / .24));
     border-radius: 50%;
     transform: rotate(-10deg) scaleY(.54);
     animation: home-orbit 24s linear infinite;
   }
 
   .orbit-a { width: 82%; aspect-ratio: 1; }
-  .orbit-b { width: 64%; aspect-ratio: 1; border-color: rgb(101 215 220 / .2); animation-duration: 32s; animation-direction: reverse; }
+  .orbit-b { width: 64%; aspect-ratio: 1; border-color: light-dark(rgb(118 93 55 / 0.2), rgb(101 215 220 / .2)); animation-duration: 32s; animation-direction: reverse; }
   .orbit-c { width: 100%; aspect-ratio: 1; border-style: dashed; opacity: .68; animation-duration: 42s; }
-  .orbit-d { width: 44%; aspect-ratio: 1; border-color: rgb(255 122 79 / .2); animation-duration: 18s; }
+  .orbit-d { width: 44%; aspect-ratio: 1; border-color: light-dark(rgb(118 93 55 / 0.2), rgb(255 122 79 / .2)); animation-duration: 18s; }
 
 
   .topic-node {
@@ -472,11 +472,11 @@ const heroNodes = [
     align-items: center;
     gap: .42rem;
     min-width: 0;
-    border: 1px solid color-mix(in srgb, var(--node-color, #f4d19a) 42%, transparent);
+    border: 1px solid color-mix(in srgb, var(--node-color, light-dark(rgb(118 93 55 / 1), #f4d19a)) 42%, transparent);
     border-radius: 999px;
     padding: .48rem .72rem;
-    color: color-mix(in srgb, var(--node-color, #f4d19a) 82%, #fff2da);
-    background: rgb(2 10 16 / .72);
+    color: color-mix(in srgb, var(--node-color, light-dark(rgb(105 90 66 / 1), #f4d19a)) 82%, light-dark(rgb(43 33 24 / 1), #fff2da));
+    background: light-dark(rgb(247 240 226 / 0.72), rgb(2 10 16 / .72));
     box-shadow: 0 0 35px var(--node-glow, rgb(214 172 91 / .14));
     backdrop-filter: blur(12px);
     text-align: center;
@@ -493,13 +493,13 @@ const heroNodes = [
   }
 
   .topic-node span { font-size: .72rem; font-weight: 900; letter-spacing: .04em; }
-  .topic-node.gold { --node-color: #f4d19a; --node-glow: rgb(244 195 109 / .22); }
-  .topic-node.teal { --node-color: #65d7dc; --node-glow: rgb(101 215 220 / .22); }
-  .topic-node.amber { --node-color: #ffbf73; --node-glow: rgb(255 175 78 / .22); }
-  .topic-node.violet { --node-color: #c89bff; --node-glow: rgb(190 134 255 / .22); }
-  .topic-node.fire { --node-color: #ff7a4f; --node-glow: rgb(255 122 79 / .22); }
-  .topic-node.blue { --node-color: #85a8ff; --node-glow: rgb(133 168 255 / .22); }
-  .topic-node.shadow { --node-color: #dcc49d; --node-glow: rgb(220 196 157 / .22); }
+  .topic-node.gold { --node-color: light-dark(rgb(105 90 66 / 1), #f4d19a); --node-glow: light-dark(rgb(105 84 47 / 0.22), rgb(244 195 109 / .22)); }
+  .topic-node.teal { --node-color: light-dark(rgb(43 92 95 / 1), #65d7dc); --node-glow: light-dark(rgb(43 92 95 / 0.22), rgb(101 215 220 / .22)); }
+  .topic-node.amber { --node-color: light-dark(rgb(110 82 49 / 1), #ffbf73); --node-glow: light-dark(rgb(110 75 34 / 0.22), rgb(255 175 78 / .22)); }
+  .topic-node.violet { --node-color: light-dark(rgb(86 67 110 / 1), #c89bff); --node-glow: light-dark(rgb(82 58 110 / 0.22), rgb(190 134 255 / .22)); }
+  .topic-node.fire { --node-color: light-dark(rgb(110 52 34 / 1), #ff7a4f); --node-glow: light-dark(rgb(110 52 34 / 0.22), rgb(255 122 79 / .22)); }
+  .topic-node.blue { --node-color: light-dark(rgb(57 72 110 / 1), #85a8ff); --node-glow: light-dark(rgb(57 72 110 / 0.22), rgb(133 168 255 / .22)); }
+  .topic-node.shadow { --node-color: light-dark(rgb(91 76 57 / 1), #dcc49d); --node-glow: light-dark(rgb(91 76 57 / 0.22), rgb(220 196 157 / .22)); }
 
   .node-1 { top: 12%; left: 42%; }
   .node-7 { top: 24%; right: 28%; }
@@ -520,13 +520,13 @@ const heroNodes = [
     justify-content: space-between;
     gap: 1rem;
     overflow: hidden;
-    border: 1px solid rgb(214 172 91 / .2);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.2), rgb(214 172 91 / .2));
     border-radius: 1rem;
     padding: .65rem 1rem;
     background:
-      linear-gradient(135deg, rgb(255 255 255 / .075), rgb(2 10 16 / .58)),
+      linear-gradient(135deg, light-dark(rgb(99 76 44 / 0.075), rgb(255 255 255 / .075)), light-dark(rgb(247 240 226 / 0.58), rgb(2 10 16 / .58))),
       radial-gradient(circle at 10% 0%, rgb(244 195 109 / .12), transparent 18rem);
-    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 18px 48px rgb(0 0 0 / .28);
+    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 18px 48px light-dark(rgb(91 69 38 / 0.098), rgb(0 0 0 / .28));
     backdrop-filter: blur(22px) saturate(1.2);
   }
 
@@ -534,7 +534,7 @@ const heroNodes = [
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(90deg, rgb(255 255 255 / .12), transparent 34%, rgb(101 215 220 / .06));
+    background: linear-gradient(90deg, light-dark(rgb(99 76 44 / 0.12), rgb(255 255 255 / .12)), transparent 34%, rgb(101 215 220 / .06));
     opacity: .55;
     pointer-events: none;
     content: "";
@@ -548,7 +548,7 @@ const heroNodes = [
   .orbital-caption strong {
     display: block;
     max-width: 40ch;
-    color: #eee3cf;
+    color: light-dark(rgb(91 76 57 / 1), #eee3cf);
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.05rem;
     font-weight: 450;
@@ -575,7 +575,7 @@ const heroNodes = [
   }
 
   .section-heading > p {
-    color: #aaa49a;
+    color: light-dark(rgb(91 76 57 / 1), #aaa49a);
     line-height: 1.7;
   }
 
@@ -591,11 +591,11 @@ const heroNodes = [
     min-height: clamp(25rem, 31vw, 34rem);
     overflow: hidden;
     align-items: flex-end;
-    border: 1px solid rgb(214 172 91 / .18);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.18), rgb(214 172 91 / .18));
     border-radius: 1.25rem;
     padding: .9rem;
-    background: rgb(3 13 20 / .35);
-    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 18px 50px rgb(0 0 0 / .16);
+    background: light-dark(rgb(247 240 226 / 0.35), rgb(3 13 20 / .35));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 18px 50px light-dark(rgb(91 69 38 / 0.056), rgb(0 0 0 / .16));
     transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
   }
 
@@ -615,8 +615,8 @@ const heroNodes = [
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 76% 18%, transparent 0 26%, rgb(2 10 16 / .06) 48%, rgb(2 10 16 / .28) 100%),
-      linear-gradient(180deg, rgb(2 10 16 / .04) 0%, rgb(2 10 16 / .08) 44%, rgb(2 10 16 / .76) 100%);
+      radial-gradient(circle at 76% 18%, transparent 0 26%, light-dark(rgb(247 240 226 / 0.06), rgb(2 10 16 / .06)) 48%, light-dark(rgb(247 240 226 / 0.28), rgb(2 10 16 / .28)) 100%),
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.04), rgb(2 10 16 / .04)) 0%, light-dark(rgb(247 240 226 / 0.08), rgb(2 10 16 / .08)) 44%, light-dark(rgb(247 240 226 / 0.76), rgb(2 10 16 / .76)) 100%);
     content: "";
   }
 
@@ -636,8 +636,8 @@ const heroNodes = [
 
   .topic-card:hover {
     transform: translateY(-6px);
-    border-color: rgb(244 195 109 / .5);
-    box-shadow: 0 26px 80px rgb(0 0 0 / .34), 0 0 55px var(--glow, rgb(214 172 91 / .16));
+    border-color: light-dark(rgb(118 93 55 / 0.5), rgb(244 195 109 / .5));
+    box-shadow: 0 26px 80px light-dark(rgb(91 69 38 / 0.119), rgb(0 0 0 / .34)), 0 0 55px var(--glow, rgb(214 172 91 / .16));
   }
 
   .topic-card:hover img {
@@ -651,13 +651,13 @@ const heroNodes = [
     transform: scale(1.08);
   }
 
-  .topic-card.gold { --glow: rgb(244 195 109 / .22); }
-  .topic-card.teal { --glow: rgb(101 215 220 / .2); }
-  .topic-card.amber { --glow: rgb(255 175 78 / .22); }
-  .topic-card.violet { --glow: rgb(190 134 255 / .2); }
-  .topic-card.fire { --glow: rgb(255 122 79 / .22); }
-  .topic-card.blue { --glow: rgb(133 168 255 / .2); }
-  .topic-card.shadow { --glow: rgb(220 196 157 / .2); }
+  .topic-card.gold { --glow: light-dark(rgb(105 84 47 / 0.22), rgb(244 195 109 / .22)); }
+  .topic-card.teal { --glow: light-dark(rgb(43 92 95 / 0.2), rgb(101 215 220 / .2)); }
+  .topic-card.amber { --glow: light-dark(rgb(110 75 34 / 0.22), rgb(255 175 78 / .22)); }
+  .topic-card.violet { --glow: light-dark(rgb(82 58 110 / 0.2), rgb(190 134 255 / .2)); }
+  .topic-card.fire { --glow: light-dark(rgb(110 52 34 / 0.22), rgb(255 122 79 / .22)); }
+  .topic-card.blue { --glow: light-dark(rgb(57 72 110 / 0.2), rgb(133 168 255 / .2)); }
+  .topic-card.shadow { --glow: light-dark(rgb(91 76 57 / 0.2), rgb(220 196 157 / .2)); }
 
 
 
@@ -667,19 +667,19 @@ const heroNodes = [
     z-index: 2;
     width: 100%;
     min-height: 10.8rem;
-    border: 1px solid rgb(214 172 91 / .12);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.12), rgb(214 172 91 / .12));
     border-radius: 1rem;
     padding: .95rem 1rem 2.55rem;
     background:
-      linear-gradient(135deg, rgb(2 10 16 / .82), rgb(2 10 16 / .48)),
+      linear-gradient(135deg, light-dark(rgb(247 240 226 / 0.82), rgb(2 10 16 / .82)), light-dark(rgb(247 240 226 / 0.48), rgb(2 10 16 / .48))),
       radial-gradient(circle at 90% 0%, var(--glow, rgb(214 172 91 / .18)), transparent 52%);
-    box-shadow: inset 0 1px rgb(255 255 255 / .03), 0 -22px 80px rgb(0 0 0 / .22);
+    box-shadow: inset 0 1px rgb(255 255 255 / .03), 0 -22px 80px light-dark(rgb(91 69 38 / 0.077), rgb(0 0 0 / .22));
     backdrop-filter: blur(10px);
   }
 
   .topic-card p {
     margin: 0 0 .3rem;
-    color: #f0b45f;
+    color: light-dark(rgb(103 77 41 / 1), #f0b45f);
     font-size: .6rem;
     font-weight: 900;
     letter-spacing: .13em;
@@ -689,7 +689,7 @@ const heroNodes = [
   .topic-card h3 {
     max-width: 13ch;
     margin: 0;
-    color: #f7ebd3;
+    color: light-dark(rgb(43 33 24 / 1), #f7ebd3);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(1.55rem, 2.35vw, 2.35rem);
     font-weight: 450;
@@ -700,7 +700,7 @@ const heroNodes = [
     display: block;
     max-width: 38ch;
     margin-top: .65rem;
-    color: #c2b7a5;
+    color: light-dark(rgb(91 76 57 / 1), #c2b7a5);
     font-size: .82rem;
     line-height: 1.5;
   }
@@ -710,7 +710,7 @@ const heroNodes = [
     bottom: 1.62rem;
     left: 1.35rem;
     z-index: 3;
-    color: #f4d19a;
+    color: light-dark(rgb(105 90 66 / 1), #f4d19a);
     font-size: .68rem;
     text-transform: uppercase;
   }
@@ -723,14 +723,14 @@ const heroNodes = [
     gap: .72rem;
     align-items: stretch;
     margin-top: clamp(1rem, 2vw, 1.45rem);
-    border: 1px solid rgb(214 172 91 / .16);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.16), rgb(214 172 91 / .16));
     border-radius: 1rem;
     padding: .62rem;
     background:
       radial-gradient(circle at 7% 18%, rgb(244 195 109 / .12), transparent 17rem),
       radial-gradient(circle at 91% 78%, rgb(101 215 220 / .08), transparent 20rem),
-      linear-gradient(135deg, rgb(255 255 255 / .035), rgb(2 10 16 / .32));
-    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 14px 42px rgb(0 0 0 / .14);
+      linear-gradient(135deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(247 240 226 / 0.32), rgb(2 10 16 / .32)));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 14px 42px light-dark(rgb(91 69 38 / 0.049), rgb(0 0 0 / .14));
   }
 
   .scripture-copy {
@@ -740,11 +740,11 @@ const heroNodes = [
     align-content: center;
     gap: .85rem;
     overflow: hidden;
-    border: 1px solid rgb(214 172 91 / .14);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.14), rgb(214 172 91 / .14));
     border-radius: .85rem;
     padding: clamp(1.1rem, 2vw, 1.5rem);
     background:
-      linear-gradient(135deg, rgb(2 10 16 / .88), rgb(2 10 16 / .5)),
+      linear-gradient(135deg, light-dark(rgb(247 240 226 / 0.88), rgb(2 10 16 / .88)), light-dark(rgb(247 240 226 / 0.5), rgb(2 10 16 / .5))),
       radial-gradient(circle at 100% 100%, rgb(244 195 109 / .12), transparent 8rem);
   }
 
@@ -754,7 +754,7 @@ const heroNodes = [
     bottom: clamp(1rem, 2vw, 1.35rem);
     width: 4.1rem;
     aspect-ratio: 1;
-    border: 1px solid rgb(244 195 109 / .18);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.18), rgb(244 195 109 / .18));
     border-radius: 50%;
     background: radial-gradient(circle, rgb(244 195 109 / .18), transparent 62%);
     box-shadow: inset 0 0 18px rgb(244 195 109 / .08), 0 0 34px rgb(244 195 109 / .06);
@@ -764,7 +764,7 @@ const heroNodes = [
   .scripture-copy h2 {
     max-width: 11ch;
     margin: 0;
-    color: #f7ebd3;
+    color: light-dark(rgb(43 33 24 / 1), #f7ebd3);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(1.8rem, 2.8vw, 3.15rem);
     font-weight: 450;
@@ -780,7 +780,7 @@ const heroNodes = [
     min-height: 2.48rem;
     align-items: center;
     gap: .5rem;
-    border: 1px solid rgb(244 195 109 / .52);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.52), rgb(244 195 109 / .52));
     border-radius: 999px;
     padding: .34rem .76rem .34rem .42rem;
     color: #061015;
@@ -798,13 +798,13 @@ const heroNodes = [
     height: 1.82rem;
     place-items: center;
     border-radius: 50%;
-    background: rgb(3 13 20 / .16);
+    background: light-dark(rgb(247 240 226 / 0.16), rgb(3 13 20 / .16));
     color: #061015;
     font-style: normal;
   }
 
   .scripture-copy a i {
-    background: rgb(3 13 20 / .2);
+    background: light-dark(rgb(247 240 226 / 0.2), rgb(3 13 20 / .2));
     color: #07131a;
   }
 
@@ -822,11 +822,11 @@ const heroNodes = [
     gap: .5rem;
     min-height: 13.5rem;
     overflow: hidden;
-    border: 1px solid rgb(214 172 91 / .1);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.1), rgb(214 172 91 / .1));
     border-radius: .85rem;
     padding: .62rem;
     background:
-      linear-gradient(90deg, rgb(2 10 16 / .26), rgb(4 20 24 / .34)),
+      linear-gradient(90deg, light-dark(rgb(247 240 226 / 0.26), rgb(2 10 16 / .26)), light-dark(rgb(247 240 226 / 0.34), rgb(4 20 24 / .34))),
       repeating-linear-gradient(90deg, rgb(214 172 91 / .05) 0 1px, transparent 1px 20%);
   }
 
@@ -864,12 +864,12 @@ const heroNodes = [
     min-height: 12.2rem;
     align-content: space-between;
     overflow: hidden;
-    border: 1px solid rgb(214 172 91 / .13);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.13), rgb(214 172 91 / .13));
     border-radius: .78rem;
     padding: .78rem;
     background:
       radial-gradient(circle at 50% 100%, rgb(244 195 109 / .09), transparent 7rem),
-      linear-gradient(180deg, rgb(255 255 255 / .052), rgb(2 10 16 / .46));
+      linear-gradient(180deg, light-dark(rgb(99 76 44 / 0.052), rgb(255 255 255 / .052)), light-dark(rgb(247 240 226 / 0.46), rgb(2 10 16 / .46)));
     box-shadow: inset 0 1px rgb(255 255 255 / .025);
     text-decoration: none;
     transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
@@ -887,9 +887,9 @@ const heroNodes = [
 
   .scripture-leaf:hover {
     transform: translateY(-3px);
-    border-color: rgb(244 195 109 / .42);
-    background-color: rgb(12 37 37 / .36);
-    box-shadow: 0 16px 34px rgb(0 0 0 / .18);
+    border-color: light-dark(rgb(118 93 55 / 0.42), rgb(244 195 109 / .42));
+    background-color: light-dark(rgb(250 245 234 / 0.36), rgb(12 37 37 / .36));
+    box-shadow: 0 16px 34px light-dark(rgb(91 69 38 / 0.063), rgb(0 0 0 / .18));
   }
 
   .scripture-leaf:hover::before {
@@ -907,16 +907,16 @@ const heroNodes = [
 
   .scripture-leaf span {
     width: fit-content;
-    border-bottom: 1px solid rgb(244 195 109 / .28);
+    border-bottom: 1px solid light-dark(rgb(118 93 55 / 0.28), rgb(244 195 109 / .28));
     padding-bottom: .22rem;
-    color: #f0b45f;
+    color: light-dark(rgb(103 77 41 / 1), #f0b45f);
     font-size: .62rem;
     font-weight: 900;
     letter-spacing: .13em;
   }
 
   .scripture-leaf strong {
-    color: #f7ebd3;
+    color: light-dark(rgb(43 33 24 / 1), #f7ebd3);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(1.18rem, 1.55vw, 1.52rem);
     font-weight: 520;
@@ -924,7 +924,7 @@ const heroNodes = [
   }
 
   .scripture-leaf small {
-    color: #c7bbab;
+    color: light-dark(rgb(91 76 57 / 1), #c7bbab);
     font-size: .73rem;
     line-height: 1.38;
   }
@@ -935,16 +935,16 @@ const heroNodes = [
     height: 1.62rem;
     place-items: center;
     justify-self: end;
-    border: 1px solid rgb(244 195 109 / .2);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.2), rgb(244 195 109 / .2));
     border-radius: 50%;
-    color: #f0b45f;
+    color: light-dark(rgb(103 77 41 / 1), #f0b45f);
     font-size: .68rem;
   }
   /* Modern home refresh */
   .home-experience {
     background:
       radial-gradient(circle at 50% -8%, rgb(214 172 91 / .1), transparent 36rem),
-      linear-gradient(180deg, #02090d 0%, #041112 48%, #02090d 100%);
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 1), #02090d) 0%, light-dark(rgb(247 240 226 / 1), #041112) 48%, light-dark(rgb(247 240 226 / 1), #02090d) 100%);
   }
 
   .home-experience::before {
@@ -974,7 +974,7 @@ const heroNodes = [
 
   .hero-lead {
     max-width: 38rem;
-    color: #d2c8b8;
+    color: light-dark(rgb(91 76 57 / 1), #d2c8b8);
   }
 
   .primary-action,
@@ -984,7 +984,7 @@ const heroNodes = [
   }
 
   .primary-action {
-    border-color: rgb(244 195 109 / .82);
+    border-color: light-dark(rgb(118 93 55 / 0.82), rgb(244 195 109 / .82));
     background: #e7b861;
     box-shadow: 0 16px 42px rgb(214 172 91 / .18);
   }
@@ -994,20 +994,20 @@ const heroNodes = [
   }
 
   .play-action {
-    background: rgb(255 255 255 / .035);
+    background: light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035));
   }
 
   .atlas-orbital {
     min-height: clamp(34rem, 64vh, 43rem);
-    border-color: rgb(214 172 91 / .14);
+    border-color: light-dark(rgb(118 93 55 / 0.14), rgb(214 172 91 / .14));
     border-radius: 1.1rem;
-    background: rgb(3 13 20 / .16);
-    box-shadow: 0 24px 90px rgb(0 0 0 / .24), inset 0 1px rgb(255 255 255 / .03);
+    background: light-dark(rgb(247 240 226 / 0.16), rgb(3 13 20 / .16));
+    box-shadow: 0 24px 90px light-dark(rgb(91 69 38 / 0.084), rgb(0 0 0 / .24)), inset 0 1px rgb(255 255 255 / .03);
   }
 
   .topic-node {
-    background: rgb(2 10 16 / .66);
-    box-shadow: 0 14px 38px rgb(0 0 0 / .22);
+    background: light-dark(rgb(247 240 226 / 0.66), rgb(2 10 16 / .66));
+    box-shadow: 0 14px 38px light-dark(rgb(91 69 38 / 0.077), rgb(0 0 0 / .22));
   }
 
   .start-section {
@@ -1019,16 +1019,16 @@ const heroNodes = [
   }
 
   .start-heading {
-    border: 1px solid rgb(214 172 91 / .14);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.14), rgb(214 172 91 / .14));
     border-radius: 1rem;
     padding: clamp(1.1rem, 2.4vw, 1.65rem);
-    background: rgb(255 255 255 / .025);
+    background: light-dark(rgb(99 76 44 / 0.025), rgb(255 255 255 / .025));
   }
 
   .start-heading h2 {
     max-width: 11ch;
     margin: .55rem 0 0;
-    color: #f7ebd3;
+    color: light-dark(rgb(43 33 24 / 1), #f7ebd3);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(2rem, 3.3vw, 3.35rem);
     font-weight: 450;
@@ -1047,22 +1047,22 @@ const heroNodes = [
     min-height: 13rem;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid rgb(214 172 91 / .14);
+    border: 1px solid light-dark(rgb(118 93 55 / 0.14), rgb(214 172 91 / .14));
     padding: 1rem;
     background:
-      linear-gradient(180deg, rgb(255 255 255 / .045), rgb(255 255 255 / .012)),
-      rgb(2 10 16 / .42);
+      linear-gradient(180deg, light-dark(rgb(99 76 44 / 0.045), rgb(255 255 255 / .045)), light-dark(rgb(99 76 44 / 0.012), rgb(255 255 255 / .012))),
+      light-dark(rgb(247 240 226 / 0.42), rgb(2 10 16 / .42));
     transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
   }
 
   .start-card:hover {
     transform: translateY(-4px);
-    border-color: rgb(244 195 109 / .45);
-    background-color: rgb(12 37 37 / .42);
+    border-color: light-dark(rgb(118 93 55 / 0.45), rgb(244 195 109 / .45));
+    background-color: light-dark(rgb(250 245 234 / 0.42), rgb(12 37 37 / .42));
   }
 
   .start-card small {
-    color: #f0b45f;
+    color: light-dark(rgb(103 77 41 / 1), #f0b45f);
     font-size: .64rem;
     font-weight: 900;
     letter-spacing: .13em;
@@ -1070,7 +1070,7 @@ const heroNodes = [
   }
 
   .start-card strong {
-    color: #f7ebd3;
+    color: light-dark(rgb(43 33 24 / 1), #f7ebd3);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(1.28rem, 1.55vw, 1.7rem);
     font-weight: 520;
@@ -1078,7 +1078,7 @@ const heroNodes = [
   }
 
   .start-card span {
-    color: #bdb2a1;
+    color: light-dark(rgb(91 76 57 / 1), #bdb2a1);
     font-size: .82rem;
     line-height: 1.45;
   }
@@ -1109,9 +1109,9 @@ const heroNodes = [
 
   .topic-card {
     min-height: clamp(21rem, 25vw, 28rem);
-    border-color: rgb(214 172 91 / .14);
+    border-color: light-dark(rgb(118 93 55 / 0.14), rgb(214 172 91 / .14));
     border-radius: 1rem;
-    box-shadow: 0 16px 46px rgb(0 0 0 / .14), inset 0 1px rgb(255 255 255 / .025);
+    box-shadow: 0 16px 46px light-dark(rgb(91 69 38 / 0.049), rgb(0 0 0 / .14)), inset 0 1px rgb(255 255 255 / .025);
   }
 
   .topic-card::before {
@@ -1121,13 +1121,13 @@ const heroNodes = [
 
   .topic-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 22px 62px rgb(0 0 0 / .28);
+    box-shadow: 0 22px 62px light-dark(rgb(91 69 38 / 0.098), rgb(0 0 0 / .28));
   }
 
   .topic-copy {
     min-height: 9.6rem;
     border-radius: .85rem;
-    background: linear-gradient(180deg, rgb(2 10 16 / .76), rgb(2 10 16 / .56));
+    background: linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.76), rgb(2 10 16 / .76)), light-dark(rgb(247 240 226 / 0.56), rgb(2 10 16 / .56)));
     backdrop-filter: blur(14px);
   }
 

@@ -1,6 +1,45 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { GARUDA_EDITION, GARUDA_PASSAGES } from "../data/sourceReferences";
+const topics = (await getCollection("atlas")).sort((a,b) => a.data.order - b.data.order);
 ---
-<BaseLayout title="Sources | Sanatana Path" description="Source and review policy for Sanatana Path."><article class="container content reveal"><p class="eyebrow">Sources and review</p><h1 class="display">Trust is part of the design.</h1><p class="muted">Detailed source references for the first Cosmic Atlas journey are being prepared for expert review.</p></article></BaseLayout>
-<style>.content{max-width:780px;padding-block:7rem}.content p:last-child{font-size:1.15rem}</style>
+<BaseLayout title="Sources & editorial review | Sanatana Path" description="Inspect the references behind each Atlas topic and see what still needs review.">
+  <article class="sources-page container">
+    <header><p class="eyebrow">Read with context</p><h1>Sources behind the journeys</h1><p>Follow a reference back to its text. These are research references for reading previews; a listed source does not mean every sentence has been approved by a subject reviewer.</p><a href="/methodology">How we review content →</a></header>
+    <section class="source-key surface" aria-label="How to read the references">
+      <div><h2>Passage reference</h2><p>A chapter or section lets you inspect a particular claim. An external link opens the named edition.</p></div>
+      <div><h2>Source family</h2><p>A book title without a passage is a research lead. It still needs a precise citation and review.</p></div>
+      <div><h2>Original explanation</h2><p>Our summaries and reflections are not quotations from scripture. Traditions and translations can differ.</p></div>
+    </section>
+    <nav class="source-jump" aria-label="Topic references">{topics.map(topic => <a href={`#${topic.id}`}>{topic.data.title}</a>)}<a href="#garuda-reading">Garuda reading series</a></nav>
+    <div class="source-list">{topics.map(topic => (
+      <section class="surface reference-topic" id={topic.id}>
+        <header><h2><a href={`/atlas/${topic.id}`}>{topic.data.title} →</a></h2><span>{topic.data.reviewStatus === "published" ? "Published" : topic.data.reviewStatus === "reviewed" ? "Reviewed; awaiting publication" : "Expert review pending"}</span></header>
+        {topic.data.sources.length ? <ul>{topic.data.sources.map(source => <li>{source.url ? <a href={source.url} rel="noreferrer">{source.title} ↗</a> : <strong>{source.title}</strong>}{source.note && <p>{source.note}</p>}<small>{source.type.replaceAll("-", " ")}</small></li>)}</ul> : <p>Specific source references are still being prepared. This topic is not an approved reference.</p>}
+        <p class="source-note">{topic.data.sourceNote}</p>
+        <p class="reviewer">Subject reviewer: {topic.data.reviewedBy.length ? topic.data.reviewedBy.join(", ") : "not yet assigned"}</p>
+      </section>
+    ))}</div>
+    <section class="surface reference-topic" id="garuda-reading"><h2>Garuda Purana reading series</h2><p><a href={GARUDA_EDITION.url} rel="noreferrer">{GARUDA_EDITION.title} ↗</a></p><p>{GARUDA_EDITION.note}</p><p>The seven chapters are guided introductions. Narrative scenes and present-life reflections are original framing, not translated passages.</p><a href="/garuda-purana">Browse the seven-part journey →</a></section>
+    <section class="surface reference-topic"><h2>Garuda chapter links</h2><ul>{Object.entries(GARUDA_PASSAGES).map(([slug, passage]) => <li><a href={passage.url}>{passage.title} ↗</a> · <a href={`/garuda-purana/${slug}`}>Our introduction</a></li>)}</ul></section>
+    <section class="surface reference-topic"><h2>Other Library guides</h2><p>Cosmic geography, astras, vimanas, and devotion guides carry reading-preview notices. Consult their reference sections where present. Precise editions, passage links, and named review are still being completed; these guides are excluded from search indexing.</p><a href="/library">Browse available reading →</a></section>
+  </article>
+</BaseLayout>
+<style>
+  .sources-page { max-width:1100px; padding-block:2.5rem 4rem; }
+  header > p { max-width:70ch; color:var(--ink-muted); }
+  h1 { max-width:18ch; margin:.5rem 0 1rem; font-family:var(--serif); font-size:clamp(2.4rem,5vw,3.8rem); line-height:1.1; font-weight:500; }
+  h2 { font-family:var(--serif); font-size:1.5rem; font-weight:500; margin:0 0 .6rem; }
+  a { text-decoration:underline; text-underline-offset:4px; }
+  .source-key { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; padding:1.25rem; margin-block:2rem; }
+  .source-key p, .reference-topic p { color:var(--ink-muted); }
+  .source-jump { display:flex; flex-wrap:wrap; gap:.6rem 1rem; margin-bottom:1.5rem; }
+  .reference-topic { padding:1.5rem; margin-block:1rem; scroll-margin-top:7rem; }
+  .reference-topic header { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:.5rem; }
+  .reference-topic header span, small, .reviewer { color:var(--ink-muted); font-size:.8rem; }
+  ul { padding-left:1.2rem; } li + li { margin-top:1rem; } li p { margin:.3rem 0; }
+  .source-note { border-top:1px solid var(--border); padding-top:1rem; }
+  @media(max-width:650px) { .source-key { grid-template-columns:1fr; } }
+</style>
 

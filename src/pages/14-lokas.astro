@@ -1,5 +1,5 @@
 ---
-import ConceptDetailPage from "../components/topic/ConceptDetailPage.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const journeyItems = [
   {
@@ -32,137 +32,333 @@ const journeyItems = [
   },
   {
     title: "The Higher Worlds",
-    href: "/14-lokas",
+    href: "#higher-worlds",
     eyebrow: "Upper realms",
     description: "Where sages, celestial beings, devas, and higher states of existence are described.",
     status: "available",
   },
   {
     title: "The Lower Worlds",
-    href: "/14-lokas",
+    href: "#lower-worlds",
     eyebrow: "Hidden realms",
     description: "Mysterious realms beneath the Earth, associated with powerful beings, hidden cities, and treasures.",
     status: "available",
   },
 ];
+
 const related = [
-  { title: "The Hindu Cosmic Universe", href: "/cosmic-universe", image: "/images/home/home-lokas.png", eyebrow: "Cosmic structure" },
-  { title: "Cosmic Time", href: "/atlas", image: "/images/home/home-hero.png", eyebrow: "Cosmic map" },
-  { title: "Garuda Purana", href: "/atlas/garuda-purana", image: "/images/home/home-garuda-purana.png", eyebrow: "Afterlife atlas" },
+  { title: "The Hindu Cosmic Universe", href: "/cosmic-universe", image: "/images/home/home-lokas.webp", eyebrow: "Cosmic structure" },
+  { title: "Mount Meru", href: "/mount-meru", image: "/images/home/home-hero.webp", eyebrow: "Cosmic axis" },
+  { title: "Garuda Purana", href: "/garuda-purana", image: "/images/home/home-garuda-purana.png", eyebrow: "Afterlife atlas" },
 ];
 
-const concept = {
-  title: "The Fourteen Lokas - The Worlds Beyond Our Own",
-  eyebrow: "Chapter 1",
-  summary: "According to several Hindu scriptures, the universe is arranged into fourteen great realms, known collectively as the Chaturdasha Lokas: the Fourteen Worlds.",
-  image: "/images/home/home-lokas.png",
-  transitionName: "concept-lokas",
-  posterHero: true,
-  readingLayout: "article",
-  accent: "#65d7dc",
-  facts: ["Chaturdasha Lokas", "Bhuloka", "Svargaloka / Indra Loka", "Mount Meru"],
-  journeyItems,
-  sections: [
-    {
-      title: "The Fourteen Lokas - The Worlds Beyond Our Own",
-      paragraphs: [
-        "Imagine standing outside on a clear night.",
-        "Above you stretches a sky filled with countless stars.",
-        "To modern astronomy, those distant lights belong to galaxies spread across an unimaginably vast universe.",
-        "But now imagine looking at the same sky through the eyes of the ancient sages.",
-        "Instead of seeing empty space, they saw worlds.",
-        "Not planets.",
-        "Not distant solar systems.",
-        "Worlds of existence.",
-        "According to several Hindu scriptures, the universe is arranged into fourteen great realms, known collectively as the Chaturdasha Lokas: the Fourteen Worlds.",
-        "These are not simply different places.",
-        "They represent different planes of existence, each with its own inhabitants, its own laws, and its own purpose within the cosmic order.",
-        "The Bhagavata Purana and Vishnu Purana describe these worlds as forming a vast vertical structure. Some lie above the earthly realm, while others extend below it, creating a universe that is layered rather than scattered across space.",
-        "Our own world occupies only the middle.",
-        "Everything above and below belongs to a much larger cosmic design.",
-      ],
-    },
-    {
-      title: "The Middle World",
-      paragraphs: [
-        "The scriptures call our realm Bhuloka.",
-        "This is the world of humans, animals, mountains, forests, rivers, and all visible life.",
-        "It is the realm where actions are performed.",
-        "Where choices are made.",
-        "Where karma is created.",
-        "Unlike many of the higher worlds, Bhuloka is unique because it is considered the field of action. Here, beings possess the opportunity to shape their future through knowledge, devotion, discipline, and righteous conduct.",
-        "For this reason, many Hindu traditions regard human birth as especially precious.",
-        "It is neither the highest realm nor the lowest.",
-        "It is the place where destiny can be changed.",
-      ],
-    },
-    {
-      title: "The Seven Higher Worlds",
-      paragraphs: [
-        "Above Bhuloka rise seven progressively subtler realms.",
-        "Each is described as being more refined than the one below it.",
-        "The first is Bhuvarloka, the region between Earth and the heavenly realms. It is associated with celestial beings, Siddhas, Charanas, Gandharvas, and other divine inhabitants who move through the intermediate regions of the cosmos.",
-        "Beyond it lies Svarloka, also known as Svargaloka, Svarga, or Indra Loka, often simply called Heaven.",
-        "This is the radiant kingdom ruled by Indra, king of the Devas.",
-        "Here, the scriptures describe magnificent celestial cities, wish-fulfilling trees, divine music, and pleasures earned through righteous deeds.",
-        "Yet even this heavenly world is not eternal.",
-        "When the merit that brought a soul there is exhausted, it returns once again to the cycle of birth.",
-        "Higher still is Maharloka, home to great sages whose spiritual realization surpasses that of ordinary celestial beings.",
-        "Above Maharloka lies Janaloka, where the mind-born sons of Brahma are said to dwell, absorbed in profound contemplation of the Supreme Reality.",
-        "Then comes Tapoloka, inhabited by ascetics whose spiritual austerities radiate immense power.",
-        "Finally, at the summit stands Satyaloka, also called Brahmaloka.",
-        "This is the highest world within the created universe.",
-        "It is described as the abode of Brahma, the cosmic creator, where time itself flows differently from the earthly realm.",
-      ],
-    },
-    {
-      title: "The Seven Lower Worlds",
-      paragraphs: [
-        "The universe also extends beneath Bhuloka.",
-        "These are the seven Adho Lokas, often misunderstood simply as places of punishment.",
-        "The Puranas paint a far more complex picture.",
-        "The first is Atala, followed by Vitala, Sutala, Talatala, Mahatala, Rasatala, and finally Patala.",
-        "Rather than barren underworlds, many are described as magnificent subterranean realms illuminated by radiant jewels instead of sunlight.",
-        "They contain extraordinary cities, vast treasures, advanced architecture, and powerful beings such as Nagas, Daityas, Danavas, and other inhabitants rarely encountered in the human world.",
-        "Among these realms, Sutala receives special attention.",
-        "After the righteous king Bali surrendered everything to Lord Vamana, the scriptures say he was granted sovereignty over Sutala, which became a realm blessed by Vishnu Himself.",
-        "This reminds us that the lower worlds are not merely symbols of suffering.",
-        "Each has its own role within the cosmic order.",
-      ],
-    },
-    {
-      title: "A Universe of Many Realms",
-      paragraphs: [
-        "The Fourteen Lokas reveal a vision of existence that differs profoundly from the modern picture of the cosmos.",
-        "Instead of measuring reality only by physical distance, the Puranas describe existence as a hierarchy of planes.",
-        "Some are attained through virtue.",
-        "Some through spiritual realization.",
-        "Others through the unfolding of karma.",
-        "Every world has its own inhabitants.",
-        "Every realm serves a purpose.",
-        "Every level forms part of an immense cosmic design governed by Dharma.",
-        "Whether understood literally, symbolically, or as a spiritual map of consciousness, the Fourteen Lokas represent one of the most intricate cosmological visions preserved in the Hindu tradition.",
-        "And yet, these worlds are only the framework.",
-        "At the very center of this extraordinary universe stands something even more remarkable.",
-        "A mountain unlike any on Earth.",
-        "A golden axis around which the cosmic realms are organized.",
-        "The scriptures call it Mount Meru.",
-        "And that is where our journey leads next.",
-      ],
-    },
-    {
-      title: "Scriptural References",
-      paragraphs: [],
-      list: [
-        "Bhagavata Purana, Canto 5, especially Chapters 16-26.",
-        "Vishnu Purana, Book II.",
-        "Brahmanda Purana, Cosmological Sections.",
-        "Vayu Purana, Cosmography.",
-        "Mahabharata, Bhishma Parva.",
-      ],
-    },
-  ],
-  related,
-};
+const facts = ["Chaturdasha Lokas", "Bhuloka", "Svargaloka / Indra Loka", "Mount Meru"];
+
+const upperLokas = [
+  "Satyaloka / Brahmaloka",
+  "Tapoloka",
+  "Janaloka",
+  "Maharloka",
+  "Svargaloka / Indra Loka",
+  "Bhuvarloka",
+];
+
+const middleLoka = "Bhuloka";
+
+const lowerLokas = ["Atala", "Vitala", "Sutala", "Talatala", "Mahatala", "Rasatala", "Patala"];
+
+const sections = [
+  {
+    title: "The Fourteen Lokas - The Worlds Beyond Our Own",
+    id: "worlds-beyond",
+    paragraphs: [
+      "Imagine standing outside on a clear night.",
+      "Above you stretches a sky filled with countless stars.",
+      "To modern astronomy, those distant lights belong to galaxies spread across an unimaginably vast universe.",
+      "But now imagine looking at the same sky through the eyes of the ancient sages.",
+      "Instead of seeing empty space, they saw worlds.",
+      "Not planets.",
+      "Not distant solar systems.",
+      "Worlds of existence.",
+      "According to several Hindu scriptures, the universe is arranged into fourteen great realms, known collectively as the Chaturdasha Lokas: the Fourteen Worlds.",
+      "These are not simply different places.",
+      "They represent different planes of existence, each with its own inhabitants, its own laws, and its own purpose within the cosmic order.",
+      "The Bhagavata Purana and Vishnu Purana describe these worlds as forming a vast vertical structure. Some lie above the earthly realm, while others extend below it, creating a universe that is layered rather than scattered across space.",
+      "Our own world occupies only the middle.",
+      "Everything above and below belongs to a much larger cosmic design.",
+    ],
+  },
+  {
+    title: "The Middle World",
+    id: "middle-world",
+    paragraphs: [
+      "The scriptures call our realm Bhuloka.",
+      "This is the world of humans, animals, mountains, forests, rivers, and all visible life.",
+      "It is the realm where actions are performed.",
+      "Where choices are made.",
+      "Where karma is created.",
+      "Unlike many of the higher worlds, Bhuloka is unique because it is considered the field of action. Here, beings possess the opportunity to shape their future through knowledge, devotion, discipline, and righteous conduct.",
+      "For this reason, many Hindu traditions regard human birth as especially precious.",
+      "It is neither the highest realm nor the lowest.",
+      "It is the place where destiny can be changed.",
+    ],
+  },
+  {
+    title: "The Seven Higher Worlds",
+    id: "higher-worlds",
+    paragraphs: [
+      "Above Bhuloka rise seven progressively subtler realms.",
+      "Each is described as being more refined than the one below it.",
+      "The first is Bhuvarloka, the region between Earth and the heavenly realms. It is associated with celestial beings, Siddhas, Charanas, Gandharvas, and other divine inhabitants who move through the intermediate regions of the cosmos.",
+      "Beyond it lies Svarloka, also known as Svargaloka, Svarga, or Indra Loka, often simply called Heaven.",
+      "This is the radiant kingdom ruled by Indra, king of the Devas.",
+      "Here, the scriptures describe magnificent celestial cities, wish-fulfilling trees, divine music, and pleasures earned through righteous deeds.",
+      "Yet even this heavenly world is not eternal.",
+      "When the merit that brought a soul there is exhausted, it returns once again to the cycle of birth.",
+      "Higher still is Maharloka, home to great sages whose spiritual realization surpasses that of ordinary celestial beings.",
+      "Above Maharloka lies Janaloka, where the mind-born sons of Brahma are said to dwell, absorbed in profound contemplation of the Supreme Reality.",
+      "Then comes Tapoloka, inhabited by ascetics whose spiritual austerities radiate immense power.",
+      "Finally, at the summit stands Satyaloka, also called Brahmaloka.",
+      "This is the highest world within the created universe.",
+      "It is described as the abode of Brahma, the cosmic creator, where time itself flows differently from the earthly realm.",
+    ],
+  },
+  {
+    title: "The Seven Lower Worlds",
+    id: "lower-worlds",
+    paragraphs: [
+      "The universe also extends beneath Bhuloka.",
+      "These are the seven Adho Lokas, often misunderstood simply as places of punishment.",
+      "The Puranas paint a far more complex picture.",
+      "The first is Atala, followed by Vitala, Sutala, Talatala, Mahatala, Rasatala, and finally Patala.",
+      "Rather than barren underworlds, many are described as magnificent subterranean realms illuminated by radiant jewels instead of sunlight.",
+      "They contain extraordinary cities, vast treasures, advanced architecture, and powerful beings such as Nagas, Daityas, Danavas, and other inhabitants rarely encountered in the human world.",
+      "Among these realms, Sutala receives special attention.",
+      "After the righteous king Bali surrendered everything to Lord Vamana, the scriptures say he was granted sovereignty over Sutala, which became a realm blessed by Vishnu Himself.",
+      "This reminds us that the lower worlds are not merely symbols of suffering.",
+      "Each has its own role within the cosmic order.",
+    ],
+  },
+  {
+    title: "A Universe of Many Realms",
+    id: "many-realms",
+    paragraphs: [
+      "The Fourteen Lokas reveal a vision of existence that differs profoundly from the modern picture of the cosmos.",
+      "Instead of measuring reality only by physical distance, the Puranas describe existence as a hierarchy of planes.",
+      "Some are attained through virtue.",
+      "Some through spiritual realization.",
+      "Others through the unfolding of karma.",
+      "Every world has its own inhabitants.",
+      "Every realm serves a purpose.",
+      "Every level forms part of an immense cosmic design governed by Dharma.",
+      "Whether understood literally, symbolically, or as a spiritual map of consciousness, the Fourteen Lokas represent one of the most intricate cosmological visions preserved in the Hindu tradition.",
+      "And yet, these worlds are only the framework.",
+      "At the very center of this extraordinary universe stands something even more remarkable.",
+      "A mountain unlike any on Earth.",
+      "A golden axis around which the cosmic realms are organized.",
+      "The scriptures call it Mount Meru.",
+      "And that is where our journey leads next.",
+    ],
+  },
+];
+
+const references = [
+  "Bhagavata Purana, Canto 5, especially Chapters 16-26.",
+  "Vishnu Purana, Book II.",
+  "Brahmanda Purana, Cosmological Sections.",
+  "Vayu Purana, Cosmography.",
+  "Mahabharata, Bhishma Parva.",
+];
 ---
-<ConceptDetailPage concept={concept} />
+<BaseLayout title="The Fourteen Lokas - The Worlds Beyond Our Own | Sanatana Path" description="According to several Hindu scriptures, the universe is arranged into fourteen great realms, known collectively as the Chaturdasha Lokas: the Fourteen Worlds." image="/images/home/home-lokas.webp" type="article">
+  <div data-reading-body class="lokas-page">
+    <section class="lokas-hero">
+      <div class="hero-copy">
+        <a class="back-link" href="/">Home</a>
+        <p class="eyebrow">Chapter 1</p>
+        <h1>The Fourteen Lokas</h1>
+        <p>According to several Hindu scriptures, the universe is arranged into fourteen great realms, known collectively as the Chaturdasha Lokas: the Fourteen Worlds.</p>
+        <div class="fact-row" aria-label="14 Lokas quick orientation">
+          {facts.map((fact) => <span>{fact}</span>)}
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Fourteen Lokas layered visualization">
+        <img src="/images/home/home-lokas.webp" alt="Layered Hindu cosmology showing realms rising above and below" loading="eager" decoding="async" />
+        <div class="realm-count"><strong>14</strong><span>Lokas</span></div>
+      </div>
+    </section>
+
+    <nav class="journey-rail" aria-label="Cosmic universe journey navigation">
+      <div class="journey-head"><span>Journey 2</span><strong>Cosmic Universe</strong></div>
+      <div>
+        {journeyItems.map((item, index) => (
+          <a href={item.href} title={item.description} class:list={[item.href === "/14-lokas" && index === 0 && "active"]}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{item.title}</strong>
+            <small>{item.eyebrow}</small>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+
+    <section class="visual-atlas" aria-labelledby="visual-atlas-title">
+      <div class="visual-intro">
+        <p class="eyebrow">See the structure</p>
+        <h2 id="visual-atlas-title">A vertical cosmos, not empty space.</h2>
+        <p>The Puranic universe is presented as layered: higher realms above, Bhuloka in the middle, and hidden realms below. This map gives the reader a fast mental picture before entering the full chapter.</p>
+      </div>
+      <div class="realm-map" aria-label="Fourteen Lokas grouped map">
+        <div class="realm-group upper-realms">
+          <div class="realm-group-head"><span>Upper Lokas</span><strong>Subtle celestial ascent</strong></div>
+          <div class="realm-chip-grid">
+            {upperLokas.map((loka, index) => <span class="realm-chip upper"><b>{String(14 - index).padStart(2, "0")}</b>{loka}</span>)}
+          </div>
+        </div>
+        <div class="earth-band">
+          <span><b>08</b>{middleLoka}</span>
+          <em>Earthly field of action, karma, choice, and transformation</em>
+        </div>
+        <div class="realm-group lower-realms">
+          <div class="realm-group-head"><span>Lower Lokas</span><strong>Hidden subterranean realms</strong></div>
+          <div class="realm-chip-grid lower-grid">
+            {lowerLokas.map((loka, index) => <span class="realm-chip lower"><b>{String(7 - index).padStart(2, "0")}</b>{loka}</span>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-layout">
+      <article class="reading-panel">
+        {sections.map((section, index) => (
+          <section id={section.id} class:list={[index === 0 && "opening-section"]}>
+            <span class="section-number">{String(index + 1).padStart(2, "0")}</span>
+            <h2>{section.title}</h2>
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </section>
+        ))}
+        <section id="references" class="reference-section compact-reference">
+          <details>
+            <summary>
+              <span class="section-number">06</span>
+              <span>
+                <small>Optional source notes</small>
+                <strong>Scriptural References</strong>
+              </span>
+              <b aria-hidden="true">+</b>
+            </summary>
+            <ul>{references.map((item) => <li>{item}</li>)}</ul>
+          </details>
+        </section>
+      </article>
+
+      <aside class="atlas-side" aria-label="Related journeys and reading aids">
+        <div class="side-card jump-card">
+          <p class="eyebrow">Jump inside</p>
+          <a href="#middle-world">Middle World</a>
+          <a href="#higher-worlds">Higher Worlds</a>
+          <a href="#lower-worlds">Lower Worlds</a>
+          <a href="#references">References</a>
+        </div>
+        <div class="side-card related-card">
+          <p class="eyebrow">Related screen</p>
+          <h2>Continue through the atlas</h2>
+          <div>{related.map((item) => <a href={item.href} style={`--related-image: url(${item.image});`}><span>{item.eyebrow}</span><strong>{item.title}</strong></a>)}</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="bottom-next" aria-labelledby="bottom-next-title">
+      <div>
+        <p class="eyebrow">Continue next</p>
+        <h2 id="bottom-next-title">Mount Meru</h2>
+        <p>The framework is now visible. Next, move to the golden axis around which this cosmic order is organized.</p>
+      </div>
+      <a href="/mount-meru">Continue to Chapter 2 <span aria-hidden="true">-&gt;</span></a>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(body:has(.lokas-page)) { background: light-dark(rgb(247 240 226 / 1), #020d13); color: light-dark(rgb(43 33 24 / 1), #fff4df); }
+  :global(body:has(.lokas-page)::before) { display: none; }
+  .lokas-page { min-height: 100svh; padding-bottom: 4rem; background: radial-gradient(circle at 74% -8%, rgb(101 215 220 / .16), transparent 34rem), radial-gradient(circle at 9% 32%, rgb(244 195 109 / .08), transparent 28rem), linear-gradient(180deg, light-dark(rgb(247 240 226 / 1), #020d13), light-dark(rgb(247 240 226 / 1), #031518) 54%, light-dark(rgb(247 240 226 / 1), #020d13)); }
+  .lokas-hero, .journey-rail, .visual-atlas, .content-layout, .bottom-next { width: min(1460px, calc(100% - 2rem)); margin-inline: auto; }
+  .lokas-hero { display: grid; min-height: clamp(31rem, 64svh, 42rem); grid-template-columns: minmax(24rem, .54fr) minmax(28rem, .82fr); gap: clamp(1rem, 3vw, 2rem); align-items: stretch; padding-top: 1.25rem; }
+  .hero-copy, .hero-visual, .visual-atlas, .reading-panel, .side-card, .bottom-next { border: 1px solid light-dark(rgb(118 93 55 / 0.22), rgb(101 215 220 / .22)); border-radius: 1rem; background: linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.84), rgb(3 13 20 / .84)), light-dark(rgb(247 240 226 / 0.58), rgb(3 13 20 / .58))); box-shadow: inset 0 1px rgb(255 255 255 / .045), 0 24px 80px light-dark(rgb(91 69 38 / 0.07), rgb(0 0 0 / .2)); }
+  .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(1.15rem, 3vw, 2.4rem); }
+  .back-link { display: inline-flex; width: fit-content; margin-bottom: clamp(1rem, 2vw, 1.35rem); border: 1px solid light-dark(rgb(118 93 55 / 0.35), rgb(101 215 220 / .35)); border-radius: 999px; padding: .5rem .75rem; color: light-dark(rgb(68 104 104 / 1), #9df3f2); background: light-dark(rgb(247 240 226 / 0.45), rgb(3 13 20 / .45)); font-size: .72rem; font-weight: 850; text-decoration: none; }
+  .eyebrow { margin: 0 0 .6rem; color: light-dark(rgb(53 100 100 / 1), #7be8e8); font-size: .68rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+  h1, h2 { margin: 0; color: light-dark(rgb(43 33 24 / 1), #fff4df); font-family: var(--serif); font-weight: 500; letter-spacing: 0; line-height: .98; }
+  h1 { max-width: 10ch; font-size: clamp(3.4rem, 6.6vw, 7.1rem); }
+  .hero-copy p:not(.eyebrow) { max-width: 48rem; margin: 1rem 0 0; color: light-dark(rgb(91 76 57 / 1), #e8decc); font-size: clamp(1rem, 1.28vw, 1.18rem); line-height: 1.75; }
+  .fact-row { display: flex; flex-wrap: wrap; gap: .52rem; margin-top: 1.3rem; }
+  .fact-row span { border: 1px solid light-dark(rgb(118 93 55 / 0.28), rgb(101 215 220 / .28)); border-radius: 999px; padding: .46rem .68rem; color: light-dark(rgb(43 33 24 / 1), #dff8f4); background: rgb(101 215 220 / .07); font-size: .72rem; font-weight: 850; }
+  .hero-visual { position: relative; overflow: hidden; min-height: 100%; background: light-dark(rgb(247 240 226 / 1), #06131a); }
+  .hero-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) contrast(1.05) brightness(.86); }
+  .hero-visual::after { position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%, transparent 0 25%, light-dark(rgb(247 240 226 / 0.08), rgb(2 13 19 / .08)) 56%, light-dark(rgb(247 240 226 / 0.62), rgb(2 13 19 / .62))), linear-gradient(180deg, transparent 42%, light-dark(rgb(247 240 226 / 0.72), rgb(2 13 19 / .72))); content: ""; }
+  .realm-count { position: absolute; right: 1rem; bottom: 1rem; z-index: 1; display: grid; min-width: 9rem; border: 1px solid light-dark(rgb(118 93 55 / 0.34), rgb(101 215 220 / .34)); border-radius: .9rem; padding: .9rem; background: light-dark(rgb(247 240 226 / 0.56), rgb(3 13 20 / .56)); backdrop-filter: blur(16px); }
+  .realm-count strong { color: light-dark(rgb(43 33 24 / 1), #fff4df); font-family: var(--serif); font-size: 3.2rem; line-height: .85; }
+  .realm-count span { color: light-dark(rgb(68 104 104 / 1), #9df3f2); font-size: .72rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+  .journey-rail { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .75rem; align-items: center; margin-top: 1rem; border: 1px solid light-dark(rgb(118 93 55 / 0.24), rgb(101 215 220 / .24)); border-radius: 1rem; padding: .72rem; background: linear-gradient(135deg, rgb(101 215 220 / .08), light-dark(rgb(247 240 226 / 0.48), rgb(2 13 19 / .48))); box-shadow: inset 0 1px rgb(255 255 255 / .045), 0 16px 38px light-dark(rgb(91 69 38 / 0.063), rgb(0 0 0 / .18)); }
+  .journey-head { display: grid; min-width: 9rem; border-right: 1px solid light-dark(rgb(118 93 55 / 0.22), rgb(101 215 220 / .22)); padding: .15rem .95rem .15rem .35rem; }
+  .journey-head span { color: light-dark(rgb(53 100 100 / 1), #7be8e8); font-size: .58rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+  .journey-head strong { margin-top: .12rem; color: light-dark(rgb(43 33 24 / 1), #fff4df); font-family: var(--serif); font-size: 1.05rem; font-weight: 500; }
+  .journey-rail > div:last-child { display: flex; gap: .46rem; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .journey-rail > div:last-child::-webkit-scrollbar { display: none; }
+  .journey-rail a { display: grid; min-width: 10.2rem; grid-template-columns: auto 1fr; align-items: center; gap: .12rem .48rem; border: 1px solid light-dark(rgb(118 93 55 / 0.25), rgb(101 215 220 / .25)); border-radius: 999px; padding: .48rem .72rem .48rem .46rem; background: rgb(101 215 220 / .06); color: light-dark(rgb(43 33 24 / 1), #fff4df); text-decoration: none; }
+  .journey-rail a.active, .journey-rail a:hover { border-color: light-dark(rgb(118 93 55 / 0.58), rgb(101 215 220 / .58)); background: rgb(101 215 220 / .12); }
+  .journey-rail a > span { display: grid; width: 1.78rem; height: 1.78rem; grid-row: 1 / 3; place-items: center; border-radius: 50%; background: rgb(101 215 220 / .16); color: light-dark(rgb(68 104 104 / 1), #9df3f2); font-size: .58rem; font-weight: 900; }
+  .journey-rail strong, .journey-rail small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .journey-rail strong { font-size: .73rem; font-weight: 850; }
+  .journey-rail small { color: light-dark(rgb(91 76 57 / 1), #96c7c3); font-size: .55rem; font-weight: 850; text-transform: uppercase; }
+  .visual-atlas { display: grid; grid-template-columns: minmax(17rem, .34fr) minmax(0, 1fr); gap: .85rem; align-items: stretch; margin-top: .75rem; padding: clamp(.75rem, 1.4vw, 1rem); }
+  .visual-intro { display: flex; min-height: 100%; flex-direction: column; justify-content: center; border: 1px solid light-dark(rgb(118 93 55 / 0.14), rgb(101 215 220 / .14)); border-radius: .85rem; padding: clamp(1rem, 2vw, 1.25rem); background: radial-gradient(circle at 0% 0%, rgb(101 215 220 / .08), transparent 14rem), light-dark(rgb(247 240 226 / 0.36), rgb(2 13 19 / .36)); }
+  .visual-intro h2 { max-width: 12ch; font-size: clamp(1.85rem, 2.8vw, 3rem); }
+  .visual-intro p:not(.eyebrow) { max-width: 34rem; margin-bottom: 0; color: light-dark(rgb(91 76 57 / 1), #d3c8b7); font-size: .94rem; line-height: 1.62; }
+  .realm-map { display: grid; gap: .62rem; overflow: hidden; border: 1px solid light-dark(rgb(118 93 55 / 0.07), rgb(255 255 255 / .07)); border-radius: .9rem; padding: .72rem; background: radial-gradient(circle at 50% 45%, rgb(101 215 220 / .12), transparent 18rem), linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(99 76 44 / 0.012), rgb(255 255 255 / .012))); }
+  .realm-group { display: grid; gap: .5rem; border: 1px solid light-dark(rgb(118 93 55 / 0.065), rgb(255 255 255 / .065)); border-radius: .78rem; padding: .62rem; background: light-dark(rgb(247 240 226 / 0.32), rgb(2 13 19 / .32)); }
+  .realm-group-head { display: flex; align-items: end; justify-content: space-between; gap: .8rem; border-bottom: 1px solid light-dark(rgb(118 93 55 / 0.07), rgb(255 255 255 / .07)); padding-bottom: .45rem; }
+  .realm-group-head span { color: light-dark(rgb(53 100 100 / 1), #7be8e8); font-size: .58rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+  .realm-group-head strong { color: light-dark(rgb(91 76 57 / 1), #d8ccb8); font-size: .78rem; font-weight: 760; }
+  .realm-chip-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .42rem; }
+  .lower-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .realm-chip { display: grid; min-height: 3.05rem; grid-template-columns: 1.72rem 1fr; align-items: center; gap: .48rem; border: 1px solid light-dark(rgb(118 93 55 / 0.08), rgb(255 255 255 / .08)); border-radius: .68rem; padding: .42rem .5rem; color: light-dark(rgb(91 76 57 / 1), #eee0ca); background: light-dark(rgb(247 240 226 / 0.5), rgb(2 13 19 / .5)); box-shadow: inset 0 1px rgb(255 255 255 / .035); }
+  .realm-chip b { display: grid; width: 1.48rem; height: 1.48rem; place-items: center; border-radius: 50%; font-size: .5rem; font-weight: 900; }
+  .realm-chip.upper b { background: rgb(242 208 143 / .14); color: light-dark(rgb(104 89 61 / 1), #f2d08f); }
+  .realm-chip.lower b { background: rgb(200 155 255 / .14); color: light-dark(rgb(91 76 57 / 1), #dcc6ff); }
+  .earth-band { position: relative; display: grid; grid-template-columns: minmax(10rem, auto) minmax(0, 1fr); align-items: center; gap: .85rem; overflow: hidden; border: 1px solid light-dark(rgb(118 93 55 / 0.5), rgb(101 215 220 / .5)); border-radius: .82rem; padding: .72rem .9rem; background: linear-gradient(90deg, rgb(101 215 220 / .17), rgb(101 215 220 / .055)), radial-gradient(circle at 50% 50%, rgb(101 215 220 / .14), transparent 16rem); box-shadow: inset 0 1px rgb(255 255 255 / .055), 0 0 34px rgb(101 215 220 / .06); }
+  .earth-band::before { position: absolute; inset: 0; background: linear-gradient(90deg, transparent, light-dark(rgb(99 76 44 / 0.08), rgb(255 255 255 / .08)), transparent); opacity: .42; content: ""; pointer-events: none; }
+  .earth-band span { position: relative; z-index: 1; display: inline-grid; width: fit-content; grid-template-columns: 1.8rem auto; align-items: center; gap: .55rem; color: light-dark(rgb(43 33 24 / 1), #fff4df); font-size: 1.08rem; font-weight: 900; }
+  .earth-band b { display: grid; width: 1.65rem; height: 1.65rem; place-items: center; border-radius: 50%; background: rgb(101 215 220 / .2); color: light-dark(rgb(68 104 104 / 1), #9df3f2); font-size: .52rem; }
+  .earth-band em { position: relative; z-index: 1; justify-self: end; color: light-dark(rgb(43 33 24 / 1), #bdfafa); font-size: .78rem; font-style: normal; font-weight: 820; text-align: right; }
+  .content-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(20rem, 25rem); gap: clamp(1rem, 3vw, 2rem); margin-top: 1rem; }
+  .reading-panel { display: grid; gap: 1.1rem; padding: clamp(1rem, 2vw, 1.4rem); }
+  .reading-panel section { position: relative; border: 1px solid light-dark(rgb(118 93 55 / 0.16), rgb(101 215 220 / .16)); border-radius: .9rem; padding: clamp(1rem, 2.4vw, 1.55rem); background: linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.035), rgb(255 255 255 / .035)), light-dark(rgb(99 76 44 / 0.012), rgb(255 255 255 / .012))); }
+  .reading-panel section.opening-section { background: radial-gradient(circle at 100% 0%, rgb(101 215 220 / .08), transparent 18rem), linear-gradient(145deg, light-dark(rgb(99 76 44 / 0.045), rgb(255 255 255 / .045)), light-dark(rgb(99 76 44 / 0.014), rgb(255 255 255 / .014))); }
+  .section-number { display: inline-grid; width: 2.15rem; height: 2.15rem; place-items: center; border: 1px solid light-dark(rgb(118 93 55 / 0.24), rgb(101 215 220 / .24)); border-radius: 50%; color: light-dark(rgb(68 104 104 / 1), #9df3f2); font-size: .62rem; font-weight: 900; }
+  .reading-panel h2 { max-width: 18ch; margin-top: .9rem; font-size: clamp(1.75rem, 3vw, 3rem); }
+  .reading-panel p, .reading-panel li { max-width: 76ch; color: light-dark(rgb(91 76 57 / 1), #e8decc); font-size: clamp(1rem, 1.1vw, 1.07rem); line-height: 1.78; }
+  .reading-panel p { margin: .82rem 0 0; }
+  .reading-panel ul { display: grid; gap: .55rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .reading-panel li { border: 1px solid light-dark(rgb(118 93 55 / 0.14), rgb(101 215 220 / .14)); border-radius: .7rem; padding: .62rem .72rem; background: rgb(101 215 220 / .045); }
+  .atlas-side { position: sticky; top: 6rem; display: grid; gap: .85rem; align-self: start; }
+  .side-card { padding: 1rem; }
+  .side-card h2 { max-width: 10ch; font-size: clamp(1.55rem, 2vw, 2.2rem); }
+  .side-card p { color: light-dark(rgb(91 76 57 / 1), #d3c8b7); line-height: 1.65; }
+  .jump-card a, .bottom-next a { display: inline-flex; width: fit-content; border: 1px solid light-dark(rgb(118 93 55 / 0.28), rgb(101 215 220 / .28)); border-radius: 999px; padding: .46rem .68rem; color: light-dark(rgb(68 104 104 / 1), #9df3f2); background: rgb(101 215 220 / .07); font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; }
+  .jump-card { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .jump-card .eyebrow { flex-basis: 100%; }
+  .related-card > div { display: grid; gap: .65rem; margin-top: .9rem; }
+  .related-card > div > a { position: relative; display: grid; min-height: 7.6rem; overflow: hidden; align-content: end; border: 1px solid light-dark(rgb(118 93 55 / 0.24), rgb(101 215 220 / .24)); border-radius: .8rem; padding: .8rem; background-image: linear-gradient(90deg, light-dark(rgb(247 240 226 / 0.88), rgb(3 13 20 / .88)), light-dark(rgb(247 240 226 / 0.46), rgb(3 13 20 / .46))), var(--related-image); background-position: center; background-size: cover; color: light-dark(rgb(43 33 24 / 1), #fff4df); text-decoration: none; }
+  .related-card span { color: light-dark(rgb(68 104 104 / 1), #9df3f2); font-size: .58rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+  .related-card strong { margin-top: .25rem; font-family: var(--serif); font-size: 1.35rem; font-weight: 500; line-height: 1.02; }
+  .bottom-next { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: center; overflow: hidden; margin-top: 1rem; padding: clamp(1.05rem, 2.2vw, 1.55rem); background: radial-gradient(circle at 88% 0%, rgb(101 215 220 / .18), transparent 18rem), linear-gradient(135deg, light-dark(rgb(247 240 226 / 0.9), rgb(3 13 20 / .9)), light-dark(rgb(247 240 226 / 0.62), rgb(3 13 20 / .62))); }
+  .bottom-next::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(101 215 220 / .12), transparent 34%, rgb(244 195 109 / .08)); opacity: .65; content: ""; pointer-events: none; }
+  .bottom-next > * { position: relative; z-index: 1; }
+  .bottom-next h2 { max-width: none; font-size: clamp(2rem, 3vw, 3.2rem); }
+  .bottom-next p:not(.eyebrow) { max-width: 52rem; margin: .55rem 0 0; color: light-dark(rgb(91 76 57 / 1), #d3c8b7); line-height: 1.65; }
+  .bottom-next a { padding: .62rem .88rem; white-space: nowrap; }
+  @media (max-width: 1080px) { .lokas-hero, .visual-atlas, .content-layout { grid-template-columns: 1fr; } .hero-visual { min-height: 24rem; } .atlas-side { position: static; } }
+  @media (max-width: 760px) { .lokas-page { padding-bottom: 6rem; } .lokas-hero, .journey-rail, .visual-atlas, .content-layout, .bottom-next { width: min(100% - 1rem, 1460px); } .lokas-hero { min-height: auto; grid-template-columns: 1fr; padding-top: .5rem; } h1 { font-size: clamp(3rem, 16vw, 4.6rem); } .hero-visual { min-height: 19rem; } .journey-rail { grid-template-columns: 1fr; } .journey-head { border-right: 0; border-bottom: 1px solid light-dark(rgb(118 93 55 / 0.22), rgb(101 215 220 / .22)); padding-bottom: .6rem; } .visual-atlas { padding: .65rem; } .realm-chip-grid, .lower-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .earth-band { grid-template-columns: 1fr; } .earth-band em { justify-self: start; text-align: left; } .reading-panel { padding: .75rem; } .reading-panel section { padding: 1rem; } .bottom-next { grid-template-columns: 1fr; } }
+</style>

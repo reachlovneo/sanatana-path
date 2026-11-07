@@ -1,0 +1,8 @@
+---
+import GarudaTopicPage from "../../components/garuda/GarudaTopicPage.astro";
+import { getGarudaTopic } from "../../data/garudaPurana";
+
+const topic = getGarudaTopic("death-process");
+---
+
+<GarudaTopicPage topic={topic} />

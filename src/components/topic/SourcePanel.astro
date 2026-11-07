@@ -26,7 +26,7 @@ const { sources, sourceNote, traditionNote, reviewedBy, lastReviewed, contentVer
       <span class="source-icon"><SacredIcon name="document" size={18} /></span>
       <span>
         <strong>Sources and editorial notes</strong>
-        <small>{sources.length} references <span class="separator" aria-hidden="true"></span> Last reviewed {lastReviewed}</small>
+        <small>{sources.length} references <span class="separator" aria-hidden="true"></span> {reviewedBy.length ? "Reviewed" : "Draft updated"} {lastReviewed}</small>
       </span>
       <span class="action" aria-hidden="true">View</span>
     </summary>
@@ -59,7 +59,7 @@ const { sources, sourceNote, traditionNote, reviewedBy, lastReviewed, contentVer
 
       <section class="note metadata">
         <p><strong>Reviewed by:</strong> {reviewedBy.length > 0 ? reviewedBy.join(", ") : "Pending"}</p>
-        <p><strong>Last reviewed:</strong> {lastReviewed}</p>
+        <p><strong>{reviewedBy.length ? "Last reviewed:" : "Draft updated:"}</strong> {lastReviewed}</p>
         <p><strong>Version:</strong> {contentVersion}</p>
       </section>
     </div>

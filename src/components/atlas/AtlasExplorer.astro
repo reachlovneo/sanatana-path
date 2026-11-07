@@ -20,12 +20,12 @@ const fourYugasNext = { slug: "four-yugas", title: "Four Yugas" };
 const kaliYugaNext = { slug: "kali-yuga", title: "Kali Yuga" };
 
 const layers = [
-  { id: "cosmic-time", title: "Cosmic Time", meaning: "The infinite expanse", scale: "The largest frame", description: "The broad frame that holds every nested cycle shown in this atlas.", position: "Outermost frame", composition: "All nested cycles", color: "#e9b65f", y: 12, image: "/images/atlas/layers/display/cosmic-time.png" },
-  { id: "kalpa", title: "Kalpa", meaning: "One day of Brahma", scale: "4.32 billion human years", description: "A Kalpa consists of 14 Manvantaras and their intervening periods.", position: "Within Cosmic Time", composition: "14 Manvantaras", color: "#e9b65f", y: 29, image: "/images/atlas/layers/display/kalpa.png" },
-  { id: "manvantara", title: "Manvantara", meaning: "The reign of a Manu", scale: "71 Maha Yugas", description: "A major era associated with one Manu within a Kalpa.", position: "7th within this Kalpa", composition: "71 Maha Yugas", color: "#65d7dc", y: 44, image: "/images/atlas/layers/display/manvantara.png" },
-  { id: "maha-yuga", title: "Maha Yuga", meaning: "One complete cycle of ages", scale: "4.32 million human years", description: "One complete sequence of Satya, Treta, Dvapara, and Kali Yuga.", position: "28th in this Manvantara", composition: "Four Yugas", color: "#c78cff", y: 58, image: "/images/atlas/layers/display/maha-yuga.png" },
-  { id: "four-yugas", title: "Four Yugas", meaning: "Satya, Treta, Dvapara, and Kali", scale: "Four ages", description: "The four ages form one complete Maha Yuga.", position: "Within one Maha Yuga", composition: "Satya · Treta · Dvapara · Kali", color: "#8c91ff", y: 70, image: "/images/atlas/layers/display/four-yugas.png" },
-  { id: "kali-yuga", title: "Kali Yuga", meaning: "The current age in the common Puranic model", scale: "The fourth Yuga", description: "Our current position within the common Puranic cycle of four Yugas.", position: "Current Yuga", composition: "Present cosmic context", color: "#ff714e", y: 80, image: "/images/atlas/layers/display/kali-yuga.png" },
+  { id: "cosmic-time", title: "Cosmic Time", meaning: "The infinite expanse", scale: "The largest frame", description: "The broad frame that holds every nested cycle shown in this atlas.", position: "Outermost frame", composition: "All nested cycles", color: "#e9b65f", y: 12, image: "/images/atlas/layers/display/cosmic-time.webp" },
+  { id: "kalpa", title: "Kalpa", meaning: "One day of Brahma", scale: "4.32 billion human years", description: "A Kalpa consists of 14 Manvantaras and their intervening periods.", position: "Within Cosmic Time", composition: "14 Manvantaras", color: "#e9b65f", y: 29, image: "/images/atlas/layers/display/kalpa.webp" },
+  { id: "manvantara", title: "Manvantara", meaning: "The reign of a Manu", scale: "71 Maha Yugas", description: "A major era associated with one Manu within a Kalpa.", position: "7th within this Kalpa", composition: "71 Maha Yugas", color: "#65d7dc", y: 44, image: "/images/atlas/layers/display/manvantara.webp" },
+  { id: "maha-yuga", title: "Maha Yuga", meaning: "One complete cycle of ages", scale: "4.32 million human years", description: "One complete sequence of Satya, Treta, Dvapara, and Kali Yuga.", position: "28th in this Manvantara", composition: "Four Yugas", color: "#c78cff", y: 58, image: "/images/atlas/layers/display/maha-yuga.webp" },
+  { id: "four-yugas", title: "Four Yugas", meaning: "Satya, Treta, Dvapara, and Kali", scale: "Four ages", description: "The four ages form one complete Maha Yuga.", position: "Within one Maha Yuga", composition: "Satya · Treta · Dvapara · Kali", color: "#8c91ff", y: 70, image: "/images/atlas/layers/display/four-yugas.webp" },
+  { id: "kali-yuga", title: "Kali Yuga", meaning: "The current age in the common Puranic model", scale: "The fourth Yuga", description: "Our current position within the common Puranic cycle of four Yugas.", position: "Current Yuga", composition: "Present cosmic context", color: "#ff714e", y: 80, image: "/images/atlas/layers/display/kali-yuga.webp" },
 ] as const;
 ---
 
@@ -36,6 +36,7 @@ const layers = [
     <div class="atlas-actions"><label><SacredIcon name="search" size={15} /><input type="search" placeholder="Search the Atlas..." aria-label="Search the Atlas" /><kbd>⌘K</kbd></label><a href="/methodology" aria-label="Atlas seal"><AtlasGlyph name="brand" size={24} /></a></div>
   </header>
   <div class="cosmos" id="atlas-top" aria-label="Interactive Cosmic Atlas">
+    <div class="hero-loader" aria-hidden="true"><span></span><strong>Loading high resolution atlas</strong></div>
     <div class="space-layer"></div>
     <div class="cosmic-ripple" aria-hidden="true"></div>
     <div class="orbital-stage" aria-hidden="true">
@@ -178,7 +179,7 @@ const layers = [
   </div>
 
   <nav class="journey-rail glass" aria-label="Cosmic Atlas journey">
-    <a class="rail-card overview-card" href="/atlas/cosmic-time" style="--node-color:#d9a64f;--rail-image:url('/images/atlas/Atlasv2.png')">
+    <a class="rail-card overview-card" href="/atlas/cosmic-time" style="--node-color:#d9a64f;--rail-image:url('/images/atlas/Atlasv2.webp')">
       <span class="rail-thumb" aria-hidden="true"><i><AtlasGlyph name="overview" size={20} /></i></span>
       <span class="rail-copy"><strong>Overview</strong><small>Your journey map</small></span>
     </a>
@@ -220,25 +221,35 @@ const layers = [
         <h3 data-reading-meaning>The reign of a Manu</h3>
         <p data-reading-body>Understanding this layer shows how the larger cosmic hierarchy is divided into ordered, connected periods.</p>
       </section>
-      <a data-reading-link href="#atlas-top"><span>Keep exploring this atlas</span><strong data-reading-link-title>Return to the atlas</strong><b>↑</b></a>
+      <a data-reading-link href="/atlas/kali-yuga"><span>Continue reading</span><strong data-reading-link-title>Read the full guide</strong><b>↑</b></a>
     </div>
   </section>
 </section>
 
 <section class="mobile-atlas">
   <p class="eyebrow">The Eternal Atlas</p>
-  <h2>Explore Cosmic Time</h2>
-  <p>Start with the largest frame and move toward the age described as our present context.</p>
-  <div class="mobile-position"><span>You are here</span><strong>Kali Yuga</strong><small>One layer inside a much larger cosmic structure</small></div>
-  <ol>
-    {layers.map((layer, index) => <li style={`--node-color:${layer.color}`}><span>{index + 1}</span><div><h2>{layer.title}</h2><p>{layer.meaning}</p></div><a href={`/atlas/${layer.id}`}>Open →</a></li>)}
-  </ol>
+  <h1>Explore Cosmic Time</h1>
+  <p>Follow the connected layers from the largest frame to the present age. Tap a layer to read its guide.</p>
+  <figure class="mobile-cosmic-map">
+    <img src="/images/atlas/Atlasv2.webp" alt="" width="768" height="1024" loading="eager" />
+    <ol aria-label="Nested cosmic time layers">
+      {layers.map((layer, index) => <li><a href={`/atlas/${layer.id}`} style={`--layer-accent:${layer.color}`}><span class="map-dot" aria-hidden="true">{index + 1}</span><span><strong>{layer.title}</strong><small>{layer.id === "kali-yuga" ? "Present age in the Puranic model" : layer.scale}</small></span><span aria-hidden="true">&rarr;</span></a></li>)}
+    </ol>
+    <figcaption>A conceptual map of nested time cycles; the artwork is illustrative, not to scale.</figcaption>
+  </figure>
+  <a class="mobile-full-map" href="/atlas/cosmic-address">See our cosmic address &rarr;</a>
 </section>
 
 <script>
   // @ts-nocheck
   const explorer = document.querySelector("[data-atlas-explorer]");
   if (explorer) {
+    const heroImage = new Image();
+    heroImage.decoding = "async";
+    heroImage.onload = () => explorer.classList.add("atlas-hires-ready");
+    heroImage.onerror = () => explorer.classList.add("atlas-hires-ready");
+    heroImage.src = "/images/atlas/Atlasv2.webp";
+    if (heroImage.complete) explorer.classList.add("atlas-hires-ready");
     const nodes = [...explorer.querySelectorAll("[data-layer]")];
     const rails = [...explorer.querySelectorAll("[data-rail-layer]")];
     const contextLayers = [...explorer.querySelectorAll("[data-context-layer]")];
@@ -430,10 +441,6 @@ const layers = [
       selectLayer("kali-yuga");
       explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
     });
-    explorer.querySelector("[data-reading-link]")?.addEventListener("click", (event) => {
-      event.preventDefault();
-      explorer.querySelector(".cosmos")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
-    });
     explorer.querySelector("[data-explore-selected]")?.addEventListener("click", () => {
       explorer.querySelector("[data-atlas-reading]")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
     });
@@ -455,7 +462,8 @@ const layers = [
 </script>
 
 <style>
-  .atlas-explorer { --glass: rgb(5 15 24 / 0.72); display: grid; gap: 0.75rem; padding: 0.75rem; background: #020a10; color: #eee3cf; }
+  .atlas-explorer { --glass: rgb(5 15 24 / 0.72); --atlas-hero-image: url("/images/atlas/Atlasv2.webp"); display: grid; gap: 0.75rem; padding: 0.75rem; background: #020a10; color: #eee3cf; }
+  .atlas-explorer.atlas-hires-ready { --atlas-hero-image: url("/images/atlas/Atlasv2.webp"); }
   .atlas-header { display: none; min-height: 58px; grid-template-columns: 1fr auto 1fr; align-items: center; border: 0; border-bottom: 1px solid rgb(223 174 93 / .16); padding: 0 .2rem; background: rgb(2 10 16 / .72); box-shadow: none; }
   .atlas-brand { display: flex; align-items: center; gap: .7rem; width: fit-content; }
   .atlas-brand > span { display: grid; width: 2.8rem; height: 2.8rem; place-items: center; color: #d9a64f; }
@@ -474,6 +482,10 @@ const layers = [
   .atlas-actions kbd { border: 1px solid rgb(223 174 93 / .18); border-radius: .35rem; padding: .05rem .34rem; font: inherit; }
   .atlas-actions > a { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid rgb(223 174 93 / .25); border-radius: 50%; background: rgb(3 12 19 / .55); color: #e7b45f; box-shadow: inset 0 0 8px rgb(223 174 93 / .12); }
   .cosmos { position: relative; min-height: clamp(34rem, calc(100svh - 190px), 45rem); overflow: hidden; border: 0; border-bottom: 1px solid rgb(223 174 93 / 0.14); border-radius: 0; background: #02070c; }
+  .hero-loader { position: absolute; z-index: 8; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); display: inline-flex; align-items: center; gap: .65rem; border: 1px solid rgb(229 181 91 / .38); border-radius: 999px; padding: .65rem .9rem; background: rgb(2 9 14 / .72); color: #f4d083; font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 12px 34px rgb(0 0 0 / .25); backdrop-filter: blur(14px); opacity: 1; transition: opacity 360ms ease, transform 360ms ease, visibility 360ms ease; }
+  .hero-loader span { width: .7rem; height: .7rem; border: 2px solid rgb(244 208 131 / .34); border-top-color: #f4d083; border-radius: 50%; animation: atlas-loader-spin 900ms linear infinite; }
+  .atlas-explorer.atlas-hires-ready .hero-loader { transform: translateY(.4rem); opacity: 0; visibility: hidden; }
+  @keyframes atlas-loader-spin { to { transform: rotate(360deg); } }
   .cosmos::before,
   .cosmos::after {
     position: absolute;
@@ -765,7 +777,7 @@ const layers = [
   .scale-experience strong, .scale-experience small { display: block; }
   .scale-experience strong { margin-top: .65rem; color: #e5dac7; font-family: var(--serif); font-size: .9rem; }
   .scale-experience small { color: #918d86; font-size: .52rem; }
-  .scale-experience { position: relative; min-height: min(46rem, calc(100svh - 2rem)); overflow: hidden; }
+  .scale-experience { position: relative; min-height: min(46rem, calc(100svh - 2rem)); overflow: hidden; content-visibility: auto; contain-intrinsic-size: 46rem; }
   .scale-experience > div:not(.scale-heading), .scale-experience > ol:not([data-scale-track]) { display: none; }
   .scale-heading { max-width: 45rem; }
   .scale-heading h2 { max-width: 14ch; font-size: clamp(3rem, 6vw, 6.5rem); }
@@ -789,7 +801,7 @@ const layers = [
   .scale-experience ol[data-scale-track] button:hover { filter: brightness(1.35); }
   .scale-experience ol[data-scale-track] li > span, .scale-experience ol[data-scale-track] button > span { display: grid; min-height: 4rem; place-items: end center; }
   .scale-experience ol[data-scale-track] li::after { background: var(--scale-color); box-shadow: 0 0 18px var(--scale-color); }
-  .atlas-reading { scroll-margin-top: 1rem; }
+  .atlas-reading { scroll-margin-top: 1rem; content-visibility: auto; contain-intrinsic-size: 80rem; }
   .atlas-reading [hidden] { display: none !important; }
   .generic-reading { --reading-color:#65d7dc; display:grid; width:min(100%,72rem); gap:0; margin-inline:auto; border:1px solid color-mix(in srgb,var(--reading-color) 24%,transparent);border-radius:1.3rem;padding:clamp(1.5rem,4vw,4rem);background:#030d14 }
   .generic-reading > header { padding-block:1rem 2.5rem }
@@ -834,7 +846,7 @@ const layers = [
     background:
       linear-gradient(90deg, rgb(2 8 13 / .9), rgb(2 8 13 / .34) 26%, rgb(2 8 13 / .22) 58%, rgb(2 8 13 / .82)),
       linear-gradient(180deg, rgb(2 8 13 / .1), rgb(2 8 13 / .42) 70%, rgb(2 8 13 / .88)),
-      url("/images/atlas/Atlasv2.png");
+      var(--atlas-hero-image);
     background-position: center;
     background-size: cover;
     opacity: .9;
@@ -1148,7 +1160,7 @@ const layers = [
     background:
       linear-gradient(90deg, rgb(2 8 13 / .92), rgb(2 8 13 / .46) 25%, rgb(2 8 13 / .08) 52%, rgb(2 8 13 / .34) 78%, rgb(2 8 13 / .86)),
       linear-gradient(180deg, rgb(2 8 13 / .06), rgb(2 8 13 / .22) 62%, rgb(2 8 13 / .82)),
-      url("/images/atlas/Atlasv2.png");
+      var(--atlas-hero-image);
     background-position: 61% 48%;
     background-size: 118% auto;
     opacity: .96;
@@ -1419,7 +1431,7 @@ const layers = [
     background:
       linear-gradient(90deg, rgb(2 8 13 / .93), rgb(2 8 13 / .58) 28%, rgb(2 8 13 / .06) 52%, rgb(2 8 13 / .22) 78%, rgb(2 8 13 / .78)),
       linear-gradient(180deg, rgb(2 8 13 / .08), rgb(2 8 13 / .18) 58%, rgb(2 8 13 / .84)),
-      url("/images/atlas/Atlasv2.png");
+      var(--atlas-hero-image);
     background-position: 62% 48%;
     background-size: 116% auto;
     filter: saturate(1.12) contrast(1.04) brightness(.96);
@@ -2688,7 +2700,7 @@ const layers = [
     background:
       linear-gradient(90deg, rgb(2 8 13 / .9) 0%, rgb(2 8 13 / .58) 24%, rgb(2 8 13 / .12) 43%, rgb(2 8 13 / .08) 72%, rgb(2 8 13 / .28) 100%),
       linear-gradient(180deg, rgb(2 8 13 / .06), rgb(2 8 13 / .03) 45%, rgb(2 8 13 / .34) 100%),
-      url("/images/atlas/Atlasv2.png");
+      var(--atlas-hero-image);
     background-position: center, center, 73% 51%;
     background-size: auto, auto, auto 108%;
     opacity: 1;
@@ -3714,5 +3726,25 @@ const layers = [
     }
     .atlas-camera, .art-layer, .layer-node, .intro { transition-duration: 1ms; }
     .cosmos::before, .cosmos::after, .space-layer, .intro { transform: none; }
+  }
+
+  .layer-node .node-label strong { font-size:.85rem; text-shadow:0 2px 5px #000; }
+  .layer-node .node-label small { font-size:.72rem; }
+  @media(max-width:800px) {
+    .mobile-atlas { padding-block:1rem 2rem; }
+    .mobile-atlas > h1 { font:500 2.4rem/1.1 var(--serif); margin:.4rem 0 .8rem; }
+    .mobile-cosmic-map { position:relative; isolation:isolate; overflow:hidden; margin:1.25rem 0 1rem; border:1px solid var(--border); border-radius:1rem; background:#03121c; }
+    .mobile-cosmic-map > img { position:absolute; z-index:-2; width:100%; height:100%; object-fit:cover; opacity:.62; }
+    .mobile-cosmic-map::before { position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,rgba(2,10,16,.8),rgba(2,10,16,.2)); content:""; }
+    .mobile-cosmic-map ol { position:relative; padding:1rem; gap:0; }
+    .mobile-cosmic-map ol::before { position:absolute; top:2.5rem; bottom:2.5rem; left:2.85rem; width:2px; background:#bf9d58; content:""; }
+    .mobile-cosmic-map li { display:block; position:relative; padding:0; border:0; background:none; }
+    .mobile-cosmic-map li + li { margin-top:.65rem; }
+    .mobile-cosmic-map li a { display:grid; grid-template-columns:2.3rem 1fr auto; align-items:center; gap:.7rem; min-height:64px; padding:.65rem; border:1px solid rgba(231,200,137,.35); border-radius:.7rem; background:rgba(2,13,20,.88); color:#fff1d9; font-size:1rem; }
+    .mobile-cosmic-map strong { font-family:var(--serif); font-weight:500; }
+    .mobile-cosmic-map small { display:block; color:#ddd3c0; font-size:.76rem; font-weight:400; }
+    .map-dot { display:grid; place-items:center; height:2.3rem; border:1px solid var(--layer-accent); border-radius:50%; background:#03121c; color:var(--layer-accent); }
+    .mobile-cosmic-map figcaption { padding:0 1.25rem 1rem; color:#eee2c9; font-size:.75rem; }
+    .mobile-atlas .mobile-full-map { display:inline-flex; padding:.7rem 0; font-size:.9rem; text-decoration:underline; }
   }
 </style>

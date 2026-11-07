@@ -82,7 +82,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
           </div>
         </section>
       )}
-      <main class:list={["concept-reading", concept.readingLayout === "article" && "article-reading"]}>
+      <div data-reading-body class:list={["concept-reading", concept.readingLayout === "article" && "article-reading"]}>
         {concept.journeyItems && (
           <nav class="journey-rail-inline" aria-label="Journey navigation">
             <div class="journey-rail-head"><span>{concept.journeyLabel ?? "Journey 2"}</span><strong>{concept.journeyTitle ?? "Cosmic Universe"}</strong></div>
@@ -115,7 +115,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
             )}
           </section>
         ))}
-      </main>
+      </div>
 
       <aside class="related-panel" aria-label="Related journeys">
         <p class="eyebrow">Related screen</p>
@@ -152,7 +152,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     padding-bottom: 4rem;
     background:
       radial-gradient(circle at 72% 8%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 28rem),
-      linear-gradient(180deg, rgb(2 13 19), rgb(2 13 19));
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 1), rgb(2 13 19)), light-dark(rgb(247 240 226 / 1), rgb(2 13 19)));
   }
 
   .concept-hero {
@@ -166,7 +166,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     background-image: var(--hero-image);
     background-position: center;
     background-size: cover;
-    box-shadow: 0 28px 90px rgb(0 0 0 / .28);
+    box-shadow: 0 28px 90px light-dark(rgb(91 69 38 / 0.098), rgb(0 0 0 / .28));
     animation: concept-enter 520ms cubic-bezier(.22, 1, .36, 1) both;
   }
 
@@ -174,8 +174,8 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 74% 20%, transparent 0 28%, rgb(3 13 20 / .08) 58%, rgb(3 13 20 / .24) 100%),
-      linear-gradient(180deg, rgb(3 13 20 / .02), rgb(3 13 20 / .2));
+      radial-gradient(circle at 74% 20%, transparent 0 28%, light-dark(rgb(247 240 226 / 0.08), rgb(3 13 20 / .08)) 58%, light-dark(rgb(247 240 226 / 0.24), rgb(3 13 20 / .24)) 100%),
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.02), rgb(3 13 20 / .02)), light-dark(rgb(247 240 226 / 0.2), rgb(3 13 20 / .2)));
     content: "";
     pointer-events: none;
   }
@@ -183,7 +183,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     display: grid;
     min-height: 0;
     padding-top: clamp(23rem, 54svh, 37rem);
-    background-image: linear-gradient(145deg, rgb(3 13 20 / .88), rgb(3 13 20 / .68));
+    background-image: linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.88), rgb(3 13 20 / .88)), light-dark(rgb(247 240 226 / 0.68), rgb(3 13 20 / .68)));
   }
 
   .concept-hero.poster-hero::before {
@@ -191,7 +191,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     inset: 0 0 auto;
     height: clamp(23rem, 54svh, 37rem);
     background-image:
-      linear-gradient(180deg, rgb(3 13 20 / .02), rgb(3 13 20 / .12)),
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.02), rgb(3 13 20 / .02)), light-dark(rgb(247 240 226 / 0.12), rgb(3 13 20 / .12))),
       var(--hero-image);
     background-position: center;
     background-size: cover;
@@ -220,7 +220,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     width: 100%;
     border-color: color-mix(in srgb, var(--accent) 22%, transparent);
     background:
-      linear-gradient(135deg, rgb(3 13 20 / .82), rgb(3 13 20 / .5)),
+      linear-gradient(135deg, light-dark(rgb(247 240 226 / 0.82), rgb(3 13 20 / .82)), light-dark(rgb(247 240 226 / 0.5), rgb(3 13 20 / .5))),
       radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 52%);
     backdrop-filter: none;
   }
@@ -236,13 +236,13 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     min-height: clamp(29rem, 58svh, 38rem);
     padding-top: 0;
     background-image:
-      linear-gradient(90deg, rgb(2 13 19 / .94) 0 32%, rgb(2 13 19 / .54) 49%, rgb(2 13 19 / .04) 72%),
+      linear-gradient(90deg, light-dark(rgb(247 240 226 / 0.94), rgb(2 13 19 / .94)) 0 32%, light-dark(rgb(247 240 226 / 0.54), rgb(2 13 19 / .54)) 49%, light-dark(rgb(247 240 226 / 0.04), rgb(2 13 19 / .04)) 72%),
       radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 22rem),
       var(--hero-image);
     background-position: center, center, right center;
     background-repeat: no-repeat;
     background-size: auto, auto, auto 100%;
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 32%, transparent), inset 0 0 70px rgb(0 0 0 / .28), 0 28px 90px rgb(0 0 0 / .28);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 32%, transparent), inset 0 0 70px light-dark(rgb(91 69 38 / 0.098), rgb(0 0 0 / .28)), 0 28px 90px light-dark(rgb(91 69 38 / 0.098), rgb(0 0 0 / .28));
   }
 
   .concept-hero.poster-hero.split-hero::before {
@@ -250,10 +250,10 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     width: auto;
     height: auto;
     background:
-      linear-gradient(90deg, rgb(2 13 19 / .52), rgb(2 13 19 / .1) 49%, transparent 68%),
-      linear-gradient(180deg, rgb(2 13 19 / .26), transparent 18%, transparent 78%, rgb(2 13 19 / .26)),
-      linear-gradient(90deg, transparent 82%, rgb(2 13 19 / .2)),
-      radial-gradient(circle at 74% 36%, transparent 0 36%, rgb(3 13 20 / .06) 72%, rgb(3 13 20 / .16) 100%);
+      linear-gradient(90deg, light-dark(rgb(247 240 226 / 0.52), rgb(2 13 19 / .52)), light-dark(rgb(247 240 226 / 0.1), rgb(2 13 19 / .1)) 49%, transparent 68%),
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.26), rgb(2 13 19 / .26)), transparent 18%, transparent 78%, light-dark(rgb(247 240 226 / 0.26), rgb(2 13 19 / .26))),
+      linear-gradient(90deg, transparent 82%, light-dark(rgb(247 240 226 / 0.2), rgb(2 13 19 / .2))),
+      radial-gradient(circle at 74% 36%, transparent 0 36%, light-dark(rgb(247 240 226 / 0.06), rgb(3 13 20 / .06)) 72%, light-dark(rgb(247 240 226 / 0.16), rgb(3 13 20 / .16)) 100%);
     content: "";
     pointer-events: none;
   }
@@ -274,7 +274,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     top: clamp(1.45rem, 2.2vw, 2rem);
     left: clamp(1.65rem, 2.7vw, 2.45rem);
     margin-bottom: 0;
-    background: rgb(3 13 20 / .38);
+    background: light-dark(rgb(247 240 226 / 0.38), rgb(3 13 20 / .38));
     backdrop-filter: blur(16px) saturate(120%);
   }
 
@@ -285,9 +285,9 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border-radius: 1rem;
     padding: clamp(1.25rem, 2.35vw, 1.85rem);
     background:
-      linear-gradient(145deg, rgb(3 13 20 / .56), rgb(3 13 20 / .26)),
+      linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.56), rgb(3 13 20 / .56)), light-dark(rgb(247 240 226 / 0.26), rgb(3 13 20 / .26))),
       radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 50%);
-    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 24px 75px rgb(0 0 0 / .2);
+    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 24px 75px light-dark(rgb(91 69 38 / 0.07), rgb(0 0 0 / .2));
     backdrop-filter: blur(22px) saturate(126%);
   }
 
@@ -301,7 +301,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     padding-top: 0;
     background-image:
       radial-gradient(circle at 86% 0%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 28rem),
-      linear-gradient(145deg, rgb(2 13 19 / .98), rgb(2 13 19 / .94));
+      linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.98), rgb(2 13 19 / .98)), light-dark(rgb(247 240 226 / 0.94), rgb(2 13 19 / .94)));
   }
 
   .concept-hero.text-hero::before {
@@ -353,9 +353,9 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border-radius: 1rem;
     padding: clamp(1rem, 2.4vw, 1.55rem);
     background:
-      linear-gradient(135deg, rgb(3 13 20 / .74), rgb(3 13 20 / .28)),
+      linear-gradient(135deg, light-dark(rgb(247 240 226 / 0.74), rgb(3 13 20 / .74)), light-dark(rgb(247 240 226 / 0.28), rgb(3 13 20 / .28))),
       radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 45%);
-    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 80px rgb(0 0 0 / .24);
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 80px light-dark(rgb(91 69 38 / 0.084), rgb(0 0 0 / .24));
     backdrop-filter: blur(8px) saturate(112%);
   }
 
@@ -366,7 +366,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border-radius: 999px;
     padding: .5rem .75rem;
     color: color-mix(in srgb, var(--accent) 78%, white 22%);
-    background: rgb(3 13 20 / .58);
+    background: light-dark(rgb(247 240 226 / 0.58), rgb(3 13 20 / .58));
     font-size: .72rem;
     font-weight: 850;
   }
@@ -383,7 +383,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
   h1 {
     max-width: 12ch;
     margin: 0;
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-family: var(--serif);
     font-size: clamp(3rem, 7vw, 6.7rem);
     font-weight: 450;
@@ -394,7 +394,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
   .concept-hero p:not(.eyebrow) {
     max-width: 58ch;
     margin: 1rem 0 0;
-    color: #eee0ca;
+    color: light-dark(rgb(91 76 57 / 1), #eee0ca);
     font-size: clamp(1rem, 1.4vw, 1.18rem);
     line-height: 1.7;
   }
@@ -411,8 +411,8 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
     border-radius: 999px;
     padding: .48rem .7rem;
-    color: #f4e4c9;
-    background: rgb(3 13 20 / .5);
+    color: light-dark(rgb(91 76 57 / 1), #f4e4c9);
+    background: light-dark(rgb(247 240 226 / 0.5), rgb(3 13 20 / .5));
     font-size: .72rem;
     font-weight: 850;
   }
@@ -440,8 +440,8 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     padding: clamp(.85rem, 1.6vw, 1.15rem);
     background:
       radial-gradient(circle at 80% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 28rem),
-      linear-gradient(145deg, rgb(2 13 19 / .98), rgb(2 13 19 / .94));
-    box-shadow: inset 0 1px rgb(255 255 255 / .04), 0 28px 90px rgb(0 0 0 / .28);
+      linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.98), rgb(2 13 19 / .98)), light-dark(rgb(247 240 226 / 0.94), rgb(2 13 19 / .94)));
+    box-shadow: inset 0 1px rgb(255 255 255 / .04), 0 28px 90px light-dark(rgb(91 69 38 / 0.098), rgb(0 0 0 / .28));
   }
 
   .visual-feature-copy {
@@ -459,7 +459,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
 
   .visual-feature-copy h2 {
     margin: 0;
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-family: var(--serif);
     font-size: clamp(1.9rem, 3vw, 3.2rem);
     font-weight: 500;
@@ -470,7 +470,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
   .visual-feature-copy p:not(.eyebrow) {
     max-width: 54rem;
     margin: 0;
-    color: #e8decc;
+    color: light-dark(rgb(91 76 57 / 1), #e8decc);
     font-size: clamp(.98rem, 1.05vw, 1.08rem);
     line-height: 1.7;
   }
@@ -486,8 +486,8 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border-radius: .85rem;
     background:
       radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 34rem),
-      rgb(0 0 0 / .54);
-    box-shadow: inset 0 1px rgb(255 255 255 / .055), 0 18px 60px rgb(0 0 0 / .24);
+      light-dark(rgb(247 240 226 / 0.54), rgb(0 0 0 / .54));
+    box-shadow: inset 0 1px rgb(255 255 255 / .055), 0 18px 60px light-dark(rgb(91 69 38 / 0.084), rgb(0 0 0 / .24));
   }
 
   .visual-frame img {
@@ -515,17 +515,17 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border: 1px solid color-mix(in srgb, var(--accent) 44%, transparent);
     border-radius: 999px;
     padding: 0;
-    background: rgb(3 13 20 / .72);
-    color: #fff4df;
+    background: light-dark(rgb(247 240 226 / 0.72), rgb(3 13 20 / .72));
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     cursor: pointer;
-    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 12px 26px rgb(0 0 0 / .28);
+    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 12px 26px light-dark(rgb(91 69 38 / 0.098), rgb(0 0 0 / .28));
     transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
   }
 
   .visual-fullscreen:hover {
     transform: translateY(-1px);
     border-color: color-mix(in srgb, var(--accent) 70%, white 12%);
-    background: rgb(3 13 20 / .9);
+    background: light-dark(rgb(247 240 226 / 0.9), rgb(3 13 20 / .9));
   }
 
   .visual-fullscreen svg {
@@ -540,7 +540,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     max-height: none;
     border: 0;
     border-radius: 0;
-    background: #020d13;
+    background: light-dark(rgb(247 240 226 / 1), #020d13);
   }
 
   .visual-frame:fullscreen img {
@@ -557,8 +557,8 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     padding: clamp(1.15rem, 3vw, 2rem);
     background:
       radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 30rem),
-      linear-gradient(145deg, rgb(2 13 19 / .98), rgb(2 13 19 / .96));
-    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 80px rgb(0 0 0 / .22);
+      linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.98), rgb(2 13 19 / .98)), light-dark(rgb(247 240 226 / 0.96), rgb(2 13 19 / .96)));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 80px light-dark(rgb(91 69 38 / 0.077), rgb(0 0 0 / .22));
   }
 
   .concept-reading section,
@@ -575,8 +575,8 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border-color: color-mix(in srgb, var(--accent) 34%, #173743 66%);
     background:
       radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 18rem),
-      linear-gradient(145deg, rgb(2 13 19 / .98), rgb(2 13 19 / .96));
-    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 80px rgb(0 0 0 / .22);
+      linear-gradient(145deg, light-dark(rgb(247 240 226 / 0.98), rgb(2 13 19 / .98)), light-dark(rgb(247 240 226 / 0.96), rgb(2 13 19 / .96)));
+    box-shadow: inset 0 1px rgb(255 255 255 / .035), 0 24px 80px light-dark(rgb(91 69 38 / 0.077), rgb(0 0 0 / .22));
   }
 
   .article-reading section {
@@ -603,12 +603,12 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
 
   .article-reading h2 {
     max-width: 20ch;
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-size: clamp(1.65rem, 3vw, 2.65rem);
   }
 
   .article-reading section:not(:first-child) h2 {
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-size: clamp(1.35rem, 2.1vw, 1.8rem);
   }
 
@@ -624,7 +624,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
 
   .article-reading p,
   .article-reading li {
-    color: #e8decc;
+    color: light-dark(rgb(91 76 57 / 1), #e8decc);
   }
 
   .article-reading p {
@@ -654,7 +654,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
 
   .related-panel h2 {
     max-width: 11ch;
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-size: clamp(1.45rem, 1.65vw, 2rem);
     line-height: 1.02;
   }
@@ -677,13 +677,13 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border-radius: .85rem;
     padding: .95rem;
     background-image:
-      linear-gradient(90deg, rgb(3 13 20 / .86), rgb(3 13 20 / .42) 58%, rgb(3 13 20 / .18)),
-      linear-gradient(180deg, rgb(3 13 20 / .08), rgb(3 13 20 / .58)),
+      linear-gradient(90deg, light-dark(rgb(247 240 226 / 0.86), rgb(3 13 20 / .86)), light-dark(rgb(247 240 226 / 0.42), rgb(3 13 20 / .42)) 58%, light-dark(rgb(247 240 226 / 0.18), rgb(3 13 20 / .18))),
+      linear-gradient(180deg, light-dark(rgb(247 240 226 / 0.08), rgb(3 13 20 / .08)), light-dark(rgb(247 240 226 / 0.58), rgb(3 13 20 / .58))),
       var(--related-image);
     background-position: center;
     background-size: 108%;
-    color: #fff1d6;
-    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 16px 34px rgb(0 0 0 / .16);
+    color: light-dark(rgb(43 33 24 / 1), #fff1d6);
+    box-shadow: inset 0 1px rgb(255 255 255 / .06), 0 16px 34px light-dark(rgb(91 69 38 / 0.056), rgb(0 0 0 / .16));
     transition: transform 180ms ease, border-color 180ms ease, background-size 240ms ease, box-shadow 180ms ease;
   }
 
@@ -701,7 +701,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     transform: translateY(-2px);
     border-color: color-mix(in srgb, var(--accent) 58%, white 10%);
     background-size: 116%;
-    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 20px 42px rgb(0 0 0 / .24);
+    box-shadow: inset 0 1px rgb(255 255 255 / .08), 0 20px 42px light-dark(rgb(91 69 38 / 0.084), rgb(0 0 0 / .24));
   }
 
   .related-panel a span,
@@ -726,7 +726,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
   .related-panel a strong {
     width: min(100%, 13ch);
     margin-top: .32rem;
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-family: var(--serif);
     font-size: clamp(1.3rem, 1.55vw, 1.65rem);
     font-weight: 500;
@@ -744,9 +744,9 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border-radius: 999px;
     padding: .58rem .68rem;
     background:
-      linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, transparent), rgb(255 255 255 / .018)),
-      rgb(2 13 19 / .54);
-    box-shadow: inset 0 1px rgb(255 255 255 / .04), 0 14px 34px rgb(0 0 0 / .16);
+      linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, transparent), light-dark(rgb(99 76 44 / 0.018), rgb(255 255 255 / .018))),
+      light-dark(rgb(247 240 226 / 0.54), rgb(2 13 19 / .54));
+    box-shadow: inset 0 1px rgb(255 255 255 / .04), 0 14px 34px light-dark(rgb(91 69 38 / 0.056), rgb(0 0 0 / .16));
     overflow: hidden;
   }
 
@@ -767,7 +767,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
 
   .journey-rail-head strong {
     margin-top: .12rem;
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-family: var(--serif);
     font-size: 1rem;
     font-weight: 500;
@@ -794,15 +794,15 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
     border-radius: 999px;
     padding: .45rem .68rem .45rem .45rem;
-    background: color-mix(in srgb, var(--accent) 6%, rgb(2 13 19 / .7));
-    color: #fff4df;
+    background: color-mix(in srgb, var(--accent) 6%, light-dark(rgb(247 240 226 / 0.7), rgb(2 13 19 / .7)));
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
   }
 
   a.journey-dot:hover {
     transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--accent) 58%, #fff4df);
-    background: color-mix(in srgb, var(--accent) 12%, rgb(2 13 19 / .72));
+    border-color: color-mix(in srgb, var(--accent) 58%, light-dark(rgb(118 93 55 / 1), #fff4df));
+    background: color-mix(in srgb, var(--accent) 12%, light-dark(rgb(247 240 226 / 0.72), rgb(2 13 19 / .72)));
   }
 
   .journey-dot > span {
@@ -812,7 +812,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     grid-row: 1 / 3;
     place-items: center;
     border-radius: 50%;
-    background: color-mix(in srgb, var(--accent) 16%, rgb(255 255 255 / .05));
+    background: color-mix(in srgb, var(--accent) 16%, light-dark(rgb(99 76 44 / 0.05), rgb(255 255 255 / .05)));
     color: color-mix(in srgb, var(--accent) 82%, white 18%);
     font-size: .58rem;
     font-weight: 900;
@@ -820,7 +820,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
 
   .journey-dot strong {
     overflow: hidden;
-    color: #fff4df;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df);
     font-size: .72rem;
     font-weight: 850;
     line-height: 1.05;
@@ -830,7 +830,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
 
   .journey-dot small {
     overflow: hidden;
-    color: color-mix(in srgb, var(--accent) 70%, #b8afa2 30%);
+    color: color-mix(in srgb, var(--accent) 70%, light-dark(rgb(91 76 57 / 1), #b8afa2) 30%);
     font-size: .56rem;
     font-weight: 850;
     line-height: 1;
@@ -854,8 +854,8 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     padding: .72rem !important;
     background:
       radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 18rem),
-      linear-gradient(135deg, rgb(255 255 255 / .05), rgb(2 13 19 / .48)) !important;
-    box-shadow: inset 0 1px rgb(255 255 255 / .045), 0 16px 38px rgb(0 0 0 / .18) !important;
+      linear-gradient(135deg, light-dark(rgb(99 76 44 / 0.05), rgb(255 255 255 / .05)), light-dark(rgb(247 240 226 / 0.48), rgb(2 13 19 / .48))) !important;
+    box-shadow: inset 0 1px rgb(255 255 255 / .045), 0 16px 38px light-dark(rgb(91 69 38 / 0.063), rgb(0 0 0 / .18)) !important;
   }
 
   :global(.concept-reading .journey-rail-head) {
@@ -877,7 +877,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
   :global(.concept-reading .journey-rail-head strong) {
     display: block !important;
     margin-top: .15rem !important;
-    color: #fff4df !important;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df) !important;
     font-family: var(--serif) !important;
     font-size: 1.05rem !important;
     font-weight: 500 !important;
@@ -905,16 +905,16 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent) !important;
     border-radius: 999px !important;
     padding: .48rem .72rem .48rem .46rem !important;
-    background: color-mix(in srgb, var(--accent) 7%, rgb(2 13 19 / .72)) !important;
-    color: #fff4df !important;
+    background: color-mix(in srgb, var(--accent) 7%, light-dark(rgb(247 240 226 / 0.72), rgb(2 13 19 / .72))) !important;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df) !important;
     text-decoration: none !important;
     white-space: normal !important;
   }
 
   :global(.concept-reading a.journey-dot:hover) {
     transform: translateY(-2px) !important;
-    border-color: color-mix(in srgb, var(--accent) 58%, #fff4df) !important;
-    background: color-mix(in srgb, var(--accent) 13%, rgb(2 13 19 / .72)) !important;
+    border-color: color-mix(in srgb, var(--accent) 58%, light-dark(rgb(118 93 55 / 1), #fff4df)) !important;
+    background: color-mix(in srgb, var(--accent) 13%, light-dark(rgb(247 240 226 / 0.72), rgb(2 13 19 / .72))) !important;
   }
 
   :global(.concept-reading .journey-dot > span) {
@@ -924,7 +924,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     grid-row: 1 / 3 !important;
     place-items: center !important;
     border-radius: 50% !important;
-    background: color-mix(in srgb, var(--accent) 18%, rgb(255 255 255 / .05)) !important;
+    background: color-mix(in srgb, var(--accent) 18%, light-dark(rgb(99 76 44 / 0.05), rgb(255 255 255 / .05))) !important;
     color: color-mix(in srgb, var(--accent) 86%, white 14%) !important;
     font-size: .58rem !important;
     font-weight: 900 !important;
@@ -934,7 +934,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     display: block !important;
     min-width: 0 !important;
     overflow: hidden !important;
-    color: #fff4df !important;
+    color: light-dark(rgb(43 33 24 / 1), #fff4df) !important;
     font-family: var(--sans) !important;
     font-size: .73rem !important;
     font-weight: 850 !important;
@@ -947,7 +947,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     display: block !important;
     min-width: 0 !important;
     overflow: hidden !important;
-    color: color-mix(in srgb, var(--accent) 72%, #b8afa2 28%) !important;
+    color: color-mix(in srgb, var(--accent) 72%, light-dark(rgb(91 76 57 / 1), #b8afa2) 28%) !important;
     font-size: .55rem !important;
     font-weight: 850 !important;
     line-height: 1 !important;
@@ -992,7 +992,7 @@ const heroStyle = `--hero-image: url(${concept.image}); --accent: ${concept.acce
     height: auto;
     background:
       linear-gradient(180deg, transparent 0 8%, color-mix(in srgb, var(--accent) 26%, transparent) 19%, color-mix(in srgb, var(--accent) 26%, transparent) 81%, transparent 94%) 40.5% 50% / 1px calc(100% - 3rem) no-repeat,
-      radial-gradient(circle at 74% 30%, transparent 0 36%, rgb(3 13 20 / .04) 68%, rgb(3 13 20 / .14) 100%);
+      radial-gradient(circle at 74% 30%, transparent 0 36%, light-dark(rgb(247 240 226 / 0.04), rgb(3 13 20 / .04)) 68%, light-dark(rgb(247 240 226 / 0.14), rgb(3 13 20 / .14)) 100%);
   }
 
   @media (max-width: 640px) {

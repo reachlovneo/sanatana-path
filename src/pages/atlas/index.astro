@@ -2,12 +2,15 @@
 import AtlasExplorer from "../../components/atlas/AtlasExplorer.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Cosmic Atlas | Sanatana Path" description="Explore cosmic time as a living, connected atlas from Kalpa to Kali Yuga." image="/images/atlas/cosmic-architecture.jpg">
+<BaseLayout title="Cosmic Atlas | Sanatana Path" description="Explore cosmic time as a living, connected atlas from Kalpa to Kali Yuga." image="/images/atlas/Atlasv2.webp">
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/images/atlas/Atlasv2.webp" fetchpriority="high" />
+  </Fragment>
   <AtlasExplorer />
 </BaseLayout>
 <style is:global>
   @media (min-width: 801px) {
-    body:has(.atlas-explorer) { background: #020a10; }
+    body:has(.atlas-explorer) { background: light-dark(rgb(247 240 226 / 1), #020a10); }
     body:has(.atlas-explorer)::before { display: none; }
     body:has(.atlas-explorer) footer { display: none; }
   }

@@ -6,6 +6,7 @@ export const ATLAS_JOURNEY = Object.freeze([
   { slug: "four-yugas", title: "Four Yugas", description: "Satya, Treta, Dvapara, and Kali" },
   { slug: "satya-yuga", title: "Satya Yuga", description: "The Age of Truth and complete Dharma" },
   { slug: "treta-yuga", title: "Treta Yuga", description: "The Age of Duty and the Ramayana" },
+  { slug: "dvapara-yuga", title: "Dvapara Yuga", description: "The Age of Heroes, Krishna, and the Mahabharata" },
   { slug: "kali-yuga", title: "Kali Yuga", description: "The current Yuga in the common Puranic model" },
   { slug: "garuda-purana", title: "Garuda Purana", description: "Afterlife, karma, subtle body, rebirth, and liberation" },
 ]);

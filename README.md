@@ -10,7 +10,15 @@ The first release proves one core idea:
 
 ## Current Status
 
-The project is in foundation development. The original planning documents and
+The current local build contains 42 static routes, including the Cosmic Atlas,
+searchable Library, Garuda Purana journey, and expanded reading guides. Knowledge
+pages remain reading previews pending qualified editorial review; their robots
+and sitemap settings reflect that status. Feedback and donations are placeholders.
+
+Run `npm run dev` to preview, or `npm run verify` for type checks, a production
+build, and a built-site audit (Python 3 required).
+
+The original planning documents and
 visual mockups are retained as references, but
 [`docs/PROJECT_BLUEPRINT.md`](docs/PROJECT_BLUEPRINT.md) is the authoritative
 product and engineering specification.
